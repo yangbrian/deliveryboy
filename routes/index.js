@@ -13,13 +13,11 @@ router.get('/openorders', function(req, res,next){
    res.render('openorders',{}); 
 });
 
-router.post('/orderSubmit', function(req, res, next){
-    var userOrder = req.body.user;
-    User.save(userOrder, function(err){
-        if(err){
-            console.log("Error saving user to database");
-        }
-    });
+router.post('/submitOrder', function(req, res, next){
+    console.log("arrived");
+    //  var user = req.body;
+    //  console.log(typeof user);
+     //when trying to access properties they show up as undefined
     
 });
 

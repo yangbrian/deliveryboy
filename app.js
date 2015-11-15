@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-
+var socket_io = require('socket.io');
 //mongoose.connect()
 
 var User = mongoose.model('User',{
@@ -22,6 +22,16 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+var io = socket_io();
+app.io=io;
+
+io.on('connection',function(socket){
+  console.log('A user connected');
+  socket.emit('news',{hello:'world'});
+  socket.on('my other event', function(data){
+    console.log(data);
+  });
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
