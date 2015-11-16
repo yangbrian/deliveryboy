@@ -7,6 +7,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
     <link rel="stylesheet" href="stylesheets/style.css">
+    <script src='/socket.io/socket.io.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     
   </head>
@@ -23,7 +24,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right">
-            <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
+            <!--<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div> -->
+            <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
           </form>
         </div><!--/.navbar-collapse -->
       </div>
@@ -40,7 +43,7 @@
     </div>
 
     <div class="container">
-      <form class="form-horizontal">
+      <form id='orderForm' class="form-horizontal">
 <fieldset>
 
 <!-- Form Name -->
@@ -99,8 +102,10 @@
     <label><input type ='radio' name='tip'> 10%</label>
     <label><input type ='radio' name='tip'> 20%</label>
     <label><input type ='radio' name='tip'> 30%</label>
-    <label id='custom'><input type='radio' name = 'tip'><input id ='customTip' style='width:30px' type = 'text'></label>
+    <label id='custom'><input type='radio' name = 'tip'><input id ='customTip' style='width:40px' type = 'text'></label>
     <br>
+    
+    <button type='button'class = 'btn-success' id='placeOrder'>Place Order</button>
     
     
    
@@ -110,7 +115,9 @@
 
 </fieldset>
 </form>
-<button class = 'btn-success' id='placeOrder'>Place Order</button>
+
+  
+
     
     <div id="status"></div>
 

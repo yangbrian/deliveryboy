@@ -1,22 +1,24 @@
+var socket = io();
 var orderButton = document.getElementById('placeOrder');
 
+
 var user = {
-    'name': '',
-    'address': '',
-    'restaurant': '',
-    'order': '',
-    'cost': '',
-    'tip': ''
+    name: '',
+    address: '',
+    restaurant: '',
+    order: '',
+    cost: '',
+    tip: ''
 };
 
 //create user login based on their facebook and save addresses, restaurants, orders etce
 
 orderButton.onclick = function() {
 
-    FB.getLoginStatus(function(response) {
-       
-        if (response.status === 'connected') {
-        
+    
+       console.log("TESTING");
+    
+           
             user.name = document.getElementById('name').value;
             user.address = document.getElementById('autocomplete').value;
             user.restaurant = document.getElementById('autocomplete2').value;
@@ -37,18 +39,12 @@ orderButton.onclick = function() {
 
 
             }
-            console.log(user);
-            //window.location.href = '/openorders';
-
-
-
-            // $.post('submitOrder', user, function(data) {
-                
-            // });
-
-
-        }
-
-
-    });
+            
+            //
+            socket.emit('order',user);
+          
+   
 }
+
+
+

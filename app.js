@@ -5,16 +5,16 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var socket_io = require('socket.io');
-//mongoose.connect()
 
-var User = mongoose.model('User',{
+ mongoose.connect('mongodb://localhost/test');
+
+var User = mongoose.model('User', {
   name: String,
   address: String,
   restaurant: String,
-  order:String,
+  order: String,
   cost: String,
-  tip:String
+  tip: String
 });
 
 
@@ -22,16 +22,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-var io = socket_io();
-app.io=io;
-
-io.on('connection',function(socket){
-  console.log('A user connected');
-  socket.emit('news',{hello:'world'});
-  socket.on('my other event', function(data){
-    console.log(data);
-  });
-});
+app.io = require('socket.io')();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -41,7 +32,9 @@ app.set('view engine', 'ejs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -79,5 +72,29 @@ app.use(function(err, req, res, next) {
   });
 });
 
+
+app.io.on('connection', function(socket) {
+  console.log('A user connected');
+  
+  socket.on('order', function(order) {
+    var user = new User({name:order.name,address:order.address,restaurant:order.restaurant,order:order.order,cost:order.cost,tip:order.tip});
+    user.save(function(err){
+      if(!err){
+        console.log("Success");
+      }
+      else{
+        console.log("Error");
+      }
+    });
+    app.io.emit('order', order);
+  });
+
+  socket.on('acceptance', function(order) {
+    //remove order from live orders
+    console.log('save succesful');
+
+  });
+
+});
 
 module.exports = app;
