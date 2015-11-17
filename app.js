@@ -20,6 +20,8 @@ var User = mongoose.model('User', {
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var payments = require('./routes/payments');
+var order = require('./routes/order');
 
 var app = express();
 app.io = require('socket.io')();
@@ -40,6 +42,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/payments', payments);
+app.use('/order', order);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -75,7 +79,7 @@ app.use(function(err, req, res, next) {
 
 app.io.on('connection', function(socket) {
   console.log('A user connected');
-  
+
   socket.on('order', function(order) {
     var user = new User({name:order.name,address:order.address,restaurant:order.restaurant,order:order.order,cost:order.cost,tip:order.tip});
     user.save(function(err){
