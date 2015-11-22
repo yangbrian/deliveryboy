@@ -13,7 +13,8 @@
     <script>
         var socket = io();
         socket.on('order', function (order) {
-            var tableString = '<tr><td>' + order.name + '</td><td>' + order.address + '</td><td>' + order.restaurant + '</td><td>' + order.order + '</td></tr>';
+            var tableString = '<tr><td>' + order.name + '</td><td>' + order.address + '</td><td>' + order.restaurant + '</td><td>' + order.order +
+            '</td><td> <label><input type="checkbox" value=""></label></td></tr>';
             $('#ordersTable').append(tableString);
             console.log("ORDER RECEIVED");
         });
@@ -48,12 +49,14 @@
             <th>Destination</th>
             <th>Restaurant</th>
             <th>Order</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
 
         </tbody>
     </table>
+    <button class='btn btn-success'>Accept selected orders</button>
 </div>
 </body>
 </html>
