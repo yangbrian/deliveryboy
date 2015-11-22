@@ -5,53 +5,56 @@
     <meta charset="UTF-8">
     <title></title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+          integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+          crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheets/style.css">
     <script src='/socket.io/socket.io.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>
-      var socket = io();
-      socket.on('order',function(order){
-        var tableString = '<tr><td>'+order.name+'</td><td>'+order.address+'</td><td>'+order.restaurant+'</td><td>'+order.order+'</td></tr>';
-        $('#ordersTable').append(tableString);
-        console.log("ORDER RECEIVED");
-      });
+        var socket = io();
+        socket.on('order', function (order) {
+            var tableString = '<tr><td>' + order.name + '</td><td>' + order.address + '</td><td>' + order.restaurant + '</td><td>' + order.order + '</td></tr>';
+            $('#ordersTable').append(tableString);
+            console.log("ORDER RECEIVED");
+        });
     </script>
-    
-  </head>
+
+</head>
 <body>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
         <div class="navbar-header">
-         
-          <a class="navbar-brand" href="/">Uber Food</a>
-          <a class='navbar-brand' href='openorders'>Open Orders</a>
+
+            <a class="navbar-brand" href="/">Uber Food</a>
+            <a class='navbar-brand' href='openorders'>Open Orders</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
-            <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
-          </form>
+            <form class="navbar-form navbar-right">
+                <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false"
+                     data-auto-logout-link="false"></div>
+            </form>
         </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
-  <script src="javascripts/facebooklogin.js"></script>
-  
-  
-  <div class="container">
-  <h2>Orders needing a delivery boy!</h2>
-  <table id='ordersTable' class="table table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Destination</th>
-        <th>Restaurant</th>
-        <th>Order</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-    </tbody>
-  </table>
+    </div>
+</nav>
+<script src="/javascripts/facebooklogin.js"></script>
+
+
+<div class="container">
+    <h2>Orders needing a delivery boy!</h2>
+    <table id='ordersTable' class="table table-condensed">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Destination</th>
+            <th>Restaurant</th>
+            <th>Order</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
 </div>
 </body>
 </html>

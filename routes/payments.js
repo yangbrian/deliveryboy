@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
     gateway.clientToken.generate({}, function( err, response ) {
         console.log(err);
         console.log(response);
-    })
+    });
 
     gateway.transaction.sale({
         amount: '10.00',

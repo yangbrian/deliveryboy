@@ -6,15 +6,15 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
- mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/test');
 
 var User = mongoose.model('User', {
-  name: String,
-  address: String,
-  restaurant: String,
-  order: String,
-  cost: String,
-  tip: String
+    name: String,
+    address: String,
+    restaurant: String,
+    order: String,
+    cost: String,
+    tip: String
 });
 
 
@@ -35,7 +35,7 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: false
+    extended: false
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -46,10 +46,10 @@ app.use('/payments', payments);
 app.use('/order', order);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+app.use(function (req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handlers
@@ -57,47 +57,54 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
+    app.use(function (err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
     });
-  });
 }
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
+app.use(function (err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
 });
 
 
-app.io.on('connection', function(socket) {
-  console.log('A user connected');
+app.io.on('connection', function (socket) {
+    console.log('A user connected');
 
-  socket.on('order', function(order) {
-    var user = new User({name:order.name,address:order.address,restaurant:order.restaurant,order:order.order,cost:order.cost,tip:order.tip});
-    user.save(function(err){
-      if(!err){
-        console.log("Success");
-      }
-      else{
-        console.log("Error");
-      }
+    socket.on('order', function (order) {
+        var user = new User({
+            name: order.name,
+            address: order.address,
+            restaurant: order.restaurant,
+            order: order.order,
+            cost: order.cost,
+            tip: order.tip
+        });
+        user.save(function (err) {
+            if (!err) {
+                console.log("Success");
+            }
+            else {
+                console.log("Error");
+            }
+        });
+        app.io.emit('order', order);
     });
-    app.io.emit('order', order);
-  });
 
-  socket.on('acceptance', function(order) {
-    //remove order from live orders
-    console.log('save succesful');
+    socket.on('acceptance', function (order) {
+        //remove order from live orders
+        console.log('save succesful');
 
-  });
+    });
 
 });
 
