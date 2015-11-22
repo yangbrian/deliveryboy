@@ -1,11 +1,17 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src='/socket.io/socket.io.js'></script>
 <script src='/javascripts/submit.js'></script>
 <script src="/javascripts/facebooklogin.js"></script>
 <script src="/javascripts/googlemaps.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD88xnNunUuQzRoJAIsvfM0OqRpQ7iqmAw&signed_in=true&libraries=places&callback=initAutocomplete"
         async defer></script>
+<script>
+    //Just showing orders restaurant for now
+        var socket = io();
+        socket.on('order', function (order) {
+             $('#sidebar').append('<li><a href="#">'+order.restaurant+' </a></li>');
+        });
+    </script>
 </body>
 </html>

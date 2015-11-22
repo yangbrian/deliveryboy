@@ -37,7 +37,7 @@
         </ul>
         <!-- Live updating list of orders -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav side-nav">
+            <ul id ="sidebar" class="nav navbar-nav side-nav">
                 <li>
                     <a href="#">New order</a>
                 </li>
@@ -171,7 +171,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="textinput">Name</label>
                                     <div class="col-md-8">
-                                        <input id="name"  placeholder="Enter your name" class="form-control input-md" required="" type="text">
+                                        <input id="name"  placeholder="Enter your name" class="form-control input-md" required type="text">
 
                                     </div>
                                 </div>
@@ -180,7 +180,7 @@
                                     <label class="col-md-4 control-label" for="textinput">Address</label>
 
                                     <div id="locationField" class="col-md-8">
-                                        <input id="autocomplete" class="form-control input-md" required="" type="text" placeholder="Enter your address"
+                                        <input id="autocomplete" class="form-control input-md" required type="text" placeholder="Enter your address"
                                                onFocus="geolocate()" type="text"></input>
                                     </div>
 
@@ -191,7 +191,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="textinput">Restaurant</label>
                                     <div id="locationField" class="col-md-8">
-                                        <input id="autocomplete2" class="form-control input-md"required="" type="text" placeholder="Enter your desired restaurant"
+                                        <input id="autocomplete2" class="form-control input-md"required type="text" placeholder="Enter your desired restaurant"
                                                onFocus="geolocate()" type="text"></input>
 
 
@@ -201,7 +201,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="textarea">Order Entry</label>
                                     <div class="col-md-8">
-                                        <textarea class="form-control" id="order" name="textarea" required=""></textarea>
+                                        <textarea class="form-control" id="order" name="textarea" required></textarea>
 
 
 
