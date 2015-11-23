@@ -1,5 +1,4 @@
 <% include partials/header %>
-
 <div id="wrapper">
 
     <!-- Navigation -->
@@ -54,13 +53,13 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Dashboard <small>Statistics Overview</small>
+                        Orders Dashboard
                     </h1>
-                    <ol class="breadcrumb">
+                    <!--<ol class="breadcrumb">
                         <li class="active">
                             <i class="fa fa-dashboard"></i> Dashboard
                         </li>
-                    </ol>
+                    </ol>-->
                 </div>
             </div>
             <!-- /.row -->
@@ -175,6 +174,14 @@
 
                                     </div>
                                 </div>
+                                
+                                <div class='form-group'>
+                                    <label class='col-md-4 control-label' for 'textinput'>Number</label>
+                                    <div class='col-md-8'>
+                                        <input id='phoneNumber' placeholder = 'Enter your phone number' class = 'form-control input-md'type='text'>
+                                    </div>
+                                </div>
+                                
 
                                 <div class = "form-group">
                                     <label class="col-md-4 control-label" for="textinput">Address</label>
@@ -191,7 +198,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="textinput">Restaurant</label>
                                     <div id="locationField" class="col-md-8">
-                                        <input id="autocomplete2" class="form-control input-md"required type="text" placeholder="Enter your desired restaurant"
+                                        <input id="autocomplete2" class="form-control input-md"required type="text" placeholder="Enter a restaurant"
                                                onFocus="geolocate()" type="text"></input>
 
 
@@ -208,6 +215,7 @@
                                     </div>
 
                                 </div>
+                                
                                 <div class="form-group">
                                     <label class='col-md-4 control-label'>Total cost and tip</label>
                                     <div class="col-md-8">
@@ -222,7 +230,6 @@
                                         <label><input type ='radio' name='tip'> 30%</label>
                                         <label id='custom'><input type='radio' name = 'tip'><input id ='customTip' style='width:40px' type = 'text'></label>
                                         <br>
-
                                         <button type='button' class='btn btn-success' id='placeOrder'>Place Order</button>
 
 
