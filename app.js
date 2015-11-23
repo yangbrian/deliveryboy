@@ -10,7 +10,18 @@ mongoose.connect('mongodb://localhost/test');
 
 var User = mongoose.model('User', {
     name: String,
+    addresses:[String],
+    number: String,
+    restaurants: [String],
+    orders: [String],
+    cost: String,
+    tip: String
+});
+
+var ActiveOrder = mongoose.model('ActiveOrder',{
+    name: String,
     address: String,
+    number: String,
     restaurant: String,
     order: String,
     cost: String,
@@ -81,22 +92,23 @@ app.io.on('connection', function (socket) {
     console.log('A user connected');
 
     socket.on('order', function (order) {
-        var user = new User({
-            name: order.name,
-            address: order.address,
-            restaurant: order.restaurant,
-            order: order.order,
-            cost: order.cost,
-            tip: order.tip
-        });
-        user.save(function (err) {
-            if (!err) {
-                console.log("Success");
-            }
-            else {
-                console.log("Error");
-            }
-        });
+        // var user = new User({
+        //     name: order.name,
+        //     address: order.address,
+        //     restaurant: order.restaurant,
+        //     order: order.order,
+        //     cost: order.cost,
+        //     tip: order.tip
+        // });
+        // user.save(function (err) {
+        //     if (!err) {
+        //         console.log("Success");
+        //     }
+        //     else {
+        //         console.log("Error");
+        //     }
+        // });
+        
         app.io.emit('order', order);
     });
 

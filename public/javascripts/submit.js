@@ -44,7 +44,7 @@ orderButton.onclick = function() {
     //Checks that all fields are filled
 
     user.name = document.getElementById('name').value;
-    user.number = document.getElementById('number').value;
+    user.number = document.getElementById('phoneNumber').value;
     user.address = document.getElementById('autocomplete').value;
     user.restaurant = document.getElementById('autocomplete2').value;
     user.order = document.getElementById('order').value;

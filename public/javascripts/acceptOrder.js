@@ -4,7 +4,7 @@ socket.on('order', function(order) {
     var tableString = '<tr><td name ="name">' + order.name + '</td><td>' + order.address + '</td><td>' + order.restaurant + '</td><td>' + order.order +
         '</td><td> <label><input name = "checkedOrder" type="checkbox" value=""></label></td></tr>';
     $('#ordersTable').append(tableString);
-    console.log("ORDER RECEIVED");
+
 });
 
 var acceptButton = document.getElementById('acceptButton');
