@@ -1,11 +1,25 @@
-var socket = io();
+// var socket = io();
 
-socket.on('order', function(order) {
-    var tableString = '<tr><td name ="name">' + order.name + '</td><td>' + order.address + '</td><td>' + order.restaurant + '</td><td>' + order.order +
+// socket.on('order', function(order) {
+//     var tableString = '<tr><td name ="name">' + order.name + '</td><td>' + order.address + '</td><td>' + order.restaurant + '</td><td>' + order.order +
+//         '</td><td> <label><input name = "checkedOrder" type="checkbox" value=""></label></td></tr>';
+//     $('#ordersTable').append(tableString);
+
+// });
+
+$.get('/order/activeOrders',function(order){
+
+
+    for(var i =0;i<order.length;i++){
+     var tableString = '<tr><td name ="name">' + order[i].name + '</td><td>' + order[i].address + '</td><td>' + order[i].restaurant + '</td><td>' + order[i].order +
         '</td><td> <label><input name = "checkedOrder" type="checkbox" value=""></label></td></tr>';
     $('#ordersTable').append(tableString);
+    }
+
 
 });
+
+
 
 var acceptButton = document.getElementById('acceptButton');
 
