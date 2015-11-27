@@ -117,6 +117,21 @@ router.get('/activeOrders',function(req,res){
     });
 });
 
+router.post('/acceptedOrders', function(req,res){
+    console.log('Removing accepted orders');
+
+    var acceptedOrders = JSON.parse(req.body.acceptedOrders);
+    
+    //In the future use order ID's as user can have multiple active orders
+    console.log(typeof acceptedOrders);
+    
+  ActiveOrder.remove({name:{$in : acceptedOrders}}, function(err){
+      if(err){
+          console.log('Error removing accepted orders');
+          }
+  });
+});
+
 router.post('/new', function(req, res) {
     console.log('Entered route');
     handleOrder(req.body);

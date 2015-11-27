@@ -44,6 +44,7 @@ acceptButton.onclick = function() {
 
     }
     console.log(acceptedOrders);
+    $.post('/order/acceptedOrders',{'acceptedOrders':JSON.stringify(acceptedOrders)});
 }
 
 
