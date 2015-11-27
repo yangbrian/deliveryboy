@@ -8,9 +8,9 @@ var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/test');
 
-var User = require('models/user');
+var User = require('./models/user');
 
-var ActiveOrder = require('models/activeOrder');
+var ActiveOrder = require('./models/activeOrder');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
