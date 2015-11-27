@@ -4,22 +4,18 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema({
     name: String,
     addresses:[String],
-    number: {type: Number, index: true},
+    _number: {type: Number, index: true},
     restaurants: [String],
 	activeOrders: [String],
     orders: [String],
 });
 
 userSchema.virtual('number').set(function (phone) {
-	this.number = Number.parseInt(phone);	
+	this._number = parseInt(phone);	
 });
 
 userSchema.virtual('number').get(function () {
-	return this.number.toString();	
-});
-
-userSchema.virtual('number.raw').get(function () {
-	return this.number;	
+	return this._number.toString();	
 });
 
 var User = mongoose.model('User', userSchema);

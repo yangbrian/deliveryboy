@@ -4,47 +4,35 @@ var Schema = mongoose.Schema;
 var activeOrderSchema = new Schema({
 	name: {type: String, index: true},
     address: String,
-    number: {type: Number, index: true},
+    _number: {type: Number, index: true},
     restaurant: {type: String, index: true},
     order: String,
-    cost: Number,
-    tip: Number 
+    _cost: Number,
+    _tip: Number 
 });
 
-userSchema.virtual('number').set(function (phone) {
-	this.number = Number.parseInt(phone);	
+activeOrderSchema.virtual('number').set(function (phone) {
+	this._number = parseInt(phone);	
 });
 
-userSchema.virtual('number').get(function () {
-	return this.number.toString();	
-});
-
-userSchema.virtual('number.raw').get(function () {
-	return this.number;	
+activeOrderSchema.virtual('number').get(function () {
+	return this._number.toString();	
 });
 
 activeOrderSchema.virtual('cost').set(function(cost) {
-		this.cost = Number.parseInt(cost);	
+		this._cost = parseInt(cost);	
 });
 
 activeOrderSchema.virtual('cost').get(function() {
-	return this.cost.toString();	
-});
-
-activeOrderSchema.virtual('cost.raw').get(function() {
-	return this.cost;	
+	return this._cost.toString();	
 });
 
 activeOrderSchema.virtual('tip').set(function(tip) {
-		this.cost = Number.parseInt(tip);	
+		this._tip = parseInt(tip);	
 });
 
 activeOrderSchema.virtual('tip').get(function() {
-	return this.tip.toString();	
-});
-
-activeOrderSchema.virtual('tip.raw').get(function() {
-	return this.tip;	
+	return this._tip.toString();	
 });
 
 var ActiveOrder = mongoose.model('ActiveOrder', activeOrderSchema);
