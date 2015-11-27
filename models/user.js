@@ -6,9 +6,8 @@ var userSchema = new Schema({
     addresses:[String],
     number: {type: Number, index: true},
     restaurants: [String],
+	activeOrders: [String],
     orders: [String],
-    cost: String,
-    tip: String
 });
 
 userSchema.virtual('number').set(function (phone) {
