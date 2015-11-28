@@ -44,7 +44,7 @@ router.get('/signup', function(req, res, next) {
 		if (parseInt(req.query.error) === 1)
 			res.render('user.signup', {'flash':'error', 'flash-msg': "unable to create account"});
 	} else { 
-		res.render('user.signup',{});	
+		res.render('user.signup');	
 	}
 });
 
