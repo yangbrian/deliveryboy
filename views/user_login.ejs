@@ -1,0 +1,55 @@
+<% include partials/header  %>
+<!--facebook-->
+<% include partials/facebook_login %>
+
+
+<div class="login_form">
+	<form class="form-horizontal" action="/users/login" method="post" >
+	
+	  <!--<div class="form-group <%= locals.number_err ? "has-error" : ""  %>">-->
+	  <!--  <label for="inputNumber" class="col-sm-offset-1 col-sm-2 control-label">Phone number</label>-->
+	  <!--  <div class="col-sm-6">-->
+	  <!--    <input type="text" class="form-control" id="inputNumber" name="number" placeholder="Phone number">-->
+	  <!--  </div>-->
+	  <!--</div>-->
+	  <div class="form-group <%= locals.username_err ? "has-error" : ""  %>">
+	    <label for="inputUsername" class="col-sm-offset-1 col-sm-2 control-label">Username</label>
+	    <div class="col-sm-6">
+	      <input type="text" class="form-control" id="inputUsername" name="username" placeholder="Username" value=<%= locals.username ? locals.username : ""%> >
+	    </div>
+	  </div>
+
+
+	  <div class="form-group <%= locals.passwd_err ? "has-error" : ""  %>">
+	    <label for="inputPassword" class="col-sm-offset-1 col-sm-2 control-label">Password</label>
+	    <div class="col-sm-6">
+	      <input type="password" class="form-control" id="inputPassword" name="passwd" placeholder="Password">
+	    </div>
+	  </div>
+
+
+	  <!--<div class="form-group">-->
+	  <!--  <div class="col-sm-offset-2 col-sm-10">-->
+	  <!--    <div class="checkbox">-->
+	  <!--      <label>-->
+	  <!--        <input type="checkbox"> Remember me-->
+	  <!--      </label>-->
+	  <!--    </div>-->
+	  <!--  </div>-->
+	  <!--</div>-->
+		  <div class="form-group">
+		    <div class="col-sm-offset-3 col-sm-6 button-group">
+		    
+		      <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+		      <button type="button" onclick="location.href='/users/signup';" class="btn btn-primary btn-block">Sign Up</button>
+		      <fb:login-button class="btn btn-block" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+		      
+		    </div>
+		  </div>
+		  
+	  </div>
+
+	</form>
+</div>
+
+<% include partials/footer %>

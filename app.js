@@ -8,26 +8,9 @@ var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/test');
 
-var User = mongoose.model('User', {
-    name: String,
-    addresses:[String],
-    number: String,
-    restaurants: [String],
-    orders: [String],
-    cost: String,
-    tip: String
-});
+var User = require('./models/user');
 
-var ActiveOrder = mongoose.model('ActiveOrder',{
-    name: String,
-    address: String,
-    number: String,
-    restaurant: String,
-    order: String,
-    cost: String,
-    tip: String
-});
-
+var ActiveOrder = require('./models/activeOrder');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
