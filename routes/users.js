@@ -56,6 +56,7 @@ router.get('/signup', function(req, res, next) {
 });
 
 router.post('/signup', function(req, res, next) {
+	
 	var err = validate(req.body);
 	if (Object.keys(err).length === 0) {		
 		handleNewUser(req.body, res);
@@ -72,6 +73,44 @@ router.post('/signup', function(req, res, next) {
 
 router.get('/login', function(req, res, next) {
 	res.render('user_login');
+});
+
+router.post('/login', function(req, res, next) {
+	var input = req.body;
+	User.findOne({"username": input.username}, function(err, user) {
+	    if (err || user.passwd != input.passwd) {
+	    	var err = {};
+	    	err.username_err = true;
+	    	err.passwd_err = true;
+	    	err.flash = "danger";
+	    	err.flash_msg = "Login failed. Please retry";
+	    	err = Object.assign(err, input);
+	    	res.render("user_login", err);
+	    	return;
+	    }
+	    
+	    user.auth.token	= crypto.createHash('sha256').update((new Date()).toString()).digest("base64");
+	    user.auth.expire = new Date(Date.now() + authExpireTime);
+		res.cookie('auth_token', user.auth.token, { domain: webDomain, path: "/user/home", expires: user.auth.expire, httpOnly: true});
+		res.redirect("home");
+	    
+	    	
+	})
+	
+});
+
+router.post('/login_facebook', function(req, res, next) {
+	var info = req.body;
+	var user = {};
+	user.lastName = info.last_name;
+	user.firstName = info.first_name;
+	user.facebook_id = info.id;
+	
+	user.flash = "info";
+	user.flash_msg = "Please fill your phone number";
+	res.render("user_signup", user);
+		
+	
 });
 
 function handleNewUser(user, res) {
@@ -109,7 +148,7 @@ function handleNewUser(user, res) {
 				}
 					
 			}
-			console.log(users);
+			// console.log(users);
 			flash_msg += "has been used!";
 			err.flash_msg  = flash_msg;
 			err.flash = "danger";
