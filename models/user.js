@@ -30,7 +30,7 @@ userSchema.virtual('number').get(function () {
 });
 
 userSchema.virtual('auth.validate').get(function() {
-	return Date.now() < auth.expire.getTime();	
+	return Date.now() < this.auth.expire.getTime();	
 });
 
 userSchema.virtual('name.full').set(function(name) {

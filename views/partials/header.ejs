@@ -12,3 +12,8 @@
 
 </head>
 <body>
+<% if (locals.flash) { %>
+    
+<div class="alert alert-<%= locals.flash %>" role="alert"><%= locals.flash_msg %></div>
+
+<% } %>

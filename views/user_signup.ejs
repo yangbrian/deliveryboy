@@ -1,0 +1,75 @@
+<% include partials/header  %>
+
+
+<div class="login_form">
+	<form class="form-horizontal" action="/users/signup" method="post" >
+	<div class="form-group">
+		<h1 id="logo" class="col-sm-offset-3 col-sm-6"> DELIVERY BOY</h1>
+	</div>	
+	
+	  <div class="form-group <%= locals.number_err ? "has-error" : ""  %>">
+	    <label for="inputNumber" class="col-sm-offset-1 col-sm-2 control-label">Phone number</label>
+	    <div class="col-sm-6">
+	      <input type="text" class="form-control" id="inputNumber" name="number" placeholder="Phone number" value=<%= locals.number ? locals.number : ""%> >
+	    </div>
+	  </div>
+	  <div class="form-group <%= locals.username_err ? "has-error" : ""  %>">
+	    <label for="inputUsername" class="col-sm-offset-1 col-sm-2 control-label">Username</label>
+	    <div class="col-sm-6">
+	      <input type="text" class="form-control" id="inputUsername" name="username" placeholder="Username" value=<%= locals.username ? locals.username : ""%>>
+	    </div>
+	  </div>
+
+	  <div class="form-group">
+	    <label for="inputFirstName" class="col-sm-offset-2 col-sm-1 control-label">Name</label>
+	    <div class="col-sm-2 <%= locals.firstName_err ? "has-error" : ""  %>">
+	      <input type="text" class="form-control" id="inputFirstName" name="firstName" placeholder="First Name" value=<%= locals.firstName ? locals.firstName : ""%>>
+	    </div>
+	    <!--<label for="inputMidName" class="col-sm-0 control-label">Mid</label>-->
+	    <div class="col-sm-2">
+	      <input type="text" class="form-control" id="inputMidName" name="midName" placeholder="Mid Name" value=<%= locals.midName ? locals.midName : ""%>>
+	    </div>
+	    <!--<label for="inputLastName" class="col-sm-1 control-label">Last</label>-->
+	    <div class="col-sm-2 <%= locals.lastName_err ? "has-error" : ""  %> ">
+	      <input type="text" class="form-control bg-danger" id="inputLastName" name="lastName" placeholder="Last Name" value=<%= locals.lastName ? locals.lastName : ""%>>
+	    </div>
+	  </div>
+
+	  <div class="form-group <%= locals.passwd_err ? "has-error" : ""  %>">
+	    <label for="inputPassword" class="col-sm-offset-1 col-sm-2 control-label">Password</label>
+	    <div class="col-sm-6">
+	      <input type="password" class="form-control" id="inputPassword" name="passwd" placeholder="Password">
+	    </div>
+	  </div>
+
+	  <div class="form-group <%= locals.passwdcomfirm_err ? "has-error" : ""  %>">
+	    <label for="inputPasswordComfirm" class="col-sm-offset-1 col-sm-2 control-label">Password Comfirm</label>
+	    <div class="col-sm-6">
+	      <input type="password" class="form-control" id="inputPasswordComfirm" name="passwdcomfirm" placeholder="Comfirm Password">
+	    </div>
+	  </div>
+
+	  <!--<div class="form-group">-->
+	  <!--  <div class="col-sm-offset-2 col-sm-10">-->
+	  <!--    <div class="checkbox">-->
+	  <!--      <label>-->
+	  <!--        <input type="checkbox"> Remember me-->
+	  <!--      </label>-->
+	  <!--    </div>-->
+	  <!--  </div>-->
+	  <!--</div>-->
+		  <div class="form-group">
+		    <div class="col-sm-offset-3 col-sm-6 button-group">
+		    
+		      <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+		      
+		      <button type="button" onclick="location.href='/users/login';" class="btn btn-primary btn-block">Sign In</button>
+		    </div>
+		  </div>
+		  
+	  </div>
+
+	</form>
+</div>
+
+<% include partials/footer %>
