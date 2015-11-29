@@ -18,7 +18,7 @@ var payments = require('./routes/payments');
 var order = require('./routes/order');
 
 var app = express();
-app.io = require('socket.io')();
+//app.io = require('socket.io')();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -71,36 +71,36 @@ app.use(function (err, req, res, next) {
 });
 
 
-app.io.on('connection', function (socket) {
-    console.log('A user connected');
+// app.io.on('connection', function (socket) {
+//     console.log('A user connected');
 
-    socket.on('order', function (order) {
-        // var user = new User({
-        //     name: order.name,
-        //     address: order.address,
-        //     restaurant: order.restaurant,
-        //     order: order.order,
-        //     cost: order.cost,
-        //     tip: order.tip
-        // });
-        // user.save(function (err) {
-        //     if (!err) {
-        //         console.log("Success");
-        //     }
-        //     else {
-        //         console.log("Error");
-        //     }
-        // });
+//     socket.on('order', function (order) {
+//         // var user = new User({
+//         //     name: order.name,
+//         //     address: order.address,
+//         //     restaurant: order.restaurant,
+//         //     order: order.order,
+//         //     cost: order.cost,
+//         //     tip: order.tip
+//         // });
+//         // user.save(function (err) {
+//         //     if (!err) {
+//         //         console.log("Success");
+//         //     }
+//         //     else {
+//         //         console.log("Error");
+//         //     }
+//         // });
         
-        app.io.emit('order', order);
-    });
+//         app.io.emit('order', order);
+//     });
 
-    socket.on('acceptance', function (order) {
-        //remove order from live orders
-        console.log('save succesful');
+//     socket.on('acceptance', function (order) {
+//         //remove order from live orders
+//         console.log('save succesful');
 
-    });
+//     });
 
-});
+// });
 
 module.exports = app;

@@ -1,9 +1,9 @@
-var socket = io();
+// var socket = io();
 
 
-socket.on('order', function (order) {
-             $('#sidebar').append('<li><a href="#">'+order.restaurant+' </a></li>');
-        });
+// socket.on('order', function (order) {
+//              $('#sidebar').append('<li><a href="#">'+order.restaurant+' </a></li>');
+//         });
         
         
         
@@ -72,7 +72,7 @@ orderButton.onclick = function() {
        
        $.post('/order/new',user);
        
-    socket.emit('order',user);
+   // socket.emit('order',user);
     $('#updatesList').append('<a href="#" class="list-group-item">' +
    '<span class="badge">Just Now</span><i class="fa fa-fw fa-comment"></i>You placed your order!</a>');
    }
