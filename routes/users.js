@@ -78,7 +78,7 @@ router.get('/login', function(req, res, next) {
 router.post('/login', function(req, res, next) {
 	var input = req.body;
 	User.findOne({"username": input.username}, function(err, user) {
-	    if (err || user.passwd != input.passwd) {
+	    if (err || user.passwd != crypto.createHash('md5').update(input.passwd).digest("hex")) {
 	    	var err = {};
 	    	err.username_err = true;
 	    	err.passwd_err = true;
