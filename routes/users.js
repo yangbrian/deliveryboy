@@ -78,7 +78,7 @@ router.get('/login', function(req, res, next) {
 router.post('/login', function(req, res, next) {
 	var input = req.body;
 	User.findOne({"username": input.username}, function(err, user) {
-	    if (err || user.passwd != crypto.createHash('md5').update(input.passwd).digest("hex")) {
+	    if (err || !user || (user && user.passwd != crypto.createHash('md5').update(input.passwd).digest("hex"))) {
 	    	var err = {};
 	    	err.username_err = true;
 	    	err.passwd_err = true;
@@ -187,7 +187,7 @@ function validate(user) {
 		var reNumber = /^[0-9]{10}$/;
 		var reEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 		var rePasswd1 = /.{7,}/;
-		var rePasswd2 = /[a-zA-z]{1,}/;
+		var rePasswd2 = /[a-zA-Z]{1,}/;
 		var err = {};
 		if (!user.username || !reName.test(user.username.trim()))
 			err.username_err = true;
