@@ -73,8 +73,8 @@ orderButton.onclick = function() {
        $.post('/order/new',user);
        
    // socket.emit('order',user);
-    $('#updatesList').append('<a href="#" class="list-group-item">' +
-   '<span class="badge">Just Now</span><i class="fa fa-fw fa-comment"></i>You placed your order!</a>');
+   // $('#updatesList').append('<a href="#" class="list-group-item">' +
+   //'<span class="badge">Just Now</span><i class="fa fa-fw fa-comment"></i>You placed your order!</a>');
    }
    
 };
