@@ -12,10 +12,13 @@ var User = require('./models/user');
 
 var ActiveOrder = require('./models/activeOrder');
 
+var Restaurant = require("./models/restaurant");
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var payments = require('./routes/payments');
 var order = require('./routes/order');
+var restaurants = require("./routes/restaurants");
 
 var app = express();
 //app.io = require('socket.io')();
@@ -38,6 +41,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/payments', payments);
 app.use('/order', order);
+app.use('/restaurants', restaurants);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
