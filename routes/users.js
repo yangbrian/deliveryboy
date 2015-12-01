@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get("/home", function(req, res, next) {
+	
 	if (!req.cookies.username || !req.cookies.auth_token) {
 		res.redirect('login');
 		console.log("after redirect");
@@ -29,13 +30,36 @@ router.get("/home", function(req, res, next) {
 			if (user && user.auth.validate) {
 				if ( user.auth.token == req.cookies.auth_token) {
 	 				user.auth.token	= crypto.createHash('sha256').update((new Date()).toString()).digest("base64");
-					res.cookie('auth_token', user.auth.token, { domain: webDomain, path: "/user/home", expires: user.auth.expire, httpOnly: true});
-					res.render('user_home', {'user': user, 'flash': 'success', 'flash_msg': 'Welcome to '+ webName});
+					
+					user.save(function (err) {
+						if (err) {
+							res.send("save data error");
+							return;
+						}
+						res.clearCookie("auth_token", {path: "/users/home"});
+						
+						
+						res.cookie('auth_token', user.auth.token, {path: "/users/home", expires: user.auth.expire, httpOnly: true});
+						res.render('user_home', {'user': user, 'flash': 'success', 'flash_msg': 'Welcome to '+ webName});
+					});
+					
 				} else {
 					user.auth.expire = new Date(0);
-					res.redirect('login');	
+					user.save(function(err) {
+						if (err) {
+							res.send("save data error");
+							return;
+						}
+						console.log("cookie token", req.cookies.auth_token);
+						console.log("user tooken", user.auth.token);
+						console.log("token not match");
+						res.redirect('login');	
+					});
+					
 				}
 			} else {
+				console.log("not validate or user not found");
+				console.log(user);
 				res.redirect('login');	
 			}
 		}
@@ -91,8 +115,20 @@ router.post('/login', function(req, res, next) {
 	    
 	    user.auth.token	= crypto.createHash('sha256').update((new Date()).toString()).digest("base64");
 	    user.auth.expire = new Date(Date.now() + authExpireTime);
-		res.cookie('auth_token', user.auth.token, { domain: webDomain, path: "/user/home", expires: user.auth.expire, httpOnly: true});
-		res.redirect("home");
+	    
+	    user.save(function(err) {
+	    	if (err) {
+	    		console.log(err);
+	    		res.send("save data error");
+	    		return;
+	    	}
+	    	console.log("login token", user.auth.token);
+	    	res.clearCookie('auth_token', {path: "/users/home"});
+	    	res.clearCookie('username', {path: "/users/home"});
+	    	res.cookie('username', user.username, {path: "/users/home", expires: user.auth.expire, httpOnly: true});
+			res.cookie('auth_token', user.auth.token, {path: "/users/home", expires: user.auth.expire, httpOnly: true});
+			res.redirect("home");
+	    });
 	    
 	    	
 	})
@@ -174,8 +210,10 @@ function handleNewUser(user, res) {
 				res.redirect("signup/?error=1");
 			}
 			else {
-				res.cookie('username', user.username, { domain: webDomain, path: "/users/home", expires: user.auth.expire, httpOnly: true});
-				res.cookie('auth_token', user.auth.token, { domain: webDomain, path: "/users/home", expires: user.auth.expire, httpOnly: true});
+				res.clearCookie('username', {path: "/users/home"});
+				res.clearCookie("auth_token", {path: "/users/home"});
+				res.cookie('username', user.username, {path: "/users/home", expires: user.auth.expire, httpOnly: true});
+				res.cookie('auth_token', user.auth.token, { path: "/users/home", expires: user.auth.expire, httpOnly: true});
 				res.redirect("home");	
 			}
 		});

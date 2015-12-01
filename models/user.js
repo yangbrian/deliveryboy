@@ -40,9 +40,9 @@ userSchema.virtual('name.full').set(function(name) {
 });
 
 userSchema.virtual("name.full").get(function() {
-	return this.name.first + " "+ this.name.mid + " " + this.name.last;	
+	return this.name.first + " "+ (this.name.mid ? this.name.mid : "") + " " + this.name.last;	
 });
 
 var User = mongoose.model('User', userSchema);
 
-module.exports = User
+module.exports = User;
