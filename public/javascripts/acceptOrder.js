@@ -7,6 +7,23 @@
 
 // });
 
+
+var socket = io.connect('http://localhost:3000');
+socket.on('connect', function (data) {
+    socket.emit('join', 'Hello World from client');
+});
+
+socket.on('new-order', function (data) {
+    var sidebar = $('<li>')
+        .append(data.restaurant)
+        .append(" - ")
+        .append(data.order)
+        .addClass('open-orders');
+
+    $('#sidebar').prepend(sidebar);
+});
+
+
 $.get('/order/activeOrders',function(order){
 
 
@@ -14,6 +31,14 @@ $.get('/order/activeOrders',function(order){
      var tableString = '<tr><td name ="name">' + order[i].name + '</td><td>' + order[i].address + '</td><td>' + order[i].restaurant + '</td><td>' + order[i].order +
         '</td><td> <label><input name = "checkedOrder" type="checkbox" value=""></label></td></tr>';
     $('#ordersTable').append(tableString);
+
+        var sidebar = $('<li>')
+            .append(order[i].restaurant)
+            .append(" - ")
+            .append(order[i].order)
+            .addClass('open-orders');
+
+        $('#sidebar').prepend(sidebar);
     }
 
 

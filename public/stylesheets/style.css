@@ -18,3 +18,20 @@
 #logo {
     text-align: right;
 }
+
+.open-orders {
+    color: #fff;
+    padding: 10px;
+    border-bottom: 2px solid #666;
+    -webkit-transition: all 0.5s ease-in;
+    -moz-transition: all 0.5s ease-in;
+    -ms-transition: all 0.5s ease-in;
+    -o-transition: all 0.5s ease-in;
+    transition: all 0.5s ease-in;
+    float: none;
+}
+
+.open-orders:hover {
+    cursor: pointer;
+    background-color: rgba(255,255,255,0.3);
+}

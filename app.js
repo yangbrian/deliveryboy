@@ -18,7 +18,9 @@ var payments = require('./routes/payments');
 var order = require('./routes/order');
 
 var app = express();
-//app.io = require('socket.io')();
+
+var io = require("socket.io")();
+app.io = io;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -37,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/payments', payments);
-app.use('/order', order);
+app.use('/order', order(app.io));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -102,5 +104,13 @@ app.use(function (err, req, res, next) {
 //     });
 
 // });
+
+io.on('connection', function (socket) {
+    console.log("NEW USER");
+
+    socket.on('join', function (data) {
+        console.log("JOIN - " + data);
+    })
+});
 
 module.exports = app;
