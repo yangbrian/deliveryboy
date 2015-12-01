@@ -42,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/payments', payments);
+app.use('/restaurants', restaurants);
 app.use('/order', order(app.io));
 app.use('/restaurants', restaurants);
 
