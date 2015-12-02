@@ -10,7 +10,6 @@ mongoose.connect('mongodb://10.0.0.56:27017,10.0.0.57:27017,10.0.0.58:27017/clou
   if (!err)
     console.log(err);
 });
-
 var User = require('./models/user');
 
 var ActiveOrder = require('./models/activeOrder');
