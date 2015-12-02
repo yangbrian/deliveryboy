@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "pm2 start ./bin/www",
     "bundle": "browserify ./bundle.js -o  ./public/javascripts/bundle.js"
   },
   "dependencies": {
