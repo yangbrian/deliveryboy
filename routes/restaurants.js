@@ -27,8 +27,8 @@ router.get("/home", function(req, res, next) {
 			console.log(err);
 			res.redirect("signup/?error=2");
 		} else {
-			if (restaurant && restaurant.auth.validate) {
-				if ( restaurant.auth.token == req.cookies.auth_token) {
+			if (restaurant) {
+				if ( restaurant.auth.token == req.cookies.auth_token && restaurant.auth.validate) {
 	 				restaurant.auth.token = crypto.createHash('sha256').update((new Date()).toString()).digest("base64");
 	 				restaurant.save(function(err) {
 	 					if (err) {
@@ -47,8 +47,10 @@ router.get("/home", function(req, res, next) {
 	 						res.send(err);
 	 						return;
 	 					}
-	 					
-						res.redirect('login');
+	 					if (req.cookies.logout)
+	 						res.redirect("/");
+	 					else
+							res.redirect('login');
 					});
 				}
 			} else {
