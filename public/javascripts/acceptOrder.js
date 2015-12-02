@@ -18,6 +18,7 @@ function delivered(obj){
   }
   var name = node.textContent.slice(node.textContent.indexOf(':')+2,node.textContent.length);
   $.post('/order/delivered',{'deliveredOrders':JSON.stringify(name)});
+  node.remove();
 }
 function acceptanceClick(node){
   var name = node.parentNode.firstChild.textContent;
