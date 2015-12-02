@@ -88,6 +88,7 @@ module.exports = function(io){
         newOrder.order = order.order;
         newOrder.cost = order.cost;
         newOrder.tip = order.tip;
+        newOrder.delivered = false;
 
         newOrder.save(function(err){
             if(err){
@@ -99,7 +100,6 @@ module.exports = function(io){
 
 
     }
-
     /* GET home page. */
     router.get('/', function(req, res, next) {
         res.end("You've reached an order page");
@@ -133,11 +133,26 @@ module.exports = function(io){
             }
         });
     });
+    router.post('/delivered', function(req,res){
+      console.log('post arrived');
+      //In the future use order ID's as user can have multiple active orders
+
+        var ordersToRemove = JSON.parse(req.body.deliveredOrders);
+
+        console.log(ordersToRemove);
+
+      ActiveOrder.remove({name:{$in : ordersToRemove}}, function(err){
+          if(err){
+              console.log('Error removing accepted orders');
+              console.log(err);
+          }
+      });
+    });
 
     router.post('/new', function(req, res) {
         console.log('Entered route');
         handleOrder(req.body);
-        createActiveOrder(req.body)
+        createActiveOrder(req.body);
         console.log("Creating new order");
 
         io.emit('new-order', req.body);
