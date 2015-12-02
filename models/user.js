@@ -18,7 +18,8 @@ var userSchema = new Schema({
 		auth: {
 			expire: Date,
 			token: String	
-		}
+		},
+	online: Boolean
 });
 
 userSchema.virtual('number').set(function (phone) {

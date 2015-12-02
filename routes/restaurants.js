@@ -27,9 +27,11 @@ router.get("/home", function(req, res, next) {
 			console.log(err);
 			res.redirect("signup/?error=2");
 		} else {
-			if (restaurant && restaurant.auth.validate) {
-				if ( restaurant.auth.token == req.cookies.auth_token) {
+			if (restaurant) {
+				if ( restaurant.auth.token == req.cookies.auth_token && restaurant.auth.validate) {
 	 				restaurant.auth.token = crypto.createHash('sha256').update((new Date()).toString()).digest("base64");
+	 				var online = restaurant.online;
+	 				restaurant.online = true;
 	 				restaurant.save(function(err) {
 	 					if (err) {
 	 						res.send(err);
@@ -37,18 +39,24 @@ router.get("/home", function(req, res, next) {
 	 					}
 	 					res.clearCookie("auth_token", {path: "/restaurants/home"});
 	 					res.cookie('auth_token', restaurant.auth.token, { path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
-						res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'success', 'flash_msg': 'Welcome to '+ webName});
+	 					if (!online)
+							res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'success', 'flash_msg': 'Welcome to '+ webName});
+						else
+							res.render('restaurant_home', {'restaurant': restaurant});
 	 				});
 					
 				} else {
 					restaurant.auth.expire = new Date(0);
+					restaurant.online = false;
 					restaurant.save(function(err) {
 					    if (err) {
 	 						res.send(err);
 	 						return;
 	 					}
-	 					
-						res.redirect('login');
+	 					if (req.cookies.logout)
+	 						res.redirect("/");
+	 					else
+							res.redirect('login');
 					});
 				}
 			} else {
@@ -126,6 +134,12 @@ router.post('/login', function(req, res, next) {
 	
 });
 
+router.get("/logout", function(req, res, next) {
+    res.clearCookie("auth_token", {path: "/restaurants/home"});
+    res.cookie("auth_token", "logout", {path: "/restaurants/home", httpOnly: true});
+    res.cookie("logout", "true", {path: "/restaurant/home", httpOnly: true});
+    res.redirect("home");
+})
 
 function handleNewRestaurant(restaurant, res) {
 	if (restaurant.username === null)
@@ -184,6 +198,7 @@ function handleNewRestaurant(restaurant, res) {
 		restaurant.passwd =crypto.createHash('md5').update(passwd).digest("hex");
 	 	restaurant.auth.token = crypto.createHash('sha256').update((new Date()).toString()).digest("base64");
 		restaurant.auth.expire = new Date(Date.now() + authExpireTime);
+		restaurant.online = false;
 		
 		restaurant.save( function(err) {
 			if (err) {

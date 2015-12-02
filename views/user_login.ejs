@@ -3,7 +3,7 @@
 <% include partials/facebook_login %>
 
 
-<div class="login_form">
+<div class="login_form container">
 	<form class="form-horizontal" action="/users/login" method="post" >
 	
 	  <!--<div class="form-group <%= locals.number_err ? "has-error" : ""  %>">-->
@@ -12,6 +12,14 @@
 	  <!--    <input type="text" class="form-control" id="inputNumber" name="number" placeholder="Phone number">-->
 	  <!--  </div>-->
 	  <!--</div>-->
+	  <div class='row'>
+	  	<h1 id="logo0" class="text-left col-sm-offset-3 col-sm-3"> LOGIN</h1>
+	  	<h2 id="logo" class="text-left col-sm-offset-0 col-sm-3"> DELIVERY BOY</h2>
+	  </div>
+	 <!-- <div class="form-group">-->
+		<!--<h1 id="logo" class="text-left col-sm-offset-5 col-sm-2"> DELIVERY BOY</h1>-->
+	 <!-- </div>	-->
+	  
 	  <div class="form-group <%= locals.username_err ? "has-error" : ""  %>">
 	    <label for="inputUsername" class="col-sm-offset-1 col-sm-2 control-label">Username</label>
 	    <div class="col-sm-6">
@@ -48,7 +56,6 @@
 		  </div>
 		  
 	  </div>
-
 	</form>
 </div>
 

@@ -27,10 +27,11 @@ router.get("/home", function(req, res, next) {
 			console.log(err);
 			res.redirect("signup/?error=2");
 		} else {
-			if (user && user.auth.validate) {
-				if ( user.auth.token == req.cookies.auth_token) {
+			if (user) {
+				if ( user.auth.token == req.cookies.auth_token && user.auth.validate) {
 	 				user.auth.token	= crypto.createHash('sha256').update((new Date()).toString()).digest("base64");
-					
+					var online = user.online;
+					user.online = true;
 					user.save(function (err) {
 						if (err) {
 							res.send("save data error");
@@ -40,11 +41,16 @@ router.get("/home", function(req, res, next) {
 						
 						
 						res.cookie('auth_token', user.auth.token, {path: "/users/home", expires: user.auth.expire, httpOnly: true});
-						res.render('user_home', {'user': user, 'flash': 'success', 'flash_msg': 'Welcome to '+ webName});
+						if (!online) {
+							res.render('user_home', {'user': user, 'flash': 'success', 'flash_msg': 'Welcome to '+ webName});
+						}
+						else
+							res.render('user_home', {'user': user});
 					});
 					
 				} else {
 					user.auth.expire = new Date(0);
+					user.online = false;
 					user.save(function(err) {
 						if (err) {
 							res.send("save data error");
@@ -53,13 +59,16 @@ router.get("/home", function(req, res, next) {
 						console.log("cookie token", req.cookies.auth_token);
 						console.log("user tooken", user.auth.token);
 						console.log("token not match");
-						res.redirect('login');	
+						if (req.cookies.logout)
+							res.redirect('/');
+						else 
+							res.redirect('login');	
 					});
 					
 				}
 			} else {
-				console.log("not validate or user not found");
-				console.log(user);
+				console.log("User not found");
+				console.log("Not found user is: ", req.cookies.username);
 				res.redirect('login');	
 			}
 		}
@@ -149,6 +158,13 @@ router.post('/login_facebook', function(req, res, next) {
 	
 });
 
+router.get('/logout', function(req, res, next) {
+    res.clearCookie("auth_token", {path: "/users/home"});
+    res.cookie("auth_token", "logout", {path: "/users/home", httpOnly: true});
+    res.cookie("logout", "true", {path: "/users/home", httpOnly: true});
+    res.redirect("home");
+});
+
 function handleNewUser(user, res) {
 	if (user.username === null)
 		user.username = user.number;
@@ -203,6 +219,7 @@ function handleNewUser(user, res) {
 		user.passwd =crypto.createHash('md5').update(passwd).digest("hex");
 	 	user.auth.token	= crypto.createHash('sha256').update((new Date()).toString()).digest("base64");
 		user.auth.expire = new Date(Date.now() + authExpireTime);
+		user.online = false;
 		
 		user.save( function(err) {
 			if (err) {

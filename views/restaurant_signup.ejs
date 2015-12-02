@@ -23,7 +23,7 @@
 	  <div class="form-group <%= locals.name_err ? "has-error" : ""  %>">
 	    <label for="inputRestaurantname" class="col-sm-offset-1 col-sm-2 control-label">Restaurant Name</label>
 	    <div class="col-sm-6">
-	      <input type="text" class="form-control" id="inputRestaurantname" name="name" placeholder="Restaurant Name" value=<%= locals.name ? locals.name : ""%>>
+	      <input type="text" class="form-control" id="inputRestaurantname" name="name" onFocus="geolocate()" placeholder="Restaurant Name" value=<%= locals.name ? locals.name : ""%>>
 	    </div>
 	  </div>
 	  
@@ -37,7 +37,7 @@
 	  <div class="form-group <%= locals.address_err ? "has-error" : ""  %>">
 	    <label for="inputAddress" class="col-sm-offset-1 col-sm-2 control-label">Address</label>
 	    <div class="col-sm-6">
-	      <input type="text" class="form-control" id="inputAddress" name="address" placeholder="Address" value=<%= locals.address ? locals.address : ""%>>
+	      <input type="text" class="form-control" id="inputAddress" name="address" onFocus="geolocate()" placeholder="Address" value=<%= locals.address ? locals.address : ""%>>
 	    </div>
 	  </div>
 
