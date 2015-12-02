@@ -9,7 +9,8 @@ var activeOrderSchema = new Schema({
     order: String,
     _cost: Number,
     _tip: Number,
-		delivered: Boolean 
+	delivered: Boolean ,
+	user: {type: String, index: true}
 });
 
 activeOrderSchema.virtual('number').set(function (phone) {

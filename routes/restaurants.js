@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var Restaurant = require('mongoose').model('Restaurant');
+var mongoose = require('mongoose');
+var Restaurant = mongoose.model('Restaurant');
+var Dish = mongoose.model('Dish');
+var ActiveOrder = mongoose.model("ActiveOrder");
 var crypto = require('crypto');
 
 var webName = "delivery Boy";
@@ -37,13 +40,16 @@ router.get("/home", function(req, res, next) {
 	 						res.send(err);
 	 						return;
 	 					}
+						
 	 					res.clearCookie("auth_token", {path: "/restaurants/home"});
 	 					res.cookie('auth_token', restaurant.auth.token, { path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
 	 					console.log("online: ", online);
+	 					
 	 					if (!online)
 							res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'success', 'flash_msg': 'Welcome to '+ webName});
 						else
 							res.render('restaurant_home', {'restaurant': restaurant});
+						
 	 				});
 					
 				} else {
@@ -141,6 +147,120 @@ router.get("/logout", function(req, res, next) {
     res.cookie("logout", "true", {path: "/restaurants/home", httpOnly: true});
     res.redirect("home");
 })
+
+router.post("/home/payment", function(req, res, next) {
+    if (!req.cookies.username || !req.cookies.auth_token)
+    	res.redirect("/restaurants/login");
+    else {
+    	var input = req.body;
+    	console.log(input);
+    	Restaurant.findOne({
+		'username': req.cookies.username
+		}, function( err, restaurant) {
+			if (err) {
+				console.log(err);
+				res.redirect("signup/?error=2");
+			} else {
+				if ( restaurant.auth.token == req.cookies.auth_token && restaurant.auth.validate && restaurant.online) {
+					restaurant.payment_account = input.payment_account;
+					restaurant.payment_name = input.payment_name;
+					restaurant.save(function(err) {
+						if (err) {
+							console.log(err);
+							res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': 'failed to update payment' });
+							return;
+						}
+						res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'success', 'flash_msg': 'Successfully updated payment' });
+					});
+				} else {
+					res.redirect("/restaurants/login");
+				}
+			}
+		});
+    }
+});
+
+
+router.post("/home/dish/new", function(req, res, next) {
+	
+    if (!req.cookies.username || !req.cookies.auth_token)
+    	res.redirect("/restaurants/login");
+    else {
+    	var input = req.body;
+    	console.log(input);
+    	Restaurant.findOne({
+		'username': req.cookies.username
+		}, function( err, restaurant) {
+			if (err) {
+				console.log(err);
+				res.redirect("signup/?error=2");
+			} else {
+				if ( restaurant.auth.token == req.cookies.auth_token && restaurant.auth.validate && restaurant.online) {
+					
+					var dish = new Dish();
+					dish.name = input.name;
+					dish.calories = input.calories;
+					dish.weight = input.weight;
+					dish.description = input.description;
+					dish.gradients = input.gradients;
+					dish.tags = input.tags;
+					dish.rate = 0;
+					dish.price = input.price;
+					dish.restaurant_id = restaurant.username
+					
+					dish.save(function(err) {
+						if (err) {
+							console.log(err);
+							res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': 'failed to added dish '+dish.name+" to menu" });
+							return;
+						}
+						res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'success', 'flash_msg': 'Successfully added dish '+dish.name+" to menu" });
+					});
+				} else {
+					res.redirect("/restaurants/login");
+				}
+			}
+				
+    	});
+    }
+});
+
+router.get("/home/menu", function(req, res, next) {
+    validateStatus(req,res,Restaurant, "/restaurants/login", function(input, restaurant) {
+    	console.log("in menu callback");
+    	Dish.find({
+    		restaurant_id: restaurant.username
+    	}, function(err, dishes) {
+    		res.set("Content-Type", "text/json");
+    		if (err) {
+    			console.log(err);
+    			res.send({'err': err});
+    			return;
+    		}
+    		res.send(dishes);
+    	});
+    }, function(input) {
+    	res.redirect("/restaurants/login");
+    });
+});
+
+router.get("/home/active_orders", function(req, res, next) {
+    validateStatus(req,res,Restaurant, "/restaurants/login", function(input, restaurant) {
+    	ActiveOrder.find({
+    		restaurant: restaurant.address
+    	}, function(err, orders) {
+    		res.set("Content-Type", "text/json");
+    		if (err) {
+    			console.log(err);
+    			res.send({'err': err});
+    			return;
+    		}
+    		res.send(orders);
+    	});
+    });
+});
+
+
 
 function handleNewRestaurant(restaurant, res) {
 	if (restaurant.username === null)
@@ -246,6 +366,35 @@ function validate(restaurant) {
 		if (err.passwd_err || !restaurant.passwdcomfirm || restaurant.passwd != restaurant.passwdcomfirm)
 			err.passwdcomfirm_err = true;
 		return err;
+}
+
+
+var validateStatus = function(req, res, model, forwardPage, scallback, fcallback) {
+	if (!req.cookies.username || !req.cookies.auth_token)
+    	res.redirect(forwardPage);
+    else {
+    	var input = req.body;
+    	console.log(input);
+    	model.findOne({
+		'username': req.cookies.username
+		}, function( err, user) {
+			if (err) {
+				console.log(err);
+				res.redirect("signup/?error=2");
+			} else if(user) {
+				if (user.auth.token == req.cookies.auth_token && user.auth.validate && user.online) {
+					if (scallback)
+						scallback(input, user);
+				} else {
+					if (fcallback)
+						fcallback(input);
+				}
+			} else {
+				res.redirect(forwardPage);
+			}
+		});
+    }
+
 }
 
 module.exports = router;

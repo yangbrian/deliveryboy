@@ -10,7 +10,7 @@ mongoose.connect('mongodb://localhost/test');
 
 var User = require('./models/user');
 
-var Dish = require("./models/Dish");
+var Dish = require("./models/dish");
 
 var ActiveOrder = require('./models/activeOrder');
 

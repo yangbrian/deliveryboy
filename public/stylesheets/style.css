@@ -51,5 +51,14 @@ body {
     width: 400px;
 }
 
+.inputTags-list {
+    border: 1px solid rgba(255, 163, 44, 0.35) !important;
+}
+
+.inputTags-list span.inputTags-item {
+    background-color: #FFA32C !important;
+    
+}
+
 
 

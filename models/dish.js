@@ -2,15 +2,15 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var dishSchema = new Schema({
-    name: String,
-    resturant_id: String,
+    name: {type: String, index: true},
+    restaurant_id: {type: String, index: true},
     price: Number,
     description: String,
     calories: Number,
     weight: Number,
     rate: Number,
-    gradients: [String],
-    tags: [String]
+    ingradients: String,
+    tags: {type: String, index: true},
 })
 
 var Dish = mongoose.model("Dish", dishSchema);

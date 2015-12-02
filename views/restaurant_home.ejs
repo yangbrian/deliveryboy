@@ -158,12 +158,12 @@
                             <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i> New Dish</h3>
                         </div>
                         <div class="panel-body">
-                            <form id='orderForm' class="form-horizontal">
+                            <form id='dishForm' method='post' action='/restaurants/home/dish/new' class="form-horizontal">
                                 <!-- Text input-->
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="textinput">Name</label>
                                     <div class="col-md-8">
-                                        <input id="name"  placeholder="Enter your name" class="form-control input-md" required type="text">
+                                        <input id="name"  name="name" placeholder="Enter Dish name" class="form-control input-md" required type="text">
 
                                     </div>
                                 </div>
@@ -171,7 +171,7 @@
                                 <div class='form-group'>
                                     <label class='col-md-4 control-label' for 'textinput'>Calories</label>
                                     <div class='col-md-8'>
-                                        <input id='phoneNumber' placeholder = 'Enter your phone number' class = 'form-control input-md'type='text'>
+                                        <input id='calories' name="calories" placeholder = 'Enter the calories' class = 'form-control input-md' type='text'>
                                     </div>
                                 </div>
                                 
@@ -179,8 +179,8 @@
                                 <div class = "form-group">
                                     <label class="col-md-4 control-label" for="textinput">Weight</label>
 
-                                    <div id="locationField" class="col-md-8">
-                                        <input id="weight" class="form-control input-md" required type="text" placeholder="Enter dishes wight"
+                                    <div id="weightfield" class="col-md-8">
+                                        <input id="weight" name='weight' class="form-control input-md" required type="text" placeholder="Enter dishes wight"
                                                 type="text"></input>
                                     </div>
 
@@ -189,9 +189,9 @@
 
                                 <!-- Text input-->
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput">gradients</label>
-                                    <div id="locationField" class="col-md-8">
-                                        <input id="gradient0" class="form-control input-md"required type="text" placeholder="gradients"
+                                    <label class="col-md-4 control-label" for="textinput">ingradients</label>
+                                    <div id="ingradientsField" class="col-md-8">
+                                        <input id="ingradients" name="ingradients" class="form-control input-md" required type="text" placeholder="gradients"
                                              type="text"></input>
 
 
@@ -203,8 +203,6 @@
                                     <div class="col-md-8">
                                         <textarea class="form-control" id="dish_decription" name="textarea" required></textarea>
 
-
-
                                     </div>
 
                                 </div>
@@ -212,7 +210,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="textinput">Tags</label>
                                     <div id="locationField" class="col-md-8">
-                                        <input id="tags" class="form-control input-md"required type="text" placeholder="tags"
+                                        <input id="tags" name='tags' class="form-control input-md" value="" type="text" placeholder="tags"
                                              type="text"></input>
 
 
@@ -225,13 +223,13 @@
 
                                         <div class="input-group">
                                             <span class="input-group-addon">$</span>
-                                            <input id='price' type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                            <input id='price' name='price' type="text" required class="form-control" aria-label="Amount (to the nearest dollar)">
                                         </div>
                                         <br>
                                         
                                         <br>
-                                        <button type='button' class='btn btn-success' id='addItem'>Add Item</button>
-                                        <button type='button' class='btn btn-warning' id='resetItem'> Reset </button>
+                                        <button type='sumbit' class='btn btn-success' id='addItem'>Add Item</button>
+                                        <button type='reset' class='btn btn-warning' id='resetItem'> Reset </button>
 
 
 
@@ -297,13 +295,8 @@
                                         <th>Price</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>wrap it up!</td>
-                                        <td><a href="#">edit</a></td>
-                                        <td>$321.33</td>
-                                    </tr>
+                                    <tbody id=menu_list>
+                                    
                                     </tbody>
                                 </table>
                             </div>
@@ -320,7 +313,7 @@
                             <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i>Payment</h3>
                         </div>
                         <div class="panel-body">
-                            <form id='orderForm' class="form-horizontal">
+                            <form id='orderForm' action="/home/payment" method="post" class="form-horizontal">
                                 <!-- Text input-->
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="textinput">Account</label>
@@ -333,14 +326,14 @@
                                 <div class='form-group'>
                                     <label class='col-md-4 control-label' for 'textinput'>Name</label>
                                     <div class='col-md-8'>
-                                        <input id='payment_name' placeholder = 'Enter your full name' class = 'form-control input-md'type='text'>
+                                        <input id='payment_name' placeholder = 'Enter your full name' class ='form-control input-md' required type='text'>
                                     </div>
                                 </div>
                                 <div class='form-group'>
                                     <div class='col-md-offset-4 col-md-8'>
                                         <br>
-                                        <button type='button' class='btn btn-success' id='addItem'>Comfirm</button>
-                                        <button type='button' class='btn btn-warning' id='resetItem'> Reset </button>
+                                        <button type='submit' class='btn btn-success' id='addItem'>Comfirm</button>
+                                        <button type='reset' class='btn btn-warning' id='resetItem'> Reset </button>
                                     </div>
                                 </div>
                             </form>
