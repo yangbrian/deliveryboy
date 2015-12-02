@@ -39,6 +39,7 @@ router.get("/home", function(req, res, next) {
 	 					}
 	 					res.clearCookie("auth_token", {path: "/restaurants/home"});
 	 					res.cookie('auth_token', restaurant.auth.token, { path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
+	 					console.log("online: ", online);
 	 					if (!online)
 							res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'success', 'flash_msg': 'Welcome to '+ webName});
 						else
@@ -137,7 +138,7 @@ router.post('/login', function(req, res, next) {
 router.get("/logout", function(req, res, next) {
     res.clearCookie("auth_token", {path: "/restaurants/home"});
     res.cookie("auth_token", "logout", {path: "/restaurants/home", httpOnly: true});
-    res.cookie("logout", "true", {path: "/restaurant/home", httpOnly: true});
+    res.cookie("logout", "true", {path: "/restaurants/home", httpOnly: true});
     res.redirect("home");
 })
 

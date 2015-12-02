@@ -10,6 +10,8 @@ mongoose.connect('mongodb://localhost/test');
 
 var User = require('./models/user');
 
+var Dish = require("./models/Dish");
+
 var ActiveOrder = require('./models/activeOrder');
 
 var Restaurant = require("./models/restaurant");
