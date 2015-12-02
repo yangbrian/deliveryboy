@@ -1,83 +1,116 @@
-// var socket = io();
-
-// socket.on('order', function(order) {
-//     var tableString = '<tr><td name ="name">' + order.name + '</td><td>' + order.address + '</td><td>' + order.restaurant + '</td><td>' + order.order +
-//         '</td><td> <label><input name = "checkedOrder" type="checkbox" value=""></label></td></tr>';
-//     $('#ordersTable').append(tableString);
-
-// });
-
 
 var socket = io.connect('http://localhost:3000');
 socket.on('connect', function (data) {
-    socket.emit('join', 'Hello World from client');
+  socket.emit('join', 'Hello World from client');
 });
 
 socket.on('new-order', function (data) {
-    addToSidebar(data);
+  addToSidebar(data);
 });
 
-/**
- * Add order to open orders sidebar
- * @param order order object to add
- */
-function addToSidebar(order) {
-    var sidebar = $('<li>')
-        .append(order.restaurant)
-        .append(" - ")
-        .append(order.order)
-        .addClass('open-orders')
-        .attr('data-html', true)
-        .attr('data-toggle', 'popover')
-        .attr('data-trigger', 'focus')
-        .attr('title', 'Order Details')
-        .attr('data-content', '<ul>' +
-            '<li><strong>Name: </strong>' + order.name + '</li>' +
-            '<li><strong>Restaurant: </strong>' + order.restaurant + '</li>' +
-            '<li><strong>Order: </strong>' + order.order + '</li>' +
-            '</ul>');
+var clicked = false;
 
-    $('#sidebar').prepend(sidebar);
+function delivered(obj){
+  var node = obj.parentNode;
+  while(node.getAttribute('class') !== 'list-group-item'){
+    node = node.parentNode;
+
+  }
+  var name = node.textContent.slice(node.textContent.indexOf(':')+2,node.textContent.length);
+  $.post('/order/delivered',{'deliveredOrders':JSON.stringify(name)});
+}
+function acceptanceClick(node){
+  var name = node.parentNode.firstChild.textContent;
+
+  var li = document.getElementById('lastClicked');
+  //
+  $('#updatesList').append('<a href="#" class="list-group-item">' +
+  '<span class="badge"><button onclick = delivered(this) class = "btn btn-primary btn-xs">Delivered</button></span>'+name+'</a>');
 
 
-    //sidebar.popover({
-    //    html: true,
-    //    trigger: 'click focus',
-    //    placement: 'right'
-    //});
 
-    sidebar.click(function() {
-        $('.open-orders').popover('hide');
+  li.remove();
 
-        sidebar.popover('toggle', {
-            html: true,
-            trigger: 'click focus',
-            placement: 'right'
-        })
-    });
+
 }
 
-$(document).click(function(event) {
-    if(!$(event.target).closest('.popover').length && !$(event.target).closest('.open-orders').length) {
-        if($('.popover').is(":visible")) {
-            $('.popover').hide()
-        }
+
+/**
+* Add order to open orders sidebar
+* @param order order object to add
+*/
+function addToSidebar(order) {
+  var sidebar = $('<li>')
+
+  .append(order.restaurant)
+  .append(" - ")
+  .append(order.order)
+  .addClass('open-orders')
+  .attr('data-html', true)
+  .attr('data-toggle', 'popover')
+  .attr('data-trigger', 'focus')
+  .attr('title', 'Order Details')
+  .attr('data-content', '<ul>' +
+  '<li><strong>Name: </strong>' + order.name + '</li>' +
+  '<li><strong>Restaurant: </strong>' + order.restaurant + '</li>' +
+  '<li><strong>Order: </strong>' + order.order + '</li><button onclick=acceptanceClick(this) class="btn"> Deliver me!</button>' +
+  '</ul>');
+
+  $('#sidebar').prepend(sidebar);
+
+
+  sidebar.click(function() {
+    $('.open-orders').popover('hide');
+
+
+    sidebar.popover('toggle', {
+      html: true,
+      trigger: 'click focus',
+      placement: 'right'
+    });
+  });
+
+  $('li').click(function(){
+    if(clicked === false){
+      $(this).attr('id','lastClicked');
+      clicked = true;
+    }else{
+      $('#lastClicked').removeAttr('id');
+      $(this).attr('id','lastClicked');
     }
-})
+
+  });
+
+
+}
+
+
+
+
+
+$(document).click(function(event) {
+
+  if(!$(event.target).closest('.popover').length && !$(event.target).closest('.open-orders').length) {
+    if($('.popover').is(":visible")) {
+      $('.popover').hide();
+    }
+  }
+});
 
 $.get('/order/activeOrders',function(order){
 
 
-    for(var i =0;i<order.length;i++){
-     var tableString = '<tr><td name ="name">' + order[i].name + '</td><td>' + order[i].address + '</td><td>' + order[i].restaurant + '</td><td>' + order[i].order +
-        '</td><td> <label><input name = "checkedOrder" type="checkbox" value=""></label></td></tr>';
-    $('#ordersTable').append(tableString);
+  for(var i =0;i<order.length;i++){
 
-        addToSidebar(order[i]);
-    }
+
+    addToSidebar(order[i]);
+  }
 
 
 });
+
+
+
 
 
 //

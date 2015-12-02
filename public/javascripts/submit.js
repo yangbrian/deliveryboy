@@ -1,12 +1,5 @@
-// var socket = io();
 
 
-// socket.on('order', function (order) {
-//              $('#sidebar').append('<li><a href="#">'+order.restaurant+' </a></li>');
-//         });
-        
-        
-        
 var orderButton = document.getElementById('placeOrder');
 
 var user = {
@@ -27,10 +20,10 @@ function validate() {
             alert('Please enter a value for your ' + x);
             return false;
         } else if(x === 'cost' || x === 'tip' || x === 'number'){
-            
+
             var num = parseFloat(user[x], 10);
             var notNum = isNaN(num);
-            
+
             if(notNum || num <= 0){
                 alert('Please enter a valid ' + x);
                 return false;
@@ -51,7 +44,7 @@ orderButton.onclick = function() {
     user.cost = document.getElementById('cost').value;
 
     var isChecked =document.querySelector('input[name="tip"]:checked');
-    
+
     if (isChecked !== null) {
         var checkedTip = document.querySelector('input[name="tip"]:checked').parentNode;
 
@@ -67,14 +60,11 @@ orderButton.onclick = function() {
     }
 
 
-  
+
    if(validate()){
-       
+
        $.post('/order/new',user);
        
-   // socket.emit('order',user);
-   // $('#updatesList').append('<a href="#" class="list-group-item">' +
-   //'<span class="badge">Just Now</span><i class="fa fa-fw fa-comment"></i>You placed your order!</a>');
    }
-   
+
 };
