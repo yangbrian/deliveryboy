@@ -24,7 +24,8 @@ var restaurantSchema = new Schema({
 	tags: [String],
 	orders: [String],
 	comments: [String],
-	rate: Number
+	rate: Number,
+	online: Boolean
 });
 
 restaurantSchema.virtual('boss_name.full').get(function() {

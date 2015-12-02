@@ -12,4 +12,11 @@ function bodyOnload() {
     console.log("body onload");
     if ($("#alert-pane"))
         clearAlert();
+        
+    $('#tags').inputTags({
+        minLength:1,
+        errors: {
+            empty: "Attention, a tag should contain at least one character"
+        }
+    });
 }
