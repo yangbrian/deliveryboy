@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-
+//testing git pull
 mongoose.connect('mongodb://10.0.0.56:27017/cloudwiki',{ mongos : true}, function(err) {
   if (!err)
     console.log(err);
