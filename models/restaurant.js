@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var restaurantSchema = new Schema({
     name: [String],
-    username: String,
+    username: {type: String, index: true},
 	boss_name: {
 		first: String,
 		mid: String,
@@ -17,7 +17,7 @@ var restaurantSchema = new Schema({
 		token: String	
 	},
 	
-	company: String,
+	company: {type: String, index: true},
     address:String,
 	website: [String],
 	menu_list: [String],
@@ -25,7 +25,9 @@ var restaurantSchema = new Schema({
 	orders: [String],
 	comments: [String],
 	rate: Number,
-	online: Boolean
+	online: Boolean,
+	payment_account: {type: String, index: true},
+	payment_name: String
 });
 
 restaurantSchema.virtual('boss_name.full').get(function() {

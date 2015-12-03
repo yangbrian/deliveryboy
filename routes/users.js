@@ -179,7 +179,7 @@ function handleNewUser(user, res) {
 	var input = user;
 
 	User.find({$or: [{
-			'_number': parseInt(number, 10)},
+			'number': parseInt(number, 10)},
 			{"username": username}]
 	}).limit(2).exec(function(err, users) {
 		if (err) {

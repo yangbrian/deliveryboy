@@ -51,3 +51,30 @@ body {
     width: 400px;
 }
 
+.inputTags-list {
+    border: 1px solid rgba(255, 163, 44, 0.35) !important;
+}
+
+.inputTags-list span.inputTags-item {
+    background-color: #FFA32C !important;
+    
+}
+
+
+
+.updatebox-buttons {
+    text-align: right;
+}
+
+.updatebox-buttons > .btn {
+    margin:3px;
+}
+
+.updatebox {
+    padding: 5px;
+    alignment-adjust: center;
+}
+
+/*.tablecell {*/
+/*    overflow: scroll;*/
+/*}*/

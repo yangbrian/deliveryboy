@@ -13,9 +13,15 @@ mongoose.connect('mongodb://10.0.0.56:27017/cloudwiki',{ mongos : true}, functio
 
 var User = require('./models/user');
 
+var Dish = require("./models/dish");
+
 var ActiveOrder = require('./models/activeOrder');
 
 var Restaurant = require("./models/restaurant");
+
+var Tag = require("./models/tag");
+
+var Ingradient = require("./models/ingradient");
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
