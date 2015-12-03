@@ -28,15 +28,11 @@ var users = require('./routes/users');
 var payments = require('./routes/payments');
 var order = require('./routes/order');
 var restaurants = require("./routes/restaurants");
-//
-//var redisClient = require('redis').createClient(6379);
-//
-//redisClient.on('connect', function() {
-//    console.log('connected');
-//
-//    var redis = require('socket.io-redis');
-//    io.adapter(redis({ host: 'localhost', port: 6379 }));
-//});
+
+
+var redis = require('socket.io-redis');
+io.adapter(redis({ host: '10.0.0.19', port: 6379 }));
+
 
 var app = express();
 
