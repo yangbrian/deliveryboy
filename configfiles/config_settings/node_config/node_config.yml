@@ -1,0 +1,10 @@
+---
+- hosts: web
+  remote_user: root
+  tasks:
+      - name: install mongodb
+        apt: pkg=mongodb-clients state=present
+  tasks:
+      - name: intall nodejs
+        apt: pkg=nodejs state=present
+

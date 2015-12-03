@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://10.0.0.56:27017,10.0.0.57:27017,10.0.0.58:27017/cloudwiki',{ mongos : true}, function(err) {
+mongoose.connect('mongodb://10.0.0.56:27017/cloudwiki',{ mongos : true}, function(err) {
   if (!err)
     console.log(err);
 });

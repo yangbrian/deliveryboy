@@ -1,0 +1,34 @@
+---
+- hosts: web
+  tasks:
+   - name: Update packages and Install Git
+     apt: name=git update_cache=yes
+
+   - name: Install Node
+     apt: name=nodejs
+   
+   - name: Install npm
+     apt: name=npm
+
+   - name: Add Github Deploy Key
+     copy: src=/root/.ssh/id_rsa dest=/root/.ssh/id_rsa owner=root group=root mode=0600
+
+   - name: Clone Project 
+     git: repo=git@github.com:yangbrian/cloudwiki.git dest=/home/cloudwiki accept_hostkey=true clone=true 
+ 
+   - name: Install Dependendicies
+     npm: path=/home/cloudwiki
+
+   - name: Install Forever Globally
+     npm: name=forever global=yes
+
+   - name: Link node and nodejs if not yet already
+     command: ln -s /usr/bin/nodejs /usr/bin/node
+     ignore_errors: yes
+
+   - name: Add to Startup
+     copy: src=/root/ansible/startup dest=/etc/rc.local owner=root group=root mode=0755
+
+   # add nodejs service to upstart
+   #- name: add nodejs to upstart
+   #  copy: src=/root/config/nodejs/cloudwiki.conf dest=/etc/init/cloudwiki.conf owner=root group=root mode=0644

@@ -1,0 +1,7 @@
+{
+	"server" : true,
+	"data_dir" : "/tmp/consul",
+	"retry_join" : ["10.0.0.24", "10.0.0.18"],
+	"bootstrap" : true
+}
+

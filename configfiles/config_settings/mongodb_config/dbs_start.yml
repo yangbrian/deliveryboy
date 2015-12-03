@@ -1,0 +1,6 @@
+---
+- hosts: dbs
+  remote_user: root
+  tasks:
+    - name: start db in background
+      raw: mongod --replSet rs0 --smallfiles --fork --logpath /var/log/mongod.log

@@ -1,0 +1,97 @@
+---
+  - hosts: consul 
+    remote_user: root
+
+    tasks:
+      - name: install unzip
+        apt: pkg=unzip state=present
+
+      - name: test if consul installed
+        file: path=/usr/local/bin/consul state=file
+        register: exists
+        ignore_errors: yes
+
+      - name: install consul.io
+        shell: wget https://dl.bintray.com/mitchellh/consul/0.5.2_linux_amd64.zip
+        args:
+          chdir: /usr/local/bin 
+        when: exists|failed
+
+      - name: unzip consul
+        shell: unzip 0.5.2_linux_amd64.zip
+        args:
+          chdir: /usr/local/bin
+        when: exists|failed
+
+      - name: clean up zip files
+        file: path=/usr/local/bin/*.zip state=absent
+  
+      - name: make config directory
+        file: path=/etc/consul.d state=directory owner=root group=root
+
+      - name: copy configuration file to /etc/init directory for upstarting
+        copy: src=/root/config/consul/consul.conf dest=/etc/init/consul.conf mode=0644 owner=root group=root
+
+
+  - hosts: consul_server
+    remote_user: root
+    tasks:
+      - name: copy configuration file to consul.d directory
+        copy: src=/root/config/consul/server.json dest=/etc/consul.d/config.json mode=0644 group=root owner=root
+
+
+  - hosts: consul_clients 
+    remote_user: root
+    tasks:
+      - name: copy config file to consul.d directory
+        copy: src=/root/config/consul/client.json dest=/etc/consul.d/config.json mode=0644 group=root owner=root
+
+      - name: create directory for web ui
+        file: path=/root/consul-ui/ state=directory owner=root group=root 
+
+      - name: check index.html whether exists
+        file: path=/root/consul-ui/dist/index.html state=file
+        register: ui_exists
+        ignore_errors: yes
+
+      - name: download ui pkg
+        shell: wget https://dl.bintray.com/mitchellh/consul/0.5.2_web_ui.zip
+        args: 
+          chdir: /root/consul-ui
+        when: ui_exists|failed
+
+      - name: unzip pkg
+        shell: unzip "*.zip"
+        args:
+          chdir: /root/consul-ui
+        when: ui_exists|failed
+
+      - name: clean up zip files
+        file: path=/root/*.zip state=absent
+        when: ui_exists|failed
+
+  
+  - hosts: consul
+    remote_user: root
+    tasks:
+
+      - name: test consul command is runnable
+        shell: consul --version 
+        register: runnable
+
+      - name: test if consul is running
+        service: name=consul pattern=consul enabled=yes
+        register: running
+
+      - name: stop current running consul
+        shell: consul leave
+        when: running|success
+
+      - name: run consul
+        shell: start consul
+        when: runnable|success and running|failed
+
+      - name: join clusters
+        shell: consul join {{consul_primary_server}}
+        when: runnable|success and running|failed
+

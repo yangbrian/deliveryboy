@@ -1,0 +1,652 @@
+2015-10-18 19:39:25.787 INFO  (main) [   ] o.e.j.u.log Logging initialized @1394ms
+2015-10-18 19:39:26.820 INFO  (main) [   ] o.e.j.s.Server jetty-9.2.11.v20150529
+2015-10-18 19:39:26.938 WARN  (main) [   ] o.e.j.s.h.RequestLogHandler !RequestLog
+2015-10-18 19:39:26.941 INFO  (main) [   ] o.e.j.d.p.ScanningAppProvider Deployment monitor [file:/home/nikhin/Downloads/solr-5.3.1/server/contexts/] at interval 0
+2015-10-18 19:39:29.363 INFO  (main) [   ] o.e.j.w.StandardDescriptorProcessor NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
+2015-10-18 19:39:29.444 WARN  (main) [   ] o.e.j.s.SecurityHandler ServletContext@o.e.j.w.WebAppContext@9abf05c{/solr,file:/home/nikhin/Downloads/solr-5.3.1/server/solr-webapp/webapp/,STARTING}{/home/nikhin/Downloads/solr-5.3.1/server/solr-webapp/webapp} has uncovered http methods for path: /
+2015-10-18 19:39:29.467 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter SolrDispatchFilter.init(): WebAppClassLoader=348398109@14c4221d
+2015-10-18 19:39:29.531 INFO  (main) [   ] o.a.s.c.SolrResourceLoader JNDI not configured for solr (NoInitialContextEx)
+2015-10-18 19:39:29.531 INFO  (main) [   ] o.a.s.c.SolrResourceLoader using system property solr.solr.home: /home/nikhin/Downloads/solr-5.3.1/server/solr
+2015-10-18 19:39:29.533 INFO  (main) [   ] o.a.s.c.SolrResourceLoader new SolrResourceLoader for directory: '/home/nikhin/Downloads/solr-5.3.1/server/solr/'
+2015-10-18 19:39:30.023 INFO  (main) [   ] o.a.s.c.SolrXmlConfig Loading container configuration from /home/nikhin/Downloads/solr-5.3.1/server/solr/solr.xml
+2015-10-18 19:39:30.213 INFO  (main) [   ] o.a.s.c.CoresLocator Config-defined core root directory: /home/nikhin/Downloads/solr-5.3.1/server/solr
+2015-10-18 19:39:30.236 INFO  (main) [   ] o.a.s.c.CoreContainer New CoreContainer 706076316
+2015-10-18 19:39:30.236 INFO  (main) [   ] o.a.s.c.CoreContainer Loading cores into CoreContainer [instanceDir=/home/nikhin/Downloads/solr-5.3.1/server/solr/]
+2015-10-18 19:39:30.236 INFO  (main) [   ] o.a.s.c.CoreContainer loading shared library: /home/nikhin/Downloads/solr-5.3.1/server/solr/lib
+2015-10-18 19:39:30.236 WARN  (main) [   ] o.a.s.c.SolrResourceLoader Can't find (or read) directory to add to classloader: lib (resolved as: /home/nikhin/Downloads/solr-5.3.1/server/solr/lib).
+2015-10-18 19:39:30.252 INFO  (main) [   ] o.a.s.h.c.HttpShardHandlerFactory created with socketTimeout : 600000,connTimeout : 60000,maxConnectionsPerHost : 20,maxConnections : 10000,corePoolSize : 0,maximumPoolSize : 2147483647,maxThreadIdleTime : 5,sizeOfQueue : -1,fairnessPolicy : false,useRetries : false,
+2015-10-18 19:39:30.763 INFO  (main) [   ] o.a.s.u.UpdateShardHandler Creating UpdateShardHandler HTTP client with params: socketTimeout=600000&connTimeout=60000&retry=true
+2015-10-18 19:39:30.765 INFO  (main) [   ] o.a.s.l.LogWatcher SLF4J impl is org.slf4j.impl.Log4jLoggerFactory
+2015-10-18 19:39:30.766 INFO  (main) [   ] o.a.s.l.LogWatcher Registering Log Listener [Log4j (org.slf4j.impl.Log4jLoggerFactory)]
+2015-10-18 19:39:30.768 INFO  (main) [   ] o.a.s.c.CoreContainer Security conf doesn't exist. Skipping setup for authorization module.
+2015-10-18 19:39:30.769 INFO  (main) [   ] o.a.s.c.CoreContainer No authentication plugin used.
+2015-10-18 19:39:30.798 INFO  (main) [   ] o.a.s.c.CoresLocator Looking for core definitions underneath /home/nikhin/Downloads/solr-5.3.1/server/solr
+2015-10-18 19:39:30.802 INFO  (main) [   ] o.a.s.c.CoresLocator Found 0 core definitions
+2015-10-18 19:39:30.804 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter user.dir=/home/nikhin/Downloads/solr-5.3.1/server
+2015-10-18 19:39:30.805 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter SolrDispatchFilter.init() done
+2015-10-18 19:39:30.832 INFO  (main) [   ] o.e.j.s.h.ContextHandler Started o.e.j.w.WebAppContext@9abf05c{/solr,file:/home/nikhin/Downloads/solr-5.3.1/server/solr-webapp/webapp/,AVAILABLE}{/home/nikhin/Downloads/solr-5.3.1/server/solr-webapp/webapp}
+2015-10-18 19:39:30.880 INFO  (main) [   ] o.e.j.s.ServerConnector Started ServerConnector@3fde1ed4{HTTP/1.1}{0.0.0.0:8983}
+2015-10-18 19:39:30.881 INFO  (main) [   ] o.e.j.s.Server Started @6490ms
+2015-10-18 19:55:34.135 INFO  (qtp1223656947-13) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/system params={wt=json} status=0 QTime=114 
+2015-10-18 19:55:34.232 INFO  (qtp1223656947-16) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/system params={wt=json} status=0 QTime=3 
+2015-10-18 19:55:34.279 INFO  (qtp1223656947-14) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={action=STATUS&core=cloudwiki&wt=json} status=0 QTime=2 
+2015-10-18 19:55:34.318 INFO  (qtp1223656947-18) [   ] o.a.s.h.a.CoreAdminHandler core create command action=CREATE&wt=json&instanceDir=cloudwiki&name=cloudwiki
+2015-10-18 19:55:34.321 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrCore Created CoreDescriptor: {name=cloudwiki, config=solrconfig.xml, transient=false, schema=schema.xml, loadOnStartup=true, configSetProperties=configsetprops.json, instanceDir=cloudwiki, absoluteInstDir=/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/, dataDir=data/}
+2015-10-18 19:55:34.322 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader new SolrResourceLoader for directory: '/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/'
+2015-10-18 19:55:34.471 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrConfig current version of requestparams : 0
+2015-10-18 19:55:34.491 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrConfig Adding specified lib dirs to ClassLoader
+2015-10-18 19:55:34.497 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/vorbis-java-tika-0.6.jar' to classloader
+2015-10-18 19:55:34.501 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/jempbox-1.8.8.jar' to classloader
+2015-10-18 19:55:34.502 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/apache-mime4j-core-0.7.2.jar' to classloader
+2015-10-18 19:55:34.506 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/bcmail-jdk15-1.45.jar' to classloader
+2015-10-18 19:55:34.506 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/vorbis-java-core-0.6.jar' to classloader
+2015-10-18 19:55:34.506 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/jdom-1.0.jar' to classloader
+2015-10-18 19:55:34.506 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/aspectjrt-1.8.0.jar' to classloader
+2015-10-18 19:55:34.506 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/tagsoup-1.2.1.jar' to classloader
+2015-10-18 19:55:34.506 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/boilerpipe-1.1.0.jar' to classloader
+2015-10-18 19:55:34.507 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/metadata-extractor-2.6.2.jar' to classloader
+2015-10-18 19:55:34.507 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/poi-3.11.jar' to classloader
+2015-10-18 19:55:34.507 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/tika-core-1.7.jar' to classloader
+2015-10-18 19:55:34.507 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/tika-xmp-1.7.jar' to classloader
+2015-10-18 19:55:34.507 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/icu4j-54.1.jar' to classloader
+2015-10-18 19:55:34.507 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/fontbox-1.8.8.jar' to classloader
+2015-10-18 19:55:34.507 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/isoparser-1.0.2.jar' to classloader
+2015-10-18 19:55:34.507 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/xmpcore-5.1.2.jar' to classloader
+2015-10-18 19:55:34.507 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/poi-ooxml-schemas-3.11.jar' to classloader
+2015-10-18 19:55:34.508 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/jmatio-1.0.jar' to classloader
+2015-10-18 19:55:34.508 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/poi-scratchpad-3.11.jar' to classloader
+2015-10-18 19:55:34.508 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/xmlbeans-2.6.0.jar' to classloader
+2015-10-18 19:55:34.508 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/pdfbox-1.8.8.jar' to classloader
+2015-10-18 19:55:34.508 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/apache-mime4j-dom-0.7.2.jar' to classloader
+2015-10-18 19:55:34.508 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/juniversalchardet-1.0.3.jar' to classloader
+2015-10-18 19:55:34.508 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/tika-parsers-1.7.jar' to classloader
+2015-10-18 19:55:34.508 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/commons-compress-1.8.1.jar' to classloader
+2015-10-18 19:55:34.508 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/bcprov-jdk15-1.45.jar' to classloader
+2015-10-18 19:55:34.509 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/xz-1.5.jar' to classloader
+2015-10-18 19:55:34.509 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/tika-java7-1.7.jar' to classloader
+2015-10-18 19:55:34.509 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/xercesImpl-2.9.1.jar' to classloader
+2015-10-18 19:55:34.509 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/java-libpst-0.8.1.jar' to classloader
+2015-10-18 19:55:34.509 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/rome-1.0.jar' to classloader
+2015-10-18 19:55:34.509 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/poi-ooxml-3.11.jar' to classloader
+2015-10-18 19:55:34.512 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/dist/solr-cell-5.3.1.jar' to classloader
+2015-10-18 19:55:34.513 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/clustering/lib/mahout-math-0.6.jar' to classloader
+2015-10-18 19:55:34.513 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/clustering/lib/jackson-core-asl-1.9.13.jar' to classloader
+2015-10-18 19:55:34.513 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/clustering/lib/attributes-binder-1.2.1.jar' to classloader
+2015-10-18 19:55:34.513 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/clustering/lib/carrot2-mini-3.9.0.jar' to classloader
+2015-10-18 19:55:34.513 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/clustering/lib/mahout-collections-1.0.jar' to classloader
+2015-10-18 19:55:34.514 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/clustering/lib/jackson-mapper-asl-1.9.13.jar' to classloader
+2015-10-18 19:55:34.517 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/clustering/lib/hppc-0.5.2.jar' to classloader
+2015-10-18 19:55:34.517 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/clustering/lib/simple-xml-2.7.jar' to classloader
+2015-10-18 19:55:34.518 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/dist/solr-clustering-5.3.1.jar' to classloader
+2015-10-18 19:55:34.518 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/langid/lib/langdetect-1.1-20120112.jar' to classloader
+2015-10-18 19:55:34.518 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/langid/lib/jsonic-1.2.7.jar' to classloader
+2015-10-18 19:55:34.519 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/dist/solr-langid-5.3.1.jar' to classloader
+2015-10-18 19:55:34.519 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/velocity/lib/commons-beanutils-1.8.3.jar' to classloader
+2015-10-18 19:55:34.519 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/velocity/lib/commons-collections-3.2.1.jar' to classloader
+2015-10-18 19:55:34.520 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/velocity/lib/velocity-tools-2.0.jar' to classloader
+2015-10-18 19:55:34.520 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/velocity/lib/velocity-1.7.jar' to classloader
+2015-10-18 19:55:34.524 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/dist/solr-velocity-5.3.1.jar' to classloader
+2015-10-18 19:55:34.864 INFO  (qtp1223656947-18) [   ] o.a.s.c.SolrConfig Using Lucene MatchVersion: 5.3.1
+2015-10-18 19:55:35.284 INFO  (qtp1223656947-18) [   ] o.a.s.c.Config Loaded SolrConfig: solrconfig.xml
+2015-10-18 19:55:35.315 INFO  (qtp1223656947-18) [   ] o.a.s.s.IndexSchema Reading Solr Schema from /home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/managed-schema
+2015-10-18 19:55:35.476 INFO  (qtp1223656947-18) [   ] o.a.s.s.IndexSchema [cloudwiki] Schema name=example-data-driven-schema
+2015-10-18 19:55:36.399 INFO  (qtp1223656947-18) [   ] o.a.s.s.IndexSchema unique key field: id
+2015-10-18 19:55:36.750 INFO  (qtp1223656947-18) [   ] o.a.s.s.FileExchangeRateProvider Reloading exchange rates from file currency.xml
+2015-10-18 19:55:36.759 INFO  (qtp1223656947-18) [   ] o.a.s.s.FileExchangeRateProvider Reloading exchange rates from file currency.xml
+2015-10-18 19:55:36.863 INFO  (qtp1223656947-18) [   ] o.a.s.c.ConfigSetProperties Did not find ConfigSet properties, assuming default properties: Can't find resource 'configsetprops.json' in classpath or '/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf'
+2015-10-18 19:55:36.863 INFO  (qtp1223656947-18) [   ] o.a.s.c.CoreContainer Creating SolrCore 'cloudwiki' using configuration from instancedir /home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/
+2015-10-18 19:55:36.874 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.SolrCore solr.NRTCachingDirectoryFactory
+2015-10-18 19:55:36.890 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.SolrCore [[cloudwiki] ] Opening new SolrCore at [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/], dataDir=[null]
+2015-10-18 19:55:36.899 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.JmxMonitoredMap No JMX servers found, not exposing Solr information with JMX.
+2015-10-18 19:55:36.907 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.SolrCore [[cloudwiki] ] Added SolrEventListener for newSearcher: [org.apache.solr.core.QuerySenderListener{queries=[]}]
+2015-10-18 19:55:36.907 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.SolrCore [[cloudwiki] ] Added SolrEventListener for firstSearcher: [org.apache.solr.core.QuerySenderListener{queries=[]}]
+2015-10-18 19:55:36.929 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.CachingDirectoryFactory return new directory for /home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data
+2015-10-18 19:55:36.930 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.SolrCore New index directory detected: old=null new=/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/index/
+2015-10-18 19:55:36.930 WARN  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.SolrCore [cloudwiki] Solr index directory '/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/index' doesn't exist. Creating new index...
+2015-10-18 19:55:36.950 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.CachingDirectoryFactory return new directory for /home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/index
+2015-10-18 19:55:37.038 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.SolrCore SolrDeletionPolicy.onCommit: commits: num=1
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@35e05ad6; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_1,generation=1}
+2015-10-18 19:55:37.038 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.SolrCore newest commit generation = 1
+2015-10-18 19:55:37.041 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.PluginBag queryResponseWriter : 'velocity' created with startup=lazy 
+2015-10-18 19:55:37.044 INFO  (OldIndexDirectoryCleanupThreadForCore-cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore Looking for old index directories to cleanup for core cloudwiki in /home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/
+2015-10-18 19:55:37.047 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.r.XSLTResponseWriter xsltCacheLifetimeSeconds=5
+2015-10-18 19:55:37.143 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.u.p.UpdateRequestProcessorChain creating updateRequestProcessorChain "add-unknown-fields-to-the-schema"
+2015-10-18 19:55:37.270 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.SolrCore no updateRequestProcessorChain defined as default, creating implicit default
+2015-10-18 19:55:37.383 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2015-10-18 19:55:37.389 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2015-10-18 19:55:37.390 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2015-10-18 19:55:37.391 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2015-10-18 19:55:37.410 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.PluginBag requestHandler : '/update/extract' created with startup=lazy 
+2015-10-18 19:55:37.413 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.PluginBag requestHandler : '/analysis/field' created with startup=lazy 
+2015-10-18 19:55:37.413 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.PluginBag requestHandler : '/analysis/document' created with startup=lazy 
+2015-10-18 19:55:37.415 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.PluginBag requestHandler : '/spell' created with startup=lazy 
+2015-10-18 19:55:37.415 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.PluginBag requestHandler : '/tvrh' created with startup=lazy 
+2015-10-18 19:55:37.415 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.PluginBag requestHandler : '/terms' created with startup=lazy 
+2015-10-18 19:55:37.415 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.PluginBag requestHandler : '/elevate' created with startup=lazy 
+2015-10-18 19:55:37.416 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.RequestHandlers Registered paths: /admin/logging,/admin/plugins,/admin/system,/admin/segments,/admin/file,/admin/luke,/update,/terms,/stream,/admin/threads,/schema,/query,/replication,/analysis/field,/browse,/admin/ping,/update/json/docs,/analysis/document,/select,/admin/mbeans,/update/csv,/elevate,/get,/update/json,/export,/update/extract,/admin/properties,/tvrh,/spell,/config,/debug/dump
+2015-10-18 19:55:37.418 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.SolrCore Using default statsCache cache: org.apache.solr.search.stats.LocalStatsCache
+2015-10-18 19:55:37.425 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2015-10-18 19:55:37.425 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2015-10-18 19:55:37.433 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.SolrCore Hard AutoCommit: if uncommited for 15000ms; 
+2015-10-18 19:55:37.433 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.SolrCore Soft AutoCommit: disabled
+2015-10-18 19:55:37.441 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.SolrCore SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@35e05ad6; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_1,generation=1}
+2015-10-18 19:55:37.442 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.SolrCore newest commit generation = 1
+2015-10-18 19:55:37.468 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.s.SolrIndexSearcher Opening Searcher@6159d43b[cloudwiki] main
+2015-10-18 19:55:37.475 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf
+2015-10-18 19:55:37.476 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.r.RestManager Initializing RestManager with initArgs: {storageDir=/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf}
+2015-10-18 19:55:37.486 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.r.ManagedResourceStorage Reading _rest_managed.json using file:dir=/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf
+2015-10-18 19:55:37.487 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.r.RestManager Initializing 0 registered ManagedResources
+2015-10-18 19:55:37.495 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
+2015-10-18 19:55:37.510 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.s.DirectSolrSpellChecker init: {name=default,field=text,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+2015-10-18 19:55:37.523 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.h.c.SpellCheckComponent No queryConverter defined, using default converter
+2015-10-18 19:55:37.525 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.h.c.QueryElevationComponent Loading QueryElevation from: /home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/elevate.xml
+2015-10-18 19:55:37.552 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.h.ReplicationHandler Commits will be reserved for  10000
+2015-10-18 19:55:37.558 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore QuerySenderListener sending requests to Searcher@6159d43b[cloudwiki] main{ExitableDirectoryReader(UninvertingDirectoryReader())}
+2015-10-18 19:55:37.559 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore QuerySenderListener done.
+2015-10-18 19:55:37.559 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2015-10-18 19:55:37.559 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: wordbreak
+2015-10-18 19:55:37.559 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore [cloudwiki] Registered new searcher Searcher@6159d43b[cloudwiki] main{ExitableDirectoryReader(UninvertingDirectoryReader())}
+2015-10-18 19:55:37.565 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.u.UpdateLog Looking up max value of version field to seed version buckets
+2015-10-18 19:55:37.566 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.u.VersionInfo Refreshing highest value of _version_ for 65536 version buckets from index
+2015-10-18 19:55:37.566 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.u.VersionInfo No terms found for _version_, cannot seed version bucket highest value from index
+2015-10-18 19:55:37.566 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.u.UpdateLog Could not find max version in index or recent updates, using new clock 1515400082296406016
+2015-10-18 19:55:37.571 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.u.UpdateLog Took 6 ms to seed version buckets with highest version 1515400082296406016
+2015-10-18 19:55:37.572 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.CoreContainer registering core: cloudwiki
+2015-10-18 19:55:37.578 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={instanceDir=cloudwiki&name=cloudwiki&action=CREATE&wt=json} status=0 QTime=3260 
+2015-10-18 20:03:06.435 INFO  (qtp1223656947-16) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={indexInfo=false&_=1445198586432&wt=json} status=0 QTime=1 
+2015-10-18 20:03:06.509 INFO  (qtp1223656947-20) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/system params={_=1445198586497&wt=json} status=0 QTime=9 
+2015-10-18 20:03:14.673 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={_=1445198594669&wt=json} status=0 QTime=2 
+2015-10-18 20:03:14.681 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=solrconfig.xml&_=1445198594677&contentType=text/xml;charset%3Dutf-8} status=0 QTime=0 
+2015-10-18 20:03:39.806 INFO  (qtp1223656947-19) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={indexInfo=false&_=1445198619804&wt=json} status=0 QTime=0 
+2015-10-18 20:03:39.862 INFO  (qtp1223656947-15) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/system params={_=1445198619853&wt=json} status=0 QTime=7 
+2015-10-18 20:05:50.064 INFO  (qtp1223656947-13) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={indexInfo=false&_=1445198750062&wt=json} status=0 QTime=0 
+2015-10-18 20:05:50.135 INFO  (qtp1223656947-14) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/system params={_=1445198750127&wt=json} status=0 QTime=6 
+2015-10-18 20:05:50.185 INFO  (qtp1223656947-18) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={_=1445198750177&wt=json} status=0 QTime=5 
+2015-10-18 20:05:55.647 INFO  (qtp1223656947-16) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={_=1445198755645&wt=json} status=0 QTime=1 
+2015-10-18 20:06:13.009 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=18 
+2015-10-18 20:25:42.071 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=13 
+2015-10-18 20:30:57.956 INFO  (qtp1223656947-18) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={indexInfo=false&_=1445200257953&wt=json} status=0 QTime=1 
+2015-10-18 20:30:58.015 INFO  (qtp1223656947-17) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/system params={_=1445200258006&wt=json} status=0 QTime=7 
+2015-10-18 20:31:04.893 INFO  (qtp1223656947-15) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445200264882&since=0&wt=json} status=0 QTime=5 
+2015-10-18 20:31:15.004 INFO  (qtp1223656947-20) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445200274993&since=1445198136930&wt=json} status=0 QTime=0 
+2015-10-18 20:31:25.110 INFO  (qtp1223656947-18) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445200285073&since=1445198136930&wt=json} status=0 QTime=0 
+2015-10-18 20:31:30.639 ERROR (qtp1223656947-17) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.menu-top.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.menu-top.html]
+2015-10-18 20:31:30.641 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.menu-top.html&_=1445200290637&contentType=text/html;charset%3Dutf-8} status=404 QTime=2 
+2015-10-18 20:31:30.650 ERROR (qtp1223656947-16) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.menu-bottom.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.menu-bottom.html]
+2015-10-18 20:31:30.659 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.menu-bottom.html&_=1445200290642&contentType=text/html;charset%3Dutf-8} status=404 QTime=12 
+2015-10-18 20:31:30.705 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445200290697&show=index&wt=json} status=0 QTime=0 
+2015-10-18 20:31:30.714 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/replication params={command=details&_=1445200290706&wt=json} status=0 QTime=2 
+2015-10-18 20:31:30.737 ERROR (qtp1223656947-20) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.html]
+2015-10-18 20:31:30.738 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.html&_=1445200290722} status=404 QTime=0 
+2015-10-18 20:31:30.741 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={action=status&_=1445200290727&wt=json} status=503 QTime=1 
+2015-10-18 20:31:30.745 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/system params={_=1445200290716&wt=json} status=0 QTime=25 
+2015-10-18 20:32:01.398 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={_=1445200321386&show=schema&wt=json} status=0 QTime=8 
+2015-10-18 20:32:02.574 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/mbeans params={cat=QUERYHANDLER&_=1445200322570&wt=json} status=0 QTime=2 
+2015-10-18 20:32:04.861 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={_=1445200324852&wt=json} status=0 QTime=0 
+2015-10-18 20:32:05.510 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={ts=1445200325482&_=1445200325483&wt=json} hits=0 status=0 QTime=25 
+2015-10-18 20:32:05.510 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={ts=1445200325482&_=1445200325483&wt=json} status=0 QTime=25 
+2015-10-18 20:32:07.323 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445200327319&wt=json} status=0 QTime=0 
+2015-10-18 20:32:07.429 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={_=1445200327409&show=schema&wt=json} status=0 QTime=15 
+2015-10-18 20:32:08.885 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/segments params={_=1445200328869&wt=json} status=0 QTime=2 
+2015-10-18 20:32:10.278 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445200330276&wt=json} status=0 QTime=0 
+2015-10-18 20:32:10.317 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={_=1445200330295&show=schema&wt=json} status=0 QTime=20 
+2015-10-18 20:32:15.849 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445200335830&show=index&wt=json} status=0 QTime=0 
+2015-10-18 20:32:15.873 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/replication params={command=details&_=1445200335858&wt=json} status=0 QTime=5 
+2015-10-18 20:32:15.898 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/system params={_=1445200335871&wt=json} status=0 QTime=12 
+2015-10-18 20:32:15.911 ERROR (qtp1223656947-14) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.html]
+2015-10-18 20:32:15.911 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.html&_=1445200335891} status=404 QTime=0 
+2015-10-18 20:32:15.922 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={action=status&_=1445200335908&wt=json} status=503 QTime=0 
+2015-10-18 20:32:58.796 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-18 20:32:58.906 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.c.SolrCore SolrDeletionPolicy.onCommit: commits: num=2
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@35e05ad6; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_1,generation=1}
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@35e05ad6; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_2,generation=2}
+2015-10-18 20:32:58.906 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.c.SolrCore newest commit generation = 2
+2015-10-18 20:32:58.973 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.s.SolrIndexSearcher Opening Searcher@53b6fa7b[cloudwiki] main
+2015-10-18 20:32:58.993 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore QuerySenderListener sending requests to Searcher@53b6fa7b[cloudwiki] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_0(5.3.1):C1)))}
+2015-10-18 20:32:58.994 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore QuerySenderListener done.
+2015-10-18 20:32:58.994 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore [cloudwiki] Registered new searcher Searcher@53b6fa7b[cloudwiki] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_0(5.3.1):C1)))}
+2015-10-18 20:32:58.994 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-18 20:32:58.995 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.u.p.LogUpdateProcessor [cloudwiki] webapp=/solr path=/update params={commit=true} {add=[562401f96ca9c4671057d199 (1515402432097550336)],commit=} 0 711
+2015-10-18 20:33:15.805 INFO  (qtp1223656947-15) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445200395795&since=0&wt=json} status=0 QTime=0 
+2015-10-18 20:33:25.891 INFO  (qtp1223656947-20) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445200405881&since=1445200335911&wt=json} status=0 QTime=0 
+2015-10-18 20:33:35.931 INFO  (qtp1223656947-13) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445200415922&since=1445200335911&wt=json} status=0 QTime=1 
+2015-10-18 20:33:45.987 INFO  (qtp1223656947-18) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445200425982&since=1445200335911&wt=json} status=0 QTime=0 
+2015-10-18 20:33:56.021 INFO  (qtp1223656947-19) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445200436009&since=1445200335911&wt=json} status=0 QTime=0 
+2015-10-18 20:34:06.069 INFO  (qtp1223656947-17) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445200446059&since=1445200335911&wt=json} status=0 QTime=0 
+2015-10-18 20:34:16.129 INFO  (qtp1223656947-16) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445200456102&since=1445200335911&wt=json} status=0 QTime=0 
+2015-10-18 20:34:26.208 INFO  (qtp1223656947-14) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445200466173&since=1445200335911&wt=json} status=0 QTime=15 
+2015-10-18 20:34:36.290 INFO  (qtp1223656947-15) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445200476278&since=1445200335911&wt=json} status=0 QTime=0 
+2015-10-18 20:34:46.331 INFO  (qtp1223656947-20) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445200486323&since=1445200335911&wt=json} status=0 QTime=0 
+2015-10-18 20:34:56.367 INFO  (qtp1223656947-13) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445200496359&since=1445200335911&wt=json} status=0 QTime=0 
+2015-10-18 20:35:06.548 INFO  (qtp1223656947-18) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445200506506&since=1445200335911&wt=json} status=0 QTime=1 
+2015-10-18 20:35:16.612 INFO  (qtp1223656947-19) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445200516604&since=1445200335911&wt=json} status=0 QTime=0 
+2015-10-18 20:35:26.648 INFO  (qtp1223656947-17) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445200526630&since=1445200335911&wt=json} status=0 QTime=4 
+2015-10-18 20:35:36.697 INFO  (qtp1223656947-16) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445200536690&since=1445200335911&wt=json} status=0 QTime=0 
+2015-10-18 20:35:41.264 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-18 20:35:41.372 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.SolrCore SolrDeletionPolicy.onCommit: commits: num=2
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@35e05ad6; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_2,generation=2}
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@35e05ad6; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_3,generation=3}
+2015-10-18 20:35:41.372 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.SolrCore newest commit generation = 3
+2015-10-18 20:35:41.373 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.s.SolrIndexSearcher Opening Searcher@6131c9ee[cloudwiki] main
+2015-10-18 20:35:41.375 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore QuerySenderListener sending requests to Searcher@6131c9ee[cloudwiki] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_0(5.3.1):C1) Uninverting(_1(5.3.1):C1)))}
+2015-10-18 20:35:41.379 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore QuerySenderListener done.
+2015-10-18 20:35:41.380 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore [cloudwiki] Registered new searcher Searcher@6131c9ee[cloudwiki] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_0(5.3.1):C1) Uninverting(_1(5.3.1):C1)))}
+2015-10-18 20:35:41.381 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-18 20:35:41.381 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.p.LogUpdateProcessor [cloudwiki] webapp=/solr path=/update params={commit=true} {add=[5624029d6ca9c4671057d19a (1515402602752245760)],commit=} 0 121
+2015-10-18 20:35:46.719 INFO  (qtp1223656947-14) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445200546714&since=1445200335911&wt=json} status=0 QTime=0 
+2015-10-18 20:35:56.747 INFO  (qtp1223656947-20) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445200556738&since=1445200335911&wt=json} status=0 QTime=0 
+2015-10-18 20:36:05.392 INFO  (qtp1223656947-13) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={_=1445200565387&wt=json} status=0 QTime=2 
+2015-10-18 20:36:05.568 INFO  (qtp1223656947-15) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={_=1445200565565&wt=json} status=0 QTime=1 
+2015-10-18 20:36:20.226 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=true,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-18 20:36:20.283 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.SolrCore SolrDeletionPolicy.onCommit: commits: num=2
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@35e05ad6; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_3,generation=3}
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@35e05ad6; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_4,generation=4}
+2015-10-18 20:36:20.283 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.SolrCore newest commit generation = 4
+2015-10-18 20:36:20.291 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.s.SolrIndexSearcher Opening Searcher@36895c35[cloudwiki] main
+2015-10-18 20:36:20.292 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore QuerySenderListener sending requests to Searcher@36895c35[cloudwiki] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_2(5.3.1):C2)))}
+2015-10-18 20:36:20.293 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore QuerySenderListener done.
+2015-10-18 20:36:20.293 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore [cloudwiki] Registered new searcher Searcher@36895c35[cloudwiki] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_2(5.3.1):C2)))}
+2015-10-18 20:36:20.296 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-18 20:36:20.299 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.u.p.LogUpdateProcessor [cloudwiki] webapp=/solr path=/update params={optimize=true&_=1445200580223&wt=json&waitFlush=true} {optimize=} 0 73
+2015-10-18 20:36:21.641 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=true,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-18 20:36:21.641 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.u.UpdateHandler No uncommitted changes. Skipping IW.commit.
+2015-10-18 20:36:21.642 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.SolrCore SolrIndexSearcher has not changed - not re-opening: org.apache.solr.search.SolrIndexSearcher
+2015-10-18 20:36:21.642 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-18 20:36:21.642 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.u.p.LogUpdateProcessor [cloudwiki] webapp=/solr path=/update params={optimize=true&_=1445200581638&wt=json&waitFlush=true} {optimize=} 0 2
+2015-10-18 20:36:26.137 INFO  (qtp1223656947-19) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/properties params={_=1445200586135&wt=json} status=0 QTime=0 
+2015-10-18 20:36:29.109 INFO  (qtp1223656947-15) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/threads params={_=1445200589039&wt=json} status=0 QTime=68 
+2015-10-18 20:36:30.363 INFO  (qtp1223656947-14) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={_=1445200590361&wt=json} status=0 QTime=1 
+2015-10-18 20:36:30.449 INFO  (qtp1223656947-20) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={_=1445200590444&wt=json} status=0 QTime=1 
+2015-10-18 20:36:31.560 INFO  (qtp1223656947-19) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445200591557&since=0&wt=json} status=0 QTime=0 
+2015-10-18 20:36:45.931 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445200605925&show=index&wt=json} status=0 QTime=0 
+2015-10-18 20:36:45.950 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/replication params={command=details&_=1445200605941&wt=json} status=0 QTime=1 
+2015-10-18 20:36:45.960 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/system params={_=1445200605951&wt=json} status=0 QTime=5 
+2015-10-18 20:36:45.970 ERROR (qtp1223656947-17) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.html]
+2015-10-18 20:36:45.970 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.html&_=1445200605961} status=404 QTime=0 
+2015-10-18 20:36:45.975 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={action=status&_=1445200605967&wt=json} status=503 QTime=0 
+2015-10-18 20:36:55.251 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445200615246&show=index&wt=json} status=0 QTime=0 
+2015-10-18 20:36:55.267 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/replication params={command=details&_=1445200615253&wt=json} status=0 QTime=5 
+2015-10-18 20:36:55.283 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/system params={_=1445200615263&wt=json} status=0 QTime=11 
+2015-10-18 20:36:55.305 ERROR (qtp1223656947-17) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.html]
+2015-10-18 20:36:55.305 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.html&_=1445200615269} status=404 QTime=1 
+2015-10-18 20:36:55.311 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={action=status&_=1445200615308&wt=json} status=503 QTime=0 
+2015-10-18 20:37:07.393 INFO  (qtp1223656947-13) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={indexInfo=false&_=1445200627390&wt=json} status=0 QTime=0 
+2015-10-18 20:37:07.445 INFO  (qtp1223656947-18) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/system params={_=1445200627437&wt=json} status=0 QTime=5 
+2015-10-18 20:37:07.501 ERROR (qtp1223656947-15) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.menu-top.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.menu-top.html]
+2015-10-18 20:37:07.511 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.menu-top.html&_=1445200627498&contentType=text/html;charset%3Dutf-8} status=404 QTime=10 
+2015-10-18 20:37:07.527 ERROR (qtp1223656947-19) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.menu-bottom.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.menu-bottom.html]
+2015-10-18 20:37:07.531 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.menu-bottom.html&_=1445200627508&contentType=text/html;charset%3Dutf-8} status=404 QTime=4 
+2015-10-18 20:37:07.576 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445200627569&show=index&wt=json} status=0 QTime=0 
+2015-10-18 20:37:07.581 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/replication params={command=details&_=1445200627577&wt=json} status=0 QTime=1 
+2015-10-18 20:37:07.591 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/system params={_=1445200627583&wt=json} status=0 QTime=4 
+2015-10-18 20:37:07.598 ERROR (qtp1223656947-13) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.html]
+2015-10-18 20:37:07.598 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.html&_=1445200627590} status=404 QTime=0 
+2015-10-18 20:37:07.600 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={action=status&_=1445200627595&wt=json} status=503 QTime=0 
+2015-10-18 20:37:19.121 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={_=1445200639111&show=schema&wt=json} status=0 QTime=6 
+2015-10-18 20:37:22.826 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/mbeans params={cat=QUERYHANDLER&_=1445200642821&wt=json} status=0 QTime=1 
+2015-10-18 20:37:29.482 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={_=1445200649477&wt=json} status=0 QTime=2 
+2015-10-18 20:37:32.755 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={ts=1445200652732&_=1445200652732&wt=json} hits=2 status=0 QTime=19 
+2015-10-18 20:37:32.756 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={ts=1445200652732&_=1445200652732&wt=json} status=0 QTime=20 
+2015-10-18 20:37:33.381 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/mbeans params={stats=true&_=1445200653323&wt=json} status=0 QTime=55 
+2015-10-18 20:37:37.644 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445200657638&wt=json} status=0 QTime=3 
+2015-10-18 20:37:37.774 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={_=1445200657761&show=schema&wt=json} status=0 QTime=10 
+2015-10-18 20:37:38.445 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/replication params={command=details&_=1445200658433&wt=json} status=0 QTime=6 
+2015-10-18 20:37:41.495 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445200661490&wt=json} status=0 QTime=1 
+2015-10-18 20:37:41.552 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={_=1445200661535&show=schema&wt=json} status=0 QTime=15 
+2015-10-18 20:37:43.293 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/segments params={_=1445200663283&wt=json} status=0 QTime=6 
+2015-10-18 20:37:45.798 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={_=1445200665781&show=schema&wt=json} status=0 QTime=8 
+2015-10-18 20:37:47.668 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445200667649&show=index&wt=json} status=0 QTime=0 
+2015-10-18 20:37:47.680 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/replication params={command=details&_=1445200667671&wt=json} status=0 QTime=1 
+2015-10-18 20:37:47.699 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/system params={_=1445200667682&wt=json} status=0 QTime=13 
+2015-10-18 20:37:47.706 ERROR (qtp1223656947-17) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.html]
+2015-10-18 20:37:47.706 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.html&_=1445200667695} status=404 QTime=0 
+2015-10-18 20:37:47.721 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={action=status&_=1445200667715&wt=json} status=503 QTime=0 
+2015-10-18 20:38:09.404 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-18 20:38:09.455 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.SolrCore SolrDeletionPolicy.onCommit: commits: num=2
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@35e05ad6; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_4,generation=4}
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@35e05ad6; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_5,generation=5}
+2015-10-18 20:38:09.456 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.SolrCore newest commit generation = 5
+2015-10-18 20:38:09.457 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.s.SolrIndexSearcher Opening Searcher@465796cf[cloudwiki] main
+2015-10-18 20:38:09.458 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore QuerySenderListener sending requests to Searcher@465796cf[cloudwiki] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_2(5.3.1):C2) Uninverting(_3(5.3.1):C1)))}
+2015-10-18 20:38:09.458 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore QuerySenderListener done.
+2015-10-18 20:38:09.459 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore [cloudwiki] Registered new searcher Searcher@465796cf[cloudwiki] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_2(5.3.1):C2) Uninverting(_3(5.3.1):C1)))}
+2015-10-18 20:38:09.467 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-18 20:38:09.467 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.u.p.LogUpdateProcessor [cloudwiki] webapp=/solr path=/update params={commit=true} {add=[562403316ca9c4671057d19b (1515402758076760064)],commit=} 0 79
+2015-10-18 20:38:13.447 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={_=1445200693438&show=schema&wt=json} status=0 QTime=4 
+2015-10-18 20:38:14.947 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445200694935&show=index&wt=json} status=0 QTime=0 
+2015-10-18 20:38:14.957 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/replication params={command=details&_=1445200694952&wt=json} status=0 QTime=1 
+2015-10-18 20:38:14.980 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/system params={_=1445200694967&wt=json} status=0 QTime=7 
+2015-10-18 20:38:14.994 ERROR (qtp1223656947-17) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.html]
+2015-10-18 20:38:14.994 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.html&_=1445200694984} status=404 QTime=0 
+2015-10-18 20:38:15.006 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={action=status&_=1445200694991&wt=json} status=503 QTime=0 
+2015-10-19 21:29:55.620 INFO  (qtp1223656947-18) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={indexInfo=false&_=1445290195616&wt=json} status=0 QTime=1 
+2015-10-19 21:29:55.694 INFO  (qtp1223656947-19) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/system params={_=1445290195667&wt=json} status=0 QTime=25 
+2015-10-19 21:30:02.592 INFO  (qtp1223656947-16) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290202586&since=0&wt=json} status=0 QTime=1 
+2015-10-19 21:30:05.679 INFO  (qtp1223656947-19) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/properties params={_=1445290205677&wt=json} status=0 QTime=0 
+2015-10-19 21:30:07.342 INFO  (qtp1223656947-14) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={_=1445290207339&wt=json} status=0 QTime=2 
+2015-10-19 21:30:07.436 INFO  (qtp1223656947-16) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={_=1445290207423&wt=json} status=0 QTime=10 
+2015-10-19 21:30:09.789 ERROR (qtp1223656947-17) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.menu-top.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.menu-top.html]
+2015-10-19 21:30:09.789 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.menu-top.html&_=1445290209787&contentType=text/html;charset%3Dutf-8} status=404 QTime=0 
+2015-10-19 21:30:09.792 ERROR (qtp1223656947-15) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.menu-bottom.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.menu-bottom.html]
+2015-10-19 21:30:09.792 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.menu-bottom.html&_=1445290209790&contentType=text/html;charset%3Dutf-8} status=404 QTime=0 
+2015-10-19 21:30:09.829 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445290209820&show=index&wt=json} status=0 QTime=0 
+2015-10-19 21:30:09.836 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/replication params={command=details&_=1445290209831&wt=json} status=0 QTime=1 
+2015-10-19 21:30:09.850 ERROR (qtp1223656947-16) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.html]
+2015-10-19 21:30:09.850 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.html&_=1445290209844} status=404 QTime=0 
+2015-10-19 21:30:09.855 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/system params={_=1445290209837&wt=json} status=0 QTime=14 
+2015-10-19 21:30:09.859 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={action=status&_=1445290209849&wt=json} status=503 QTime=0 
+2015-10-19 21:30:32.141 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={indent=true&q=hello&_=1445290232121&wt=json} hits=0 status=0 QTime=15 
+2015-10-19 21:31:05.981 ERROR (qtp1223656947-20) [   x:cloudwiki] o.a.s.c.SolrCore org.apache.solr.common.SolrException: undefined field title
+	at org.apache.solr.schema.IndexSchema.getDynamicFieldType(IndexSchema.java:1298)
+	at org.apache.solr.schema.IndexSchema$SolrQueryAnalyzer.getWrappedAnalyzer(IndexSchema.java:444)
+	at org.apache.lucene.analysis.DelegatingAnalyzerWrapper$DelegatingReuseStrategy.getReusableComponents(DelegatingAnalyzerWrapper.java:74)
+	at org.apache.lucene.analysis.Analyzer.tokenStream(Analyzer.java:172)
+	at org.apache.lucene.util.QueryBuilder.createFieldQuery(QueryBuilder.java:205)
+	at org.apache.solr.parser.SolrQueryParserBase.newFieldQuery(SolrQueryParserBase.java:370)
+	at org.apache.solr.parser.SolrQueryParserBase.getFieldQuery(SolrQueryParserBase.java:762)
+	at org.apache.solr.parser.SolrQueryParserBase.handleBareTokenQuery(SolrQueryParserBase.java:546)
+	at org.apache.solr.parser.QueryParser.Term(QueryParser.java:299)
+	at org.apache.solr.parser.QueryParser.Clause(QueryParser.java:185)
+	at org.apache.solr.parser.QueryParser.Query(QueryParser.java:107)
+	at org.apache.solr.parser.QueryParser.TopLevelQuery(QueryParser.java:96)
+	at org.apache.solr.parser.SolrQueryParserBase.parse(SolrQueryParserBase.java:151)
+	at org.apache.solr.search.LuceneQParser.parse(LuceneQParser.java:50)
+	at org.apache.solr.search.QParser.getQuery(QParser.java:141)
+	at org.apache.solr.handler.component.QueryComponent.prepare(QueryComponent.java:158)
+	at org.apache.solr.handler.component.SearchHandler.handleRequestBody(SearchHandler.java:251)
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:143)
+	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2068)
+	at org.apache.solr.servlet.HttpSolrCall.execute(HttpSolrCall.java:669)
+	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:462)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:214)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:179)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:585)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:577)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:223)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1127)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1061)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:215)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:110)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97)
+	at org.eclipse.jetty.server.Server.handle(Server.java:499)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:310)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:257)
+	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555)
+	at java.lang.Thread.run(Thread.java:745)
+
+2015-10-19 21:31:05.981 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={indent=true&q=title:hello&_=1445290265976&wt=json} status=400 QTime=2 
+2015-10-19 21:31:08.037 ERROR (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.SolrCore org.apache.solr.common.SolrException: undefined field title
+	at org.apache.solr.schema.IndexSchema.getDynamicFieldType(IndexSchema.java:1298)
+	at org.apache.solr.schema.IndexSchema$SolrQueryAnalyzer.getWrappedAnalyzer(IndexSchema.java:444)
+	at org.apache.lucene.analysis.DelegatingAnalyzerWrapper$DelegatingReuseStrategy.getReusableComponents(DelegatingAnalyzerWrapper.java:74)
+	at org.apache.lucene.analysis.Analyzer.tokenStream(Analyzer.java:172)
+	at org.apache.lucene.util.QueryBuilder.createFieldQuery(QueryBuilder.java:205)
+	at org.apache.solr.parser.SolrQueryParserBase.newFieldQuery(SolrQueryParserBase.java:370)
+	at org.apache.solr.parser.SolrQueryParserBase.getFieldQuery(SolrQueryParserBase.java:762)
+	at org.apache.solr.parser.SolrQueryParserBase.handleBareTokenQuery(SolrQueryParserBase.java:546)
+	at org.apache.solr.parser.QueryParser.Term(QueryParser.java:299)
+	at org.apache.solr.parser.QueryParser.Clause(QueryParser.java:185)
+	at org.apache.solr.parser.QueryParser.Query(QueryParser.java:107)
+	at org.apache.solr.parser.QueryParser.TopLevelQuery(QueryParser.java:96)
+	at org.apache.solr.parser.SolrQueryParserBase.parse(SolrQueryParserBase.java:151)
+	at org.apache.solr.search.LuceneQParser.parse(LuceneQParser.java:50)
+	at org.apache.solr.search.QParser.getQuery(QParser.java:141)
+	at org.apache.solr.handler.component.QueryComponent.prepare(QueryComponent.java:158)
+	at org.apache.solr.handler.component.SearchHandler.handleRequestBody(SearchHandler.java:251)
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:143)
+	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2068)
+	at org.apache.solr.servlet.HttpSolrCall.execute(HttpSolrCall.java:669)
+	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:462)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:214)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:179)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:585)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:577)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:223)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1127)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1061)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:215)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:110)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97)
+	at org.eclipse.jetty.server.Server.handle(Server.java:499)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:310)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:257)
+	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555)
+	at java.lang.Thread.run(Thread.java:745)
+
+2015-10-19 21:31:08.037 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={indent=true&q=title:hello&_=1445290268034&wt=json} status=400 QTime=1 
+2015-10-19 21:31:26.774 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={q=hello&_=1445290286770&wt=json} hits=0 status=0 QTime=1 
+2015-10-19 21:31:35.162 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={_=1445290295160&wt=json} status=0 QTime=0 
+2015-10-19 21:31:36.601 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={ts=1445290296598&_=1445290296598&wt=json} hits=3 status=0 QTime=0 
+2015-10-19 21:31:36.601 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={ts=1445290296598&_=1445290296598&wt=json} status=0 QTime=1 
+2015-10-19 21:31:37.764 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445290297760&show=index&wt=json} status=0 QTime=0 
+2015-10-19 21:31:37.783 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/replication params={command=details&_=1445290297767&wt=json} status=0 QTime=13 
+2015-10-19 21:31:37.811 ERROR (qtp1223656947-18) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.html]
+2015-10-19 21:31:37.812 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.html&_=1445290297797} status=404 QTime=0 
+2015-10-19 21:31:37.828 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={action=status&_=1445290297814&wt=json} status=503 QTime=0 
+2015-10-19 21:31:37.838 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/system params={_=1445290297778&wt=json} status=0 QTime=43 
+2015-10-19 21:31:47.642 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={_=1445290307632&show=schema&wt=json} status=0 QTime=8 
+2015-10-19 21:31:51.671 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/mbeans params={cat=QUERYHANDLER&_=1445290311669&wt=json} status=0 QTime=1 
+2015-10-19 21:32:10.299 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445290330292&show=index&wt=json} status=0 QTime=0 
+2015-10-19 21:32:10.315 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/replication params={command=details&_=1445290330300&wt=json} status=0 QTime=6 
+2015-10-19 21:32:10.336 ERROR (qtp1223656947-18) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.html]
+2015-10-19 21:32:10.337 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.html&_=1445290330320} status=404 QTime=0 
+2015-10-19 21:32:10.347 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={action=status&_=1445290330333&wt=json} status=503 QTime=0 
+2015-10-19 21:32:10.359 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/system params={_=1445290330311&wt=json} status=0 QTime=41 
+2015-10-19 21:33:08.906 INFO  (qtp1223656947-14) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={indexInfo=false&_=1445290388903&wt=json} status=0 QTime=0 
+2015-10-19 21:33:08.963 INFO  (qtp1223656947-13) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/system params={_=1445290388956&wt=json} status=0 QTime=5 
+2015-10-19 21:33:09.037 ERROR (qtp1223656947-19) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.menu-top.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.menu-top.html]
+2015-10-19 21:33:09.037 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.menu-top.html&_=1445290389035&contentType=text/html;charset%3Dutf-8} status=404 QTime=0 
+2015-10-19 21:33:09.040 ERROR (qtp1223656947-17) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.menu-bottom.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.menu-bottom.html]
+2015-10-19 21:33:09.040 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.menu-bottom.html&_=1445290389038&contentType=text/html;charset%3Dutf-8} status=404 QTime=0 
+2015-10-19 21:33:09.076 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445290389067&show=index&wt=json} status=0 QTime=1 
+2015-10-19 21:33:09.082 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/replication params={command=details&_=1445290389078&wt=json} status=0 QTime=1 
+2015-10-19 21:33:09.091 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/system params={_=1445290389084&wt=json} status=0 QTime=5 
+2015-10-19 21:33:09.095 ERROR (qtp1223656947-14) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.html]
+2015-10-19 21:33:09.096 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.html&_=1445290389089} status=404 QTime=0 
+2015-10-19 21:33:09.102 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={action=status&_=1445290389094&wt=json} status=503 QTime=0 
+2015-10-19 21:33:20.659 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/mbeans params={cat=QUERYHANDLER&_=1445290400656&wt=json} status=0 QTime=0 
+2015-10-19 21:33:24.163 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445290404159&wt=json} status=0 QTime=1 
+2015-10-19 21:33:24.204 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={_=1445290404182&show=schema&wt=json} status=0 QTime=13 
+2015-10-19 21:33:25.699 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/segments params={_=1445290405678&wt=json} status=0 QTime=20 
+2015-10-19 21:33:27.508 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/replication params={command=details&_=1445290407497&wt=json} status=0 QTime=2 
+2015-10-19 21:33:44.506 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={indent=true&q=test&_=1445290424502&wt=json} hits=0 status=0 QTime=1 
+2015-10-19 21:33:52.436 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={q=test&_=1445290432433&wt=json} hits=0 status=0 QTime=0 
+2015-10-19 21:34:11.189 INFO  (qtp1223656947-13) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290451186&since=0&wt=json} status=0 QTime=0 
+2015-10-19 21:34:21.281 INFO  (qtp1223656947-14) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290461272&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:34:31.370 INFO  (qtp1223656947-19) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290471364&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:34:41.416 INFO  (qtp1223656947-17) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290481412&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:34:51.447 INFO  (qtp1223656947-15) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290491437&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:35:01.485 INFO  (qtp1223656947-18) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290501474&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:35:11.523 INFO  (qtp1223656947-20) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290511513&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:35:21.563 INFO  (qtp1223656947-16) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290521549&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:35:22.051 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={q=hello&wt=json} hits=0 status=0 QTime=0 
+2015-10-19 21:35:31.632 INFO  (qtp1223656947-13) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290531623&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:35:41.664 INFO  (qtp1223656947-14) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290541654&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:35:51.734 INFO  (qtp1223656947-19) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290551729&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:36:01.880 INFO  (qtp1223656947-17) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290561849&since=1445290389095&wt=json} status=0 QTime=2 
+2015-10-19 21:36:12.889 INFO  (qtp1223656947-15) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290572885&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:36:23.091 INFO  (qtp1223656947-18) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290583080&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:36:33.938 INFO  (qtp1223656947-20) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290593927&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:36:43.972 INFO  (qtp1223656947-16) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290603966&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:36:54.003 INFO  (qtp1223656947-13) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290613993&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:37:04.048 INFO  (qtp1223656947-14) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290624036&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:37:14.083 INFO  (qtp1223656947-19) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290634073&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:37:24.109 INFO  (qtp1223656947-17) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290644102&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:37:34.146 INFO  (qtp1223656947-15) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290654133&since=1445290389095&wt=json} status=0 QTime=1 
+2015-10-19 21:37:44.207 INFO  (qtp1223656947-18) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290664195&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:37:54.246 INFO  (qtp1223656947-20) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290674235&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:38:04.287 INFO  (qtp1223656947-16) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290684277&since=1445290389095&wt=json} status=0 QTime=1 
+2015-10-19 21:38:14.335 INFO  (qtp1223656947-13) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290694321&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:38:24.516 INFO  (qtp1223656947-14) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290704513&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:38:34.553 INFO  (qtp1223656947-19) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290714547&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:38:44.580 INFO  (qtp1223656947-17) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290724569&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:38:54.627 INFO  (qtp1223656947-15) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290734624&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:39:04.669 INFO  (qtp1223656947-18) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290744659&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:39:14.741 INFO  (qtp1223656947-20) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290754733&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:39:24.844 INFO  (qtp1223656947-16) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290764823&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:39:34.904 INFO  (qtp1223656947-13) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290774892&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:39:44.986 INFO  (qtp1223656947-14) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445290784980&since=1445290389095&wt=json} status=0 QTime=0 
+2015-10-19 21:39:51.464 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445290791455&show=index&wt=json} status=0 QTime=0 
+2015-10-19 21:39:51.474 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/replication params={command=details&_=1445290791468&wt=json} status=0 QTime=1 
+2015-10-19 21:39:51.488 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/system params={_=1445290791477&wt=json} status=0 QTime=7 
+2015-10-19 21:39:51.499 ERROR (qtp1223656947-20) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.html]
+2015-10-19 21:39:51.499 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.html&_=1445290791484} status=404 QTime=0 
+2015-10-19 21:39:51.511 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={action=status&_=1445290791497&wt=json} status=503 QTime=0 
+2015-10-19 21:40:10.767 ERROR (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.SolrCore org.apache.solr.common.SolrException: undefined field title
+	at org.apache.solr.schema.IndexSchema.getDynamicFieldType(IndexSchema.java:1298)
+	at org.apache.solr.schema.IndexSchema$SolrQueryAnalyzer.getWrappedAnalyzer(IndexSchema.java:444)
+	at org.apache.lucene.analysis.DelegatingAnalyzerWrapper$DelegatingReuseStrategy.getReusableComponents(DelegatingAnalyzerWrapper.java:74)
+	at org.apache.lucene.analysis.Analyzer.tokenStream(Analyzer.java:172)
+	at org.apache.lucene.util.QueryBuilder.createFieldQuery(QueryBuilder.java:205)
+	at org.apache.solr.parser.SolrQueryParserBase.newFieldQuery(SolrQueryParserBase.java:370)
+	at org.apache.solr.parser.SolrQueryParserBase.getFieldQuery(SolrQueryParserBase.java:762)
+	at org.apache.solr.parser.SolrQueryParserBase.handleBareTokenQuery(SolrQueryParserBase.java:546)
+	at org.apache.solr.parser.QueryParser.Term(QueryParser.java:299)
+	at org.apache.solr.parser.QueryParser.Clause(QueryParser.java:185)
+	at org.apache.solr.parser.QueryParser.Query(QueryParser.java:107)
+	at org.apache.solr.parser.QueryParser.TopLevelQuery(QueryParser.java:96)
+	at org.apache.solr.parser.SolrQueryParserBase.parse(SolrQueryParserBase.java:151)
+	at org.apache.solr.search.LuceneQParser.parse(LuceneQParser.java:50)
+	at org.apache.solr.search.QParser.getQuery(QParser.java:141)
+	at org.apache.solr.handler.component.QueryComponent.prepare(QueryComponent.java:158)
+	at org.apache.solr.handler.component.SearchHandler.handleRequestBody(SearchHandler.java:251)
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:143)
+	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2068)
+	at org.apache.solr.servlet.HttpSolrCall.execute(HttpSolrCall.java:669)
+	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:462)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:214)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:179)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:585)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:577)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:223)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1127)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1061)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:215)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:110)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97)
+	at org.eclipse.jetty.server.Server.handle(Server.java:499)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:310)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:257)
+	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555)
+	at java.lang.Thread.run(Thread.java:745)
+
+2015-10-19 21:40:10.768 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={indent=true&q=title:hello&_=1445290810763&wt=json} status=400 QTime=1 
+2015-10-19 21:40:17.151 ERROR (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.SolrCore org.apache.solr.common.SolrException: undefined field title
+	at org.apache.solr.schema.IndexSchema.getDynamicFieldType(IndexSchema.java:1298)
+	at org.apache.solr.schema.IndexSchema$SolrQueryAnalyzer.getWrappedAnalyzer(IndexSchema.java:444)
+	at org.apache.lucene.analysis.DelegatingAnalyzerWrapper$DelegatingReuseStrategy.getReusableComponents(DelegatingAnalyzerWrapper.java:74)
+	at org.apache.lucene.analysis.Analyzer.tokenStream(Analyzer.java:172)
+	at org.apache.lucene.util.QueryBuilder.createFieldQuery(QueryBuilder.java:205)
+	at org.apache.solr.parser.SolrQueryParserBase.newFieldQuery(SolrQueryParserBase.java:370)
+	at org.apache.solr.parser.SolrQueryParserBase.getFieldQuery(SolrQueryParserBase.java:762)
+	at org.apache.solr.parser.SolrQueryParserBase.handleBareTokenQuery(SolrQueryParserBase.java:546)
+	at org.apache.solr.parser.QueryParser.Term(QueryParser.java:299)
+	at org.apache.solr.parser.QueryParser.Clause(QueryParser.java:185)
+	at org.apache.solr.parser.QueryParser.Query(QueryParser.java:107)
+	at org.apache.solr.parser.QueryParser.TopLevelQuery(QueryParser.java:96)
+	at org.apache.solr.parser.SolrQueryParserBase.parse(SolrQueryParserBase.java:151)
+	at org.apache.solr.search.LuceneQParser.parse(LuceneQParser.java:50)
+	at org.apache.solr.search.QParser.getQuery(QParser.java:141)
+	at org.apache.solr.handler.component.QueryComponent.prepare(QueryComponent.java:158)
+	at org.apache.solr.handler.component.SearchHandler.handleRequestBody(SearchHandler.java:251)
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:143)
+	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2068)
+	at org.apache.solr.servlet.HttpSolrCall.execute(HttpSolrCall.java:669)
+	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:462)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:214)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:179)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:585)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:577)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:223)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1127)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1061)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:215)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:110)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97)
+	at org.eclipse.jetty.server.Server.handle(Server.java:499)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:310)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:257)
+	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555)
+	at java.lang.Thread.run(Thread.java:745)
+
+2015-10-19 21:40:17.151 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={q=title:hello&_=1445290817147&wt=json} status=400 QTime=1 
+2015-10-19 21:45:41.619 INFO  (qtp1223656947-20) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={indexInfo=false&_=1445291141615&wt=json} status=0 QTime=1 
+2015-10-19 21:45:41.683 INFO  (qtp1223656947-14) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/system params={_=1445291141674&wt=json} status=0 QTime=7 
+2015-10-19 21:45:50.709 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={indent=true&q=hello&_=1445291150705&wt=json} hits=0 status=0 QTime=1 
+2015-10-19 21:46:19.335 ERROR (qtp1223656947-13) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.menu-top.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.menu-top.html]
+2015-10-19 21:46:19.335 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.menu-top.html&_=1445291179333&contentType=text/html;charset%3Dutf-8} status=404 QTime=0 
+2015-10-19 21:46:19.339 ERROR (qtp1223656947-20) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.menu-bottom.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.menu-bottom.html]
+2015-10-19 21:46:19.339 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.menu-bottom.html&_=1445291179337&contentType=text/html;charset%3Dutf-8} status=404 QTime=0 
+2015-10-19 21:46:19.379 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445291179369&show=index&wt=json} status=0 QTime=0 
+2015-10-19 21:46:19.394 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/replication params={command=details&_=1445291179382&wt=json} status=0 QTime=1 
+2015-10-19 21:46:19.405 ERROR (qtp1223656947-16) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.html]
+2015-10-19 21:46:19.405 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.html&_=1445291179396} status=404 QTime=0 
+2015-10-19 21:46:19.412 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={action=status&_=1445291179402&wt=json} status=503 QTime=0 
+2015-10-19 21:46:19.414 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/system params={_=1445291179391&wt=json} status=0 QTime=15 
+2015-10-19 21:46:34.561 INFO  (qtp1223656947-14) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={indexInfo=false&_=1445291194553&wt=json} status=0 QTime=0 
+2015-10-19 21:46:34.655 INFO  (qtp1223656947-18) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/system params={_=1445291194650&wt=json} status=0 QTime=3 
+2015-10-19 21:46:34.721 ERROR (qtp1223656947-17) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.menu-top.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.menu-top.html]
+2015-10-19 21:46:34.721 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.menu-top.html&_=1445291194719&contentType=text/html;charset%3Dutf-8} status=404 QTime=0 
+2015-10-19 21:46:34.726 ERROR (qtp1223656947-14) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.menu-bottom.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.menu-bottom.html]
+2015-10-19 21:46:34.726 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.menu-bottom.html&_=1445291194724&contentType=text/html;charset%3Dutf-8} status=404 QTime=0 
+2015-10-19 21:46:34.772 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445291194748&show=index&wt=json} status=0 QTime=0 
+2015-10-19 21:46:34.779 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/replication params={command=details&_=1445291194774&wt=json} status=0 QTime=1 
+2015-10-19 21:46:34.792 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/system params={_=1445291194780&wt=json} status=0 QTime=8 
+2015-10-19 21:46:34.794 ERROR (qtp1223656947-14) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.html]
+2015-10-19 21:46:34.795 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.html&_=1445291194787} status=404 QTime=0 
+2015-10-19 21:46:34.801 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={action=status&_=1445291194796&wt=json} status=503 QTime=0 
+2015-10-19 21:46:55.816 INFO  (qtp1223656947-15) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={indexInfo=false&_=1445291215814&wt=json} status=0 QTime=0 
+2015-10-19 21:46:55.887 INFO  (qtp1223656947-16) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/system params={_=1445291215880&wt=json} status=0 QTime=5 
+2015-10-19 21:46:55.971 ERROR (qtp1223656947-19) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.menu-top.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.menu-top.html]
+2015-10-19 21:46:55.971 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.menu-top.html&_=1445291215969&contentType=text/html;charset%3Dutf-8} status=404 QTime=0 
+2015-10-19 21:46:55.975 ERROR (qtp1223656947-15) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.menu-bottom.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.menu-bottom.html]
+2015-10-19 21:46:55.975 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.menu-bottom.html&_=1445291215973&contentType=text/html;charset%3Dutf-8} status=404 QTime=0 
+2015-10-19 21:46:56.020 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445291215999&show=index&wt=json} status=0 QTime=0 
+2015-10-19 21:46:56.026 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/replication params={command=details&_=1445291216022&wt=json} status=0 QTime=1 
+2015-10-19 21:46:56.038 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/system params={_=1445291216028&wt=json} status=0 QTime=7 
+2015-10-19 21:46:56.042 ERROR (qtp1223656947-15) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.html]
+2015-10-19 21:46:56.043 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.html&_=1445291216034} status=404 QTime=0 
+2015-10-19 21:46:56.046 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={action=status&_=1445291216041&wt=json} status=503 QTime=0 
+2015-10-19 21:47:33.795 INFO  (ShutdownMonitor) [   ] o.e.j.s.ServerConnector Stopped ServerConnector@3fde1ed4{HTTP/1.1}{0.0.0.0:8983}
+2015-10-19 21:47:33.796 INFO  (ShutdownMonitor) [   ] o.a.s.c.CoreContainer Shutting down CoreContainer instance=706076316
+2015-10-19 21:47:33.798 INFO  (ShutdownMonitor) [   x:cloudwiki] o.a.s.c.SolrCore [cloudwiki]  CLOSING SolrCore org.apache.solr.core.SolrCore@785d0b86
+2015-10-19 21:47:33.798 INFO  (ShutdownMonitor) [   x:cloudwiki] o.a.s.u.UpdateHandler closing DirectUpdateHandler2{commits=3,autocommit maxTime=15000ms,autocommits=0,soft autocommits=0,optimizes=2,rollbacks=0,expungeDeletes=0,docsPending=0,adds=0,deletesById=0,deletesByQuery=0,errors=0,cumulative_adds=3,cumulative_deletesById=0,cumulative_deletesByQuery=0,cumulative_errors=0,transaction_logs_total_size=357,transaction_logs_total_number=3}
+2015-10-19 21:47:33.800 INFO  (ShutdownMonitor) [   x:cloudwiki] o.a.s.u.SolrCoreState Closing SolrCoreState
+2015-10-19 21:47:33.800 INFO  (ShutdownMonitor) [   x:cloudwiki] o.a.s.u.DefaultSolrCoreState SolrCoreState ref count has reached 0 - closing IndexWriter
+2015-10-19 21:47:33.800 INFO  (ShutdownMonitor) [   x:cloudwiki] o.a.s.u.DefaultSolrCoreState closing IndexWriter with IndexWriterCloser
+2015-10-19 21:47:33.805 INFO  (ShutdownMonitor) [   x:cloudwiki] o.a.s.c.SolrCore [cloudwiki] Closing main searcher on request.
+2015-10-19 21:47:33.812 INFO  (ShutdownMonitor) [   x:cloudwiki] o.a.s.c.CachingDirectoryFactory Closing NRTCachingDirectoryFactory - 2 directories currently being tracked
+2015-10-19 21:47:33.813 INFO  (ShutdownMonitor) [   x:cloudwiki] o.a.s.c.CachingDirectoryFactory looking to close /home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data [CachedDir<<refCount=0;path=/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data;done=false>>]
+2015-10-19 21:47:33.813 INFO  (ShutdownMonitor) [   x:cloudwiki] o.a.s.c.CachingDirectoryFactory Closing directory: /home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data
+2015-10-19 21:47:33.813 INFO  (ShutdownMonitor) [   x:cloudwiki] o.a.s.c.CachingDirectoryFactory looking to close /home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/index [CachedDir<<refCount=0;path=/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/index;done=false>>]
+2015-10-19 21:47:33.813 INFO  (ShutdownMonitor) [   x:cloudwiki] o.a.s.c.CachingDirectoryFactory Closing directory: /home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/index
+2015-10-19 21:47:33.819 INFO  (ShutdownMonitor) [   x:cloudwiki] o.e.j.s.h.ContextHandler Stopped o.e.j.w.WebAppContext@9abf05c{/solr,file:/home/nikhin/Downloads/solr-5.3.1/server/solr-webapp/webapp/,UNAVAILABLE}{/home/nikhin/Downloads/solr-5.3.1/server/solr-webapp/webapp}

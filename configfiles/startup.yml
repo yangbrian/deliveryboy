@@ -1,0 +1,5 @@
+---
+- hosts: nodeservers
+  tasks:
+   - name: Add pm2 to startup
+     command: env PATH=$PATH:/usr/local/bin pm2 startup -u root

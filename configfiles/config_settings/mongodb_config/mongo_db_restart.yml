@@ -1,0 +1,5 @@
+---
+    tasks:
+    - name: shutdown dbs and restart again
+    - include: mongo_db_shutdown.yml
+    - include: mongo_db_start.yml

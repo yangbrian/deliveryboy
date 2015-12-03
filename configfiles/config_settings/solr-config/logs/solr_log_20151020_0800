@@ -1,0 +1,339 @@
+2015-10-19 22:58:44.478 INFO  (main) [   ] o.e.j.u.log Logging initialized @430ms
+2015-10-19 22:58:44.968 INFO  (main) [   ] o.e.j.s.Server jetty-9.2.11.v20150529
+2015-10-19 22:58:44.983 WARN  (main) [   ] o.e.j.s.h.RequestLogHandler !RequestLog
+2015-10-19 22:58:44.986 INFO  (main) [   ] o.e.j.d.p.ScanningAppProvider Deployment monitor [file:/home/nikhin/Downloads/solr-5.3.1/server/contexts/] at interval 0
+2015-10-19 22:58:46.029 INFO  (main) [   ] o.e.j.w.StandardDescriptorProcessor NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
+2015-10-19 22:58:46.061 WARN  (main) [   ] o.e.j.s.SecurityHandler ServletContext@o.e.j.w.WebAppContext@9abf05c{/solr,file:/home/nikhin/Downloads/solr-5.3.1/server/solr-webapp/webapp/,STARTING}{/home/nikhin/Downloads/solr-5.3.1/server/solr-webapp/webapp} has uncovered http methods for path: /
+2015-10-19 22:58:46.070 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter SolrDispatchFilter.init(): WebAppClassLoader=348398109@14c4221d
+2015-10-19 22:58:46.085 INFO  (main) [   ] o.a.s.c.SolrResourceLoader JNDI not configured for solr (NoInitialContextEx)
+2015-10-19 22:58:46.085 INFO  (main) [   ] o.a.s.c.SolrResourceLoader using system property solr.solr.home: /home/nikhin/Downloads/solr-5.3.1/server/solr
+2015-10-19 22:58:46.087 INFO  (main) [   ] o.a.s.c.SolrResourceLoader new SolrResourceLoader for directory: '/home/nikhin/Downloads/solr-5.3.1/server/solr/'
+2015-10-19 22:58:46.386 INFO  (main) [   ] o.a.s.c.SolrXmlConfig Loading container configuration from /home/nikhin/Downloads/solr-5.3.1/server/solr/solr.xml
+2015-10-19 22:58:46.509 INFO  (main) [   ] o.a.s.c.CoresLocator Config-defined core root directory: /home/nikhin/Downloads/solr-5.3.1/server/solr
+2015-10-19 22:58:46.546 INFO  (main) [   ] o.a.s.c.CoreContainer New CoreContainer 103411218
+2015-10-19 22:58:46.547 INFO  (main) [   ] o.a.s.c.CoreContainer Loading cores into CoreContainer [instanceDir=/home/nikhin/Downloads/solr-5.3.1/server/solr/]
+2015-10-19 22:58:46.547 INFO  (main) [   ] o.a.s.c.CoreContainer loading shared library: /home/nikhin/Downloads/solr-5.3.1/server/solr/lib
+2015-10-19 22:58:46.547 WARN  (main) [   ] o.a.s.c.SolrResourceLoader Can't find (or read) directory to add to classloader: lib (resolved as: /home/nikhin/Downloads/solr-5.3.1/server/solr/lib).
+2015-10-19 22:58:46.569 INFO  (main) [   ] o.a.s.h.c.HttpShardHandlerFactory created with socketTimeout : 600000,connTimeout : 60000,maxConnectionsPerHost : 20,maxConnections : 10000,corePoolSize : 0,maximumPoolSize : 2147483647,maxThreadIdleTime : 5,sizeOfQueue : -1,fairnessPolicy : false,useRetries : false,
+2015-10-19 22:58:47.180 INFO  (main) [   ] o.a.s.u.UpdateShardHandler Creating UpdateShardHandler HTTP client with params: socketTimeout=600000&connTimeout=60000&retry=true
+2015-10-19 22:58:47.185 INFO  (main) [   ] o.a.s.l.LogWatcher SLF4J impl is org.slf4j.impl.Log4jLoggerFactory
+2015-10-19 22:58:47.186 INFO  (main) [   ] o.a.s.l.LogWatcher Registering Log Listener [Log4j (org.slf4j.impl.Log4jLoggerFactory)]
+2015-10-19 22:58:47.188 INFO  (main) [   ] o.a.s.c.CoreContainer Security conf doesn't exist. Skipping setup for authorization module.
+2015-10-19 22:58:47.188 INFO  (main) [   ] o.a.s.c.CoreContainer No authentication plugin used.
+2015-10-19 22:58:47.219 INFO  (main) [   ] o.a.s.c.CoresLocator Looking for core definitions underneath /home/nikhin/Downloads/solr-5.3.1/server/solr
+2015-10-19 22:58:47.238 INFO  (main) [   ] o.a.s.c.SolrCore Created CoreDescriptor: {name=cloudwiki, config=solrconfig.xml, transient=false, schema=schema.xml, loadOnStartup=true, configSetProperties=configsetprops.json, instanceDir=/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki, absoluteInstDir=/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/, dataDir=data/}
+2015-10-19 22:58:47.239 INFO  (main) [   ] o.a.s.c.CoresLocator Found core cloudwiki in /home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/
+2015-10-19 22:58:47.243 INFO  (main) [   ] o.a.s.c.CoresLocator Found 1 core definitions
+2015-10-19 22:58:47.247 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader new SolrResourceLoader for directory: '/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/'
+2015-10-19 22:58:47.254 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter user.dir=/home/nikhin/Downloads/solr-5.3.1/server
+2015-10-19 22:58:47.254 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter SolrDispatchFilter.init() done
+2015-10-19 22:58:47.295 INFO  (main) [   ] o.e.j.s.h.ContextHandler Started o.e.j.w.WebAppContext@9abf05c{/solr,file:/home/nikhin/Downloads/solr-5.3.1/server/solr-webapp/webapp/,AVAILABLE}{/home/nikhin/Downloads/solr-5.3.1/server/solr-webapp/webapp}
+2015-10-19 22:58:47.342 INFO  (main) [   ] o.e.j.s.ServerConnector Started ServerConnector@53b646f3{HTTP/1.1}{0.0.0.0:8983}
+2015-10-19 22:58:47.345 INFO  (main) [   ] o.e.j.s.Server Started @3296ms
+2015-10-19 22:58:47.423 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrConfig current version of requestparams : 0
+2015-10-19 22:58:47.446 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrConfig Adding specified lib dirs to ClassLoader
+2015-10-19 22:58:47.462 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/vorbis-java-tika-0.6.jar' to classloader
+2015-10-19 22:58:47.462 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/jempbox-1.8.8.jar' to classloader
+2015-10-19 22:58:47.462 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/apache-mime4j-core-0.7.2.jar' to classloader
+2015-10-19 22:58:47.462 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/bcmail-jdk15-1.45.jar' to classloader
+2015-10-19 22:58:47.462 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/vorbis-java-core-0.6.jar' to classloader
+2015-10-19 22:58:47.462 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/jdom-1.0.jar' to classloader
+2015-10-19 22:58:47.463 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/aspectjrt-1.8.0.jar' to classloader
+2015-10-19 22:58:47.463 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/tagsoup-1.2.1.jar' to classloader
+2015-10-19 22:58:47.463 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/boilerpipe-1.1.0.jar' to classloader
+2015-10-19 22:58:47.463 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/metadata-extractor-2.6.2.jar' to classloader
+2015-10-19 22:58:47.463 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/poi-3.11.jar' to classloader
+2015-10-19 22:58:47.463 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/tika-core-1.7.jar' to classloader
+2015-10-19 22:58:47.463 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/tika-xmp-1.7.jar' to classloader
+2015-10-19 22:58:47.463 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/icu4j-54.1.jar' to classloader
+2015-10-19 22:58:47.464 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/fontbox-1.8.8.jar' to classloader
+2015-10-19 22:58:47.464 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/isoparser-1.0.2.jar' to classloader
+2015-10-19 22:58:47.464 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/xmpcore-5.1.2.jar' to classloader
+2015-10-19 22:58:47.464 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/poi-ooxml-schemas-3.11.jar' to classloader
+2015-10-19 22:58:47.464 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/jmatio-1.0.jar' to classloader
+2015-10-19 22:58:47.464 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/poi-scratchpad-3.11.jar' to classloader
+2015-10-19 22:58:47.465 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/xmlbeans-2.6.0.jar' to classloader
+2015-10-19 22:58:47.465 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/pdfbox-1.8.8.jar' to classloader
+2015-10-19 22:58:47.465 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/apache-mime4j-dom-0.7.2.jar' to classloader
+2015-10-19 22:58:47.465 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/juniversalchardet-1.0.3.jar' to classloader
+2015-10-19 22:58:47.465 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/tika-parsers-1.7.jar' to classloader
+2015-10-19 22:58:47.465 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/commons-compress-1.8.1.jar' to classloader
+2015-10-19 22:58:47.465 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/bcprov-jdk15-1.45.jar' to classloader
+2015-10-19 22:58:47.465 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/xz-1.5.jar' to classloader
+2015-10-19 22:58:47.472 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/tika-java7-1.7.jar' to classloader
+2015-10-19 22:58:47.472 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/xercesImpl-2.9.1.jar' to classloader
+2015-10-19 22:58:47.472 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/java-libpst-0.8.1.jar' to classloader
+2015-10-19 22:58:47.472 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/rome-1.0.jar' to classloader
+2015-10-19 22:58:47.472 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/extraction/lib/poi-ooxml-3.11.jar' to classloader
+2015-10-19 22:58:47.474 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/dist/solr-cell-5.3.1.jar' to classloader
+2015-10-19 22:58:47.476 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/clustering/lib/mahout-math-0.6.jar' to classloader
+2015-10-19 22:58:47.477 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/clustering/lib/jackson-core-asl-1.9.13.jar' to classloader
+2015-10-19 22:58:47.477 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/clustering/lib/attributes-binder-1.2.1.jar' to classloader
+2015-10-19 22:58:47.477 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/clustering/lib/carrot2-mini-3.9.0.jar' to classloader
+2015-10-19 22:58:47.477 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/clustering/lib/mahout-collections-1.0.jar' to classloader
+2015-10-19 22:58:47.477 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/clustering/lib/jackson-mapper-asl-1.9.13.jar' to classloader
+2015-10-19 22:58:47.477 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/clustering/lib/hppc-0.5.2.jar' to classloader
+2015-10-19 22:58:47.477 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/clustering/lib/simple-xml-2.7.jar' to classloader
+2015-10-19 22:58:47.478 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/dist/solr-clustering-5.3.1.jar' to classloader
+2015-10-19 22:58:47.481 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/langid/lib/langdetect-1.1-20120112.jar' to classloader
+2015-10-19 22:58:47.481 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/langid/lib/jsonic-1.2.7.jar' to classloader
+2015-10-19 22:58:47.482 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/dist/solr-langid-5.3.1.jar' to classloader
+2015-10-19 22:58:47.482 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/velocity/lib/commons-beanutils-1.8.3.jar' to classloader
+2015-10-19 22:58:47.482 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/velocity/lib/commons-collections-3.2.1.jar' to classloader
+2015-10-19 22:58:47.482 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/velocity/lib/velocity-tools-2.0.jar' to classloader
+2015-10-19 22:58:47.483 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/contrib/velocity/lib/velocity-1.7.jar' to classloader
+2015-10-19 22:58:47.485 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrResourceLoader Adding 'file:/home/nikhin/Downloads/solr-5.3.1/dist/solr-velocity-5.3.1.jar' to classloader
+2015-10-19 22:58:47.928 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.SolrConfig Using Lucene MatchVersion: 5.3.1
+2015-10-19 22:58:48.364 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.Config Loaded SolrConfig: solrconfig.xml
+2015-10-19 22:58:48.384 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.IndexSchema Reading Solr Schema from /home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/managed-schema
+2015-10-19 22:58:48.532 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.IndexSchema [cloudwiki] Schema name=example-data-driven-schema
+2015-10-19 22:58:49.395 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.IndexSchema unique key field: id
+2015-10-19 22:58:49.782 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.FileExchangeRateProvider Reloading exchange rates from file currency.xml
+2015-10-19 22:58:49.789 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.s.FileExchangeRateProvider Reloading exchange rates from file currency.xml
+2015-10-19 22:58:49.905 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.ConfigSetProperties Did not find ConfigSet properties, assuming default properties: Can't find resource 'configsetprops.json' in classpath or '/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf'
+2015-10-19 22:58:49.910 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.CoreContainer Creating SolrCore 'cloudwiki' using configuration from instancedir /home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/
+2015-10-19 22:58:49.911 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.SolrCore solr.NRTCachingDirectoryFactory
+2015-10-19 22:58:49.951 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.SolrCore [[cloudwiki] ] Opening new SolrCore at [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/], dataDir=[null]
+2015-10-19 22:58:49.952 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.JmxMonitoredMap No JMX servers found, not exposing Solr information with JMX.
+2015-10-19 22:58:49.961 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.SolrCore [[cloudwiki] ] Added SolrEventListener for newSearcher: [org.apache.solr.core.QuerySenderListener{queries=[]}]
+2015-10-19 22:58:49.961 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.SolrCore [[cloudwiki] ] Added SolrEventListener for firstSearcher: [org.apache.solr.core.QuerySenderListener{queries=[]}]
+2015-10-19 22:58:50.027 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.CachingDirectoryFactory return new directory for /home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data
+2015-10-19 22:58:50.048 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.SolrCore New index directory detected: old=null new=/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/index/
+2015-10-19 22:58:50.049 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.CachingDirectoryFactory return new directory for /home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/index
+2015-10-19 22:58:50.121 INFO  (OldIndexDirectoryCleanupThreadForCore-cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore Looking for old index directories to cleanup for core cloudwiki in /home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/
+2015-10-19 22:58:50.127 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.PluginBag queryResponseWriter : 'velocity' created with startup=lazy 
+2015-10-19 22:58:50.151 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.r.XSLTResponseWriter xsltCacheLifetimeSeconds=5
+2015-10-19 22:58:50.343 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.u.p.UpdateRequestProcessorChain creating updateRequestProcessorChain "add-unknown-fields-to-the-schema"
+2015-10-19 22:58:50.466 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.SolrCore no updateRequestProcessorChain defined as default, creating implicit default
+2015-10-19 22:58:50.509 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2015-10-19 22:58:50.516 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2015-10-19 22:58:50.516 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2015-10-19 22:58:50.517 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.h.l.XMLLoader xsltCacheLifetimeSeconds=60
+2015-10-19 22:58:50.534 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.PluginBag requestHandler : '/update/extract' created with startup=lazy 
+2015-10-19 22:58:50.537 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.PluginBag requestHandler : '/analysis/field' created with startup=lazy 
+2015-10-19 22:58:50.538 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.PluginBag requestHandler : '/analysis/document' created with startup=lazy 
+2015-10-19 22:58:50.540 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.PluginBag requestHandler : '/spell' created with startup=lazy 
+2015-10-19 22:58:50.540 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.PluginBag requestHandler : '/tvrh' created with startup=lazy 
+2015-10-19 22:58:50.540 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.PluginBag requestHandler : '/terms' created with startup=lazy 
+2015-10-19 22:58:50.540 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.PluginBag requestHandler : '/elevate' created with startup=lazy 
+2015-10-19 22:58:50.541 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.RequestHandlers Registered paths: /admin/logging,/admin/plugins,/admin/system,/admin/segments,/admin/file,/admin/luke,/update,/terms,/stream,/admin/threads,/schema,/query,/replication,/analysis/field,/browse,/admin/ping,/update/json/docs,/analysis/document,/select,/admin/mbeans,/update/csv,/elevate,/get,/update/json,/export,/update/extract,/admin/properties,/tvrh,/spell,/config,/debug/dump
+2015-10-19 22:58:50.543 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.SolrCore Using default statsCache cache: org.apache.solr.search.stats.LocalStatsCache
+2015-10-19 22:58:50.552 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2015-10-19 22:58:50.552 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2015-10-19 22:58:50.568 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.SolrCore Hard AutoCommit: if uncommited for 15000ms; 
+2015-10-19 22:58:50.568 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.SolrCore Soft AutoCommit: disabled
+2015-10-19 22:58:50.631 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.SolrCore SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@5f86f40f; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_6,generation=6}
+2015-10-19 22:58:50.631 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.SolrCore newest commit generation = 6
+2015-10-19 22:58:50.843 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.s.SolrIndexSearcher Opening Searcher@446659b6[cloudwiki] main
+2015-10-19 22:58:50.863 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf
+2015-10-19 22:58:50.863 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.r.RestManager Initializing RestManager with initArgs: {storageDir=/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf}
+2015-10-19 22:58:50.875 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.r.ManagedResourceStorage Reading _rest_managed.json using file:dir=/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf
+2015-10-19 22:58:50.875 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.r.RestManager Initializing 0 registered ManagedResources
+2015-10-19 22:58:50.898 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
+2015-10-19 22:58:50.906 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.s.DirectSolrSpellChecker init: {name=default,field=text,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+2015-10-19 22:58:50.924 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.h.c.SpellCheckComponent No queryConverter defined, using default converter
+2015-10-19 22:58:50.927 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.h.c.QueryElevationComponent Loading QueryElevation from: /home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/elevate.xml
+2015-10-19 22:58:50.964 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.h.ReplicationHandler Commits will be reserved for  10000
+2015-10-19 22:58:50.968 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore QuerySenderListener sending requests to Searcher@446659b6[cloudwiki] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_2(5.3.1):C2) Uninverting(_3(5.3.1):C1) Uninverting(_4(5.3.1):C1)))}
+2015-10-19 22:58:50.968 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore QuerySenderListener done.
+2015-10-19 22:58:50.968 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2015-10-19 22:58:50.968 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: wordbreak
+2015-10-19 22:58:50.969 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore [cloudwiki] Registered new searcher Searcher@446659b6[cloudwiki] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_2(5.3.1):C2) Uninverting(_3(5.3.1):C1) Uninverting(_4(5.3.1):C1)))}
+2015-10-19 22:58:50.979 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.u.UpdateLog Looking up max value of version field to seed version buckets
+2015-10-19 22:58:50.985 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.u.VersionInfo Refreshing highest value of _version_ for 65536 version buckets from index
+2015-10-19 22:58:51.018 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.u.VersionInfo Found MAX value 1515498743291445248 from Terms for _version_ in index
+2015-10-19 22:58:51.027 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.u.UpdateLog Took 48 ms to seed version buckets with highest version 1515498743291445248
+2015-10-19 22:58:51.028 INFO  (coreLoadExecutor-6-thread-1) [   x:cloudwiki] o.a.s.c.CoreContainer registering core: cloudwiki
+2015-10-19 22:58:51.301 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=20 
+2015-10-19 23:03:28.272 INFO  (qtp1223656947-13) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={indexInfo=false&_=1445295808267&wt=json} status=0 QTime=1 
+2015-10-19 23:03:28.390 INFO  (qtp1223656947-18) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/system params={_=1445295808349&wt=json} status=0 QTime=36 
+2015-10-19 23:03:28.426 INFO  (qtp1223656947-20) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/cores params={_=1445295808421&wt=json} status=0 QTime=2 
+2015-10-19 23:03:32.697 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=31 
+2015-10-19 23:04:40.121 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=3 
+2015-10-19 23:04:59.355 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={_=1445295899319&show=schema&wt=json} status=0 QTime=23 
+2015-10-19 23:05:01.023 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445295901005&show=index&wt=json} status=0 QTime=0 
+2015-10-19 23:05:01.056 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/replication params={command=details&_=1445295901031&wt=json} status=0 QTime=19 
+2015-10-19 23:05:01.076 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/system params={_=1445295901043&wt=json} status=0 QTime=13 
+2015-10-19 23:05:01.096 ERROR (qtp1223656947-18) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.html]
+2015-10-19 23:05:01.103 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.html&_=1445295901068} status=404 QTime=8 
+2015-10-19 23:05:01.134 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={action=status&_=1445295901093&wt=json} status=503 QTime=1 
+2015-10-19 23:05:02.606 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/mbeans params={cat=QUERYHANDLER&_=1445295902602&wt=json} status=0 QTime=2 
+2015-10-19 23:05:05.114 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.u.p.LogUpdateProcessor [cloudwiki] webapp=/solr path=/update params={wt=json} {add=[change.me (1515502598942097408)]} 0 69
+2015-10-19 23:05:06.116 INFO  (commitScheduler-11-thread-1) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=true,prepareCommit=false}
+2015-10-19 23:05:06.184 INFO  (commitScheduler-11-thread-1) [   x:cloudwiki] o.a.s.s.SolrIndexSearcher Opening Searcher@628152ac[cloudwiki] main
+2015-10-19 23:05:06.186 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore QuerySenderListener sending requests to Searcher@628152ac[cloudwiki] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_2(5.3.1):C2) Uninverting(_3(5.3.1):C1) Uninverting(_5(5.3.1):C1)))}
+2015-10-19 23:05:06.186 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore QuerySenderListener done.
+2015-10-19 23:05:06.186 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore [cloudwiki] Registered new searcher Searcher@628152ac[cloudwiki] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_2(5.3.1):C2) Uninverting(_3(5.3.1):C1) Uninverting(_5(5.3.1):C1)))}
+2015-10-19 23:05:06.188 INFO  (commitScheduler-11-thread-1) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:05:07.780 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.u.p.LogUpdateProcessor [cloudwiki] webapp=/solr path=/update params={wt=json} {add=[change.me (1515502601793175552)]} 0 7
+2015-10-19 23:05:08.731 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.u.p.LogUpdateProcessor [cloudwiki] webapp=/solr path=/update params={wt=json} {add=[change.me (1515502602792468480)]} 0 2
+2015-10-19 23:05:08.780 INFO  (commitScheduler-11-thread-1) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=true,prepareCommit=false}
+2015-10-19 23:05:08.793 INFO  (commitScheduler-11-thread-1) [   x:cloudwiki] o.a.s.s.SolrIndexSearcher Opening Searcher@46725a8f[cloudwiki] main
+2015-10-19 23:05:08.794 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore QuerySenderListener sending requests to Searcher@46725a8f[cloudwiki] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_2(5.3.1):C2) Uninverting(_3(5.3.1):C1) Uninverting(_6(5.3.1):C2/1:delGen=1)))}
+2015-10-19 23:05:08.794 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore QuerySenderListener done.
+2015-10-19 23:05:08.794 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore [cloudwiki] Registered new searcher Searcher@46725a8f[cloudwiki] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_2(5.3.1):C2) Uninverting(_3(5.3.1):C1) Uninverting(_6(5.3.1):C2/1:delGen=1)))}
+2015-10-19 23:05:08.795 INFO  (commitScheduler-11-thread-1) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:05:09.620 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.u.p.LogUpdateProcessor [cloudwiki] webapp=/solr path=/update params={wt=json} {add=[change.me (1515502603724652544)]} 0 2
+2015-10-19 23:05:10.361 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.u.p.LogUpdateProcessor [cloudwiki] webapp=/solr path=/update params={wt=json} {add=[change.me (1515502604501647360)]} 0 1
+2015-10-19 23:05:10.621 INFO  (commitScheduler-11-thread-1) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=true,prepareCommit=false}
+2015-10-19 23:05:10.644 INFO  (commitScheduler-11-thread-1) [   x:cloudwiki] o.a.s.s.SolrIndexSearcher Opening Searcher@2f5b3bf0[cloudwiki] main
+2015-10-19 23:05:10.647 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore QuerySenderListener sending requests to Searcher@2f5b3bf0[cloudwiki] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_2(5.3.1):C2) Uninverting(_3(5.3.1):C1) Uninverting(_7(5.3.1):C2/1:delGen=1)))}
+2015-10-19 23:05:10.647 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore QuerySenderListener done.
+2015-10-19 23:05:10.648 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore [cloudwiki] Registered new searcher Searcher@2f5b3bf0[cloudwiki] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_2(5.3.1):C2) Uninverting(_3(5.3.1):C1) Uninverting(_7(5.3.1):C2/1:delGen=1)))}
+2015-10-19 23:05:10.651 INFO  (commitScheduler-11-thread-1) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:05:20.113 INFO  (commitScheduler-10-thread-1) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=false,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-19 23:05:20.195 INFO  (commitScheduler-10-thread-1) [   x:cloudwiki] o.a.s.c.SolrCore SolrDeletionPolicy.onCommit: commits: num=2
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@5f86f40f; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_6,generation=6}
+	commit{dir=NRTCachingDirectory(MMapDirectory@/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@5f86f40f; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_7,generation=7}
+2015-10-19 23:05:20.200 INFO  (commitScheduler-10-thread-1) [   x:cloudwiki] o.a.s.c.SolrCore newest commit generation = 7
+2015-10-19 23:05:20.207 INFO  (commitScheduler-10-thread-1) [   x:cloudwiki] o.a.s.s.SolrIndexSearcher Opening Searcher@b261941[cloudwiki] realtime
+2015-10-19 23:05:20.209 INFO  (commitScheduler-10-thread-1) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:05:20.248 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={indent=true&q=*:*&_=1445295920112&wt=json} hits=4 status=0 QTime=120 
+2015-10-19 23:05:25.795 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={q=*:*&_=1445295925791&wt=json} hits=4 status=0 QTime=0 
+2015-10-19 23:07:44.855 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=3 
+2015-10-19 23:07:45.125 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-19 23:07:45.125 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.UpdateHandler No uncommitted changes. Skipping IW.commit.
+2015-10-19 23:07:45.127 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.s.SolrIndexSearcher Opening Searcher@2437f045[cloudwiki] main
+2015-10-19 23:07:45.129 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore QuerySenderListener sending requests to Searcher@2437f045[cloudwiki] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_2(5.3.1):C2) Uninverting(_3(5.3.1):C1) Uninverting(_7(5.3.1):C2/1:delGen=1)))}
+2015-10-19 23:07:45.129 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore QuerySenderListener done.
+2015-10-19 23:07:45.129 INFO  (searcherExecutor-7-thread-1-processing-x:cloudwiki) [   x:cloudwiki] o.a.s.c.SolrCore [cloudwiki] Registered new searcher Searcher@2437f045[cloudwiki] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_2(5.3.1):C2) Uninverting(_3(5.3.1):C1) Uninverting(_7(5.3.1):C2/1:delGen=1)))}
+2015-10-19 23:07:45.130 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:07:45.131 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-19 23:07:45.131 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.UpdateHandler No uncommitted changes. Skipping IW.commit.
+2015-10-19 23:07:45.132 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.SolrCore SolrIndexSearcher has not changed - not re-opening: org.apache.solr.search.SolrIndexSearcher
+2015-10-19 23:07:45.132 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:07:45.132 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.p.LogUpdateProcessor [cloudwiki] webapp=/solr path=/update params={commit=true} {commit=,commit=} 0 179
+2015-10-19 23:07:45.153 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={sort=_ts+desc&q=*:*&wt=json&rows=1} hits=4 status=0 QTime=15 
+2015-10-19 23:08:19.467 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=5 
+2015-10-19 23:08:19.520 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-19 23:08:19.520 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.u.UpdateHandler No uncommitted changes. Skipping IW.commit.
+2015-10-19 23:08:19.522 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.SolrCore SolrIndexSearcher has not changed - not re-opening: org.apache.solr.search.SolrIndexSearcher
+2015-10-19 23:08:19.522 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:08:19.522 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-19 23:08:19.523 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.u.UpdateHandler No uncommitted changes. Skipping IW.commit.
+2015-10-19 23:08:19.523 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.SolrCore SolrIndexSearcher has not changed - not re-opening: org.apache.solr.search.SolrIndexSearcher
+2015-10-19 23:08:19.523 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:08:19.529 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.u.p.LogUpdateProcessor [cloudwiki] webapp=/solr path=/update params={commit=true} {commit=,commit=} 0 10
+2015-10-19 23:08:19.544 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={sort=_ts+desc&q=*:*&wt=json&rows=1} hits=4 status=0 QTime=2 
+2015-10-19 23:08:47.141 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=2 
+2015-10-19 23:08:47.174 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-19 23:08:47.177 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.u.UpdateHandler No uncommitted changes. Skipping IW.commit.
+2015-10-19 23:08:47.177 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.SolrCore SolrIndexSearcher has not changed - not re-opening: org.apache.solr.search.SolrIndexSearcher
+2015-10-19 23:08:47.177 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:08:47.178 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-19 23:08:47.178 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.u.UpdateHandler No uncommitted changes. Skipping IW.commit.
+2015-10-19 23:08:47.178 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.SolrCore SolrIndexSearcher has not changed - not re-opening: org.apache.solr.search.SolrIndexSearcher
+2015-10-19 23:08:47.185 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:08:47.185 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.u.p.LogUpdateProcessor [cloudwiki] webapp=/solr path=/update params={commit=true} {commit=,commit=} 0 11
+2015-10-19 23:08:47.203 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={sort=_ts+desc&q=*:*&wt=json&rows=1} hits=4 status=0 QTime=2 
+2015-10-19 23:09:14.375 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=3 
+2015-10-19 23:09:14.395 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-19 23:09:14.396 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.u.UpdateHandler No uncommitted changes. Skipping IW.commit.
+2015-10-19 23:09:14.396 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.SolrCore SolrIndexSearcher has not changed - not re-opening: org.apache.solr.search.SolrIndexSearcher
+2015-10-19 23:09:14.396 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:09:14.396 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-19 23:09:14.397 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.u.UpdateHandler No uncommitted changes. Skipping IW.commit.
+2015-10-19 23:09:14.397 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.SolrCore SolrIndexSearcher has not changed - not re-opening: org.apache.solr.search.SolrIndexSearcher
+2015-10-19 23:09:14.397 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:09:14.397 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.u.p.LogUpdateProcessor [cloudwiki] webapp=/solr path=/update params={commit=true} {commit=,commit=} 0 2
+2015-10-19 23:09:14.411 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={sort=_ts+desc&q=*:*&wt=json&rows=1} hits=4 status=0 QTime=0 
+2015-10-19 23:09:19.091 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=3 
+2015-10-19 23:09:19.111 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-19 23:09:19.111 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.u.UpdateHandler No uncommitted changes. Skipping IW.commit.
+2015-10-19 23:09:19.111 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.SolrCore SolrIndexSearcher has not changed - not re-opening: org.apache.solr.search.SolrIndexSearcher
+2015-10-19 23:09:19.111 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:09:19.112 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-19 23:09:19.112 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.u.UpdateHandler No uncommitted changes. Skipping IW.commit.
+2015-10-19 23:09:19.112 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.SolrCore SolrIndexSearcher has not changed - not re-opening: org.apache.solr.search.SolrIndexSearcher
+2015-10-19 23:09:19.112 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:09:19.112 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.u.p.LogUpdateProcessor [cloudwiki] webapp=/solr path=/update params={commit=true} {commit=,commit=} 0 2
+2015-10-19 23:09:19.126 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={sort=_ts+desc&q=*:*&wt=json&rows=1} hits=4 status=0 QTime=1 
+2015-10-19 23:09:26.310 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=3 
+2015-10-19 23:09:26.331 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-19 23:09:26.332 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.u.UpdateHandler No uncommitted changes. Skipping IW.commit.
+2015-10-19 23:09:26.332 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.SolrCore SolrIndexSearcher has not changed - not re-opening: org.apache.solr.search.SolrIndexSearcher
+2015-10-19 23:09:26.332 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:09:26.332 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-19 23:09:26.332 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.u.UpdateHandler No uncommitted changes. Skipping IW.commit.
+2015-10-19 23:09:26.333 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.SolrCore SolrIndexSearcher has not changed - not re-opening: org.apache.solr.search.SolrIndexSearcher
+2015-10-19 23:09:26.333 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:09:26.333 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.u.p.LogUpdateProcessor [cloudwiki] webapp=/solr path=/update params={commit=true} {commit=,commit=} 0 2
+2015-10-19 23:09:26.349 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={sort=_ts+desc&q=*:*&wt=json&rows=1} hits=4 status=0 QTime=1 
+2015-10-19 23:10:51.059 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=3 
+2015-10-19 23:10:51.078 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-19 23:10:51.078 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.u.UpdateHandler No uncommitted changes. Skipping IW.commit.
+2015-10-19 23:10:51.078 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.SolrCore SolrIndexSearcher has not changed - not re-opening: org.apache.solr.search.SolrIndexSearcher
+2015-10-19 23:10:51.079 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:10:51.079 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-19 23:10:51.079 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.u.UpdateHandler No uncommitted changes. Skipping IW.commit.
+2015-10-19 23:10:51.079 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.SolrCore SolrIndexSearcher has not changed - not re-opening: org.apache.solr.search.SolrIndexSearcher
+2015-10-19 23:10:51.079 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:10:51.080 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.u.p.LogUpdateProcessor [cloudwiki] webapp=/solr path=/update params={commit=true} {commit=,commit=} 0 2
+2015-10-19 23:10:51.103 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={sort=_ts+desc&q=*:*&wt=json&rows=1} hits=4 status=0 QTime=8 
+2015-10-19 23:11:10.260 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=13 
+2015-10-19 23:11:10.296 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-19 23:11:10.296 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.u.UpdateHandler No uncommitted changes. Skipping IW.commit.
+2015-10-19 23:11:10.296 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.SolrCore SolrIndexSearcher has not changed - not re-opening: org.apache.solr.search.SolrIndexSearcher
+2015-10-19 23:11:10.296 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:11:10.297 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-19 23:11:10.297 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.u.UpdateHandler No uncommitted changes. Skipping IW.commit.
+2015-10-19 23:11:10.297 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.SolrCore SolrIndexSearcher has not changed - not re-opening: org.apache.solr.search.SolrIndexSearcher
+2015-10-19 23:11:10.297 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:11:10.297 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.u.p.LogUpdateProcessor [cloudwiki] webapp=/solr path=/update params={commit=true} {commit=,commit=} 0 2
+2015-10-19 23:11:10.317 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={sort=_ts+desc&q=*:*&wt=json&rows=1} hits=4 status=0 QTime=1 
+2015-10-19 23:11:29.622 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=2 
+2015-10-19 23:11:52.039 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=2 
+2015-10-19 23:12:11.772 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=6 
+2015-10-19 23:12:11.793 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-19 23:12:11.793 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.UpdateHandler No uncommitted changes. Skipping IW.commit.
+2015-10-19 23:12:11.794 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.SolrCore SolrIndexSearcher has not changed - not re-opening: org.apache.solr.search.SolrIndexSearcher
+2015-10-19 23:12:11.794 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:12:11.794 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-19 23:12:11.794 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.UpdateHandler No uncommitted changes. Skipping IW.commit.
+2015-10-19 23:12:11.794 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.SolrCore SolrIndexSearcher has not changed - not re-opening: org.apache.solr.search.SolrIndexSearcher
+2015-10-19 23:12:11.794 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:12:11.794 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.p.LogUpdateProcessor [cloudwiki] webapp=/solr path=/update params={commit=true} {commit=,commit=} 0 2
+2015-10-19 23:12:11.807 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={sort=_ts+desc&q=*:*&wt=json&rows=1} hits=4 status=0 QTime=1 
+2015-10-19 23:13:55.332 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=8 
+2015-10-19 23:13:55.389 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-19 23:13:55.390 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.UpdateHandler No uncommitted changes. Skipping IW.commit.
+2015-10-19 23:13:55.393 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.SolrCore SolrIndexSearcher has not changed - not re-opening: org.apache.solr.search.SolrIndexSearcher
+2015-10-19 23:13:55.395 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:13:55.395 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.UpdateHandler start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2015-10-19 23:13:55.395 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.UpdateHandler No uncommitted changes. Skipping IW.commit.
+2015-10-19 23:13:55.396 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.SolrCore SolrIndexSearcher has not changed - not re-opening: org.apache.solr.search.SolrIndexSearcher
+2015-10-19 23:13:55.396 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.UpdateHandler end_commit_flush
+2015-10-19 23:13:55.396 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.u.p.LogUpdateProcessor [cloudwiki] webapp=/solr path=/update params={commit=true} {commit=,commit=} 0 7
+2015-10-19 23:13:55.410 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={sort=_ts+desc&q=*:*&wt=json&rows=1} hits=4 status=0 QTime=2 
+2015-10-19 23:14:59.188 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445296499155&show=index&wt=json} status=0 QTime=1 
+2015-10-19 23:14:59.213 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/replication params={command=details&_=1445296499203&wt=json} status=0 QTime=2 
+2015-10-19 23:14:59.246 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/system params={_=1445296499215&wt=json} status=0 QTime=17 
+2015-10-19 23:14:59.263 ERROR (qtp1223656947-13) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.html]
+2015-10-19 23:14:59.264 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.html&_=1445296499240} status=404 QTime=1 
+2015-10-19 23:14:59.284 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={action=status&_=1445296499267&wt=json} status=503 QTime=0 
+2015-10-19 23:15:08.809 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={indent=true&q=*:*&_=1445296508805&wt=json} hits=4 status=0 QTime=0 
+2015-10-19 23:15:37.137 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445296537112&show=index&wt=json} status=0 QTime=0 
+2015-10-19 23:15:37.157 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/replication params={command=details&_=1445296537145&wt=json} status=0 QTime=1 
+2015-10-19 23:15:37.179 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/system params={_=1445296537161&wt=json} status=0 QTime=7 
+2015-10-19 23:15:37.194 ERROR (qtp1223656947-13) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.html]
+2015-10-19 23:15:37.194 INFO  (qtp1223656947-13) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.html&_=1445296537174} status=404 QTime=0 
+2015-10-19 23:15:37.199 INFO  (qtp1223656947-15) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={action=status&_=1445296537192&wt=json} status=503 QTime=0 
+2015-10-19 23:15:42.950 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={indent=true&q=*:*&_=1445296542946&wt=json} hits=4 status=0 QTime=0 
+2015-10-19 23:20:33.240 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/mbeans params={stats=true&_=1445296833110&wt=json} status=0 QTime=128 
+2015-10-19 23:20:37.260 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/mbeans params={stats=true&_=1445296837253&wt=json} status=0 QTime=6 
+2015-10-19 23:20:40.130 INFO  (qtp1223656947-15) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445296840123&since=0&wt=json} status=0 QTime=2 
+2015-10-19 23:20:50.226 INFO  (qtp1223656947-18) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445296850213&since=1445296537194&wt=json} status=0 QTime=0 
+2015-10-19 23:21:00.270 INFO  (qtp1223656947-17) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445296860260&since=1445296537194&wt=json} status=0 QTime=0 
+2015-10-19 23:21:10.386 INFO  (qtp1223656947-20) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445296870382&since=1445296537194&wt=json} status=0 QTime=0 
+2015-10-19 23:21:20.552 INFO  (qtp1223656947-14) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445296880543&since=1445296537194&wt=json} status=0 QTime=0 
+2015-10-19 23:21:30.589 INFO  (qtp1223656947-16) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445296890580&since=1445296537194&wt=json} status=0 QTime=0 
+2015-10-19 23:21:40.623 INFO  (qtp1223656947-19) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445296900611&since=1445296537194&wt=json} status=0 QTime=2 
+2015-10-19 23:21:50.671 INFO  (qtp1223656947-13) [   ] o.a.s.s.SolrDispatchFilter [admin] webapp=null path=/admin/info/logging params={_=1445296910660&since=1445296537194&wt=json} status=0 QTime=0 
+2015-10-19 23:21:57.283 INFO  (qtp1223656947-18) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/luke params={numTerms=0&_=1445296917275&show=index&wt=json} status=0 QTime=0 
+2015-10-19 23:21:57.290 INFO  (qtp1223656947-17) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/replication params={command=details&_=1445296917285&wt=json} status=0 QTime=1 
+2015-10-19 23:21:57.305 INFO  (qtp1223656947-20) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/system params={_=1445296917292&wt=json} status=0 QTime=7 
+2015-10-19 23:21:57.311 ERROR (qtp1223656947-14) [   x:cloudwiki] o.a.s.h.a.ShowFileRequestHandler Can not find: admin-extra.html [/home/nikhin/Downloads/solr-5.3.1/server/solr/cloudwiki/conf/admin-extra.html]
+2015-10-19 23:21:57.312 INFO  (qtp1223656947-14) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/file params={file=admin-extra.html&_=1445296917302} status=404 QTime=0 
+2015-10-19 23:21:57.319 INFO  (qtp1223656947-16) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/admin/ping params={action=status&_=1445296917314&wt=json} status=503 QTime=0 
+2015-10-19 23:22:03.893 INFO  (qtp1223656947-19) [   x:cloudwiki] o.a.s.c.S.Request [cloudwiki] webapp=/solr path=/select params={indent=true&q=*:*&_=1445296923889&wt=json} hits=4 status=0 QTime=0 

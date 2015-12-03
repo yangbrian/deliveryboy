@@ -1,0 +1,3 @@
+!/bin/sh -e
+/usr/bin/sudo -u root /usr/local/bin/forever start /home/cloudwiki/bin/www
+exit 0
