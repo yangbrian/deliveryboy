@@ -12,6 +12,8 @@ var webName = "delivery Boy";
 var webDomain = "cloudfood-jasonews.c9restaurants.io";
 var authExpireTime = 60 * 60 * 1000;
 
+var paypal = require('paypal-rest-sdk');
+
 /* GET restaurants listing. */
 router.get('/', function(req, res, next) {
   res.send('restaurant root page');
@@ -255,6 +257,43 @@ router.post("/home/activeOrders/delivered", function(req, res, next) {
 	       			res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': "unable to complete request: "+err.message });
 	       			return;
 	       		}
+
+			   paypal.configure({
+				   'mode': 'sandbox',
+				   'client_id': 'Ab6PsgbRyK7JpiTgbJDk0cKfRqwy50GqVC4V9tMu71qR4ANDnQTkUvzmJ7fXwe-lH6eTzSYYmKiUtr1-',
+				   'client_secret': 'EIeGIk55HepT4g2EIveMOSMheNEZxW2fVCul8BqjZjjtbeM1AN_a8ZXdwkKYBwxN-rZINwNAUQpv2dPY'
+			   });
+
+			   var create_payout_json = {
+				   "sender_batch_header": {
+					   "sender_batch_id": Math.random().toString(36).substring(9),
+					   "email_subject": "You have a new payment from Delivery Boy."
+				   },
+				   "items": [
+					   {
+						   "recipient_type": "EMAIL",
+						   "amount": {
+							   "value": order.cost + order.tip,
+							   "currency": "USD"
+						   },
+						   "receiver": order.user,
+						   "note": "Thank you for your wonderful food..",
+						   "sender_item_id": "item_3"
+					   }
+				   ]
+			   };
+
+			   var sync_mode = 'true';
+
+			   paypal.payout.create(create_payout_json, sync_mode, function (error, payout) {
+				   if (error) {
+					   console.log(error.response);
+				   } else {
+					   console.log("Create Single Payout Response");
+					   console.log(payout);
+				   }
+			   });
+
 	       		res.redirect("/restaurants/home");
    			});
        

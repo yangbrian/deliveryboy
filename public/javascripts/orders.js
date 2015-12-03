@@ -59,16 +59,19 @@ function addToSidebar(order) {
 
   $('#sidebar').prepend(sidebar);
 
+  sidebar.popover({
+    html: true,
+    trigger: 'click focus',
+    placement: 'right',
+    container: 'body'
+  });
+
 
   sidebar.click(function() {
     $('.open-orders').popover('hide');
 
 
-    sidebar.popover('toggle', {
-      html: true,
-      trigger: 'click focus',
-      placement: 'right'
-    });
+
   });
 
   $('li').click(function(){
