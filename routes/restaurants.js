@@ -244,6 +244,46 @@ router.post("/home/dish/new", function(req, res, next) {
     }
 });
 
+router.post("/home/activeOrders/delivered", function(req, res, next) {
+   validateStatus(req,res, Restaurant, "/restaurants/login", function(input, restaurant) {
+   		ActiveOrder.findOne({
+   			name: input.name
+   		}, function(err, order) {
+   		    order.delivered = true;
+	       order.save(function (err) {
+	       		if (err) {
+	       			res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': "unable to complete request: "+err.message });
+	       			return;
+	       		}
+	       		res.render("restaurant_home", {'restaurant': restaurant});
+   			});
+       
+       });
+   }, function(input) {
+       res.redirect("/restaurants/login");
+   });
+});
+
+router.post("/home/activeOrders/paid", function(req, res, next) {
+   validateStatus(req,res, Restaurant, "/restaurants/login", function(input, restaurant) {
+   		ActiveOrder.findOne({
+   			name: input.name
+   		}, function(err, order) {
+   		    order.paid = true;
+	       order.save(function (err) {
+	       		if (err) {
+	       			res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': "unable to complete request: "+err.message });
+	       			return;
+	       		}
+	       		res.redirect("/restaurants/home");
+   			});
+       
+       });
+   }, function(input) {
+       res.redirect("/restaurants/login");
+   });
+});
+
 // Get data
 
 router.get("/home/menu", function(req, res, next) {
@@ -282,11 +322,11 @@ router.get("/home/orders", function(req, res, next) {
 });
 
 
-router.get("/home/active_orders", function(req, res, next) {
+router.get("/home/activeOrders", function(req, res, next) {
     validateStatus(req,res,Restaurant, "/restaurants/login", function(input, restaurant) {
     	ActiveOrder.find({
-    		restaurant: restaurant.address,
-    		delivered: false
+    		$or: [ {restaurant: restaurant.address, paid: false}, {
+    		restaurant: restaurant.address, delivered: false} ]
     	}, function(err, orders) {
     		res.set("Content-Type", "text/json");
     		if (err) {

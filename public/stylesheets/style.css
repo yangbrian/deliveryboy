@@ -62,3 +62,19 @@ body {
 
 
 
+.updatebox-buttons {
+    text-align: right;
+}
+
+.updatebox-buttons > .btn {
+    margin:3px;
+}
+
+.updatebox {
+    padding: 5px;
+    alignment-adjust: center;
+}
+
+/*.tablecell {*/
+/*    overflow: scroll;*/
+/*}*/

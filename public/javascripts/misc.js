@@ -34,8 +34,60 @@ function loadRestaurantHistoryOrders() {
        console.log(data);
        var dish = null;
        for ( var i = 0; i < data.length; i++) {
-            $("#order_list").append('<tr><td>'+data[i].name+'</td><td>'+data[i].user+'</td><td><a href="#">'+data[i].delivered ? "delivered" : "active" +'</a></td><td>'+data[i].price+'</td></tr>');
+            $("#order_list").append('<tr><td>'+data[i].name+'</td><td>'+data[i].user+'</td><td><a href="#">'+(data[i].paid ? "paid" : (data[i].paid ? "delivered" : "active")) +'</a></td><td>'+data[i].cost+'</td></tr>');
        }
+    });
+}
+
+function loadRestaurantActiveOrders() {
+    $.get("/restaurants/home/activeOrders",function(data){
+        menu_data = data;
+       console.log(data);
+       for ( var i = 0; i < data.length; i++) {
+        $("#updatesList").append(   '<a href="#" class="list-group-item updatebox">'+
+                                    '<div class="table-responsive">'+
+                                    '<table class="table table-bordered table-hover table-striped">'+
+                                    '<thead>'+
+                                    '<tr>'+
+                                    '<th>name</th>'+
+                                    '<th>customer</th>'+
+                                    '<th>status</th>'+
+                                    '<th>Amount (USD)</th>'+
+                                    '</tr>'+
+                                    '</thead>'+
+                                    '<tbody>'+
+                                    '<tr>'+
+                                    '<td class="tablecell">'+data[i].name+'</td>'+
+                                    '<td>'+data[i].user+'</td>'+
+                                    '<td>'+(data[i].delivered ? "delivered" : (data[i].paid ? "paid" : "active")) +'</td>'+
+                                    '<td>'+data[i].cost+'</td>'+
+                                    '</tr>'+
+                                    '</tbody>'+
+                                    '</table>'+
+                                    '</div>'+
+                                    '<!--<br>-->'+
+                                    '<div class="text-right updatebox-buttons">'+
+                                    '<p hidden>'+data[i].name+'</p>'+
+                                    '<button class="btn btn-info" onclick="completeDelivered(this)" >Delivered</button>'+
+                                    '<button class="btn btn-success" onclick="completePayment(this)">Paied</button>'+
+                                    '</div>'+
+                                    '</a>');
+        }
+    });
+}
+
+function completeDelivered(btn) {
+    var name = btn.parentNode.firstChild.innerHTML;
+    $.post("/restaurants/home/activeOrders/delivered", {"name":name}, function() {
+        location.reload();
+    });
+    
+}
+
+function completePayment(btn) {
+    var name = btn.parentNode.firstChild.innerHTML;
+    $.post("/restaurants/home/activeOrders/paid", {"name":name}, function() {
+        location.reload();
     });
 }
 
@@ -95,6 +147,8 @@ function bodyOnload() {
     });
     
     loadRestaurantMenu();
+    loadRestaurantHistoryOrders();
+    loadRestaurantActiveOrders();
     
     // var link = document.createElement("link");
     // link.href = "/stylesheets/style.css";
