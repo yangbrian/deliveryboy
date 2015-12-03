@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var ActiveOrder = mongoose.model('ActiveOrder');
 
+
 module.exports = function(io){
     //now you can use io.emit() in this file
 
@@ -112,6 +113,7 @@ module.exports = function(io){
     });
 
     router.get('/activeOrders',function(req,res){
+        console.log("Active orders");
         ActiveOrder.find({},function(err, data){
             if(err){
                 console.log('Error querying all users');
