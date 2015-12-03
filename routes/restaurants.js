@@ -3,6 +3,8 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Restaurant = mongoose.model('Restaurant');
 var Dish = mongoose.model('Dish');
+var Tag = mongoose.model("Tag");
+var Ingradient = mongoose.model("Ingradient");
 var ActiveOrder = mongoose.model("ActiveOrder");
 var crypto = require('crypto');
 
@@ -197,12 +199,13 @@ router.post("/home/dish/new", function(req, res, next) {
 			} else {
 				if ( restaurant.auth.token == req.cookies.auth_token && restaurant.auth.validate && restaurant.online) {
 					
-					var dish = new Dish();
+					    
+				    var dish = new Dish();
 					dish.name = input.name;
 					dish.calories = input.calories;
 					dish.weight = input.weight;
 					dish.description = input.description;
-					dish.gradients = input.gradients;
+					dish.ingradients = input.ingradients;
 					dish.tags = input.tags;
 					dish.rate = 0;
 					dish.price = input.price;
@@ -210,12 +213,28 @@ router.post("/home/dish/new", function(req, res, next) {
 					
 					dish.save(function(err) {
 						if (err) {
-							console.log(err);
-							res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': 'failed to added dish '+dish.name+" to menu" });
+							console.log(err.message);
+							res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': 'failed to added dish '+dish.name+" to menu: " + err.message });
 							return;
 						}
 						res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'success', 'flash_msg': 'Successfully added dish '+dish.name+" to menu" });
 					});
+					
+					var tag = null;
+					var tags = dish.tags.split(',');
+					for (var i = 0; i < tags.length; i ++) {
+						tag = new Tag();
+						tag.value = tags[i];
+						tag.save();
+					}
+					
+					tags = dish.ingradients.split(',');
+					for (var i = 0; i < tags.length; i ++) {
+						tag = new Ingradient();
+						tag.value = tags[i];
+						tag.save();
+					}
+					
 				} else {
 					res.redirect("/restaurants/login");
 				}
@@ -224,6 +243,8 @@ router.post("/home/dish/new", function(req, res, next) {
     	});
     }
 });
+
+// Get data
 
 router.get("/home/menu", function(req, res, next) {
     validateStatus(req,res,Restaurant, "/restaurants/login", function(input, restaurant) {
@@ -244,7 +265,7 @@ router.get("/home/menu", function(req, res, next) {
     });
 });
 
-router.get("/home/active_orders", function(req, res, next) {
+router.get("/home/orders", function(req, res, next) {
     validateStatus(req,res,Restaurant, "/restaurants/login", function(input, restaurant) {
     	ActiveOrder.find({
     		restaurant: restaurant.address
@@ -261,6 +282,55 @@ router.get("/home/active_orders", function(req, res, next) {
 });
 
 
+router.get("/home/active_orders", function(req, res, next) {
+    validateStatus(req,res,Restaurant, "/restaurants/login", function(input, restaurant) {
+    	ActiveOrder.find({
+    		restaurant: restaurant.address,
+    		delivered: false
+    	}, function(err, orders) {
+    		res.set("Content-Type", "text/json");
+    		if (err) {
+    			console.log(err);
+    			res.send({'err': err});
+    			return;
+    		}
+    		res.send(orders);
+    	});
+    });
+});
+
+router.get("/tags", function(req, res, next) {
+	
+	Tag.find(function(err, data){
+		res.set("Content-Type", "text/json");
+		if (err) {
+			console.log(err);
+			res.send({'err': err});
+			return;
+		}
+		console.log(data);
+		res.send(data);
+	});
+    
+});
+
+router.get("/ingradients", function(req, res, next) {
+	
+	Ingradient.find(function(err, data){
+		res.set("Content-Type", "text/json");
+		if (err) {
+			console.log(err);
+			res.send({'err': err});
+			return;
+		}
+		console.log(data);
+		res.send(data);
+	});
+    
+});
+
+
+// helper functions
 
 function handleNewRestaurant(restaurant, res) {
 	if (restaurant.username === null)

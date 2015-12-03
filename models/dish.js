@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var dishSchema = new Schema({
-    name: {type: String, index: true},
+    name: {type: String, index: true, unique: true},
     restaurant_id: {type: String, index: true},
     price: Number,
     description: String,

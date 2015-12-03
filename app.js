@@ -16,6 +16,10 @@ var ActiveOrder = require('./models/activeOrder');
 
 var Restaurant = require("./models/restaurant");
 
+var Tag = require("./models/tag");
+
+var Ingradient = require("./models/ingradient");
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var payments = require('./routes/payments');
