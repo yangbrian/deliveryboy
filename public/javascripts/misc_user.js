@@ -40,7 +40,7 @@ function loadRestaurantHistoryOrders() {
 }
 
 function loadRestaurantActiveOrders() {
-    $.get("/restaurants/home/activeOrders",function(data){
+    $.get("/users/home/activeOrders",function(data){
         menu_data = data;
        console.log(data);
        for ( var i = 0; i < data.length; i++) {
@@ -69,7 +69,6 @@ function loadRestaurantActiveOrders() {
                                     '<div class="text-right updatebox-buttons">'+
                                     '<p hidden>'+data[i].name+'</p>'+
                                     '<button class="btn btn-info" onclick="completeDelivered(this)" >Delivered</button>'+
-                                    '<button class="btn btn-success" onclick="completePayment(this)">Paid</button>'+
                                     '</div>'+
                                     '</a>');
         }
@@ -78,7 +77,7 @@ function loadRestaurantActiveOrders() {
 
 function completeDelivered(btn) {
     var name = btn.parentNode.firstChild.innerHTML;
-    $.post("/restaurants/home/activeOrders/delivered", {"name":name}, function() {
+    $.post("/users/home/activeOrders/delivered", {"name":name}, function() {
         location.reload();
     });
     

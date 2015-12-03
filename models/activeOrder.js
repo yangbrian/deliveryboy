@@ -8,7 +8,7 @@ var activeOrderSchema = new Schema({
     restaurant: {type: String, index: true},
     order: String,
     cost: Number,
-    ctip: Number,
+    tip: Number,
 	delivered: Boolean ,
 	paid: Boolean,
 	user: {type: String, index: true}
