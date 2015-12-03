@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('mongoose').model('User');
+var ActiveOrder = require("mongoose").model("ActiveOrder");
 var crypto = require('crypto');
 
 var webName = "delivery Boy";
@@ -165,6 +166,23 @@ router.get('/logout', function(req, res, next) {
     res.redirect("home");
 });
 
+router.get("/home/activeOrders", function(req, res, next) {
+    validateStatus(req,res,User, "/users/login", function(input, user) {
+    	ActiveOrder.find({
+    		$or: [ {number: user.number, paid: false}, {
+    		number: user.number, delivered: false} ]
+    	}, function(err, orders) {
+    		res.set("Content-Type", "text/json");
+    		if (err) {
+    			console.log(err);
+    			res.send({'err': err});
+    			return;
+    		}
+    		res.send(orders);
+    	});
+    });
+});
+
 function handleNewUser(user, res) {
 	if (user.username === null)
 		user.username = user.number;
@@ -237,6 +255,26 @@ function handleNewUser(user, res) {
 	});
 }
 
+router.post("/home/activeOrders/delivered", function(req, res, next) {
+   validateStatus(req,res, User, "/users/login", function(input, restaurant) {
+   		ActiveOrder.findOne({
+   			name: input.name
+   		}, function(err, order) {
+   		    order.delivered = true;
+	       order.save(function (err) {
+	       		if (err) {
+	       			res.render('user_home', {'user': restaurant, 'flash': 'danger', 'flash_msg': "unable to complete request: "+err.message });
+	       			return;
+	       		}
+	       		res.redirect("/users/home");
+   			});
+       
+       });
+   }, function(input) {
+       res.redirect("/users/login");
+   });
+});
+
 function validate(user) {
 		var reName = /^[a-zA-Z0-9_]{3,15}$/;
 		var reNumber = /^[0-9]{10}$/;
@@ -259,6 +297,34 @@ function validate(user) {
 		if (err.passwd_err || !user.passwdcomfirm || user.passwd != user.passwdcomfirm)
 			err.passwdcomfirm_err = true;
 		return err;
+}
+
+var validateStatus = function(req, res, model, forwardPage, scallback, fcallback) {
+	if (!req.cookies.username || !req.cookies.auth_token)
+    	res.redirect(forwardPage);
+    else {
+    	var input = req.body;
+    	console.log(input);
+    	model.findOne({
+		'username': req.cookies.username
+		}, function( err, user) {
+			if (err) {
+				console.log(err);
+				res.redirect("signup/?error=2");
+			} else if(user) {
+				if (user.auth.token == req.cookies.auth_token && user.auth.validate && user.online) {
+					if (scallback)
+						scallback(input, user);
+				} else {
+					if (fcallback)
+						fcallback(input);
+				}
+			} else {
+				res.redirect(forwardPage);
+			}
+		});
+    }
+
 }
 
 module.exports = router;

@@ -255,7 +255,7 @@ router.post("/home/activeOrders/delivered", function(req, res, next) {
 	       			res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': "unable to complete request: "+err.message });
 	       			return;
 	       		}
-	       		res.render("restaurant_home", {'restaurant': restaurant});
+	       		res.redirect("/restaurants/home");
    			});
        
        });
@@ -266,6 +266,7 @@ router.post("/home/activeOrders/delivered", function(req, res, next) {
 
 router.post("/home/activeOrders/paid", function(req, res, next) {
    validateStatus(req,res, Restaurant, "/restaurants/login", function(input, restaurant) {
+   		console.log(input.name);
    		ActiveOrder.findOne({
    			name: input.name
    		}, function(err, order) {
