@@ -1,0 +1,5 @@
+---
+- hosts: nodeservers
+  tasks:
+   - name: Updating Project 
+     git: repo=git@github.com:yangbrian/deliveryboy.git dest=/home/deliveryboy accept_hostkey=true 

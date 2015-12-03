@@ -6,15 +6,21 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://10.0.0.56:27017,10.0.0.57:27017,10.0.0.58:27017/cloudwiki',{ mongos : true}, function(err) {
+mongoose.connect('mongodb://10.0.0.56:27017/cloudwiki',{ mongos : true}, function(err) {
   if (!err)
     console.log(err);
 });
 var User = require('./models/user');
 
+var Dish = require("./models/dish");
+
 var ActiveOrder = require('./models/activeOrder');
 
 var Restaurant = require("./models/restaurant");
+
+var Tag = require("./models/tag");
+
+var Ingradient = require("./models/ingradient");
 
 var routes = require('./routes/index');
 var users = require('./routes/users');

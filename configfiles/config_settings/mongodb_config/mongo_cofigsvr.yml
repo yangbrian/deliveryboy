@@ -1,0 +1,9 @@
+---
+- hosts: db_configsvr
+  remote_user: root
+  #tasks:
+  #  - name: make configdb directory 
+  #    file: path=/data/configdb state=directory
+  tasks:
+    - name: run mongodb configsvr
+      raw: mongod --configsvr --dbpath /data/configdb --port 27019 --fork --logpath /var/log/mongodb/mongodb.log

@@ -1,0 +1,7 @@
+---
+    - hosts: db
+      remote_user: root
+      tasks:
+        shell: killall mongod
+      tasks:
+        - include: /etc/ansible/mongodb_config/mongo_db_start.yml

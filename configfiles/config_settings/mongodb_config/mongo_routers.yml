@@ -1,0 +1,15 @@
+---
+- hosts: db_routers
+  remote_user: root
+  vars:
+    configsvr1: 10.0.0.9
+    configsvr2: 10.0.0.10
+    configsvr3: 10.0.0.11
+  tasks:
+    - name: setup mongos 
+      raw: mongos --configdb {{configsvr1}}:27019,{{configsvr2}}:27019,{{configsvr3}}:27019 --fork --logpath /var/log/mongodb/mongs.log
+    - name: touch rc.local file
+      script: ./touch_rc.local.sh
+
+    - name: add boot server to rc.local
+      copy: src='/root/rc.local dest='/etc/rc.local' owner=root group=root mode=0755

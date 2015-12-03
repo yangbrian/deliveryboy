@@ -89,6 +89,8 @@ module.exports = function(io){
         newOrder.cost = order.cost;
         newOrder.tip = order.tip;
         newOrder.delivered = false;
+        newOrder.user = order.number;
+        newOrder.paid = false;
 
         newOrder.save(function(err){
             if(err){

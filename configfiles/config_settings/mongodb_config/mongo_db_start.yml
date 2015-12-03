@@ -1,0 +1,4 @@
+---
+ - name: start servers
+   script: /root/start_dbs.sh
+

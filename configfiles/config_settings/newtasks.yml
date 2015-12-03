@@ -1,0 +1,15 @@
+---
+ - hosts: web
+  
+   tasks:
+   # - command: npm install -g express
+   # - name: install ruby
+    #  apt: pkg=ruby-full state=installed update_cache=true
+    - name: install gems
+      apt: pkg=rubygems-integration state=installed update_cache=true
+    - name: update
+      apt: update_cache=true
+    - command: gem install compass
+   # - shell: npm install
+    #  args:
+     #   chdir: /home/cloudwiki
