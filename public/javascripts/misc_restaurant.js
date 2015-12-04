@@ -68,7 +68,7 @@ function loadRestaurantActiveOrders() {
                                     '<!--<br>-->'+
                                     '<div class="text-right updatebox-buttons">'+
                                     '<p hidden>'+data[i].name+'</p>'+
-                                    '<button class="btn btn-success" onclick="completePayment(this)">Paid</button>'+
+                                    '<button class="btn btn-success" onclick="completePayment(this)" '+(data[i].paid ? "disabled" : "")+'>Paid</button>'+
                                     '</div>'+
                                     '</a>');
         }
