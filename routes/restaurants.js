@@ -215,7 +215,9 @@ router.post("/home/dish/new", function(req, res, next) {
 					dish.tags = input.tags;
 					dish.rate = 0;
 					dish.price = input.price;
-					dish.restaurant_id = restaurant.username
+					dish.restaurant_id = restaurant.username;
+					dish.dish_id = crypto.createHash("sha256").update(dish.name+dish.restaurant_id).digest("base64");
+					
 					
 					dish.save(function(err) {
 						if (err) {
@@ -249,6 +251,60 @@ router.post("/home/dish/new", function(req, res, next) {
     	});
     }
 });
+
+
+router.post("/home/dish/update", function(req, res, next) {
+    validateStatus(req, res, Restaurant, "/restaurants/login", function(input, restaurant) {
+        Dish.findOne({
+        	dish_id: crypto.createHash("sha256").update(input.name+restaurant.username).digest("base64")
+        }, function(err, dish) {
+            if (err || !dish) {
+       			res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': "unable to complete request: "+err.message });
+       			return;
+       		}
+				dish.name = input.name;
+				dish.calories = input.calories;
+				dish.weight = input.weight;
+				dish.description = input.description;
+				dish.ingradients = input.ingradients;
+				dish.tags = input.tags;
+				dish.price = input.price;
+				dish.save(function(err) {
+					if (err) {
+						console.log(err.message);
+						res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': 'failed to update dish '+dish.name+" to menu: " + err.message });
+						return;
+					}
+					res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'success', 'flash_msg': 'Successfully update dish '+dish.name+" to menu" });
+					
+				});
+        });
+    }, function(input) {
+        res.redirect("/restaurants/login");
+    });
+});
+
+
+router.post("/home/dish/delete", function(req, res, next) {
+    validateStatus(req,res,Restaurant,"/restaurants/login", function(input, restaurant) {
+        Dish.findOneAndRemove({
+        	dish_id: crypto.createHash("sha256").update(input.name+restaurant.username).digest("base64")
+        }, function(err) {
+        	if (err) {
+				console.log(err.message);
+				res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': 'failed to delete dish '+input.name+" from menu: " + err.message });
+				return;
+			}
+			console.log("deleted ", input.name);
+			res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'success', 'flash_msg': 'Successfully delete dish '+input.name+" from menu" });
+			
+        });
+        
+    },function(input) {
+        res.redirect("/restaurants/login");
+    });
+})
+
 
 router.post("/home/activeOrders/delivered", function(req, res, next) {
    validateStatus(req,res, Restaurant, "/restaurants/login", function(input, restaurant) {

@@ -11,10 +11,11 @@ var dishSchema = new Schema({
     rate: Number,
     ingradients: String,
     tags: {type: String, index: true},
+    dish_id: {type: String, index:true, unique: true}
 }, {
     shardKey: {
         restaurant_id: 1,
-        name: 1
+        dish_id: 1
     }
 });
 
