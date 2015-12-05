@@ -92,6 +92,7 @@ module.exports = function(io){
         newOrder.delivered = false;
         newOrder.user = order.number;
         newOrder.paid = false;
+        newOrder.status = "active";
 
         newOrder.save(function(err){
             if(err){
@@ -201,7 +202,7 @@ module.exports = function(io){
                 };
                 console.log("Successful transaction executed!");
             }
-
+            // res.redirect("/users/home");
             res.setHeader('content-type', 'application/json');
             res.end(JSON.stringify(status));
         });

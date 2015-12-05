@@ -8,6 +8,8 @@ var webName = "delivery Boy";
 var webDomain = "cloudfood-jasonews.c9users.io";
 var authExpireTime = 60 * 60 * 1000;
 
+var paypal = require('paypal-rest-sdk');
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
@@ -183,6 +185,23 @@ router.get("/home/activeOrders", function(req, res, next) {
     });
 });
 
+router.get("/home/orders", function(req, res, next) {
+    validateStatus(req, res, User, "/users/login", function(input, user) {
+    	ActiveOrder.find({
+    		number: user.number
+    	}, function(err, orders) {
+    		res.set("Content-Type", "text/json");
+    		if (err) {
+    			console.log(err);
+    			res.send({'err': err});
+    			return;
+    		}
+    		console.log(orders);
+    		res.send(orders);
+    	});
+    });
+});
+
 function handleNewUser(user, res) {
 	if (user.username === null)
 		user.username = user.number;
@@ -261,11 +280,50 @@ router.post("/home/activeOrders/delivered", function(req, res, next) {
    			name: input.name
    		}, function(err, order) {
    		    order.delivered = true;
+   		    if (order.status == 'active')
+   		    	order.status = "delivered";
+   		    else
+   		    	order.status += " | delivered";
 	       order.save(function (err) {
 	       		if (err) {
 	       			res.render('user_home', {'user': restaurant, 'flash': 'danger', 'flash_msg': "unable to complete request: "+err.message });
 	       			return;
 	       		}
+	       		 paypal.configure({
+				   'mode': 'sandbox',
+				   'client_id': 'Ab6PsgbRyK7JpiTgbJDk0cKfRqwy50GqVC4V9tMu71qR4ANDnQTkUvzmJ7fXwe-lH6eTzSYYmKiUtr1-',
+				   'client_secret': 'EIeGIk55HepT4g2EIveMOSMheNEZxW2fVCul8BqjZjjtbeM1AN_a8ZXdwkKYBwxN-rZINwNAUQpv2dPY'
+			   });
+
+			   var create_payout_json = {
+				   "sender_batch_header": {
+					   "sender_batch_id": Math.random().toString(36).substring(9),
+					   "email_subject": "You have a new payment from Delivery Boy."
+				   },
+				   "items": [
+					   {
+						   "recipient_type": "EMAIL",
+						   "amount": {
+							   "value": order.cost + order.tip,
+							   "currency": "USD"
+						   },
+						   "receiver": order.user,
+						   "note": "Thank you for your wonderful food..",
+						   "sender_item_id": "item_3"
+					   }
+				   ]
+			   };
+
+			   var sync_mode = 'true';
+
+			   paypal.payout.create(create_payout_json, sync_mode, function (error, payout) {
+				   if (error) {
+					   console.log(error.response);
+				   } else {
+					   console.log("Create Single Payout Response");
+					   console.log(payout);
+				   }
+			   });
 	       		res.redirect("/users/home");
    			});
        

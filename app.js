@@ -11,7 +11,6 @@ mongoose.connect('mongodb://10.0.0.12:27017,10.0.0.13:27017,10.0.0.14:27017,10.0
   if (!err)
     console.log(err);
 });
-
 var User = require('./models/user');
 
 var Dish = require("./models/dish");
@@ -32,7 +31,7 @@ var restaurants = require("./routes/restaurants");
 
 
 var redis = require('socket.io-redis');
-io.adapter(redis({ host: '10.0.0.19', port: 6379 }));
+// io.adapter(redis({ host: '10.0.0.19', port: 6379 }));
 
 
 var app = express();

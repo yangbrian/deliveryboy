@@ -28,18 +28,18 @@ function loadRestaurantMenu() {
     });
 }
 
-function loadRestaurantHistoryOrders() {
-    $.get("/restaurants/home/orders",function(data){
-        menu_data = data;
+function loadUserHistoryOrders() {
+    $.get("/users/home/orders",function(data){
+        order_data = data;
        console.log(data);
        var dish = null;
        for ( var i = 0; i < data.length; i++) {
-            $("#order_list").append('<tr><td>'+data[i].name+'</td><td>'+data[i].user+'</td><td><a href="#">'+(data[i].paid ? "paid" : (data[i].paid ? "delivered" : "active")) +'</a></td><td>'+data[i].cost+'</td></tr>');
+            $("#order_list").append('<tr><td>'+data[i].name+'</td><td>'+data[i].restaurant+'</td><td><a data-index="'+i+'" href="#orderHistory" onclick="checkInfo(this)">'+data[i].status +'</a></td><td>'+data[i].cost+'</td></tr>');
        }
     });
 }
 
-function loadRestaurantActiveOrders() {
+function loadUserActiveOrders() {
     $.get("/users/home/activeOrders",function(data){
         menu_data = data;
        console.log(data);
@@ -50,7 +50,7 @@ function loadRestaurantActiveOrders() {
                                     '<thead>'+
                                     '<tr>'+
                                     '<th>name</th>'+
-                                    '<th>customer</th>'+
+                                    '<th>restaurant</th>'+
                                     '<th>status</th>'+
                                     '<th>Amount (USD)</th>'+
                                     '</tr>'+
@@ -58,8 +58,8 @@ function loadRestaurantActiveOrders() {
                                     '<tbody>'+
                                     '<tr>'+
                                     '<td class="tablecell">'+data[i].name+'</td>'+
-                                    '<td>'+data[i].user+'</td>'+
-                                    '<td>'+(data[i].delivered ? "delivered" : (data[i].paid ? "paid" : "active")) +'</td>'+
+                                    '<td>'+data[i].restaurant+'</td>'+
+                                    '<td>'+data[i].status +'</td>'+
                                     '<td>'+data[i].cost+'</td>'+
                                     '</tr>'+
                                     '</tbody>'+
@@ -68,7 +68,7 @@ function loadRestaurantActiveOrders() {
                                     '<!--<br>-->'+
                                     '<div class="text-right updatebox-buttons">'+
                                     '<p hidden>'+data[i].name+'</p>'+
-                                    '<button class="btn btn-info" onclick="completeDelivered(this)" >Delivered</button>'+
+                                    '<button class="btn btn-info" onclick="completeDelivered(this)" '+(data[i].delivered ? "disabled" : "")+' >Delivered</button>'+
                                     '</div>'+
                                     '</a>');
         }
@@ -145,12 +145,67 @@ function bodyOnload() {
         });
     });
     
-    loadRestaurantMenu();
-    loadRestaurantHistoryOrders();
-    loadRestaurantActiveOrders();
+    // loadRestaurantMenu();
+    loadUserHistoryOrders();
+    loadUserActiveOrders();
     
     // var link = document.createElement("link");
     // link.href = "/stylesheets/style.css";
     // link.rel = "stylesheet";
     // document.body.appendChild(link);
+}
+
+
+function checkInfo(elem) {
+    
+    
+    var data = order_data[parseInt(elem.dataset.index)];
+    var table = '<h3> Order Details</h3>'+
+                '<table class="table table-bordered table-hover table-striped">'+
+                '<tbody>'+
+                '<tr>'+
+                '<td> name </td>'+
+                '<td>'+data.name+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                '<td> number </td>'+
+                '<td>'+data.number+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                '<td> address </td>'+
+                '<td>'+data.address+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                '<td> restaurant </td>'+
+                '<td>'+data.restaurant+'</td>'+
+                '</tr>'+
+                '<td> foods </td>'+
+                '<td>'+data.order+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                '<td> cost </td>'+
+                '<td>'+data.cost+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                '<td> status </td>'+
+                '<td>'+data.status+'</td>'+
+                '</tr>'+
+                '</tbody>'+
+                '</table>'+
+                '<a href="#orderHistory" class="btn btn-lg btn-success" style="margin: 10px;" onclick="endEditDish(this)"> close</a>';
+    $("#infobox").append(table);
+    var infobox = document.getElementById("infobox");
+    infobox.style.display='block';
+    document.getElementById("fade").style.display='block';
+    
+    
+}
+
+
+function endEditDish(btn) {
+    
+    var infobox = document.getElementById("infobox");
+    infobox.style.display='none';
+    $("#infobox").empty();
+    document.getElementById('fade').style.display='none'
 }
