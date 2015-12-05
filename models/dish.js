@@ -11,7 +11,12 @@ var dishSchema = new Schema({
     rate: Number,
     ingradients: String,
     tags: {type: String, index: true},
-})
+}, {
+    shardKey: {
+        restaurant_id: 1,
+        name: 1
+    }
+});
 
 var Dish = mongoose.model("Dish", dishSchema);
 
