@@ -19,18 +19,19 @@ function clearAlert() {
 
 function loadRestaurantMenu() {
     $.get("/restaurants/home/menu",function(data){
-        menu_data = data;
+       menu_data = data; 
        console.log(data);
        var dish = null;
        for ( var i = 0; i < data.length; i++) {
-            $("#menu_list").append('<tr><td>'+(i+1)+'</td><td>'+data[i].name+'</td><td><a href="#">edit</a></td><td>'+data[i].price+'</td></tr>');
+            $("#menu_list").append('<tr><td>'+(i+1)+'</td><td>'+data[i].name+'</td><td><a href="#" onclick="startEditDish(this)">edit</a></td><td>'+data[i].price+'</td></tr>');
        }
     });
 }
 
 function loadRestaurantHistoryOrders() {
     $.get("/restaurants/home/orders",function(data){
-        menu_data = data;
+        
+        console.log(menu_data);
        console.log(data);
        var dish = null;
        for ( var i = 0; i < data.length; i++) {
@@ -41,7 +42,7 @@ function loadRestaurantHistoryOrders() {
 
 function loadRestaurantActiveOrders() {
     $.get("/restaurants/home/activeOrders",function(data){
-        menu_data = data;
+        
        console.log(data);
        for ( var i = 0; i < data.length; i++) {
         $("#updatesList").append(   '<a href="#" class="list-group-item updatebox">'+
@@ -111,6 +112,66 @@ function loadIngradients() {
     });
 }
 
+function startEditDish(btn) {
+    var editbox = document.getElementById("dishEdit");
+    editbox.style.display='block';
+    var index = parseInt(btn.parentNode.parentNode.firstChild.innerHTML);
+    var data = menu_data[index-1];
+    
+    console.log(data);
+    
+    document.getElementById("nameUpdate").value = data.name;
+    document.getElementById("caloriesUpdate").value = data.calories;
+    document.getElementById("weightUpate").value = data.weight;
+    
+    $("#ingradientsUpdateField").find(".inputTags-list").remove();
+    $("#tagsUpdateField").find(".inputTags-list").remove();
+    
+    
+    $('#tagsUpdate').attr("class", "form-control");
+    $('#tagsUpdate').attr("value", "");
+    $('#tagsUpdate').removeAttr("data-uniqid");
+    $('#ingradientsUpdate').attr("value", "");
+    $('#ingradientsUpdate').removeAttr("data-uniqid");
+    $('#ingradientsUpdate').attr("class", "form-control");
+    
+    $('#tagsUpdate').inputTags({
+        tags: data.tags.split(','),
+        minLength:1,
+        autocomplete: {
+            values: tags
+        },
+        errors: {
+            empty: "Attention, a tag should contain at least one character"
+        }
+    });
+    
+    $('#ingradientsUpdate').inputTags({
+        tags: data.ingradients.split(','),
+        minLength:1,
+        autocomplete: {
+            values: ingradients
+        },
+        errors: {
+            empty: "Attention, a tag should contain at least one character"
+        }
+    });
+    
+    document.getElementById("dish_descriptionUpdate").value = data.description;
+    
+    document.getElementById("priceUpdate").value = data.price;
+    
+    document.getElementById("fade").style.display='block';
+}
+
+function endEditDish(btn) {
+    var editbox = document.getElementById("dishEdit");
+    editbox.style.display='none';
+    document.getElementById('fade').style.display='none'
+}
+
+
+
 function bodyOnload() {
     var counts = 0;
     console.log("body onload");
@@ -143,6 +204,8 @@ function bodyOnload() {
                 empty: "Attention, a tag should contain at least one character"
             }
         });
+        
+        
     });
     
     loadRestaurantMenu();

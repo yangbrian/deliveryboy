@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 //testing git pull
-mongoose.connect('mongodb://localhost:27017/deliveryboy',{ mongos : true}, function(err) {
+mongoose.connect('mongodb://localhost:27017/',{ mongos : true}, function(err) {
   if (!err)
     console.log(err);
 });
