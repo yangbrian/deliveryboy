@@ -63,7 +63,9 @@ orderButton.onclick = function() {
 
    if(validate()){
 
-       $.post('/order/new',user);
+       $.post('/order/new',user, function(data) {
+           window.location.href = "/users/home";
+       });
        
    }
 
