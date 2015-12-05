@@ -106,3 +106,7 @@ body {
 	z-index:1002;
 	overflow: auto;
 }
+
+td > a {
+     margin: 3px;
+}

@@ -23,7 +23,7 @@ function loadRestaurantMenu() {
        console.log(data);
        var dish = null;
        for ( var i = 0; i < data.length; i++) {
-            $("#menu_list").append('<tr><td>'+(i+1)+'</td><td>'+data[i].name+'</td><td><a href="#" onclick="startEditDish(this)">edit</a></td><td>'+data[i].price+'</td></tr>');
+            $("#menu_list").append('<tr><td>'+(i+1)+'</td><td>'+data[i].name+'</td><td><a href="#" onclick="deleteDish(this)">delete</a><a href="#" onclick="startEditDish(this)">edit</a></td><td>'+data[i].price+'</td></tr>');
        }
     });
 }
@@ -170,7 +170,15 @@ function endEditDish(btn) {
     document.getElementById('fade').style.display='none'
 }
 
-
+function deleteDish(elem) {
+    var index = parseInt(elem.parentNode.parentNode.firstChild.innerHTML);
+    var data = menu_data[index-1];
+    var cf = confirm("Delete "+data.name+"?");
+    if (cf)
+        $.post("/restaurants/home/dish/delete",data, function(data) {
+            window.location.href = "/restaurants/home";
+        });
+}
 
 function bodyOnload() {
     var counts = 0;
