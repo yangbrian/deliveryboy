@@ -28,18 +28,18 @@ function loadRestaurantMenu() {
     });
 }
 
-function loadRestaurantHistoryOrders() {
-    $.get("/restaurants/home/orders",function(data){
+function loadUserHistoryOrders() {
+    $.get("/users/home/orders",function(data){
         menu_data = data;
        console.log(data);
        var dish = null;
        for ( var i = 0; i < data.length; i++) {
-            $("#order_list").append('<tr><td>'+data[i].name+'</td><td>'+data[i].user+'</td><td><a href="#">'+(data[i].paid ? "paid" : (data[i].paid ? "delivered" : "active")) +'</a></td><td>'+data[i].cost+'</td></tr>');
+            $("#order_list").append('<tr><td>'+data[i].name+'</td><td>'+data[i].restaurant+'</td><td><a href="#">'+(data[i].paid ? "paid" : (data[i].paid ? "delivered" : "active")) +'</a></td><td>'+data[i].cost+'</td></tr>');
        }
     });
 }
 
-function loadRestaurantActiveOrders() {
+function loadUserActiveOrders() {
     $.get("/users/home/activeOrders",function(data){
         menu_data = data;
        console.log(data);
@@ -50,7 +50,7 @@ function loadRestaurantActiveOrders() {
                                     '<thead>'+
                                     '<tr>'+
                                     '<th>name</th>'+
-                                    '<th>customer</th>'+
+                                    '<th>restaurant</th>'+
                                     '<th>status</th>'+
                                     '<th>Amount (USD)</th>'+
                                     '</tr>'+
@@ -58,7 +58,7 @@ function loadRestaurantActiveOrders() {
                                     '<tbody>'+
                                     '<tr>'+
                                     '<td class="tablecell">'+data[i].name+'</td>'+
-                                    '<td>'+data[i].user+'</td>'+
+                                    '<td>'+data[i].restaurant+'</td>'+
                                     '<td>'+(data[i].delivered ? "delivered" : (data[i].paid ? "paid" : "active")) +'</td>'+
                                     '<td>'+data[i].cost+'</td>'+
                                     '</tr>'+
@@ -68,7 +68,7 @@ function loadRestaurantActiveOrders() {
                                     '<!--<br>-->'+
                                     '<div class="text-right updatebox-buttons">'+
                                     '<p hidden>'+data[i].name+'</p>'+
-                                    '<button class="btn btn-info" onclick="completeDelivered(this)" >Delivered</button>'+
+                                    '<button class="btn btn-info" onclick="completeDelivered(this)" '+(data[i].delivered ? "disabled" : "")+' >Delivered</button>'+
                                     '</div>'+
                                     '</a>');
         }
@@ -145,9 +145,9 @@ function bodyOnload() {
         });
     });
     
-    loadRestaurantMenu();
-    loadRestaurantHistoryOrders();
-    loadRestaurantActiveOrders();
+    // loadRestaurantMenu();
+    loadUserHistoryOrders();
+    loadUserActiveOrders();
     
     // var link = document.createElement("link");
     // link.href = "/stylesheets/style.css";

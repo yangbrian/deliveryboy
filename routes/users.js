@@ -183,6 +183,23 @@ router.get("/home/activeOrders", function(req, res, next) {
     });
 });
 
+router.get("/home/orders", function(req, res, next) {
+    validateStatus(req, res, User, "/users/login", function(input, user) {
+    	ActiveOrder.find({
+    		number: user.number
+    	}, function(err, orders) {
+    		res.set("Content-Type", "text/json");
+    		if (err) {
+    			console.log(err);
+    			res.send({'err': err});
+    			return;
+    		}
+    		console.log(orders);
+    		res.send(orders);
+    	});
+    });
+});
+
 function handleNewUser(user, res) {
 	if (user.username === null)
 		user.username = user.number;

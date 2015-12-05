@@ -116,10 +116,14 @@ router.post('/login', function(req, res, next) {
 	var input = req.body;
 	Restaurant.findOne({"username": input.username}, function(err, restaurant) {
 	    if (err || !restaurant || (restaurant && restaurant.passwd != crypto.createHash('md5').update(input.passwd).digest("hex"))) {
+	    	console.log(err);
 	    	var err = {};
 	    	err.username_err = true;
 	    	err.passwd_err = true;
 	    	err.flash = "danger";
+	    	console.log(input);
+	    	console.log(restaurant);
+	    	
 	    	err.flash_msg = "Login failed. Please retry";
 	    	err = Object.assign(err, input);
 	    	res.render("restaurant_login", err);

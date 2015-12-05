@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 //testing git pull
-mongoose.connect('mongodb://10.0.0.56:27017/cloudwiki',{ mongos : true}, function(err) {
+mongoose.connect('mongodb://localhost:27017/',{ mongos : true}, function(err) {
   if (!err)
     console.log(err);
 });
@@ -30,7 +30,7 @@ var restaurants = require("./routes/restaurants");
 
 
 var redis = require('socket.io-redis');
-io.adapter(redis({ host: '10.0.0.19', port: 6379 }));
+// io.adapter(redis({ host: '10.0.0.19', port: 6379 }));
 
 
 var app = express();
