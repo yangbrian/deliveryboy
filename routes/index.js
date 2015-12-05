@@ -3,10 +3,11 @@ var router = express.Router();
 
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var os = require("os");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Express', host: os.hostname() });
 });
 
 // left here so things don't break
