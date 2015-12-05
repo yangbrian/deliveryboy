@@ -34,7 +34,7 @@ function loadUserHistoryOrders() {
        console.log(data);
        var dish = null;
        for ( var i = 0; i < data.length; i++) {
-            $("#order_list").append('<tr><td>'+data[i].name+'</td><td>'+data[i].restaurant+'</td><td><a href="#">'+(data[i].paid ? "paid" : (data[i].paid ? "delivered" : "active")) +'</a></td><td>'+data[i].cost+'</td></tr>');
+            $("#order_list").append('<tr><td>'+data[i].name+'</td><td>'+data[i].restaurant+'</td><td><a href="#">'+data[i].status +'</a></td><td>'+data[i].cost+'</td></tr>');
        }
     });
 }
@@ -59,7 +59,7 @@ function loadUserActiveOrders() {
                                     '<tr>'+
                                     '<td class="tablecell">'+data[i].name+'</td>'+
                                     '<td>'+data[i].restaurant+'</td>'+
-                                    '<td>'+(data[i].delivered ? "delivered" : (data[i].paid ? "paid" : "active")) +'</td>'+
+                                    '<td>'+data[i].status +'</td>'+
                                     '<td>'+data[i].cost+'</td>'+
                                     '</tr>'+
                                     '</tbody>'+

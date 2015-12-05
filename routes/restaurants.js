@@ -370,6 +370,10 @@ router.post("/home/activeOrders/paid", function(req, res, next) {
    			name: input.name
    		}, function(err, order) {
    		    order.paid = true;
+   		    if (order.status == 'active')
+   		    	order.status = "paid";
+   		    else
+   		    	order.status += " | paid";
 	       order.save(function (err) {
 	       		if (err) {
 	       			res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': "unable to complete request: "+err.message });
