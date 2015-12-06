@@ -31,7 +31,7 @@ var restaurants = require("./routes/restaurants");
 
 
 var redis = require('socket.io-redis');
-// io.adapter(redis({ host: '10.0.0.19', port: 6379 }));
+io.adapter(redis({ host: '10.0.0.69', port: 6379 }));
 
 
 var app = express();
