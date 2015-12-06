@@ -30,14 +30,16 @@ var order = require('./routes/order');
 var restaurants = require("./routes/restaurants");
 
 
-var redis = require('socket.io-redis');
-io.adapter(redis({ host: '10.0.0.69', port: 6379 }));
-
-
 var app = express();
 
 var io = require("socket.io")();
 app.io = io;
+
+
+
+var redis = require('socket.io-redis');
+io.adapter(redis({ host: '10.0.0.69', port: 6379 }));
+
 
 
 // view engine setup
