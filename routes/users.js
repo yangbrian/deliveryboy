@@ -9,6 +9,7 @@ var webDomain = "cloudfood-jasonews.c9users.io";
 var authExpireTime = 60 * 60 * 1000;
 
 var paypal = require('paypal-rest-sdk');
+var os = require('os');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
