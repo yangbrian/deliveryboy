@@ -1,0 +1,32 @@
+---
+- hosts: food
+  tasks:
+   - name: Update packages and Install Git
+     apt: name=git update_cache=yes
+
+   - name: Install Node
+     apt: name=nodejs
+   
+   - name: Install npm
+     apt: name=npm
+     ignore_errors: yes
+
+   - name: Add Github Deploy Key
+     copy: src=/root/.ssh/id_rsa.deliveryboy dest=/root/.ssh/id_rsa owner=root group=root mode=0600
+
+   - name: Clone Project
+     git: repo=git@github.com:yangbrian/deliveryboy.git dest=/home/deliveryboy accept_hostkey=true clone=true
+
+   - name: Install PM2 Globally
+     npm: name=pm2 global=yes
+
+   - name: Link node and nodejs if not yet already
+     command: ln -s /usr/bin/nodejs /usr/bin/node
+     ignore_errors: yes
+
+   - name: Add to Startup
+     copy: src=/root/ansible/startup dest=/etc/rc.local owner=root group=root mode=0755
+
+   # add nodejs service to upstart
+   #- name: add nodejs to upstart
+   #  copy: src=/root/config/nodejs/cloudwiki.conf dest=/etc/init/cloudwiki.conf owner=root group=root mode=0644

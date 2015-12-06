@@ -1,0 +1,8 @@
+---
+- hosts: food
+  tasks:
+    - name: Updating DeliveryBoy Project
+      git: repo=git@github.com:yangbrian/deliveryboy.git dest=/home/deliveryboy accept_hostkey=true 
+
+    - name: Install Dependencies
+      npm: path=/home/deliveryboy
