@@ -45,10 +45,10 @@ router.get("/home", function(req, res, next) {
 						
 						res.cookie('auth_token', user.auth.token, {path: "/users/home", expires: user.auth.expire, httpOnly: true});
 						if (!online) {
-							res.render('user_home', {'user': user, 'flash': 'success', 'flash_msg': 'Welcome to '+ webName});
+							res.render('user_home', {'user': user, 'flash': 'success', 'flash_msg': 'Welcome to '+ webName, host: os.hostname()});
 						}
 						else
-							res.render('user_home', {'user': user});
+							res.render('user_home', {'user': user, host: os.hostname()});
 					});
 					
 				} else {
