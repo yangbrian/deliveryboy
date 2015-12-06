@@ -1,0 +1,14 @@
+---
+  - hosts: deliveryboy
+    remote_user: root
+    
+    tasks:
+      
+      - name: install node
+        apt: name=node state=present update_cache=yes
+
+      - name: install npm
+        apt: name=npm state=present
+
+      - name: install git
+        apt: name=git state=present

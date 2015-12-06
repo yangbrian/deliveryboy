@@ -1,0 +1,7 @@
+---
+  - hosts: db_configsvr
+    remote_user: root
+    tasks:
+
+      - name: install ntp
+        apt: name=ntp state=present

@@ -1,0 +1,13 @@
+---
+  - hosts: extents
+    remote_user: root
+    vars:
+      ndisk: vdb
+      size: 50
+    tasks:
+      
+      - name: copy partition file to /root/partition
+        copy: src=/root/config/disks/partition dest=/root/partition
+  
+      - name: create and extents disks
+        script: /root/config/disks/disks /root/partition {{ndisk}} {{size}}

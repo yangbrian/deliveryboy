@@ -1,0 +1,6 @@
+---
+- hosts: web
+  tasks:
+   - name: Updating Project 
+     git: repo=git@github.com:yangbrian/cloudwiki.git force=yes dest=/home/cloudwiki accept_hostkey=true 
+ 

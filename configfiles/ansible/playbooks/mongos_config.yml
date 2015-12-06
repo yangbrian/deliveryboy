@@ -1,0 +1,38 @@
+- hosts: db_routers
+  remote_user: root
+  vars:
+    state: new
+  tasks:
+    
+    - name: make mongos conf files
+      copy: src=/root/config/mongodb/mongos.conf dest=/etc/mongos.conf mode=0644 owner=root group=root
+      when: state|match("new")
+
+    - name: set mongos as upstart program
+      copy: src=/root/config/mongodb/init/mongos.conf dest=/etc/init/mongos.conf mode=0644 owner=root group=root
+      when: state|match("new")
+
+    - name: let routers know its config servers
+      lineinfile:
+      args:
+        dest: /etc/mongos.conf
+        state: present
+        regexp: "configdb=.+"
+        line: "configdb={{configsvr0}},{{configsvr1}},{{configsvr2}}"
+      when: state|match("new")
+
+#    - name: run mongos router
+#      service:
+#      args:
+#        name: mongos
+#        enabled: yes
+#        state: started
+#      when: state|match("new")
+
+    - name: reboot router
+      service:
+      args:
+        name: mongos
+        enabled: yes
+        state: restarted
+      when: state|match("new")

@@ -1,0 +1,16 @@
+---
+  - hosts: vimSet
+    remote_user: root
+    
+    tasks:
+      
+      - name: install vim
+        apt: name=vim state=present update_cache=yes
+
+      - name: copy neocomplcache
+        copy: src=~/config/vim/.vim dest=~/ owner=root group=root mode=0644
+
+      - name: copy .vimrc file
+        copy: src=~/config/vim/.vimrc dest=~/.vimrc owner=root group=root mode=0644
+      - name: copy .inputrc file
+        copy: src=~/config/vim/.inputrc dest=~/.inputrc owner=root group=root mode=0644

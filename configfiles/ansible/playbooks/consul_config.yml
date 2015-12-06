@@ -1,0 +1,153 @@
+---
+  - hosts: consul 
+    remote_user: root
+
+    tasks:
+      - name: install unzip
+        apt: pkg=unzip state=present
+
+      - name: test if consul installed
+        file: path=/usr/local/bin/consul state=file
+        register: exists
+        ignore_errors: yes
+
+      - name: install consul.io
+        shell: wget https://dl.bintray.com/mitchellh/consul/0.5.2_linux_amd64.zip
+        args:
+          chdir: /usr/local/bin 
+        when: exists|failed
+
+      - name: unzip consul
+        shell: unzip 0.5.2_linux_amd64.zip
+        args:
+          chdir: /usr/local/bin
+        when: exists|failed
+
+      - name: clean up zip files
+        file: path=/usr/local/bin/*.zip state=absent
+  
+      - name: make config directory
+        file: path=/etc/consul.d state=directory owner=root group=root
+
+      - name: copy configuration file to /etc/init directory for upstarting
+        copy: src=/root/config/consul/consul.conf dest=/etc/init/consul.conf mode=0644 owner=root group=root
+
+
+  - hosts: consul_server
+    remote_user: root
+    tasks:
+      - name: copy configuration file to consul.d directory
+        copy: src=/root/config/consul/server.json dest=/etc/consul.d/config.json mode=0644 group=root owner=root
+
+
+  - hosts: consul_clients 
+    remote_user: root
+    tasks:
+      - name: copy config file to consul.d directory
+        copy: src=/root/config/consul/client.json dest=/etc/consul.d/config.json mode=0644 group=root owner=root
+
+      - name: reset rejoin host ips
+        lineinfile: 
+        args: 
+          dest: /etc/consul.d/config.json 
+          state: present
+          regexp: "\"retry_join\".+"
+          line: "\"retry_join\" : [\"{{consul_primary_server}}\", \"{{consul_primary_client}}\"]"
+
+      - name: create directory for web ui
+        file: path=/root/consul-ui/ state=directory owner=root group=root 
+
+      - name: check index.html whether exists
+        file: path=/root/consul-ui/dist/index.html state=file
+        register: ui_exists
+        ignore_errors: yes
+
+      - name: download ui pkg
+        shell: wget https://dl.bintray.com/mitchellh/consul/0.5.2_web_ui.zip
+        args: 
+          chdir: /root/consul-ui
+        when: ui_exists|failed
+
+      - name: unzip pkg
+        shell: unzip "*.zip"
+        args:
+          chdir: /root/consul-ui
+        when: ui_exists|failed
+
+      - name: clean up zip files
+        file: path=/root/consul-ui/*.zip state=absent
+        when: ui_exists|failed
+
+  - hosts: db_configsvr
+    remote_user: root
+    tasks:
+      - name: copy service file to consul.d
+        copy: 
+        args:
+          src: /root/config/consul/services/mongod_configsvr_services.json
+          dest: /etc/consul.d/mongod_configsvr_services.json
+          mode: 0644
+          owner: root
+          group: root
+  
+  - hosts: dbs
+    remote_user: root
+    tasks:
+      - name: copy service of dbs file to consul.d
+        copy: 
+        args:
+          src: /root/config/consul/services/mongodb_services.json
+          dest: /etc/consul.d/mongodb_services.json
+          mode: 0644
+          owner: root
+          group: root
+
+  - hosts: db_routers
+    remote_user: root
+    tasks:
+      - name: copy service file of routers to consul.d
+        copy: 
+        args:
+          src: /root/config/consul/services/mongos_services.json
+          dest: /etc/consul.d/mongos_services.json
+          mode: 0644
+          owner: root
+          group: root
+
+  - hosts: web
+    remote_user: root
+    tasks:
+      - name: copy service file of web servers to consul.d
+        copy: 
+        args:
+          src: /root/config/consul/services/nodeservices.json
+          dest: /etc/consul.d/nodeservices.json
+          mode: 0644
+          owner: root
+          group: root
+          
+  - hosts: consul
+    remote_user: root
+    tasks:
+
+      - name: test consul command is runnable
+        shell: consul --version 
+        register: runnable
+
+      - name: test if consul is running
+        shell: consul info 
+        register: running
+        ignore_errors: yes
+
+      - name: stop current running consul
+        shell: consul leave
+        when: running|success
+
+      - name: run consul
+        shell: start consul
+        when: runnable|success and running|failed
+
+      - name: join clusters
+        shell: consul join {{consul_primary_server}}
+        when: runnable|success and running|failed
+

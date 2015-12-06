@@ -1,0 +1,62 @@
+- hosts: recover
+  remote_user: root
+  vars:
+    state: new
+    dbdir: /data/db
+  tasks:
+
+    - name: install mongodb
+      apt:  name=mongodb state=present
+      when: state|match("start") 
+
+    - name: copy replSet file
+      copy: src=/root/config/mongodb/replSet dest=/root/replSet
+      when: state|match("start") 
+
+    - name: copy addmembers file
+      copy: src=/root/config/mongodb/addmembers dest=/root/addmembers
+      when: state|match("start") 
+
+    - name: make db directory
+      file:
+      args:
+        path: "{{dbdir}}"
+        state: directory
+        owner: root
+        group: root
+      when: state|match("new")
+
+#    - name: copy configfile
+#      copy: src=/root/config/mongodb/mongodb.conf dest=/etc/mongodb.conf owner=root 
+
+    - name: change db directory
+      lineinfile: 
+      args:
+        dest: /etc/mongodb.conf
+        state: present
+        regexp: "dbpath=.+"
+        line: dbpath={{dbdir}}
+      when: state|match("new")
+
+    - name: change  to small file
+      lineinfile: 
+      args:
+        dest: /etc/mongodb.conf
+        state: present
+        regexp: "smallfiles=.+"
+        line: "smallfiles=false"
+      when: state|match("new")
+
+    - name: change bind_ip
+      lineinfile: 
+      args:
+        dest: /etc/mongodb.conf
+        state: present
+        regexp: "bind_ip.+"
+        line: bind_ip = 0.0.0.0
+      when: state|match("new")
+
+    - name: make db reboot when process died
+      copy: src=/root/config/mongodb/init/mongodb.conf dest=/etc/init/mongodb.conf mode=0644 group=root owner=root
+      when: state|match("new")
+

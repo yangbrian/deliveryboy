@@ -1,0 +1,7 @@
+
+- hosts: web
+  tasks:
+   
+   # add nodejs service to upstart
+   - name: copying logs to ~/ansible/logs
+     fetch: src=/home/cloudwiki/cloudwiki.log dest=/root/ansible/nodelogs/{{ ansible_hostname }} validate_checksum=no 

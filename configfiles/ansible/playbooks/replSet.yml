@@ -1,0 +1,48 @@
+---
+  - hosts: "{{replSet | default('none') }}"
+    remote_user: root
+    vars:
+      state : restart 
+      setname: "{{ replSet }}"
+
+    tasks:
+
+      - name: put config file to the end of /etc/mongodb.conf
+        lineinfile: 
+        args:
+          dest: /etc/mongodb.conf
+          state: present
+          regexp: "replSet=.+"
+          line: replSet={{setname}}
+        when: state|match("new") 
+
+#      - name: change to smallfiles mode
+#        lineinfile:
+#        args:
+#          dest: /etc/mongodb.conf
+#          state: present
+#          regexp: "smallfiles=.+"
+#          line: smallfiles=true
+#        when: state|match("new")
+
+      - name: restart mongodb service
+        service: 
+        args:
+          name: mongodb
+          state: restarted
+          enabled: yes
+      
+#      - name: initialize primary database
+#        shell: mongo rs.initiate({"_id":"\"""{{setname}}""\"")
+#        run_once: true
+#        delegate_to: hostvars[groups["{{replSet}}"][0]].ansible_eth0.ipv4.address
+#
+#      - name: add sharding 
+#        shell: mongo rs.add("\""hostvars[item].ansible_eth0.ipv4.address"\"")
+#        with_items:
+#          groups["{{replSet}}"]
+#        run_once: true
+#        delegate_to: hostvars[groups["{{replSet}}"][0]].ansible_eth0.ipv4.address
+#
+   
+

@@ -1,0 +1,16 @@
+---
+  - hosts: extents
+    remote_user: root
+    vars:
+      mountDir: /data
+      disk: /dev/vdb
+      fs: ext4
+      cmd: /root/partition
+    tasks:
+
+      
+      - name: copy partition file to /root/partition
+        copy: src=/root/config/disks/partition dest=/root/partition
+  
+      - name: create and extents disks
+        script: /root/config/disks/fsext -a "{{cmd}}" -d "{{disk}}" -m "{{mountDir}}" -f "{{fs}}"

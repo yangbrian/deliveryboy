@@ -1,0 +1,16 @@
+---
+- hosts: web
+  tasks:
+        - name: "Stop existing app if any"
+          command: forever stopall
+        
+        - name: "Delete all logs"
+          command: rm /home/cloudwiki/cloudwiki.log
+          ignore_errors: yes
+
+        - name: "Start example Node.js app."
+          command: forever -o /home/cloudwiki/cloudwiki.log -e /home/cloudwiki/cloudwiki.log -l /home/cloudwiki/cloudwiki.log start /home/cloudwiki/bin/www
+
+        # added bellow task to reboot node service
+       # - name: restart node server
+       #   service: name=cloudwiki enabled=yes state=restarted

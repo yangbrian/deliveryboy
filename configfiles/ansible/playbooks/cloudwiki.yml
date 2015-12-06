@@ -1,0 +1,8 @@
+---
+  - hosts: web
+    remote_user: root
+    tasks:
+
+      - name: copy repo to server
+        synchronize: src=/root/cloudwiki dest=/home/cloudwiki 
+      
