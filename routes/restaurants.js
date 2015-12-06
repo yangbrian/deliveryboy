@@ -26,7 +26,7 @@ router.get("/home", function(req, res, next) {
 		console.log("No cookies redirect");
 		return;
 	}
-	
+
 	Restaurant.findOne({
 		'username': req.cookies.username
 	}, function( err, restaurant) {
@@ -44,18 +44,18 @@ router.get("/home", function(req, res, next) {
 	 						res.send(err);
 	 						return;
 	 					}
-						
+
 	 					res.clearCookie("auth_token", {path: "/restaurants/home"});
 	 					res.cookie('auth_token', restaurant.auth.token, { path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
 	 					console.log("online: ", online);
-	 					
+
 	 					if (!online)
 							res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'success', 'flash_msg': 'Welcome to '+ webName});
 						else
 							res.render('restaurant_home', {'restaurant': restaurant});
-						
+
 	 				});
-					
+
 				} else {
 					restaurant.auth.expire = new Date(0);
 					restaurant.online = false;
@@ -71,10 +71,10 @@ router.get("/home", function(req, res, next) {
 					});
 				}
 			} else {
-				res.redirect('login');	
+				res.redirect('login');
 			}
 		}
-	});	
+	});
 });
 
 router.get('/signup', function(req, res, next) {
@@ -83,23 +83,23 @@ router.get('/signup', function(req, res, next) {
 	if (req.query.error !== undefined) {
 		if (parseInt(req.query.error) === 1)
 			res.render('restaurant_signup', {'flash':'danger', 'flash_msg': "unable to create account"});
-	} else { 
+	} else {
 		console.log("render signup")
-		res.render('restaurant_signup');	
+		res.render('restaurant_signup');
 		console.log("after render")
 	}
 });
 
 router.post('/signup', function(req, res, next) {
-	
+
 	var err = validate(req.body);
-	if (Object.keys(err).length === 0) {		
+	if (Object.keys(err).length === 0) {
 		handleNewRestaurant(req.body, res);
 	} else {
 		console.log(req.body);
 		err.flash = 'danger';
 		err.flash_msg = "Marked fields are not in correct format";
-		
+
 		err = Object.assign(err, req.body);
 		err.passwd = "";
 		err.passwdcomfirm = "";
@@ -123,13 +123,13 @@ router.post('/login', function(req, res, next) {
 	    	err.flash = "danger";
 	    	console.log(input);
 	    	console.log(restaurant);
-	    	
+
 	    	err.flash_msg = "Login failed. Please retry";
 	    	err = Object.assign(err, input);
 	    	res.render("restaurant_login", err);
 	    	return;
 	    }
-	    
+
 	    restaurant.auth.token	= crypto.createHash('sha256').update((new Date()).toString()).digest("base64");
 	    restaurant.auth.expire = new Date(Date.now() + authExpireTime);
     	restaurant.save(function(err) {
@@ -143,10 +143,10 @@ router.post('/login', function(req, res, next) {
     		res.cookie('auth_token', restaurant.auth.token, {path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
 			res.redirect("home");
     	})
-		
-	    
+
+
 	})
-	
+
 });
 
 router.get("/logout", function(req, res, next) {
@@ -190,7 +190,7 @@ router.post("/home/payment", function(req, res, next) {
 
 
 router.post("/home/dish/new", function(req, res, next) {
-	
+
     if (!req.cookies.username || !req.cookies.auth_token)
     	res.redirect("/restaurants/login");
     else {
@@ -204,8 +204,8 @@ router.post("/home/dish/new", function(req, res, next) {
 				res.redirect("signup/?error=2");
 			} else {
 				if ( restaurant.auth.token == req.cookies.auth_token && restaurant.auth.validate && restaurant.online) {
-					
-					    
+
+
 				    var dish = new Dish();
 					dish.name = input.name;
 					dish.calories = input.calories;
@@ -217,8 +217,8 @@ router.post("/home/dish/new", function(req, res, next) {
 					dish.price = input.price;
 					dish.restaurant_id = restaurant.username;
 					dish.dish_id = crypto.createHash("sha256").update(dish.name+dish.restaurant_id).digest("base64");
-					
-					
+
+
 					dish.save(function(err) {
 						if (err) {
 							console.log(err.message);
@@ -227,7 +227,7 @@ router.post("/home/dish/new", function(req, res, next) {
 						}
 						res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'success', 'flash_msg': 'Successfully added dish '+dish.name+" to menu" });
 					});
-					
+
 					var tag = null;
 					var tags = dish.tags.split(',');
 					for (var i = 0; i < tags.length; i ++) {
@@ -235,19 +235,19 @@ router.post("/home/dish/new", function(req, res, next) {
 						tag.value = tags[i];
 						tag.save();
 					}
-					
+
 					tags = dish.ingradients.split(',');
 					for (var i = 0; i < tags.length; i ++) {
 						tag = new Ingradient();
 						tag.value = tags[i];
 						tag.save();
 					}
-					
+
 				} else {
 					res.redirect("/restaurants/login");
 				}
 			}
-				
+
     	});
     }
 });
@@ -276,7 +276,7 @@ router.post("/home/dish/update", function(req, res, next) {
 						return;
 					}
 					res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'success', 'flash_msg': 'Successfully update dish '+dish.name+" to menu" });
-					
+
 				});
         });
     }, function(input) {
@@ -297,9 +297,9 @@ router.post("/home/dish/delete", function(req, res, next) {
 			}
 			console.log("deleted ", input.name);
 			res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'success', 'flash_msg': 'Successfully delete dish '+input.name+" from menu" });
-			
+
         });
-        
+
     },function(input) {
         res.redirect("/restaurants/login");
     });
@@ -356,7 +356,7 @@ router.post("/home/activeOrders/delivered", function(req, res, next) {
 
 	       		res.redirect("/restaurants/home");
    			});
-       
+
        });
    }, function(input) {
        res.redirect("/restaurants/login");
@@ -381,7 +381,7 @@ router.post("/home/activeOrders/paid", function(req, res, next) {
 	       		}
 	       		res.redirect("/restaurants/home");
    			});
-       
+
        });
    }, function(input) {
        res.redirect("/restaurants/login");
@@ -408,6 +408,8 @@ router.get("/home/menu", function(req, res, next) {
     	res.redirect("/restaurants/login");
     });
 });
+
+
 
 router.get("/home/orders", function(req, res, next) {
     validateStatus(req,res,Restaurant, "/restaurants/login", function(input, restaurant) {
@@ -444,7 +446,7 @@ router.get("/home/activeOrders", function(req, res, next) {
 });
 
 router.get("/tags", function(req, res, next) {
-	
+
 	Tag.find(function(err, data){
 		res.set("Content-Type", "text/json");
 		if (err) {
@@ -455,11 +457,11 @@ router.get("/tags", function(req, res, next) {
 		console.log(data);
 		res.send(data);
 	});
-    
+
 });
 
 router.get("/ingradients", function(req, res, next) {
-	
+
 	Ingradient.find(function(err, data){
 		res.set("Content-Type", "text/json");
 		if (err) {
@@ -470,7 +472,7 @@ router.get("/ingradients", function(req, res, next) {
 		console.log(data);
 		res.send(data);
 	});
-    
+
 });
 
 
@@ -490,8 +492,8 @@ function handleNewRestaurant(restaurant, res) {
 	var address = restaurant.address;
 	var company = restaurant.company;
 	// TODO: implement operation hours of everyday.
-	
-	
+
+
 	var passwd = restaurant.passwd;
 	var input = restaurant;
 
@@ -501,16 +503,16 @@ function handleNewRestaurant(restaurant, res) {
 		if (err) {
 			console.log(err);
 			return;
-		}		
+		}
 		if (restaurants) {
 			var flash_msg = "The ";
 			var err = {};
-			
+
 			if (restaurants.username == username) {
 				err.username_err = true;
 				flash_msg += "username ";
 			}
-				
+
 			// console.log(restaurants);
 			flash_msg += "has been used!";
 			err.flash_msg  = flash_msg;
@@ -520,7 +522,7 @@ function handleNewRestaurant(restaurant, res) {
 			err = Object.assign(err, input);
 			res.render('restaurant_signup', err);
 			// res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'success', 'flash_msg': 'Already sign up!'});
-			return;		
+			return;
 		}
 		var restaurant = new Restaurant();
 		restaurant.username = username;
@@ -534,10 +536,10 @@ function handleNewRestaurant(restaurant, res) {
 	 	restaurant.auth.token = crypto.createHash('sha256').update((new Date()).toString()).digest("base64");
 		restaurant.auth.expire = new Date(Date.now() + authExpireTime);
 		restaurant.online = false;
-		
+
 		restaurant.save( function(err) {
 			if (err) {
-				console.log(err);		
+				console.log(err);
 				res.redirect("signup/?error=1");
 			}
 			else {
@@ -546,7 +548,7 @@ function handleNewRestaurant(restaurant, res) {
 				res.cookie('username', restaurant.username, {path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
 				res.cookie('auth_token', restaurant.auth.token, {path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
 				console.log(restaurant.username+"\n"+restaurant.auth.token);
-				res.redirect("home");	
+				res.redirect("home");
 			}
 		});
 	});
@@ -573,7 +575,7 @@ function validate(restaurant) {
 			err.company_err = true;
 		if (!restaurant.address)
 			err.address_err = true;
-		if (!restaurant.name) 
+		if (!restaurant.name)
 			err.name_err = true;
 		if (!restaurant.passwd || !rePasswd1.test(restaurant.passwd) || !rePasswd2.test(restaurant.passwd))
 			err.passwd_err = true;

@@ -62,11 +62,15 @@ orderButton.onclick = function() {
 
 
    if(validate()){
+     //This probably isn't right but I can't test without the page redirecting me -___-
+     user.cost = parseInt(user.cost,10) * (1 + parseInt(user.tip,10));
+
+
 
        $.post('/order/new',user, function(data) {
            window.location.href = "/users/home";
        });
-       
+
    }
 
 };

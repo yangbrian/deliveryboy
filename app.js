@@ -36,9 +36,9 @@ var io = require("socket.io")();
 app.io = io;
 
 
-
+//
 var redis = require('socket.io-redis');
-io.adapter(redis({ host: '10.0.0.69', port: 6379 }));
+ io.adapter(redis({ host: '10.0.0.69', port: 6379 }));
 
 
 
