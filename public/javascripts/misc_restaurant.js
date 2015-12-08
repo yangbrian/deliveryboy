@@ -69,7 +69,9 @@ function loadRestaurantActiveOrders() {
                                     '<!--<br>-->'+
                                     '<div class="text-right updatebox-buttons">'+
                                     '<p hidden>'+data[i].name+'</p>'+
-                                    '<button class="btn btn-success" onclick="completePayment(this)" '+(data[i].paid ? "disabled" : "")+'>Paid</button>'+
+                                    '<button class="btn btn-success" onclick="completeAccepted(this)" '+(data[i].accepted ? "style=\"display: none;\"" : "")+' >Accept</button>'+
+                                    '<button class="btn btn-danger" onclick="completeDeclined(this)" '+(data[i].accepted ? "style=\"display: none;\"" : "")+' >Decline</button>'+
+                                    '<button class="btn btn-success" onclick="completePayment(this)" '+(data[i].paid ? "disabled" : "")+'  '+(data[i].accepted ? "" : "style=\"display: none;\"")+'>Paid</button>'+
                                     '</div>'+
                                     '</a>');
         }
@@ -87,6 +89,20 @@ function completeDelivered(btn) {
 function completePayment(btn) {
     var name = btn.parentNode.firstChild.innerHTML;
     $.post("/restaurants/home/activeOrders/paid", {"name":name}, function() {
+        location.reload();
+    });
+}
+
+function completeAccepted(btn) {
+    var name = btn.parentNode.firstChild.innerHTML;
+    $.post("/restaurants/home/activeOrders/accepted", {"name": name}, function() {
+        location.reload();
+    });
+}
+
+function completeDeclined(btn) {
+    var name = btn.parentNode.firstChild.innerHTML;
+    $.post("/restaurants/home/activeOrders/declined", {"name":name}, function() {
         location.reload();
     });
 }

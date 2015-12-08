@@ -4,6 +4,7 @@ var braintree = require('braintree');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var ActiveOrder = mongoose.model('ActiveOrder');
+var crypto = require('crypto');
 
 
 module.exports = function(io){
@@ -93,6 +94,7 @@ module.exports = function(io){
         newOrder.user = order.number;
         newOrder.paid = false;
         newOrder.status = "active";
+        newOrder.accepted = false;
 
         newOrder.save(function(err){
             if(err){

@@ -12,7 +12,8 @@ var activeOrderSchema = new Schema({
 	delivered: Boolean ,
 	paid: Boolean,
 	user: {type: String, index: true},
-	status: String
+	status: String,
+	accepted: Boolean
 }, {shardKey: {number: 1, restaurant: 1}});
 
 // activeOrderSchema.virtual('number').set(function (phone) {

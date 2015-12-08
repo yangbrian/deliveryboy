@@ -139,8 +139,11 @@ router.post('/login', function(req, res, next) {
     		}
     		res.clearCookie("auth_token", {path: "/restaurants/home"});
     		res.clearCookie("username", {path:"/restaurants/home"});
+    		res.clearCookie("typeRestaurant", {path: "/"});
+    		res.clearCookie("logout", {path: "/"});
     		res.cookie('username', restaurant.username, {path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
     		res.cookie('auth_token', restaurant.auth.token, {path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
+    		res.cookie('typeRestaurant', true, {path: "/", expires: restaurant.auth.expire, httpOnly: true});
 			res.redirect("home");
     	})
 
@@ -151,6 +154,7 @@ router.post('/login', function(req, res, next) {
 
 router.get("/logout", function(req, res, next) {
     res.clearCookie("auth_token", {path: "/restaurants/home"});
+    res.clearCookie("typeRestaurant", {path: "/"});
     res.cookie("auth_token", "logout", {path: "/restaurants/home", httpOnly: true});
     res.cookie("logout", "true", {path: "/restaurants/home", httpOnly: true});
     res.redirect("home");
@@ -303,7 +307,57 @@ router.post("/home/dish/delete", function(req, res, next) {
     },function(input) {
         res.redirect("/restaurants/login");
     });
-})
+});
+
+router.post("/home/activeOrders/accepted", function(req, res, next) {
+	
+	validateStatus(req, res, Restaurant, "/restaurants/login", function(input, restaurant) {
+	    ActiveOrder.findOne({
+   			name: input.name,
+   			restaurant: restaurant.address
+   		}, function(err, order) {
+   			if (err) {
+				console.log(err.message);
+				res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': 'failed to  accepte order '+input.name+" reason: " + err.message });
+				return;
+			}
+   		    order.accepted = true;
+	       	order.save(function (err) {
+	       		if (err) {
+	       			res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': "unable to complete request: "+err.message });
+	       			return;
+	       		}
+	       		res.redirect("/restaurants/home");
+	       });
+   		});
+	}, function(input) {
+	    res.redirect("/restaurants/login");
+	});
+});
+
+router.post("/home/activeOrders/declined", function(req, res, next) {
+	
+	validateStatus(req, res, Restaurant, "/restaurants/login", function(input, restaurant) {
+	     ActiveOrder.findOne({
+   			name: input.name,
+   			restaurant: restaurant.address
+   		}, function(err, order) {
+   		    order.accepted = false;
+   		    order.status = "declined";
+   		    order.paid = true;
+   		    order.delivered = true;
+	       	order.save(function (err) {
+	       		if (err) {
+	       			res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': "unable to complete request: "+err.message });
+	       			return;
+	       		}
+	       		res.redirect("/restaurants/home");
+	       });
+   		});
+	}, function(input) {
+	   res.redirect("/restaurants/login");
+	});
+});
 
 
 router.post("/home/activeOrders/delivered", function(req, res, next) {
@@ -545,7 +599,9 @@ function handleNewRestaurant(restaurant, res) {
 			else {
 				res.clearCookie('username', {path: "/restaurants/home"});
 				res.clearCookie('auth_token', {path: "/restaurants/home"});
+				res.clearCookie("typeRestaurant", {path : "/"});
 				res.cookie('username', restaurant.username, {path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
+				res.cookie('typeRestaurant', true, {path: "/", expires: restaurant.auth.expire, httpOnly: true});
 				res.cookie('auth_token', restaurant.auth.token, {path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
 				console.log(restaurant.username+"\n"+restaurant.auth.token);
 				res.redirect("home");

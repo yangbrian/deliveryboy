@@ -8,7 +8,12 @@ var os = require("os");
 /* GET home page. */
 router.get('/', function(req, res, next) {
   //res.render('index', { title: 'Express', host: os.hostname() });
-  res.render('user_home', { title: 'Express', host: os.hostname() });
+    if (req.cookies.typeRestaurant && !req.cookies.logout)
+        res.redirect("/restaurants/home");
+    else if (req.cookies.type == "user" && !req.cookies.logout)
+        res.redirect("/users/home");
+    else
+        res.render('index', { title: 'Express', host: os.hostname() });
 });
 
 // left here so things don't break
