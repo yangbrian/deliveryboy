@@ -4,6 +4,7 @@ var braintree = require('braintree');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var ActiveOrder = mongoose.model('ActiveOrder');
+var Dish = mongoose.model('Dish');
 
 
 module.exports = function(io){
@@ -78,6 +79,13 @@ module.exports = function(io){
         //    }
         //});
     }
+
+    router.get('/getDishes', function(req, res, next){
+      Dish.find({}, function(err, data){
+        res.json(data);
+      });
+
+    });
 
     function createActiveOrder(order){
 

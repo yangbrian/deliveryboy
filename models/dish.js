@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 
 var dishSchema = new Schema({
     name: {type: String, index: true},
+    address: {type: String, index: true},
     restaurant_id: {type: String, index: true},
     price: Number,
     description: String,
@@ -22,4 +23,3 @@ var dishSchema = new Schema({
 var Dish = mongoose.model("Dish", dishSchema);
 
 module.exports = Dish;
-

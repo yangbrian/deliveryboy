@@ -84,9 +84,9 @@ router.get('/signup', function(req, res, next) {
 		if (parseInt(req.query.error) === 1)
 			res.render('restaurant_signup', {'flash':'danger', 'flash_msg': "unable to create account"});
 	} else {
-		console.log("render signup")
+		console.log("render signup");
 		res.render('restaurant_signup');
-		console.log("after render")
+		console.log("after render");
 	}
 });
 
@@ -208,6 +208,7 @@ router.post("/home/dish/new", function(req, res, next) {
 
 				    var dish = new Dish();
 					dish.name = input.name;
+          dish.address = restaurant.address;
 					dish.calories = input.calories;
 					dish.weight = input.weight;
 					dish.description = input.description;
@@ -611,6 +612,6 @@ var validateStatus = function(req, res, model, forwardPage, scallback, fcallback
 		});
     }
 
-}
+};
 
 module.exports = router;
