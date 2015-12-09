@@ -48,7 +48,7 @@ router.get("/home", function(req, res, next) {
 	 					res.clearCookie("auth_token", {path: "/restaurants/home"});
 	 					res.cookie('auth_token', restaurant.auth.token, { path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
 	 					console.log("online: ", online);
-
+						
 	 					if (!online)
 							res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'success', 'flash_msg': 'Welcome to '+ webName});
 						else
@@ -322,6 +322,7 @@ router.post("/home/activeOrders/accepted", function(req, res, next) {
 				return;
 			}
    		    order.accepted = true;
+   		    order.status = "accepted";
 	       	order.save(function (err) {
 	       		if (err) {
 	       			res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': "unable to complete request: "+err.message });
@@ -334,6 +335,29 @@ router.post("/home/activeOrders/accepted", function(req, res, next) {
 	    res.redirect("/restaurants/login");
 	});
 });
+
+router.post("/home/activeOrders/publish", function(req, res, next) {
+	
+	validateStatus(req, res, Restaurant, "/restaurants/login", function(input, restaurant) {
+	     ActiveOrder.findOne({
+   			name: input.name,
+   			restaurant: restaurant.address
+   		}, function(err, order) {
+   		    order.public = true;
+   		    order.status += " | Public Delivery";
+	       	order.save(function (err) {
+	       		if (err) {
+	       			res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': "unable to complete request: "+err.message });
+	       			return;
+	       		}
+	       		res.redirect("/restaurants/home");
+	       });
+   		});
+	}, function(input) {
+	   res.redirect("/restaurants/login");
+	});
+});
+
 
 router.post("/home/activeOrders/declined", function(req, res, next) {
 	

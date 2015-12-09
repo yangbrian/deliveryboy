@@ -95,6 +95,7 @@ module.exports = function(io){
         newOrder.paid = false;
         newOrder.status = "active";
         newOrder.accepted = false;
+        newOrder.public = false;
 
         newOrder.save(function(err){
             if(err){

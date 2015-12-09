@@ -44,6 +44,7 @@ router.get("/home", function(req, res, next) {
 						res.clearCookie("auth_token", {path: "/"});
 						
 						res.cookie('auth_token', user.auth.token, {path: "/", expires: user.auth.expire, httpOnly: true});
+						user.fullname = user.name.full;
 						if (!online) {
 							res.render('user_home', {'user': user, 'flash': 'success', 'flash_msg': 'Welcome to '+ webName, host: os.hostname()});
 						}
