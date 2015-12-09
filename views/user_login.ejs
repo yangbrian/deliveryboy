@@ -5,7 +5,7 @@
 
 <div class="login_form">
 	<form class="form-horizontal" action="/users/login" method="post" >
-	
+
 	  <!--<div class="form-group <%= locals.number_err ? "has-error" : ""  %>">-->
 	  <!--  <label for="inputNumber" class="col-sm-offset-1 col-sm-2 control-label">Phone number</label>-->
 	  <!--  <div class="col-sm-6">-->
@@ -20,7 +20,7 @@
 	 <!-- <div class="form-group">-->
 		<!--<h1 id="logo" class="text-left col-sm-offset-5 col-sm-2"> DELIVERY BOY</h1>-->
 	 <!-- </div>	-->
-	  
+
 	  <div class="form-group <%= locals.username_err ? "has-error" : ""  %>">
 	    <label for="inputUsername" class="col-sm-offset-1 col-sm-2 control-label">Username</label>
 	    <div class="col-sm-6">
@@ -48,14 +48,14 @@
 	  <!--</div>-->
 		  <div class="form-group">
 		    <div class="col-sm-offset-3 col-sm-6 button-group">
-		    
+
 		      <button type="submit" class="btn btn-primary btn-block">Sign In</button>
 		      <button type="button" onclick="location.href='/users/signup';" class="btn btn-primary btn-block">Sign Up</button>
-		      <fb:login-button class="btn btn-block" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
-		      
+<!--		      <fb:login-button class="btn btn-block" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
+
 		    </div>
 		  </div>
-		  
+
 	  <!--</div>-->
 	</form>
 </div>

@@ -5,8 +5,8 @@
 	<form class="form-horizontal" action="/restaurants/signup" method="post" >
 	<div class="form-group">
 		<h1 id="logo" class="col-sm-offset-3 col-sm-6"> DELIVERY BOY</h1>
-	</div>	
-	
+	</div>
+
 	  <div class="form-group <%= locals.number_err ? "has-error" : ""  %>">
 	    <label for="inputNumber" class="col-sm-offset-1 col-sm-2 control-label">Phone number</label>
 	    <div class="col-sm-6">
@@ -19,21 +19,21 @@
 	      <input type="text" class="form-control" id="inputUsername" name="username" placeholder="username" value=<%= locals.username ? locals.username : ""%>>
 	    </div>
 	  </div>
-	  
+
 	  <div class="form-group <%= locals.name_err ? "has-error" : ""  %>">
 	    <label for="inputRestaurantname" class="col-sm-offset-1 col-sm-2 control-label">Restaurant Name</label>
 	    <div class="col-sm-6">
 	      <input type="text" class="form-control" id="inputRestaurantname" name="name" onFocus="geolocate()" placeholder="Restaurant Name" value=<%= locals.name ? locals.name : ""%>>
 	    </div>
 	  </div>
-	  
+
 	  <div class="form-group <%= locals.company_err ? "has-error" : ""  %>">
 	    <label for="inputCompany" class="col-sm-offset-1 col-sm-2 control-label">Company</label>
 	    <div class="col-sm-6">
 	      <input type="text" class="form-control" id="inputCompany" name="company" placeholder="Company" value=<%= locals.company ? locals.company : ""%>>
 	    </div>
 	  </div>
-	  
+
 	  <div class="form-group <%= locals.address_err ? "has-error" : ""  %>">
 	    <label for="inputAddress" class="col-sm-offset-1 col-sm-2 control-label">Address</label>
 	    <div class="col-sm-6">
@@ -81,14 +81,14 @@
 	  <!--</div>-->
 		  <div class="form-group">
 		    <div class="col-sm-offset-3 col-sm-6 button-group">
-		    
+
 		      <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
-		      
-		      <button type="button" onclick="location.href='/restaurants/login';" class="btn btn-primary btn-block">Sign In</button>
-		      <button type="button" onclick="location.href='/users/login';" class="btn btn-primary btn-block">User Sign In</button>
+
+		      <!--<button type="button" onclick="location.href='/restaurants/login';" class="btn btn-primary btn-block">Sign In</button>-->
+		      <!--<button type="button" onclick="location.href='/users/login';" class="btn btn-primary btn-block">User Sign In</button>-->
 		    </div>
 		  </div>
-		  
+
 	  </div>
 
 	</form>

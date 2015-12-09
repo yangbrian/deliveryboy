@@ -62,8 +62,15 @@ orderButton.onclick = function() {
 
 
    if(validate()){
-     //This probably isn't right but I can't test without the page redirecting me -___-
-     user.cost = parseInt(user.cost,10) * (1 + parseInt(user.tip,10));
+
+
+     var tip = 1 + parseFloat(user.tip/100,10);
+     var cost = parseFloat(user.cost,10);
+     var total = tip * cost;
+
+     document.getElementById('cost').value = total.toFixed(2);
+
+     //console.log(parseInt(user.cost,10) * (1 + parseInt(user.tip,10)));
 
 
 

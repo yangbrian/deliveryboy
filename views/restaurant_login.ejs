@@ -5,7 +5,7 @@
 
 <div class="login_form">
 	<form class="form-horizontal" action="/restaurants/login" method="post" >
-	
+
 	  <!--<div class="form-group <%= locals.number_err ? "has-error" : ""  %>">-->
 	  <!--  <label for="inputNumber" class="col-sm-offset-1 col-sm-2 control-label">Phone number</label>-->
 	  <!--  <div class="col-sm-6">-->
@@ -17,9 +17,9 @@
 	  	<h2 id="logo" class="text-left col-sm-offset-0 col-sm-3"> DELIVERY BOY</h2>
 	  </div>
 	  <div class='row'>
-	  
+
 	  <div class="form-group <%= locals.username_err ? "has-error" : ""  %>">
-	    <label for="inputRestaurantname" class="col-sm-offset-1 col-sm-2 control-label">Restaurantname</label>
+	    <label for="inputRestaurantname" class="col-sm-offset-1 col-sm-2 control-label">Restaurant name</label>
 	    <div class="col-sm-6">
 	      <input type="text" class="form-control" id="inputRestaurantname" name="username" placeholder="Restaurantname" value=<%= locals.username ? locals.username : ""%> >
 	    </div>
@@ -45,16 +45,16 @@
 	  <!--</div>-->
 		  <div class="form-group">
 		    <div class="col-sm-offset-3 col-sm-6 button-group">
-		    
+
 		      <button type="submit" class="btn btn-primary btn-block">Sign In</button>
 		      <button type="button" onclick="location.href='/restaurants/signup';" class="btn btn-primary btn-block">Sign Up</button>
-		      <button type="button" onclick="location.href='/users/login';" class="btn btn-primary btn-block">User login</button>
-		      
+		      <!--<button type="button" onclick="location.href='/users/login';" class="btn btn-primary btn-block">User login</button>-->
+
 		    </div>
 		  </div>
-		  
+
 	  </div>
-	</div>	
+	</div>
 	</form>
 </div>
 
