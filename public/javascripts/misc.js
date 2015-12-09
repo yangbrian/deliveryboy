@@ -7,15 +7,15 @@
 // var count = 0;
 
 
-// function clearAlert() {
-//     console.log("clear alert");
-//     var alert = document.getElementById("alert-pane");
-//     setTimeout(function () {
-//         $("#alert-pane").fadeOut(3000, function () {
-//             alert.parentNode.removeChild(alert);
-//         });
-//     }, 2000);
-// }
+function clearAlert() {
+    console.log("clear alert");
+    var alert = document.getElementById("alert-pane");
+    setTimeout(function () {
+        $("#alert-pane").fadeOut(3000, function () {
+            alert.parentNode.removeChild(alert);
+        });
+    }, 2000);
+}
 
 // function loadRestaurantMenu() {
 //     $.get("/restaurants/home/menu",function(data){
@@ -112,7 +112,7 @@
 //     });
 // }
 
-// function bodyOnload() {
+function bodyOnload() {
 //     var counts = 0;
 //     console.log("body onload");
 //     if ($("#alert-pane"))
@@ -150,11 +150,13 @@
 //     loadRestaurantHistoryOrders();
 //     loadRestaurantActiveOrders();
     
-//     // var link = document.createElement("link");
+    // var link = document.createElement("link");
 //     // link.href = "/stylesheets/style.css";
 //     // link.rel = "stylesheet";
 //     // document.body.appendChild(link);
-// }
+    if ($("#alert-pane"))
+        clearAlert();
+}
 
 
 function get_start() {

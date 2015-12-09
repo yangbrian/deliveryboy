@@ -122,8 +122,11 @@ td > a {
 .fade:hover > h1 > a {
     color: red;
     text-decoration: none;
-    font-size: 50px;
     -webkit-filter: blur(0px);
+}
+
+.fade > h1 > a:hover {
+    font-size: 50px;
 }
 
 .fade > h1 > a {
