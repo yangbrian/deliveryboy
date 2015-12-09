@@ -4,7 +4,6 @@ var braintree = require('braintree');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var ActiveOrder = mongoose.model('ActiveOrder');
-var Dish = mongoose.model('Dish');
 
 
 module.exports = function(io){
@@ -80,13 +79,6 @@ module.exports = function(io){
         //});
     }
 
-    router.get('/getDishes', function(req, res, next){
-      Dish.find({}, function(err, data){
-        res.json(data);
-      });
-
-    });
-
     function createActiveOrder(order){
 
         var newOrder = new ActiveOrder;
@@ -100,7 +92,6 @@ module.exports = function(io){
         newOrder.delivered = false;
         newOrder.user = order.number;
         newOrder.paid = false;
-        newOrder.status = "active";
 
         newOrder.save(function(err){
             if(err){
@@ -210,7 +201,7 @@ module.exports = function(io){
                 };
                 console.log("Successful transaction executed!");
             }
-            // res.redirect("/users/home");
+
             res.setHeader('content-type', 'application/json');
             res.end(JSON.stringify(status));
         });

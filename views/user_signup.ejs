@@ -5,8 +5,8 @@
 	<form class="form-horizontal" action="/users/signup" method="post" >
 	<div class="form-group">
 		<h1 id="logo" class="col-sm-offset-3 col-sm-6"> DELIVERY BOY</h1>
-	</div>
-
+	</div>	
+	
 	  <div class="form-group <%= locals.number_err ? "has-error" : ""  %>">
 	    <label for="inputNumber" class="col-sm-offset-1 col-sm-2 control-label">Phone number</label>
 	    <div class="col-sm-6">
@@ -60,13 +60,13 @@
 	  <!--</div>-->
 		  <div class="form-group">
 		    <div class="col-sm-offset-3 col-sm-6 button-group">
-
+		    
 		      <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
-
-		      <!--<button type="button" onclick="location.href='/users/login';" class="btn btn-primary btn-block">Sign In</button>-->
+		      
+		      <button type="button" onclick="location.href='/users/login';" class="btn btn-primary btn-block">Sign In</button>
 		    </div>
 		  </div>
-
+		  
 	  </div>
 
 	</form>

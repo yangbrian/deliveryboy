@@ -8,11 +8,11 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/">Delivery Boy</a>
-      <!--  <a class="navbar-brand" href="/order/all">Open Orders</a> -->
+        <a class="navbar-brand" href="/order/all">Open Orders</a>
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
-        <% if (locals.user || locals.restaurant ) { %>
+        <% if (locals.user || locals.restaurant ) { %> 
         <% locals.user = locals.user ? locals.user : locals.restaurant; %>
         <li class="dropdown">
             <a href="<%= locals.user ? "#" : "/users/login" %>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= locals.user ? user.username : "Login" %> <b class="caret"></b></a>
@@ -33,8 +33,8 @@
             </ul>
         </li>
         <% } else { %>
-        <!--<li><a href="<%= locals.restaurant ? "#" : "/restaurants/login" %>" ><%= locals.restaurant ? restaurant.username : "Restaurant?" %> </a> </li>
-        <li><a href="<%= locals.user ? "#" : "/users/login" %>" ><%= locals.user ? user.username : "User Login" %> </a> </li> -->
+        <li><a href="<%= locals.restaurant ? "#" : "/restaurants/login" %>" ><%= locals.restaurant ? restaurant.username : "Restaurant?" %> </a> </li>
+        <li><a href="<%= locals.user ? "#" : "/users/login" %>" ><%= locals.user ? user.username : "User Login" %> </a> </li>
         <% } %>
     </ul>
     <!-- Live updating list of orders -->

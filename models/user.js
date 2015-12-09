@@ -10,7 +10,7 @@ var userSchema = new Schema({
 		},
 	facebook_id: {type: String, index: true},
     addresses:[String],
-    number: {type: Number, index: true},
+    _number: {type: Number, index: true},
     restaurants: [String],
 	activeOrders: [String],
     orders: [String],
@@ -20,19 +20,15 @@ var userSchema = new Schema({
 			token: String	
 		},
 	online: Boolean
-}, {
-	shardKey: {
-		username: 1
-	}
 });
 
-// userSchema.virtual('number').set(function (phone) {
-// 	this._number = parseInt(phone);	
-// });
+userSchema.virtual('number').set(function (phone) {
+	this._number = parseInt(phone);	
+});
 
-// userSchema.virtual('number').get(function () {
-// 	return this._number.toString();	
-// });
+userSchema.virtual('number').get(function () {
+	return this._number.toString();	
+});
 
 userSchema.virtual('auth.validate').get(function() {
 	return Date.now() < this.auth.expire.getTime();	

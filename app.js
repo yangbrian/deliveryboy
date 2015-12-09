@@ -5,18 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-
-//
-// mongoose.connect('mongodb://localhost:27017',{ mongos : true}, function(err) {
-//   if (!err)
-//     console.log(err);
-// });
-
-mongoose.connect('mongodb://10.0.0.12:27017,10.0.0.13:27017,10.0.0.14:27017,10.0.0.40:27017,10.0.0.59:27017,10.0.0.54:27017',{ mongos : true}, function(err) {
+//testing git pull
+mongoose.connect('mongodb://10.0.0.56:27017/cloudwiki',{ mongos : true}, function(err) {
   if (!err)
     console.log(err);
 });
-
 var User = require('./models/user');
 
 var Dish = require("./models/dish");
@@ -36,16 +29,14 @@ var order = require('./routes/order');
 var restaurants = require("./routes/restaurants");
 
 
+var redis = require('socket.io-redis');
+io.adapter(redis({ host: '10.0.0.19', port: 6379 }));
+
+
 var app = express();
 
 var io = require("socket.io")();
 app.io = io;
-
-
-//
-var redis = require('socket.io-redis');
-io.adapter(redis({ host: '10.0.0.69', port: 6379 }));
-
 
 
 // view engine setup

@@ -63,21 +63,8 @@ orderButton.onclick = function() {
 
    if(validate()){
 
-
-     var tip = 1 + parseFloat(user.tip/100,10);
-     var cost = parseFloat(user.cost,10);
-     var total = tip * cost;
-
-     document.getElementById('cost').value = total.toFixed(2);
-
-     //console.log(parseInt(user.cost,10) * (1 + parseInt(user.tip,10)));
-
-
-
-       $.post('/order/new',user, function(data) {
-           window.location.href = "/users/home";
-       });
-
+       $.post('/order/new',user);
+       
    }
 
 };
