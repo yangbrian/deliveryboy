@@ -146,7 +146,7 @@ td > a {
    filter: blur(3px);
 }
 
-.fade {
+.fade_block {
     width: 50%;
     background-color: black;
     vertical-align: middle;
