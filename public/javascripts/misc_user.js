@@ -68,11 +68,19 @@ function loadUserActiveOrders() {
                                     '<!--<br>-->'+
                                     '<div class="text-right updatebox-buttons">'+
                                     '<p hidden>'+data[i].name+'</p>'+
-                                    '<button class="btn btn-info" onclick="completeDelivered(this)" '+(data[i].delivered ? "disabled" : "")+' >Delivered</button>'+
+                                    '<button class="btn btn-danger" onclick="completeCancelled(this)" '+(data[i].accepted ? "style=\"display: none;\"" : "")+' >Cancel</button>'+
+                                    '<button class="btn btn-info" onclick="completeDelivered(this)" '+(data[i].delivered ? "disabled" : "")+' '+(data[i].accepted ? "" : "style=\"display: none;\"")+' >Delivered</button>'+
                                     '</div>'+
                                     '</a>');
         }
     });
+}
+
+function completeCancelled(btn) {
+   var name = btn.parentNode.firstChild.innerHTML;
+    $.post("/users/home/activeOrders/cancelled", {"name":name}, function() {
+        location.reload();
+    }); 
 }
 
 function completeDelivered(btn) {

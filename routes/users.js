@@ -41,10 +41,10 @@ router.get("/home", function(req, res, next) {
 							res.send("save data error");
 							return;
 						}
-						res.clearCookie("auth_token", {path: "/users/home"});
+						res.clearCookie("auth_token", {path: "/"});
 						
-						
-						res.cookie('auth_token', user.auth.token, {path: "/users/home", expires: user.auth.expire, httpOnly: true});
+						res.cookie('auth_token', user.auth.token, {path: "/", expires: user.auth.expire, httpOnly: true});
+						user.fullname = user.name.full;
 						if (!online) {
 							res.render('user_home', {'user': user, 'flash': 'success', 'flash_msg': 'Welcome to '+ webName, host: os.hostname()});
 						}
@@ -55,6 +55,7 @@ router.get("/home", function(req, res, next) {
 				} else {
 					user.auth.expire = new Date(0);
 					user.online = false;
+					console.log("user offline");
 					user.save(function(err) {
 						if (err) {
 							res.send("save data error");
@@ -136,10 +137,13 @@ router.post('/login', function(req, res, next) {
 	    		return;
 	    	}
 	    	console.log("login token", user.auth.token);
-	    	res.clearCookie('auth_token', {path: "/users/home"});
-	    	res.clearCookie('username', {path: "/users/home"});
-	    	res.cookie('username', user.username, {path: "/users/home", expires: user.auth.expire, httpOnly: true});
-			res.cookie('auth_token', user.auth.token, {path: "/users/home", expires: user.auth.expire, httpOnly: true});
+	    	res.clearCookie('auth_token', {path: "/"});
+	    	res.clearCookie('username', {path: "/"});
+	    	res.clearCookie('type', {path: "/"});
+	    	res.clearCookie('logout', {path: "/"});
+	    	res.cookie('username', user.username, {path: "/", expires: user.auth.expire, httpOnly: true});
+			res.cookie('auth_token', user.auth.token, {path: "/", expires: user.auth.expire, httpOnly: true});
+			res.cookie('type', "user", {path: "/", expires: user.auth.expire, httpOnly: true});
 			res.redirect("home");
 	    });
 	    
@@ -163,9 +167,10 @@ router.post('/login_facebook', function(req, res, next) {
 });
 
 router.get('/logout', function(req, res, next) {
-    res.clearCookie("auth_token", {path: "/users/home"});
-    res.cookie("auth_token", "logout", {path: "/users/home", httpOnly: true});
-    res.cookie("logout", "true", {path: "/users/home", httpOnly: true});
+    res.clearCookie("auth_token", {path: "/"});
+    res.clearCookie("type", {path: "/"});
+    res.cookie("auth_token", "logout", {path: "/", httpOnly: true});
+    res.cookie("logout", "true", {path: "/", httpOnly: true});
     res.redirect("home");
 });
 
@@ -265,15 +270,51 @@ function handleNewUser(user, res) {
 				res.redirect("signup/?error=1");
 			}
 			else {
-				res.clearCookie('username', {path: "/users/home"});
-				res.clearCookie("auth_token", {path: "/users/home"});
-				res.cookie('username', user.username, {path: "/users/home", expires: user.auth.expire, httpOnly: true});
-				res.cookie('auth_token', user.auth.token, { path: "/users/home", expires: user.auth.expire, httpOnly: true});
+				res.clearCookie('username', {path: "/"});
+				res.clearCookie("auth_token", {path: "/"});
+				res.clearCookie("type", {path:"/"});
+				res.cookie('username', user.username, {path: "/", expires: user.auth.expire, httpOnly: true});
+				res.cookie('auth_token', user.auth.token, { path: "/", expires: user.auth.expire, httpOnly: true});
+				res.cookie('type', "user", { path: "/", expires: user.auth.expire, httpOnly: true});
 				res.redirect("home");	
 			}
 		});
 	});
 }
+
+
+
+router.post("/home/activeOrders/cancelled", function(req, res, next) { 
+	validateStatus(req, res, User, "/users/login", function(input, user) {
+		
+		ActiveOrder.findOne({
+   			name: input.name,
+   			number: user.number
+   		}, function(err, order) {
+   			if (err) {
+       			res.render('user_home', {'user': user, 'flash': 'danger', 'flash_msg': "unable to complete request: "+err.message });
+       			return;
+	       	}
+   		    order.delivered = true;
+   		    order.paid = true;
+   		    order.status = "cancelled";
+			order.save(function(err){
+				if (err) {
+	       			res.render('user_home', {'user': user, 'flash': 'danger', 'flash_msg': "unable to complete request: "+err.message });
+	       			return;
+	       		}
+	       		res.send("ok got it");
+			});
+		
+		}); 
+		
+	},
+	
+	function(input) {
+		res.redirect("/users/login");
+	});
+
+});
 
 router.post("/home/activeOrders/delivered", function(req, res, next) {
    validateStatus(req,res, User, "/users/login", function(input, restaurant) {

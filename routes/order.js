@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var ActiveOrder = mongoose.model('ActiveOrder');
 var Dish = mongoose.model('Dish');
+var crypto = require('crypto');
 
 
 module.exports = function(io){
@@ -101,6 +102,8 @@ module.exports = function(io){
         newOrder.user = order.number;
         newOrder.paid = false;
         newOrder.status = "active";
+        newOrder.accepted = false;
+        newOrder.public = false;
 
         newOrder.save(function(err){
             if(err){
