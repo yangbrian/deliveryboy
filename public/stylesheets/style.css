@@ -116,11 +116,18 @@ td > a {
     -moz-opacity: 0.8;
 	opacity:.80;
 	filter: alpha(opacity=80);
+	
 }
 
 .fade:hover > h1 > a {
     color: red;
     text-decoration: none;
+    font-size: 50px;
+    -webkit-filter: blur(0px);
+}
+
+.fade > h1 > a {
+    -webkit-filter: blur(1px);
 }
 
 .fade > h1 > a {
@@ -130,10 +137,10 @@ td > a {
 
 .blur {
     -webkit-filter: blur(3px);
-    -moz-filter: blur(100px);
-   -o-filter: blur(100px);
-   -ms-filter: blur(100px);
-   filter: blur(100px);
+    -moz-filter: blur(3px);
+   -o-filter: blur(3px);
+   -ms-filter: blur(3px);
+   filter: blur(3px);
 }
 
 .fade {
@@ -178,3 +185,13 @@ td > a {
     -moz-border-width: 0;
 }
 
+
+.login_form {
+    position: relative;
+    top: 25%;
+}
+
+.signup_form {
+    position: relative;
+    top: 10%;
+}

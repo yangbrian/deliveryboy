@@ -162,3 +162,9 @@ function get_start() {
     document.getElementById("fade_right").style.display='inline-block';
     $("#brand").addClass("blur");
 }
+
+function cancel_start() {
+    document.getElementById("fade_left").style.display='none';
+    document.getElementById("fade_right").style.display='none';
+    $("#brand").removeClass("blur");
+}
