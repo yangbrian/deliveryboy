@@ -153,6 +153,36 @@ router.post('/login', function(req, res, next) {
 	
 });
 
+router.post("/home/activeOrders/accepted", function(req, res, next) {
+
+	validateStatus(req, res, User, "/users/login", function(input, user) {
+	    ActiveOrder.findOne({
+   			name: input.name
+   		}, function(err, order) {
+   			if (err) {
+				console.log(err.message);
+				res.render('user_home', {'user': user, 'flash': 'danger', 'flash_msg': 'failed to  accepte order '+input.name+" reason: " + err.message });
+				return;
+			}
+   		    order.public = false;
+   		    order.accepted = true;
+   		    order.payment_account = user.payment_account;
+   		    order.payment_name = user.payment_name;
+   		    order.status = "deliveryboy found";
+	       	order.save(function (err) {
+	       		if (err) {
+	       			res.render('user_home', {'user': user, 'flash': 'danger', 'flash_msg': "unable to complete request: "+err.message });
+	       			return;
+	       		}
+	       		console.log("deliveryboy found");
+	       		res.redirect("/users/home");
+	       });
+   		});
+	}, function(input) {
+	    res.redirect("/users/login");
+	});
+});
+
 router.post('/login_facebook', function(req, res, next) {
 	var info = req.body;
 	var user = {};
@@ -350,7 +380,7 @@ router.post("/home/activeOrders/delivered", function(req, res, next) {
 							   "value": order.cost + order.tip,
 							   "currency": "USD"
 						   },
-						   "receiver": order.user,
+						   "receiver": order.payment_account,
 						   "note": "Thank you for your wonderful food..",
 						   "sender_item_id": "item_3"
 					   }

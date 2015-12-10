@@ -13,6 +13,8 @@ var userSchema = new Schema({
     number: {type: Number, index: true},
     restaurants: [String],
 	activeOrders: [String],
+	payment_account: String,
+	payment_name: String,
     orders: [String],
 		passwd: String,
 		auth: {

@@ -20,15 +20,20 @@ function delivered(obj){
   $.post('/order/delivered',{'deliveredOrders':JSON.stringify(name)});
   node.remove();
 }
+
 function acceptanceClick(node){
   var name = node.parentNode.firstChild.textContent;
+  name = name.split(":")[1].trim();
+  $.post("/users/home/activeOrders/accepted", {"name": name}, function(data) {
+    window.location.href = "/users/home";
+  });
 
   $('.popover').popover('hide');
 
   var li = document.getElementById('lastClicked');
   //
-  $('#updatesList').append('<a href="#" class="list-group-item">' +
-  '<span class="badge"><button onclick = delivered(this) class = "btn btn-primary btn-xs">Delivered</button></span>'+name+'</a>');
+  // $('#updatesList').append('<a href="#" class="list-group-item">' +
+  // '<span class="badge"><button onclick = delivered(this) class = "btn btn-primary btn-xs">Delivered</button></span>'+name+'</a>');
 
 
 
@@ -52,6 +57,7 @@ function addToSidebar(order) {
       .addClass('test')
       .attr('data-html', true)
       .attr('data-toggle', 'popover')
+      .attr("data-trigger", "focus")
       .attr('title', 'Order Details')
       .attr('data-content', '<ul>' +
         '<li><strong>Name: </strong>' + order.name + '</li>' +
@@ -61,24 +67,47 @@ function addToSidebar(order) {
       );
 
   $('#sidebar').prepend(sidebar);
-
+  
+  // sidebar.click(function() {		
+  //   $('.open-orders').popover('hide');		
+  //   sidebar.popover('toggle', {		
+  //     html: true,		
+  //     trigger: 'click focus',		
+  //     placement: 'right',
+  //     container: 'body'
+  //   });
+  // });
+  
+  
   sidebar.popover({
     html: true,
-    trigger: 'click focus',
+    trigger: 'focus click',
     placement: 'right',
     container: 'body',
     template: '<div class="popover open-orders-popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
   });
-
+  
+  $("body").on("click",".open-orders",function(){
+        $(this).popover();
+        
+        $(".open-orders").not(this).popover("hide"); //hide other popovers
+        return false;
+    });
+    $("body").on("click",function(){
+        $(".open-orders").popover("hide"); //hide all popovers when clicked on body
+    });
 
 
   $('li').click(function(){
+    
     if(clicked === false){
       $(this).attr('id','lastClicked');
       clicked = true;
     }else{
+      
       $('#lastClicked').removeAttr('id');
       $(this).attr('id','lastClicked');
+      
     }
 
   });
@@ -97,7 +126,6 @@ $.get('/order/activeOrders',function(order){
 
 
 });
-
 
 
 
