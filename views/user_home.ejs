@@ -227,6 +227,53 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i>Payment</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form id='paymentForm' action="/users/home/payment" method="post" class="form-horizontal">
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput">Account</label>
+                                    <div class="col-md-8">
+                                        <input id="payment_account"  name="payment_account" placeholder="Enter your account(Email)" class="form-control input-md" required type="text" value='<%= locals.user.payment_account ? user.payment_account : "" %>'>
+
+                                    </div>
+                                </div>
+                                
+                                <div class='form-group'>
+                                    <label class='col-md-4 control-label' for 'textinput'>Name</label>
+                                    <div class='col-md-8'>
+                                        <input id='payment_name'  name="payment_name" placeholder = 'Enter your full name' class ='form-control input-md' required type='text' value='<%= locals.user.payment_name ? user.payment_name : "" %>'>
+                                    </div>
+                                </div>
+                                <div class='form-group'>
+                                    <div class='col-md-offset-4 col-md-8'>
+                                        <br>
+                                        <button type='submit' class='btn btn-success' id='addItem'>Comfirm</button>
+                                        <button type='reset' class='btn btn-warning' id='resetItem'> Reset </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i>DeliveryBoy Updates</h3>
+                        </div>
+                        <!--style="max-height: 600px;overflow-y: scroll;bottom: 30px;"-->
+                        <div class="panel-body" >
+                            <div id='deliveryboyList'class="list-group">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">

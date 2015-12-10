@@ -156,7 +156,7 @@ function bodyOnload() {
     // loadRestaurantMenu();
     loadUserHistoryOrders();
     loadUserActiveOrders();
-    
+    loadDeliveryboyOrders();
     // var link = document.createElement("link");
     // link.href = "/stylesheets/style.css";
     // link.rel = "stylesheet";
@@ -216,4 +216,50 @@ function endEditDish(btn) {
     infobox.style.display='none';
     $("#infobox").empty();
     document.getElementById('fade').style.display='none';
+}
+
+function loadDeliveryboyOrders() {
+    $.get("/users/home/deliveryboyOrders",function(data){
+
+       console.log(data);
+       for ( var i = 0; i < data.length; i++) {
+        $("#deliveryboyList").append(   '<a href="#" class="list-group-item updatebox">'+
+                                    '<div class="table-responsive">'+
+                                    '<table class="table table-bordered table-hover table-striped">'+
+                                    '<thead>'+
+                                    '<tr>'+
+                                    '<th>name</th>'+
+                                    '<th>customer</th>'+
+                                    '<th>status</th>'+
+                                    '<th>Amount (USD)</th>'+
+                                    '</tr>'+
+                                    '</thead>'+
+                                    '<tbody>'+
+                                    '<tr>'+
+                                    '<td class="tablecell">'+data[i].name+'</td>'+
+                                    '<td>'+data[i].user+'</td>'+
+                                    '<td>'+data[i].status +'</td>'+
+                                    '<td>'+data[i].cost+'</td>'+
+                                    '</tr>'+
+                                    '</tbody>'+
+                                    '</table>'+
+                                    '</div>'+
+                                    '<!--<br>-->'+
+                                    '<div class="text-right updatebox-buttons">'+
+                                    '<p hidden>'+data[i].name+'</p>'+
+                                    // '<button class="btn btn-success" onclick="completeAccepted(this)" '+(data[i].accepted ? "style=\"display: none;\"" : "")+' >Accept</button>'+
+                                    // '<button class="btn btn-danger" onclick="completeDeclined(this)" '+(data[i].accepted ? "style=\"display: none;\"" : "")+' >Decline</button>'+
+                                    // '<button class="btn btn-success" onclick="completePublicDeliver(this)" '+((data[i].public || data[i].paid) ? "disabled" : "")+'  '+(data[i].accepted ? "" : "style=\"display: none;\"")+'>Publish</button>'+
+                                    '<button class="btn btn-info" onclick="completePayment(this)" '+(data[i].paid ? "disabled" : "")+'  '+(data[i].accepted ? "" : "style=\"display: none;\"")+'>Paid</button>'+
+                                    '</div>'+
+                                    '</a>');
+        }
+    });
+}
+
+function completePayment(btn) {
+    var name = btn.parentNode.firstChild.innerHTML;
+    $.post("/users/home/activeOrders/paid", {"name":name}, function() {
+        location.reload();
+    });
 }

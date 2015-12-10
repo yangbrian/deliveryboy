@@ -189,6 +189,13 @@ router.post("/home/payment", function(req, res, next) {
 				res.redirect("signup/?error=2");
 			} else {
 				if ( restaurant.auth.token == req.cookies.auth_token && restaurant.auth.validate && restaurant.online) {
+					var reEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+					if (!reEmail.test(input.payment_account)) {
+						
+						res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': 'Account is not a validate email' });
+						return;
+						
+					}
 					restaurant.payment_account = input.payment_account;
 					restaurant.payment_name = input.payment_name;
 					restaurant.save(function(err) {
@@ -328,6 +335,10 @@ router.post("/home/dish/delete", function(req, res, next) {
 router.post("/home/activeOrders/accepted", function(req, res, next) {
 
 	validateStatus(req, res, Restaurant, "/restaurants/login", function(input, restaurant) {
+		if (!restaurant.payment_account) {
+			res.send({"error": "no accont", "msg": "please setup you payment account(paypal) before accept the order."});
+			return;
+		}
 	    ActiveOrder.findOne({
    			name: input.name,
    			restaurant: restaurant.address
