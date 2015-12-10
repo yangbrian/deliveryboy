@@ -111,7 +111,7 @@ td > a {
      margin: 3px;
 }
 
-.fade:hover {
+.fade_block:hover {
     background-color: orange;
     -moz-opacity: 0.8;
 	opacity:.80;
@@ -119,21 +119,21 @@ td > a {
 	
 }
 
-.fade:hover > h1 > a {
+.fade_block:hover > h1 > a {
     color: red;
     text-decoration: none;
     -webkit-filter: blur(0px);
 }
 
-.fade > h1 > a:hover {
+.fade_block > h1 > a:hover {
     font-size: 50px;
 }
 
-.fade > h1 > a {
+.fade_block > h1 > a {
     -webkit-filter: blur(1px);
 }
 
-.fade > h1 > a {
+.fade_block > h1 > a {
     color: gray;
     text-decoration: none;
 }
