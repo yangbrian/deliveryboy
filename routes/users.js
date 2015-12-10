@@ -156,6 +156,10 @@ router.post('/login', function(req, res, next) {
 router.post("/home/activeOrders/accepted", function(req, res, next) {
 
 	validateStatus(req, res, User, "/users/login", function(input, user) {
+		if (!user.payment_account) {
+			res.send({"error": "no accont", "msg": "please setup you payment account(paypal) before accept the order."});
+			return;
+		}
 	    ActiveOrder.findOne({
    			name: input.name
    		}, function(err, order) {
@@ -168,6 +172,7 @@ router.post("/home/activeOrders/accepted", function(req, res, next) {
    		    order.accepted = true;
    		    order.payment_account = user.payment_account;
    		    order.payment_name = user.payment_name;
+   		    order.deliveryboy = user.number;
    		    order.status = "deliveryboy found";
 	       	order.save(function (err) {
 	       		if (err) {
@@ -182,6 +187,30 @@ router.post("/home/activeOrders/accepted", function(req, res, next) {
 	    res.redirect("/users/login");
 	});
 });
+
+router.post("/home/payment", function(req, res, next) {
+    validateStatus(req, res, User, "/users/login", function(input, user) {
+        var reEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+		if (!reEmail.test(input.payment_account)) {
+			
+			res.render('user_home', {'user': user, 'flash': 'danger', 'flash_msg': 'Account is not a validate email' });
+			return;
+			
+		}
+		user.payment_account = input.payment_account;
+		user.payment_name = input.payment_name;
+		user.save(function(err) {
+			if (err) {
+				console.log(err);
+				res.render('user_home', {'user': user, 'flash': 'danger', 'flash_msg': 'failed to update payment' });
+				return;
+			}
+			res.render('user_home', {'user': user, 'flash': 'success', 'flash_msg': 'Successfully updated payment' });
+		});
+    }, function(input) {
+        res.redirect("/users/login");
+    });
+})
 
 router.post('/login_facebook', function(req, res, next) {
 	var info = req.body;
@@ -209,7 +238,7 @@ router.get("/home/activeOrders", function(req, res, next) {
     validateStatus(req,res,User, "/users/login", function(input, user) {
     	ActiveOrder.find({
     		$or: [ {number: user.number, paid: false}, {
-    		number: user.number, delivered: false} ]
+    		number: user.number, delivered: false}]
     	}, function(err, orders) {
     		res.set("Content-Type", "text/json");
     		if (err) {
@@ -221,6 +250,25 @@ router.get("/home/activeOrders", function(req, res, next) {
     	});
     });
 });
+
+router.get("/home/deliveryboyOrders", function(req, res, next) {
+    validateStatus(req,res,User, "/users/login", function(input, user) {
+    	ActiveOrder.find({
+    		$or: [ {deliveryboy: user.number, paid: false}, 
+    		{deliveryboy: user.number, delivered: false}]
+    	}, function(err, orders) {
+    		res.set("Content-Type", "text/json");
+    		if (err) {
+    			console.log(err);
+    			res.send({'err': err});
+    			return;
+    		}
+    		res.send(orders);
+    	});
+    });
+});
+ 
+ 
 
 router.get("/home/orders", function(req, res, next) {
     validateStatus(req, res, User, "/users/login", function(input, user) {
@@ -400,6 +448,32 @@ router.post("/home/activeOrders/delivered", function(req, res, next) {
 	       		res.redirect("/users/home");
    			});
        
+       });
+   }, function(input) {
+       res.redirect("/users/login");
+   });
+});
+
+router.post("/home/activeOrders/paid", function(req, res, next) {
+   validateStatus(req,res, User, "/users/login", function(input, user) {
+   		console.log(input.name);
+   		ActiveOrder.findOne({
+   			name: input.name,
+   			deliveryboy: user.number
+   		}, function(err, order) {
+   		    order.paid = true;
+   		    if (order.status == 'active')
+   		    	order.status = "paid";
+   		    else
+   		    	order.status += " | paid";
+	       order.save(function (err) {
+	       		if (err) {
+	       			res.render('user_home', {'user': user, 'flash': 'danger', 'flash_msg': "unable to complete request: "+err.message });
+	       			return;
+	       		}
+	       		res.redirect("/users/home");
+   			});
+
        });
    }, function(input) {
        res.redirect("/users/login");

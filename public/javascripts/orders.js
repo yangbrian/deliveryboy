@@ -25,19 +25,23 @@ function acceptanceClick(node){
   var name = node.parentNode.firstChild.textContent;
   name = name.split(":")[1].trim();
   $.post("/users/home/activeOrders/accepted", {"name": name}, function(data) {
-    window.location.href = "/users/home";
+    if (data.error) {
+      confirm(data.msg);
+    } else 
+      var li = document.getElementById('lastClicked');
+      li.remove();
   });
 
   $('.popover').popover('hide');
 
-  var li = document.getElementById('lastClicked');
+  
   //
   // $('#updatesList').append('<a href="#" class="list-group-item">' +
   // '<span class="badge"><button onclick = delivered(this) class = "btn btn-primary btn-xs">Delivered</button></span>'+name+'</a>');
 
 
 
-  li.remove();
+  
 
 
 }

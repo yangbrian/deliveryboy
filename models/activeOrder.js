@@ -7,6 +7,7 @@ var activeOrderSchema = new Schema({
     address: String,
     number: {type: Number, index: true},
     restaurant: {type: String, index: true},
+    deliveryboy: {type: String, index: true},
     order: String,
     cost: Number,
     tip: Number,

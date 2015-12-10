@@ -266,6 +266,10 @@ function checkInfo(elem) {
 
 }
 
+function loadPaypalAccount() {
+    
+}
+
 function bodyOnload() {
     var counts = 0;
     console.log("body onload");
