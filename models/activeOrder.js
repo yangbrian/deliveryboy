@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
+var autoIncrement = require('mongoose-auto-increment');
 var Schema = mongoose.Schema;
 
 var activeOrderSchema = new Schema({
-	name: {type: String, index: true},
+	fullname: {type: String, index: true},
     address: String,
     number: {type: Number, index: true},
     restaurant: {type: String, index: true},
@@ -15,9 +16,17 @@ var activeOrderSchema = new Schema({
 	status: String,
 	accepted: Boolean,
 	public: Boolean,
+	date: {type: Date, index: true},
 	payment_account: String,
 	payment_name: String,
 }, {shardKey: {number: 1, restaurant: 1}});
+
+activeOrderSchema.plugin(autoIncrement.plugin, { 
+	model: 'ActiveOrder', 
+	field: 'name',
+	startAt: 0,
+    incrementBy: 1
+});
 
 // activeOrderSchema.virtual('number').set(function (phone) {
 // 	this._number = parseInt(phone);

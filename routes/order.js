@@ -92,7 +92,7 @@ module.exports = function(io){
     function createActiveOrder(order){
 
         var newOrder = new ActiveOrder;
-        newOrder.name = order.name;
+        newOrder.fullname = order.name;
         newOrder.address = order.address;
         newOrder.number = order.number;
         newOrder.restaurant = order.restaurant;
@@ -105,6 +105,7 @@ module.exports = function(io){
         newOrder.status = "active";
         newOrder.accepted = false;
         newOrder.public = false;
+        newOrder.date = new Date();
 
         newOrder.save(function(err){
             if(err){
