@@ -43,7 +43,11 @@ body {
 }
 
 .orders-side {
-    overflow: visible;
+    overflow-x: visible;
+}
+
+.open-orders-popover {
+    position: fixed;
 }
 
 .popover {

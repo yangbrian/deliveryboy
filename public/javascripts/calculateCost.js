@@ -41,19 +41,20 @@ todaysMenu = '<table class="table table-condensed"><thead><tr><th>Item</th><th>C
 }
 
 
-  $('[data-toggle="popover"]').popover({
+  $('#menuButton').popover({
     //callback: function(){loadMenu();},
-    trigger: 'hover',
+    trigger: 'click focus',
     title: function(){
       return tableTitle;
     },
-          content: function(){
-            return todaysMenu;
-          },
-          html: true
+    content: function(){
+      return todaysMenu;
+    },
+    html: true
 
   });
 
-window.setInterval(function(){
+$('input[name="restaurant"]').on('keyup', function() {
+  console.log("Loading menu");
   loadMenu();
-}, 3000);
+});

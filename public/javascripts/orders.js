@@ -66,7 +66,8 @@ function addToSidebar(order) {
     html: true,
     trigger: 'click focus',
     placement: 'right',
-    container: 'body'
+    container: 'body',
+    template: '<div class="popover open-orders-popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
   });
 
 
