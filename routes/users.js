@@ -64,9 +64,10 @@ router.get("/home", function(req, res, next) {
 						console.log("cookie token", req.cookies.auth_token);
 						console.log("user tooken", user.auth.token);
 						console.log("token not match");
-						if (req.cookies.logout)
+						if (req.cookies.logout) {
+							res.clearCookie("logout", {path: "/"});
 							res.redirect('/');
-						else 
+						} else 
 							res.redirect('login');	
 					});
 					
@@ -170,7 +171,7 @@ router.get('/logout', function(req, res, next) {
     res.clearCookie("auth_token", {path: "/"});
     res.clearCookie("type", {path: "/"});
     res.cookie("auth_token", "logout", {path: "/", httpOnly: true});
-    res.cookie("logout", "true", {path: "/", httpOnly: true});
+    res.cookie("logout", true, {path: "/", httpOnly: true});
     res.redirect("home");
 });
 

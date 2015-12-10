@@ -6,6 +6,7 @@ var User = mongoose.model('User');
 var ActiveOrder = mongoose.model('ActiveOrder');
 var Dish = mongoose.model('Dish');
 var crypto = require('crypto');
+var Restaurant = mongoose.model('Restaurant');
 
 
 module.exports = function(io){
@@ -91,7 +92,7 @@ module.exports = function(io){
     function createActiveOrder(order){
 
         var newOrder = new ActiveOrder;
-        newOrder.name = order.name;
+        newOrder.fullname = order.name;
         newOrder.address = order.address;
         newOrder.number = order.number;
         newOrder.restaurant = order.restaurant;
@@ -104,6 +105,7 @@ module.exports = function(io){
         newOrder.status = "active";
         newOrder.accepted = false;
         newOrder.public = false;
+        newOrder.date = new Date();
 
         newOrder.save(function(err){
             if(err){
@@ -111,6 +113,15 @@ module.exports = function(io){
             }else{
                 console.log('Saved active order succesfully');
             }
+        });
+
+        Restaurant.findOne({'address': order.address}, function(err,data){
+          if(data){
+            io.emit('new-restaurant-order', order);
+
+          }else{
+            io.emit('new-order', order);
+          }
         });
 
 
@@ -171,7 +182,7 @@ module.exports = function(io){
         createActiveOrder(req.body);
         console.log("Creating new order");
 
-        io.emit('new-order', req.body);
+        //io.emit('new-order', req.body);
 
         // value of order
         var value = req.body.amount;
