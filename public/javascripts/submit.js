@@ -1,5 +1,3 @@
-
-
 var orderButton = document.getElementById('placeOrder');
 
 var user = {
@@ -61,18 +59,9 @@ orderButton.onclick = function() {
 
 
 
+
+
    if(validate()){
-
-
-     var tip = 1 + parseFloat(user.tip/100,10);
-     var cost = parseFloat(user.cost,10);
-     var total = tip * cost;
-
-     document.getElementById('cost').value = total.toFixed(2);
-
-     //console.log(parseInt(user.cost,10) * (1 + parseInt(user.tip,10)));
-
-
 
        $.post('/order/new',user, function(data) {
            window.location.href = "/users/home";
@@ -81,3 +70,35 @@ orderButton.onclick = function() {
    }
 
 };
+var newCost;
+var count = 0;
+
+
+$('#cost').on('change', function(){
+  count = 0;
+});
+
+$('input:radio').on('change', function(){
+  if(!count){
+      newCost = document.getElementById('cost').value;
+      count++;
+  }
+
+  var isChecked =document.querySelector('input[name="tip"]:checked');
+
+  if (isChecked !== null) {
+    var tip = '';
+      var checkedTip = document.querySelector('input[name="tip"]:checked').parentNode;
+
+          tip = checkedTip.innerHTML;
+          tip = tip.slice(tip.lastIndexOf(' '), tip.length - 1);
+
+       tipPercent = 1 + parseFloat(tip/100,10);
+      var cost = parseFloat(newCost,10);
+      var total = tipPercent * cost;
+
+      document.getElementById('cost').value = total.toFixed(2);
+
+  }
+
+});

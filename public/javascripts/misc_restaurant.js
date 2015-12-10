@@ -6,6 +6,20 @@ var ingradients = null;
 
 var count = 0;
 
+var socket = io.connect();
+socket.on('connect', function (data) {
+  socket.emit('join', 'Hello World from client');
+});
+
+socket.on('new-restaurant-order', function (data) {
+  console.log('hi the socket is on~');
+  $.get("/restaurants/home/menu", function(data){
+    console.log(data);
+
+  });
+});
+
+
 
 function clearAlert() {
     console.log("clear alert");
@@ -19,7 +33,7 @@ function clearAlert() {
 
 function loadRestaurantMenu() {
     $.get("/restaurants/home/menu",function(data){
-       menu_data = data; 
+       menu_data = data;
        console.log(data);
        var dish = null;
        for ( var i = 0; i < data.length; i++) {
@@ -42,7 +56,7 @@ function loadRestaurantHistoryOrders() {
 
 function loadRestaurantActiveOrders() {
     $.get("/restaurants/home/activeOrders",function(data){
-        
+
        console.log(data);
        for ( var i = 0; i < data.length; i++) {
         $("#updatesList").append(   '<a href="#" class="list-group-item updatebox">'+
@@ -91,7 +105,7 @@ function completeDelivered(btn) {
     $.post("/restaurants/home/activeOrders/delivered", {"name":name}, function() {
         location.reload();
     });
-    
+
 }
 
 function completePayment(btn) {
@@ -132,7 +146,7 @@ function loadIngradients() {
             ingradients.push(data[i].value);
         }
         $('#ingradients').trigger("ingradientsLoaded");
-            
+
     });
 }
 
@@ -141,24 +155,24 @@ function startEditDish(btn) {
     editbox.style.display='block';
     var index = parseInt(btn.parentNode.parentNode.firstChild.innerHTML);
     var data = menu_data[index-1];
-    
+
     console.log(data);
-    
+
     document.getElementById("nameUpdate").value = data.name;
     document.getElementById("caloriesUpdate").value = data.calories;
     document.getElementById("weightUpate").value = data.weight;
-    
+
     $("#ingradientsUpdateField").find(".inputTags-list").remove();
     $("#tagsUpdateField").find(".inputTags-list").remove();
-    
-    
+
+
     $('#tagsUpdate').attr("class", "form-control");
     $('#tagsUpdate').attr("value", "");
     $('#tagsUpdate').removeAttr("data-uniqid");
     $('#ingradientsUpdate').attr("value", "");
     $('#ingradientsUpdate').removeAttr("data-uniqid");
     $('#ingradientsUpdate').attr("class", "form-control");
-    
+
     $('#tagsUpdate').inputTags({
         tags: data.tags.split(','),
         minLength:1,
@@ -169,7 +183,7 @@ function startEditDish(btn) {
             empty: "Attention, a tag should contain at least one character"
         }
     });
-    
+
     $('#ingradientsUpdate').inputTags({
         tags: data.ingradients.split(','),
         minLength:1,
@@ -180,11 +194,11 @@ function startEditDish(btn) {
             empty: "Attention, a tag should contain at least one character"
         }
     });
-    
+
     document.getElementById("dish_descriptionUpdate").value = data.description;
-    
+
     document.getElementById("priceUpdate").value = data.price;
-    
+
     document.getElementById("fade").style.display='block';
 }
 
@@ -208,8 +222,8 @@ function deleteDish(elem) {
 }
 
 function checkInfo(elem) {
-    
-    
+
+
     var data = order_data[parseInt(elem.dataset.index)];
     var table = '<h3> Order Details</h3>'+
                 '<table class="table table-bordered table-hover table-striped">'+
@@ -248,8 +262,8 @@ function checkInfo(elem) {
     var infobox = document.getElementById("infobox");
     infobox.style.display='block';
     document.getElementById("fade").style.display='block';
-    
-    
+
+
 }
 
 function bodyOnload() {
@@ -257,10 +271,10 @@ function bodyOnload() {
     console.log("body onload");
     if ($("#alert-pane"))
         clearAlert();
-        
+
     loadIngradients();
     loadTags();
-    
+
     $('#tags').on("tagsLoaded", function() {
         $('#tags').inputTags({
             minLength:1,
@@ -272,8 +286,8 @@ function bodyOnload() {
             }
         });
     });
-    
-    
+
+
     $('#ingradients').on("ingradientsLoaded", function() {
         $('#ingradients').inputTags({
             minLength:1,
@@ -284,14 +298,14 @@ function bodyOnload() {
                 empty: "Attention, a tag should contain at least one character"
             }
         });
-        
-        
+
+
     });
-    
+
     loadRestaurantMenu();
     loadRestaurantHistoryOrders();
     loadRestaurantActiveOrders();
-    
+
     // var link = document.createElement("link");
     // link.href = "/stylesheets/style.css";
     // link.rel = "stylesheet";

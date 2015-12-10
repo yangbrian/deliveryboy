@@ -6,6 +6,7 @@ var User = mongoose.model('User');
 var ActiveOrder = mongoose.model('ActiveOrder');
 var Dish = mongoose.model('Dish');
 var crypto = require('crypto');
+var Restaurant = mongoose.model('Restaurant');
 
 
 module.exports = function(io){
@@ -113,6 +114,15 @@ module.exports = function(io){
             }
         });
 
+        Restaurant.findOne({'address': order.address}, function(err,data){
+          if(data){
+            io.emit('new-restaurant-order', order);
+
+          }else{
+            io.emit('new-order', order);
+          }
+        });
+
 
     }
     /* GET home page. */
@@ -171,7 +181,7 @@ module.exports = function(io){
         createActiveOrder(req.body);
         console.log("Creating new order");
 
-        io.emit('new-order', req.body);
+        //io.emit('new-order', req.body);
 
         // value of order
         var value = req.body.amount;

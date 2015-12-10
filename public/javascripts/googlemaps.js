@@ -29,24 +29,24 @@ function initAutocomplete() {
        inputAddress.addListener('place_changed', fillInAddress(inputAddress));
        console.log(inputAddress);
   }
-  
+
   // if (document.getElementById('inputRestaurantname')) {
   //     inputRestaurantname = new google.maps.places.Autocomplete(document.getElementById('inputRestaurantname'),{types: ['establishment']});
   //     inputRestaurantname.addListener('place_changed', fillInAddress(inputRestaurantname));
   //     console.log(inputRestaurantname);
   // }
-  
-  
-      
-  
+
+
+
+
   // When the user selects an address from the dropdown, populate the address
   // fields in the form.
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
   //initAutocomplete2();
 }
 
@@ -98,5 +98,3 @@ function geolocate() {
 }
 
 // [END region_geolocation]
-
-    
