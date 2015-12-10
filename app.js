@@ -14,7 +14,7 @@ var autoIncrement = require('mongoose-auto-increment');
 // });
 
 
-var conn = mongoose.connect('mongodb://10.0.0.12:27017,10.0.0.13:27017,10.0.0.14:27017,10.0.0.40:27017,10.0.0.59:27017,10.0.0.54:27017',{ mongos : true}, function(err) {
+var conn = mongoose.connect('mongodb://10.0.0.12:27017,10.0.0.13:27017,10.0.0.14:27017,10.0.0.40:27017,10.0.0.59:27017,10.0.0.54:27017/deliveryboy',{ mongos : true}, function(err) {
   if (!err)
     console.log(err);
 });
