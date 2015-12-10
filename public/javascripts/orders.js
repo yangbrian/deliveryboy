@@ -23,6 +23,8 @@ function delivered(obj){
 function acceptanceClick(node){
   var name = node.parentNode.firstChild.textContent;
 
+  $('.popover').popover('hide');
+
   var li = document.getElementById('lastClicked');
   //
   $('#updatesList').append('<a href="#" class="list-group-item">' +
@@ -43,19 +45,20 @@ function acceptanceClick(node){
 function addToSidebar(order) {
   var sidebar = $('<li>')
 
-  .append(order.restaurant)
-  .append(" - ")
-  .append(order.order)
-  .addClass('open-orders')
-  .attr('data-html', true)
-  .attr('data-toggle', 'popover')
-  .attr('data-trigger', 'focus')
-  .attr('title', 'Order Details')
-  .attr('data-content', '<ul>' +
-  '<li><strong>Name: </strong>' + order.name + '</li>' +
-  '<li><strong>Restaurant: </strong>' + order.restaurant + '</li>' +
-  '<li><strong>Order: </strong>' + order.order + '</li><button onclick=acceptanceClick(this) class="btn"> Deliver me!</button>' +
-  '</ul>');
+      .append(order.restaurant)
+      .append(" - ")
+      .append(order.order)
+      .addClass('open-orders')
+      .addClass('test')
+      .attr('data-html', true)
+      .attr('data-toggle', 'popover')
+      .attr('title', 'Order Details')
+      .attr('data-content', '<ul>' +
+        '<li><strong>Name: </strong>' + order.name + '</li>' +
+        '<li><strong>Restaurant: </strong>' + order.restaurant + '</li>' +
+        '<li><strong>Order: </strong>' + order.order + '</li><button onclick=acceptanceClick(this) class="btn"> Deliver me!</button>' +
+        '</ul>'
+      );
 
   $('#sidebar').prepend(sidebar);
 
@@ -67,12 +70,6 @@ function addToSidebar(order) {
   });
 
 
-  sidebar.click(function() {
-    $('.open-orders').popover('hide');
-
-
-
-  });
 
   $('li').click(function(){
     if(clicked === false){
@@ -87,19 +84,6 @@ function addToSidebar(order) {
 
 
 }
-
-
-
-
-
-$(document).click(function(event) {
-
-  if(!$(event.target).closest('.popover').length && !$(event.target).closest('.open-orders').length) {
-    if($('.popover').is(":visible")) {
-      $('.popover').hide();
-    }
-  }
-});
 
 $.get('/order/activeOrders',function(order){
 
