@@ -215,5 +215,5 @@ function endEditDish(btn) {
     var infobox = document.getElementById("infobox");
     infobox.style.display='none';
     $("#infobox").empty();
-    document.getElementById('fade').style.display='none'
+    document.getElementById('fade').style.display='none';
 }

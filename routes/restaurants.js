@@ -338,6 +338,8 @@ router.post("/home/activeOrders/accepted", function(req, res, next) {
 				return;
 			}
    		    order.accepted = true;
+   		    order.payment_account = restaurant.payment_account;
+   		    order.payment_name = restaurant.payment_name;
    		    order.status = "accepted";
 	       	order.save(function (err) {
 	       		if (err) {

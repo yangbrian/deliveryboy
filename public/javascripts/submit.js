@@ -61,15 +61,27 @@ orderButton.onclick = function() {
 
 
 
-   if(validate()){
-
+   if(validate()) {
+        console.log("validated");
        $.post('/order/new',user, function(data) {
-           window.location.href = "/users/home";
+           console.log(data);
+           if (data.error) {
+               var yes = confirm(data.msg);
+               if (yes) {
+                   document.getElementById('spin_fade').style.display='block';
+                   $.post('/order/new_force',user, function(data) {
+                       window.location.href = "/users/home";
+                   });
+               } else {
+                  window.location.href = "/users/home";
+               }
+           } else {
+                window.location.href = "/users/home";
+           }
        });
-
    }
-
 };
+
 var newCost;
 var count = 0;
 
@@ -93,7 +105,7 @@ $('input:radio').on('change', function(){
           tip = checkedTip.innerHTML;
           tip = tip.slice(tip.lastIndexOf(' '), tip.length - 1);
 
-       tipPercent = 1 + parseFloat(tip/100,10);
+      var tipPercent = 1 + parseFloat(tip/100,10);
       var cost = parseFloat(newCost,10);
       var total = tipPercent * cost;
 
