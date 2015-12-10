@@ -89,40 +89,58 @@ module.exports = function(io){
 
     });
 
-    function createActiveOrder(order){
-
-        var newOrder = new ActiveOrder;
-        newOrder.fullname = order.name;
-        newOrder.address = order.address;
-        newOrder.number = order.number;
-        newOrder.restaurant = order.restaurant;
-        newOrder.order = order.order;
-        newOrder.cost = order.cost;
-        newOrder.tip = order.tip;
-        newOrder.delivered = false;
-        newOrder.user = order.number;
-        newOrder.paid = false;
-        newOrder.status = "active";
-        newOrder.accepted = false;
-        newOrder.public = false;
-        newOrder.date = new Date();
-
-        newOrder.save(function(err){
-            if(err){
-                console.log('Error saving new order');
-            }else{
-                console.log('Saved active order succesfully');
-            }
-        });
-
-        Restaurant.findOne({'address': order.address}, function(err,data){
-          if(data){
-            io.emit('new-restaurant-order', order);
-
-          }else{
-            io.emit('new-order', order);
-          }
-        });
+    function createActiveOrder(order, force){
+    Restaurant.findOne({
+        address: order.address
+    }, function(err, data) {
+        if (err) {
+            
+        }
+        force = force === undefined ? false : force;
+        if (force)
+            console.log("start force save order")
+            
+        if (data || force) {
+            var newOrder = new ActiveOrder;
+            newOrder.fullname = order.name;
+            newOrder.address = order.address;
+            newOrder.number = order.number;
+            newOrder.restaurant = order.restaurant;
+            newOrder.order = order.order;
+            newOrder.cost = order.cost;
+            newOrder.tip = order.tip;
+            newOrder.delivered = false;
+            newOrder.user = order.number;
+            newOrder.paid = false;
+            newOrder.status = "active";
+            newOrder.accepted = false;
+            newOrder.public = force;
+            newOrder.date = new Date();
+    
+            newOrder.save(function(err){
+                if(err){
+                    console.log('Error saving new order');
+                }else{
+                    console.log('Saved active order succesfully');
+                }
+            });
+            if (!force)
+                io.emit('new-restaurant-order', order);
+            else
+                io.emit('new-order', order);
+            return true;
+        }
+            // Restaurant.findOne({'address': order.address}, function(err,data){
+            //   if(data){
+        else {  
+    
+            //   }else{
+            
+            //   }
+            // });
+            return false;
+        }
+    });
 
 
     }
@@ -175,11 +193,27 @@ module.exports = function(io){
           }
       });
     });
+    
+    router.post("/new_force", function(req, res) {
+        handleOrder(req.body);
+        createActiveOrder(req.body, true);
+        createOrder(req, res);
+    });
 
     router.post('/new', function(req, res) {
         console.log('Entered route');
         handleOrder(req.body);
-        createActiveOrder(req.body);
+        if (!createActiveOrder(req.body, false)) {
+            res.send({error: "no such restaurant", msg: "The restaurant does" + 
+            " not appear in our database. Do you want to" +
+            " make the order in anyway?"});
+            return;
+        }
+        createOrder(req, res);
+        
+    });
+    
+    function createOrder(req, res) {
         console.log("Creating new order");
 
         //io.emit('new-order', req.body);
@@ -228,7 +262,7 @@ module.exports = function(io){
             res.setHeader('content-type', 'application/json');
             res.end(JSON.stringify(status));
         });
-    });
+    }
 
     return router;
 };
