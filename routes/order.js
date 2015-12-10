@@ -91,7 +91,7 @@ module.exports = function(io){
 
     function createActiveOrder(order, force){
     Restaurant.findOne({
-        address: order.address
+        address: order.restaurant
     }, function(err, data) {
         if (err) {
             
@@ -155,7 +155,9 @@ module.exports = function(io){
 
     router.get('/activeOrders',function(req,res){
         console.log("Active orders");
-        ActiveOrder.find({},function(err, data){
+        ActiveOrder.find({
+            "public": true
+        },function(err, data){
             if(err){
                 console.log('Error querying all users');
             }
