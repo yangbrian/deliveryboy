@@ -222,7 +222,7 @@ module.exports = function(io){
         //io.emit('new-order', req.body);
 
         // value of order
-        var value = req.body.amount;
+        var value = parseFloat(req.body.amount);
 
         // payment method
         var method = req.body.method;
