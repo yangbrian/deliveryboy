@@ -561,7 +561,7 @@ router.get("/tags", function(req, res, next) {
 			res.send({'err': err});
 			return;
 		}
-		console.log(data);
+		// console.log(data);
 		res.send(data);
 	});
 
@@ -576,7 +576,7 @@ router.get("/ingradients", function(req, res, next) {
 			res.send({'err': err});
 			return;
 		}
-		console.log(data);
+		// console.log(data);
 		res.send(data);
 	});
 

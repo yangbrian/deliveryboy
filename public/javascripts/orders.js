@@ -30,6 +30,7 @@ function acceptanceClick(node){
     } else 
       var li = document.getElementById('lastClicked');
       li.remove();
+      document.location.reload();
   });
 
   $('.popover').popover('hide');
