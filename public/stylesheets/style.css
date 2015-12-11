@@ -127,6 +127,11 @@ td > a {
     color: red;
     text-decoration: none;
     -webkit-filter: blur(0px);
+    -webkit-transition: font 0.25s ease-in;
+    -moz-transition: font 0.25s ease-in;
+    -ms-transition: font 0.25s ease-in;
+    -o-transition: font 0.25s ease-in;
+    transition: font 0.25s ease-in;
 }
 
 .fade_block > h1 > a:hover {
