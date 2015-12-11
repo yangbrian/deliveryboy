@@ -222,7 +222,7 @@ module.exports = function(io){
         //io.emit('new-order', req.body);
 
         // value of order
-        var value = parseFloat(req.body.amount);
+        var value = parseFloat(req.body.amount, 10);
 
         // payment method
         var method = req.body.method;
@@ -237,8 +237,7 @@ module.exports = function(io){
 
         gateway.transaction.sale({
             amount: value,
-            paymentMethodNonce: 'fake-valid-visa-nonce'
-
+            paymentMethodNonce: 'fake-paypal-one-time-nonce'
         }, function(err, result) {
             var status;
             if (err) {
