@@ -33,7 +33,7 @@ function loadUserHistoryOrders() {
         order_data = data;
        console.log(data);
        var dish = null;
-       for ( var i = 0; i < data.length; i++) {
+       for ( var i = data.length -1; i>-1; i--) {
             $("#order_list").append('<tr><td>'+data[i].name+'</td><td>'+data[i].restaurant+'</td><td><a data-index="'+i+'" href="#orderHistory" onclick="checkInfo(this)">'+data[i].status +'</a></td><td>'+data[i].cost+'</td></tr>');
        }
     });
@@ -43,7 +43,7 @@ function loadUserActiveOrders() {
     $.get("/users/home/activeOrders",function(data){
         menu_data = data;
        console.log(data);
-       for ( var i = 0; i < data.length; i++) {
+       for ( var i = data.length -1; i > -1; i--) {
         $("#updatesList").append(   '<a href="#" class="list-group-item updatebox">'+
                                     '<div class="table-responsive">'+
                                     '<table class="table table-bordered table-hover table-striped">'+
@@ -222,7 +222,7 @@ function loadDeliveryboyOrders() {
     $.get("/users/home/deliveryboyOrders",function(data){
 
        console.log(data);
-       for ( var i = 0; i < data.length; i++) {
+       for ( var i = data.length-1; i >-1; i--) {
         $("#deliveryboyList").append(   '<a href="#" class="list-group-item updatebox">'+
                                     '<div class="table-responsive">'+
                                     '<table class="table table-bordered table-hover table-striped">'+

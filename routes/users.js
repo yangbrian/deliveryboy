@@ -281,7 +281,7 @@ router.get("/home/orders", function(req, res, next) {
     			res.send({'err': err});
     			return;
     		}
-    		console.log(orders);
+    		// console.log(orders);
     		res.send(orders);
     	});
     });
@@ -442,7 +442,7 @@ router.post("/home/activeOrders/delivered", function(req, res, next) {
 					   console.log(error.response);
 				   } else {
 					   console.log("Create Single Payout Response");
-					   console.log(payout);
+					   //console.log(payout);
 				   }
 			   });
 	       		res.redirect("/users/home");
@@ -456,7 +456,7 @@ router.post("/home/activeOrders/delivered", function(req, res, next) {
 
 router.post("/home/activeOrders/paid", function(req, res, next) {
    validateStatus(req,res, User, "/users/login", function(input, user) {
-   		console.log(input.name);
+   		// console.log(input.name);
    		ActiveOrder.findOne({
    			name: input.name,
    			deliveryboy: user.number
@@ -509,7 +509,7 @@ var validateStatus = function(req, res, model, forwardPage, scallback, fcallback
     	res.redirect(forwardPage);
     else {
     	var input = req.body;
-    	console.log(input);
+    	// console.log(input);
     	model.findOne({
 		'username': req.cookies.username
 		}, function( err, user) {

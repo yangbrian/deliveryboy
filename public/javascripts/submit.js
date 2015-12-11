@@ -62,8 +62,8 @@ orderButton.onclick = function() {
 
 
    if(validate()) {
-        console.log("validated");
-       $.post('/order/new',user, function(data) {
+        console.log("validated"); 
+       $.post('/order/new', user, function(data) {
            console.log(data);
            if (data.error) {
                var yes = confirm(data.msg);
