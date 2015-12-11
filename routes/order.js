@@ -185,7 +185,7 @@ module.exports = function(io){
     router.post('/acceptedOrders', function(req,res){
         validateStatus(req, res, User, "/users/login", function(input, user) {
             
-        }, fullname(input) {
+        }, function(input) {
             res.redirect("/users/login");
         });
         console.log('Removing accepted orders');
@@ -222,7 +222,7 @@ module.exports = function(io){
             console.log('Entered route force add order');
             handleOrder(req.body);
             createActiveOrder(res, req, req.body, true);
-        }, fullname(input) {
+        }, function(input) {
             res.redirect("/users/login");
         });
         
@@ -233,7 +233,7 @@ module.exports = function(io){
             console.log('Entered route');
             handleOrder(req.body);
             createActiveOrder(res, req, req.body, false);
-        }, fullname(input) {
+        }, function(input) {
             res.redirect("/users/login");
         });
         
@@ -249,7 +249,7 @@ module.exports = function(io){
                 }
                 res.send(response.clientToken);
             });
-        }, fullname(input) {
+        }, function(input) {
             res.redirect("/users/login");
         });
         
