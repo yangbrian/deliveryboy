@@ -39,7 +39,7 @@ orderButton.onclick = function() {
     user.address = document.getElementById('autocomplete').value;
     user.restaurant = document.getElementById('autocomplete2').value;
     user.order = document.getElementById('order').value;
-    user.cost = document.getElementById('cost').value;
+    user.cost = document.getElementById('total-cost-field').value;
 
     var isChecked =document.querySelector('input[name="tip"]:checked');
 
@@ -86,31 +86,3 @@ var newCost;
 var count = 0;
 
 
-$('#cost').on('change', function(){
-  count = 0;
-});
-
-$('input:radio').on('change', function(){
-  if(!count){
-      newCost = document.getElementById('cost').value;
-      count++;
-  }
-
-  var isChecked =document.querySelector('input[name="tip"]:checked');
-
-  if (isChecked !== null) {
-    var tip = '';
-      var checkedTip = document.querySelector('input[name="tip"]:checked').parentNode;
-
-          tip = checkedTip.innerHTML;
-          tip = tip.slice(tip.lastIndexOf(' '), tip.length - 1);
-
-      var tipPercent = 1 + parseFloat(tip/100,10);
-      var cost = parseFloat(newCost,10);
-      var total = tipPercent * cost;
-
-      document.getElementById('cost').value = total.toFixed(2);
-
-  }
-
-});

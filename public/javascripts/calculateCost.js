@@ -74,6 +74,8 @@ function loadMenu(){
       orderCost.val(
           (Number(orderCost.val()) + Number($(this).find('.menu-item-price').html())).toFixed(2)
       );
+
+      updateTotal();
     });
   }
 
@@ -98,3 +100,31 @@ $('#menuButton').popover({
   placement: 'bottom' // have to put on bottom because menu is inserted dynamically
 
 });
+
+$('input:radio').on('change', updateTotal);
+
+function updateTotal() {
+    newCost = document.getElementById('cost').value;
+
+  var isChecked =document.querySelector('input[name="tip"]:checked');
+
+  if (isChecked !== null) {
+    var tip = $('input[name="tip"]:checked').val();;
+
+    var tipPercent = 1 + parseFloat(tip/100, 10);
+    var cost = parseFloat(newCost, 10);
+    var total = tipPercent * cost;
+
+    document.getElementById('total-cost').innerHTML = total.toFixed(2);
+
+    $('#total-cost-field').val(total.toFixed(2));
+
+  }
+}
+
+$('#customTip').on('keyup', function () {
+  $('#customTipValue').val($(this).val());
+  updateTotal();
+});
+
+$('#cost').val('0.00');

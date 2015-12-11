@@ -259,4 +259,14 @@ td > a {
     cursor: pointer;
 }
 
+input[type=radio] {
+    margin: 0 5px;
+}
 
+.order-submit-buttons {
+    text-align: center;
+}
+
+#total-cost-group {
+    font-size: 1.5em;
+}
