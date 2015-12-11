@@ -7,6 +7,13 @@ var ActiveOrder = mongoose.model('ActiveOrder');
 var Dish = mongoose.model('Dish');
 var crypto = require('crypto');
 var Restaurant = mongoose.model('Restaurant');
+var gateway = braintree.connect({
+    environment: braintree.Environment.Sandbox,
+    merchantId: 's7v7h4pn8r7frry8',
+    publicKey: '9vyb7bgxrmsmz5cq',
+    privateKey: '7bc87c5837d23f275b332d5cae712068'
+
+});
 
 
 module.exports = function(io){
@@ -176,6 +183,11 @@ module.exports = function(io){
     });
 
     router.post('/acceptedOrders', function(req,res){
+        validateStatus(req, res, User, "/users/login", function(input, user) {
+            
+        }, fullname(input) {
+            res.redirect("/users/login");
+        });
         console.log('Removing accepted orders');
 
         var acceptedOrders = JSON.parse(req.body.acceptedOrders);
@@ -206,14 +218,41 @@ module.exports = function(io){
     });
     
     router.post("/new_force", function(req, res) {
-        handleOrder(req.body);
-        createActiveOrder(res, req, req.body, true);
+        validateStatus(req, res, User, "/users/login", function(input, user) {
+            console.log('Entered route force add order');
+            handleOrder(req.body);
+            createActiveOrder(res, req, req.body, true);
+        }, fullname(input) {
+            res.redirect("/users/login");
+        });
+        
     });
 
     router.post('/new', function(req, res) {
-        console.log('Entered route');
-        handleOrder(req.body);
-        createActiveOrder(res, req, req.body, false);
+        validateStatus(req, res, User, "/users/login", function(input, user) {
+            console.log('Entered route');
+            handleOrder(req.body);
+            createActiveOrder(res, req, req.body, false);
+        }, fullname(input) {
+            res.redirect("/users/login");
+        });
+        
+    });
+    
+    router.get("/client_token", function (req, res) {
+        validateStatus(req, res, User, "/users/login", function(input, user) {
+            gateway.clientToken.generate({}, function (err, response) {
+                if(err) {
+                    console.log(err);
+                    res.send({"error": err});
+                    return;
+                }
+                res.send(response.clientToken);
+            });
+        }, fullname(input) {
+            res.redirect("/users/login");
+        });
+        
     });
     
     function createOrder(req, res) { 
@@ -226,14 +265,7 @@ module.exports = function(io){
 
         // payment method
         var method = req.body.method;
-
-        var gateway = braintree.connect({
-            environment: braintree.Environment.Sandbox,
-            merchantId: 's7v7h4pn8r7frry8',
-            publicKey: '9vyb7bgxrmsmz5cq',
-            privateKey: '7bc87c5837d23f275b332d5cae712068'
-
-        });
+        
 
         gateway.transaction.sale({
             amount: value,
@@ -269,3 +301,31 @@ module.exports = function(io){
 
     return router;
 };
+
+var validateStatus = function(req, res, model, forwardPage, scallback, fcallback) {
+	if (!req.cookies.username || !req.cookies.auth_token)
+    	res.redirect(forwardPage);
+    else {
+    	var input = req.body;
+    	// console.log(input);
+    	model.findOne({
+		'username': req.cookies.username
+		}, function( err, user) {
+			if (err) {
+				console.log(err);
+				res.redirect("signup/?error=2");
+			} else if(user) {
+				if (user.auth.token == req.cookies.auth_token && user.auth.validate && user.online) {
+					if (scallback)
+						scallback(input, user);
+				} else {
+					if (fcallback)
+						fcallback(input);
+				}
+			} else {
+				res.redirect(forwardPage);
+			}
+		});
+    }
+
+}
