@@ -337,7 +337,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="textinput">Account</label>
                                     <div class="col-md-8">
-                                        <input id="payment_account"  name="payment_account" value='<%= locals.restaurants.payment_account ? restaurants.payment_account %>' placeholder="Enter your account" class="form-control input-md" required type="text">
+                                        <input id="payment_account"  name="payment_account" value='<%= locals.restaurant.payment_account ? restaurant.payment_account : "" %>' placeholder="Enter your account" class="form-control input-md" required type="text">
 
                                     </div>
                                 </div>
@@ -345,7 +345,7 @@
                                 <div class='form-group'>
                                     <label class='col-md-4 control-label' for 'textinput'>Name</label>
                                     <div class='col-md-8'>
-                                        <input id='payment_name' name="payment_name" value='<%= locals.restaurants.payment_name ? restaurants.payment_name %>' placeholder = 'Enter your full name' class ='form-control input-md' required type='text'>
+                                        <input id='payment_name' name="payment_name" value='<%= locals.restaurant.payment_name ? restaurant.payment_name : "" %>' placeholder = 'Enter your full name' class ='form-control input-md' required type='text'>
                                     </div>
                                 </div>
                                 <div class='form-group'>

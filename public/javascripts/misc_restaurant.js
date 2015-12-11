@@ -85,8 +85,8 @@ function loadRestaurantActiveOrders() {
                                     '<p hidden>'+data[i].name+'</p>'+
                                     '<button class="btn btn-success" onclick="completeAccepted(this)" '+(data[i].accepted ? "style=\"display: none;\"" : "")+' >Accept</button>'+
                                     '<button class="btn btn-danger" onclick="completeDeclined(this)" '+(data[i].accepted ? "style=\"display: none;\"" : "")+' >Decline</button>'+
-                                    '<button class="btn btn-success" onclick="completePublicDeliver(this)" '+((data[i].public || data[i].paid) ? "disabled" : "")+'  '+(data[i].accepted ? "" : "style=\"display: none;\"")+'>Publish</button>'+
-                                    '<button class="btn btn-info" onclick="completePayment(this)" '+(data[i].paid ? "disabled" : "")+'  '+(data[i].accepted ? "" : "style=\"display: none;\"")+'>Paid</button>'+
+                                    '<button class="btn btn-success" onclick="completePublicDeliver(this)" '+( (data[i].public || data[i].paid) ? "disabled" : "")+'  '+(data[i].accepted && !data[i].delivered ? "" : "style=\"display: none;\"")+'>Publish</button>'+
+                                    '<button class="btn btn-info" onclick="completePayment(this)" '+(data[i].paid ? "disabled" : "")+'  '+( data[i].accepted ? "" : "style=\"display: none;\"")+'>Paid</button>'+
                                     '</div>'+
                                     '</a>');
         }
