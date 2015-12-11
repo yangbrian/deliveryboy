@@ -36,7 +36,7 @@ function loadRestaurantMenu() {
        menu_data = data;
        console.log(data);
        var dish = null;
-       for ( var i = 0; i < data.length; i++) {
+       for ( var i = data.length - 1; i > -1; i--) {
             $("#menu_list").append('<tr><td>'+(i+1)+'</td><td>'+data[i].name+'</td><td><a href="#" onclick="deleteDish(this)">delete</a><a href="#" onclick="startEditDish(this)">edit</a></td><td>'+data[i].price+'</td></tr>');
        }
     });
@@ -48,7 +48,7 @@ function loadRestaurantHistoryOrders() {
         console.log(menu_data);
        console.log(data);
        var dish = null;
-       for ( var i = 0; i < data.length; i++) {
+       for ( var i = data.length - 1; i > -1; i--) {
             $("#order_list").append('<tr><td>'+data[i].name+'</td><td>'+data[i].user+'</td><td><a href="#" data-index="'+i+'" onclick="checkInfo(this)">'+data[i].status +'</a></td><td>'+data[i].cost+'</td></tr>');
        }
     });
@@ -58,7 +58,7 @@ function loadRestaurantActiveOrders() {
     $.get("/restaurants/home/activeOrders",function(data){
 
        console.log(data);
-       for ( var i = 0; i < data.length; i++) {
+       for ( var i = data.length - 1; i > -1; i--) {
         $("#updatesList").append(   '<a href="#" class="list-group-item updatebox">'+
                                     '<div class="table-responsive">'+
                                     '<table class="table table-bordered table-hover table-striped">'+
@@ -117,8 +117,12 @@ function completePayment(btn) {
 
 function completeAccepted(btn) {
     var name = btn.parentNode.firstChild.innerHTML;
-    $.post("/restaurants/home/activeOrders/accepted", {"name": name}, function() {
-        location.reload();
+    $.post("/restaurants/home/activeOrders/accepted", {"name": name}, function(data) {
+        if (data.error) {
+            confirm(data.msg);
+        } else {
+            location.reload();
+        }
     });
 }
 
