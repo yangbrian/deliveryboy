@@ -54,17 +54,9 @@ var io = require("socket.io")();
 app.io = io;
 
 
-<<<<<<< HEAD
+
 // var redis = require('socket.io-redis');
 // io.adapter(redis({ host: '10.0.0.69', port: 6379 }));
-=======
-var redis = require('socket.io-redis');
-io.adapter(redis({ host: '10.0.0.69', port: 6379 }));
-
-
-var redis = require('socket.io-redis');
-io.adapter(redis({ host: '10.0.0.69', port: 6379 }));
->>>>>>> fb24b14ab06fee8df88cac963c27dc4909e7a2d9
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
