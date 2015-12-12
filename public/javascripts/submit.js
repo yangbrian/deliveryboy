@@ -66,7 +66,7 @@ orderButton.onclick = function() {
     user.number = document.getElementById('phoneNumber').value;
     user.address = document.getElementById('autocomplete').value;
     user.restaurant = document.getElementById('autocomplete2').value;
-    user.order = document.getElementById('order').value;
+    //user.order = document.getElementById('order').value;
     user.cost = document.getElementById('total-cost-field').value;
 
     var isChecked =document.querySelector('input[name="tip"]:checked');
