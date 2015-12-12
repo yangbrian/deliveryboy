@@ -110,7 +110,12 @@ $('#menu-modal-content').on('click', '.menu-popover-row', function () {
 });
 
 orderEntry.on('click', '.new-order-entry', function () {
+  // prevent duplicate deletions
+  if ($(this).hasClass('delete'))
+    return;
+
   $(this).addClass('delete');
+
   $(this).fadeOut(300, function () {
     $(this).remove();
   });
