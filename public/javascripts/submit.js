@@ -1,19 +1,5 @@
 
-var token;
-$.get('/order/client_token', function(data){
 
-  token = data;
-
-});
-
-braintree.setup("CLIENT-TOKEN-FROM-SERVER", "dropin", {
-  container: "dropin-container",
-  paypal: {
-    singleUse: true,
-    amount: 10.00,
-    currency: 'USD'
-  }
-});
 
 
   // braintree.setup(token, "custom", {
@@ -112,3 +98,21 @@ orderButton.onclick = function() {
 
 var newCost;
 var count = 0;
+
+
+var token;
+$.get('/order/client_token', function(data){
+
+    token = data;
+    braintree.setup("CLIENT-TOKEN-FROM-SERVER", "dropin", {
+        container: "dropin-container",
+        paypal: {
+            singleUse: true,
+            amount: 10.00,
+            currency: 'USD'
+        }
+        
+    });
+
+});
+
