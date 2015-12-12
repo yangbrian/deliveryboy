@@ -10,7 +10,7 @@ $.fn.popover.Constructor.prototype.show = function () {
   }
 };
 
-var orderEntry = $('#order');
+var orderEntry = $('#table-new-orders');
 var orderCost = $('#cost');
 
 /**
@@ -66,13 +66,24 @@ function loadMenu(){
     // add order to list of items and add to the total cost
     $('.menu-popover').on('click', '.menu-popover-row', function () {
 
-      orderEntry.val(
-          (orderEntry.val() == '' ?  '' : (orderEntry.val() + '\n')) +
-          '- ' + $(this).find('.menu-item-name').html()
-      );
+      //orderEntry.val(
+      //    (orderEntry.val() == '' ?  '' : (orderEntry.val() + '\n')) +
+      //    '- ' + $(this).find('.menu-item-name').html()
+      //);
 
       orderCost.val(
           (Number(orderCost.val()) + Number($(this).find('.menu-item-price').html())).toFixed(2)
+      );
+
+      var itemName = $(this).find('.menu-item-name').html();
+      var itemPrice = Number($(this).find('.menu-item-price').html()).toFixed(2);
+      orderEntry.append(
+          $('<tr>')
+              .append($('<td>').html(itemName))
+              .append($('<td>').html(itemPrice))
+              .attr('data-item', itemName)
+              .attr('data-price', itemPrice)
+              .addClass('new-order-entry')
       );
 
       updateTotal();
@@ -84,6 +95,10 @@ function loadMenu(){
   $('#menu-loader').fadeOut();
 
 }
+
+orderEntry.on('click', '.new-order-entry', function () {
+  console.log("Row clicked");
+});
 
 
 $('#menuButton').popover({

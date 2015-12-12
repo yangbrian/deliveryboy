@@ -1,3 +1,31 @@
+
+var token;
+$.get('/order/client_token', function(data){
+
+  token = data;
+
+});
+
+braintree.setup("CLIENT-TOKEN-FROM-SERVER", "dropin", {
+  container: "dropin-container",
+  paypal: {
+    singleUse: true,
+    amount: 10.00,
+    currency: 'USD'
+  }
+});
+
+
+  // braintree.setup(token, "custom", {
+  //   paypal: {
+  //     container: "paypal-container",
+  //   },
+  //   onPaymentMethodReceived: function (obj) {
+  //     doSomethingWithTheNonce(obj.nonce);
+  //   }
+  // });
+
+
 var orderButton = document.getElementById('placeOrder');
 
 var user = {
@@ -62,7 +90,7 @@ orderButton.onclick = function() {
 
 
    if(validate()) {
-        console.log("validated"); 
+        console.log("validated");
        $.post('/order/new', user, function(data) {
            console.log(data);
            if (data.error) {
@@ -84,5 +112,3 @@ orderButton.onclick = function() {
 
 var newCost;
 var count = 0;
-
-
