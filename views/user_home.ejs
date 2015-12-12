@@ -113,6 +113,11 @@
 
                                     </table>
 
+
+                                    <button type='button' data-toggle='modal' data-target=".modal-menu" class='btn btn-success' id='menuButton'>
+                                        View Menu
+                                    </button>
+
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-add-item">Add New Item</button>
 
                                     <div class="modal fade modal-add-item" tabindex="-1" role="dialog">
@@ -210,9 +215,9 @@
                             <div class="form-group order-submit-buttons">
                                 <input type="hidden" id="total-cost-field" name="total-cost" value="0"/>
                                 <p>By clicking Place Order, you agree to pay the above amount.</p>
-                                <button type='button' data-toggle='popover' class='btn btn-success' id='menuButton'>
-                                    View Menu
-                                </button>
+
+
+
                                 <button type='button' class='btn btn-success' id='placeOrder'>Place Order</button>
 
 
@@ -220,6 +225,27 @@
                             </div>
                         </form>
 
+                        <div class="modal fade modal-menu" tabindex="-1" role="dialog">
+                            <div class="modal-dialog modal-sm">
+
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <h4 class="modal-title">Add Items from Menu</h4>
+                                    </div>
+
+                                    <div class="modal-body" id="menu-modal-content">
+
+                                        <div class="spinner" id="menu-loader">
+                                            <div class="double-bounce1"></div>
+                                            <div class="double-bounce2"></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -235,7 +261,7 @@
 
                         </div>
                         <div class="text-right">
-                            <a href="#">View All Activity <i class="fa fa-arrow-circle-right"></i></a>
+
                         </div>
                     </div>
                 </div>
@@ -316,7 +342,7 @@
                             </table>
                         </div>
                         <div class="text-right">
-                            <a href="#">View Full History <i class="fa fa-arrow-circle-right"></i></a>
+
                         </div>
                     </div>
                 </div>
