@@ -54,11 +54,22 @@ function acceptanceClick(index){
 * @param order order object to add
 */
 function addToSidebar(order) {
+  var sidebar_table = '<table class="table table-bordered">'+
+                '<tbody>'+
+                '<tr>'+
+                '<td> price </td>'+
+                '<td>'+order.cost+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                '<td> tip </td>'+
+                '<td>'+order.tip+'</td>'+
+                '</tr>'+
+                '</table>';
+                
   var sidebar = $('<li>')
       .attr("data-index", sidebar_order.length)
       .append(order.restaurant)
-      .append(" - ")
-      .append(order.order)
+      .append(sidebar_table)
       .addClass('open-orders')
       .addClass('test');
       sidebar_order.push(order);
