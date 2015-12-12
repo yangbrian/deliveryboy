@@ -73,6 +73,18 @@
 
                             </div>
 
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="textinput">Your Zip Code</label>
+
+                                <div id="locationField" class="col-md-8">
+                                    <input maxlength="5" id="zipcode" class="form-control input-md" required type="text"
+                                           placeholder="Enter your 5-digit zip code"
+                                           type="text"></input>
+                                </div>
+
+                            </div>
+
+
 
                             <!-- Text input-->
                             <div class="form-group">
@@ -106,39 +118,53 @@
                             </div>
 
                             <div class="form-group">
-                                <label class='col-md-4 control-label'>Subtotal</label>
+                                <label class='col-md-4 control-label no-top-padding'>Subtotal</label>
                                 <div class="col-md-8">
 
-                                    <div class="input-group">
-                                        <span class="input-group-addon">$</span>
-                                        <input disabled id='cost' type="text" class="form-control"
-                                               aria-label="Amount (to the nearest dollar)">
-                                    </div>
+                                    <p>$<span id="cost">0.00</span></p>
 
                                 </div>
 
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label" style="padding-top: 0;">Tip</label>
+                                <label class='col-md-4 control-label no-top-padding'>Sales Tax (<span id="tax-rate">0.000</span>%)</label>
+                                <div class="col-md-8">
+
+                                    <p>
+                                        $<span id="tax">0.00</span>
+                                        <span class="spinner" id="tax-loader">
+                                            <span class="double-bounce1"></span>
+                                            <span class="double-bounce2"></span>
+                                        </span>
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4 no-top-padding control-label">Delivery and Tip</label>
                                 <div class="col-md-8">
 
 
-                                  <label><input type='radio' name='tip' value="10"> 10%</label>
-                                  <label><input type='radio' name='tip' value="20"> 20%</label>
-                                  <label><input type='radio' name='tip' value="30"> 30%</label>
-                                  <label id='custom'>
-                                    <input type='radio' name='tip' value="0" id="customTipValue">
-                                    <input id='customTip' style='width:40px' type='text'></label>
-                                  </div>
+                                    <label><input type='radio' name='tip' value="10"> 10%</label>
+                                    <label><input type='radio' name='tip' value="20"> 20%</label>
+                                    <label><input checked type='radio' name='tip' value="30"> 30%</label>
+                                    <label id='custom'>
+                                        <input type='radio' name='tip' value="0" id="customTipValue">
+                                        <input id='custom-tip' type='text'></label>
                                 </div>
+                            </div>
 
                             <div class="form-group" id="total-cost-group">
 
 
-                                <label class="col-md-4 control-label" style="padding-top: 0;">Total Cost</label>
+                                <label class="col-md-4 control-label no-top-padding">Total Cost</label>
 
                                 <div class="col-md-8"><p>$<span id="total-cost">0.00</span></p></div>
+
+                                <input type="hidden" name="total-cost-field" id="total-cost-field" value="0">
 
                             </div>
                             <div class="form-group order-submit-buttons">
@@ -295,6 +321,7 @@
           <div class="modal-body" id="paybox-body">
             <form class="text-center">
                 <div id="dropin-container"></div>
+                <input type="submit" class="btn btn-default"></button>
         </form>
           </div>
           <div class="modal-footer">

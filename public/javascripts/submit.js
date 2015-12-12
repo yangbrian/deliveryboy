@@ -32,14 +32,7 @@ function validate() {
     user.number = document.getElementById('phoneNumber').value;
     user.address = document.getElementById('autocomplete').value;
     user.restaurant = document.getElementById('autocomplete2').value;
-    // user.order = document.getElementById('order').value;
-    user.cost = document.getElementById('total-cost-field').value;
-    
-    user.name = document.getElementById('name').value;
-    user.number = document.getElementById('phoneNumber').value;
-    user.address = document.getElementById('autocomplete').value;
-    user.restaurant = document.getElementById('autocomplete2').value;
-    // user.order = document.getElementById('order').value;
+
     user.cost = document.getElementById('total-cost-field').value;
 
     var isChecked =document.querySelector('input[name="tip"]:checked');
@@ -80,7 +73,7 @@ orderButton.onclick = function() {
     if (validate())
         
         $.get('/order/client_token', function(data){
-    
+            $("#dropin-container").empty();
             var token = data;
             user.braintree_token = token;
             braintree.setup(token, "dropin", {
@@ -94,6 +87,7 @@ orderButton.onclick = function() {
                 paypal: true  // Enables fraud prevention
                 },
                 onPaymentMethodReceived: function (obj) {
+                    console.log(obj);
                     placeOrder();
                 }
             });

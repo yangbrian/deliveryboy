@@ -292,3 +292,17 @@ input[type=radio] {
 #table-new-orders .delete {
     background-color: #ffb3b3;
 }
+
+#custom-tip {
+    width: 40px;
+}
+
+.control-label.no-top-padding {
+    padding-top: 0;
+}
+
+#tax-loader {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+}

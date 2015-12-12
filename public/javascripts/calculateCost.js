@@ -13,6 +13,13 @@ $.fn.popover.Constructor.prototype.show = function () {
 var orderEntry = $('#table-new-orders');
 var orderCost = $('#cost');
 
+var taxDisplay = $('#tax');
+var taxLoad = $('#tax-loader');
+var taxRateDisplay = $('#tax-rate');
+
+// keeps track of current tax rate for input zip code
+var taxRate = 0;
+
 /**
  * Load menus and display into popover dialog
  */
@@ -71,8 +78,8 @@ function loadMenu(){
       //    '- ' + $(this).find('.menu-item-name').html()
       //);
 
-      orderCost.val(
-          (Number(orderCost.val()) + Number($(this).find('.menu-item-price').html())).toFixed(2)
+      orderCost.text(
+          (Number(orderCost.text()) + Number($(this).find('.menu-item-price').html())).toFixed(2)
       );
 
       var itemName = $(this).find('.menu-item-name').html();
@@ -108,8 +115,8 @@ orderEntry.on('click', '.new-order-entry', function () {
 
   $('.tooltip').remove();
 
-  orderCost.val(
-      (Number(orderCost.val()) - Number($(this).attr('data-price'))).toFixed(2)
+  orderCost.text(
+      (Number(orderCost.text()) - Number($(this).attr('data-price'))).toFixed(2)
   );
 
   updateTotal();
@@ -119,7 +126,7 @@ orderEntry.on('click', '.new-order-entry', function () {
 
 $('#menuButton').popover({
   callback: function(){
-      loadMenu();
+    loadMenu();
   },
   content: '<div class="spinner" id="menu-loader"><div class="double-bounce1"></div> <div class="double-bounce2"></div></div>',
   trigger: 'click focus',
@@ -135,27 +142,56 @@ $('#menuButton').popover({
 $('input:radio').on('change', updateTotal);
 
 function updateTotal() {
-    newCost = document.getElementById('cost').value;
+  newCost = $('#cost').text();
 
-  var isChecked =document.querySelector('input[name="tip"]:checked');
+  var salesTax = newCost * (taxRate / 100);
 
-  if (isChecked !== null) {
-    var tip = $('input[name="tip"]:checked').val();;
+  taxDisplay.text(salesTax.toFixed(2));
+  taxRateDisplay.text(taxRate.toFixed(3));
 
-    var tipPercent = 1 + parseFloat(tip/100, 10);
-    var cost = parseFloat(newCost, 10);
-    var total = tipPercent * cost;
+  var tip = $('input[name="tip"]:checked').val();;
 
-    document.getElementById('total-cost').innerHTML = total.toFixed(2);
+  var tipPercent = 1 + parseFloat(tip/100, 10);
+  var cost = parseFloat(newCost, 10);
+  var total = tipPercent * cost;
 
-    $('#total-cost-field').val(total.toFixed(2));
+  total += salesTax;
 
-  }
+  $('#total-cost').text(total.toFixed(2));
+
+  $('#total-cost-field').val(total.toFixed(2));
+
+
 }
 
-$('#customTip').on('keyup', function () {
+$('#custom-tip').on('keyup', function () {
   $('#customTipValue').val($(this).val());
   updateTotal();
+});
+
+var zip;
+
+
+$('#zipcode').on('keyup', function () {
+  if ($(this).val().length == 5 && $(this).val() != zip) {
+    zip = $(this).val();
+
+    taxDisplay.hide();
+    taxLoad.show();
+
+    $.get('https://taxrates.api.avalara.com/postal?country=usa&postal=' + zip + '&apikey=fbRSYkZkl%2FxcK9xQ1d71DTrfJRgOZ3U9S0yBdyaBf0yMVPFoIHQGl8RPPuiaHSWOJPvCjvLIScPQp7lG%2Blo9jQ%3D%3D', function (data) {
+
+      taxRate = data.totalRate;
+      taxLoad.hide();
+      taxDisplay.show();
+      updateTotal();
+
+    })
+
+  } else if ($(this).val().length < 5) {
+    taxRate = 0;
+    updateTotal();
+  }
 });
 
 $('#cost').val('0.00');
