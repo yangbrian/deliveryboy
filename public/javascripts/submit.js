@@ -19,14 +19,45 @@ var user = {
     number: '',
     address: '',
     restaurant: '',
-    order: '',
+    // order: '',
     cost: '',
-    tip: ''
+    tip: '',
+    braintree_token: "none"
 };
 
 //create user login based on their facebook and save addresses, restaurants, orders etce
 function validate() {
  //Checks that fields aren't empty and that cost/tip are valid numbers. Need to add checking for valid addresses
+    user.name = document.getElementById('name').value;
+    user.number = document.getElementById('phoneNumber').value;
+    user.address = document.getElementById('autocomplete').value;
+    user.restaurant = document.getElementById('autocomplete2').value;
+    // user.order = document.getElementById('order').value;
+    user.cost = document.getElementById('total-cost-field').value;
+    
+    user.name = document.getElementById('name').value;
+    user.number = document.getElementById('phoneNumber').value;
+    user.address = document.getElementById('autocomplete').value;
+    user.restaurant = document.getElementById('autocomplete2').value;
+    // user.order = document.getElementById('order').value;
+    user.cost = document.getElementById('total-cost-field').value;
+
+    var isChecked =document.querySelector('input[name="tip"]:checked');
+
+    if (isChecked !== null) {
+        var checkedTip = document.querySelector('input[name="tip"]:checked').parentNode;
+
+        if (checkedTip.id === 'custom') {
+
+            user.tip = document.getElementById('customTip').value;
+        }
+        else {
+            user.tip = checkedTip.innerHTML;
+            user.tip = user.tip.slice(user.tip.lastIndexOf(' '), user.tip.length - 1);
+
+        }
+    }
+    
     for (var x in user) {
         if (user[x] === '') {
             alert('Please enter a value for your ' + x);
@@ -46,34 +77,33 @@ function validate() {
 }
 
 orderButton.onclick = function() {
+    if (validate())
+        
+        $.get('/order/client_token', function(data){
+    
+            var token = data;
+            user.braintree_token = token;
+            braintree.setup(token, "dropin", {
+                container: "dropin-container",
+                paypal: {
+                    singleUse: true,
+                    amount: user.cost,
+                    currency: 'USD'
+                },
+                dataCollector: {
+                paypal: true  // Enables fraud prevention
+                },
+                onPaymentMethodReceived: function (obj) {
+                    placeOrder();
+                }
+            });
+            $("#paybox").modal("show");
+        });
+        
+};
+
+function placeOrder() {
     //Checks that all fields are filled
-
-    user.name = document.getElementById('name').value;
-    user.number = document.getElementById('phoneNumber').value;
-    user.address = document.getElementById('autocomplete').value;
-    user.restaurant = document.getElementById('autocomplete2').value;
-    user.order = document.getElementById('order').value;
-    user.cost = document.getElementById('total-cost-field').value;
-
-    var isChecked =document.querySelector('input[name="tip"]:checked');
-
-    if (isChecked !== null) {
-        var checkedTip = document.querySelector('input[name="tip"]:checked').parentNode;
-
-        if (checkedTip.id === 'custom') {
-
-            user.tip = document.getElementById('customTip').value;
-        }
-        else {
-            user.tip = checkedTip.innerHTML;
-            user.tip = user.tip.slice(user.tip.lastIndexOf(' '), user.tip.length - 1);
-
-        }
-    }
-
-
-
-
 
    if(validate()) {
         console.log("validated");
@@ -100,19 +130,5 @@ var newCost;
 var count = 0;
 
 
-var token;
-$.get('/order/client_token', function(data){
 
-    token = data;
-    braintree.setup("CLIENT-TOKEN-FROM-SERVER", "dropin", {
-        container: "dropin-container",
-        paypal: {
-            singleUse: true,
-            amount: 10.00,
-            currency: 'USD'
-        }
-        
-    });
-
-});
 
