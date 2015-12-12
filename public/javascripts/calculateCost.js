@@ -22,12 +22,14 @@ var taxRate = 0;
 
 var newItemModal = $('.modal-add-item');
 
+var todaysMenu;
+var menuLoader = $('#menu-loader');
+
 /**
  * Load menus and display into popover dialog
  */
 function loadMenu(){
 
-  var todaysMenu;
   if (addressForm.value == '') {
     todaysMenu = $('<p>')
         .html('Please enter a restaurant name');
@@ -68,12 +70,12 @@ function loadMenu(){
 
       if (count == 0) {
         todaysMenu = $('<p>')
-            .html('Please enter a restaurant name');
+            .html('No menu for that restaurant found. Please enter items manually instead.');
       }
     });
 
     // add order to list of items and add to the total cost
-    $('.menu-popover').on('click', '.menu-popover-row', function () {
+    $('#menu-modal-content').on('click', '.menu-popover-row', function () {
 
       //orderEntry.val(
       //    (orderEntry.val() == '' ?  '' : (orderEntry.val() + '\n')) +
@@ -89,8 +91,8 @@ function loadMenu(){
   }
 
 
-  $('.menu-popover-content').append(todaysMenu);
-  $('#menu-loader').fadeOut();
+  $('#menu-modal-content').append(todaysMenu);
+  menuLoader.fadeOut();
 
 }
 
@@ -107,21 +109,6 @@ orderEntry.on('click', '.new-order-entry', function () {
   );
 
   updateTotal();
-
-});
-
-$('#menuButton').popover({
-  callback: function(){
-    loadMenu();
-  },
-  content: '<div class="spinner" id="menu-loader"><div class="double-bounce1"></div> <div class="double-bounce2"></div></div>',
-  trigger: 'click focus',
-  title: function(){
-    return tableTitle;
-  },
-  html: true,
-  template: '<div class="popover menu-popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content menu-popover-content"></div></div>',
-  placement: 'bottom' // have to put on bottom because menu is inserted dynamically
 
 });
 
@@ -215,4 +202,13 @@ $('#new-item-submit').click(function () {
 newItemModal.on('show.bs.modal', function (e) {
   $('#new-item-name').val('');
   $('#new-item-price').val('');
+});
+
+$('.modal-menu').on('show.bs.modal', function (e) {
+  loadMenu();
+});
+
+$('.modal-menu').on('hidden.bs.modal', function (e) {
+  todaysMenu.remove();
+  menuLoader.show();
 });
