@@ -148,10 +148,34 @@
             <div class="form-group order-submit-buttons">
               <input type="hidden" id="total-cost-field" name="total-cost" value="0"/>
               <p>By clicking Place Order, you agree to pay the above amount.</p>
-              <button type='button' data-toggle='popover' class='btn btn-success' id='menuButton'>
+              <button type='button' style="width:100px" data-toggle='popover' class='btn btn-success' id='menuButton'>
                 View Menu
               </button>
-              <button type='button' class='btn btn-success' id='placeOrder'>Place Order</button>
+              <button type='button' style="width:100px" class='btn btn-success' id='placeOrder'>Place Order</button>
+              <button type="button" style="background-color:#009CDE;width:100px" class="btn btn-info " data-toggle="modal" data-target="#myModal">PayPal</button>
+
+              <!-- Modal -->
+              <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">PayPal</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>We have integrated
+                      The Brain Tree API to handle our payments. Unfortunately due to lack of HTTPS support we are unable to
+                      fully integrate PayPal support and payments to test our application. </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
 
 
 
@@ -213,6 +237,9 @@
                 <br>
                 <button type='submit' class='btn btn-success' id='addItem'>Comfirm</button>
                 <button type='reset' class='btn btn-warning' id='resetItem'> Reset</button>
+                <!-- Trigger the modal with a button -->
+
+
               </div>
             </div>
           </form>
