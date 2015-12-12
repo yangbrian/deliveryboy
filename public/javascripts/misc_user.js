@@ -168,7 +168,7 @@ function checkInfo(elem) {
     
     
     var data = order_data[parseInt(elem.dataset.index)];
-    var table = '<h3> Order Details</h3>'+
+    var table = ""+
                 '<table class="table table-bordered table-hover table-striped">'+
                 '<tbody>'+
                 '<tr>'+
@@ -199,8 +199,8 @@ function checkInfo(elem) {
                 '<td>'+data.status+'</td>'+
                 '</tr>'+
                 '</tbody>'+
-                '</table>'+
-                '<a href="#orderHistory" class="btn btn-lg btn-success" style="margin: 10px;" onclick="endEditDish(this)"> close</a>';
+                '</table>';
+                // '<a href="#orderHistory" class="btn btn-lg btn-success" style="margin: 10px;" onclick="endEditDish(this)"> close</a>';
     // $("#infobox").append(table);
     // var infobox = document.getElementById("infobox");
     // infobox.style.display='block';
