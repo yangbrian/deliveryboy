@@ -128,6 +128,7 @@ module.exports = function(io){
                 newOrder.accepted = false;
                 newOrder.public = force;
                 newOrder.date = new Date();
+                newOrder.braintree_token = order.braintree_token;
         
                 newOrder.save(function(err){
                     if(err){

@@ -8,10 +8,13 @@ var mongoose = require('mongoose');
 var autoIncrement = require('mongoose-auto-increment');
 
  //
- // var conn = mongoose.connect('mongodb://localhost:27017',{ mongos : true}, function(err) {
+//   var conn = mongoose.connect('mongodb://localhost:27017',{ mongos : true}, function(err) {
  //  if (!err)
  //    console.log(err);
  // });
+
+
+//  var conn = mongoose.connect('mongodb://localhost:27017',{ mongos : true}, function(err) {
 
 
 //  var conn = mongoose.connect('mongodb://localhost:27017',{ mongos : true}, function(err) {
