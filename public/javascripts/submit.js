@@ -33,11 +33,7 @@ function validate() {
     user.address = document.getElementById('autocomplete').value;
     user.restaurant = document.getElementById('autocomplete2').value;
 
-    user.order = '';
-
-    $('.new-order-entry').each(function () {
-        user.order += '- ' + $(this).attr('data-item') + '\n';
-    });
+    user.order = $('#table-new-orders')[0].outerHTML;
 
     user.cost = document.getElementById('total-cost-field').value;
 

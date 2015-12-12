@@ -262,7 +262,10 @@ module.exports = function(io){
         //io.emit('new-order', req.body);
 
         // value of order
-        var value = parseFloat(req.body.amount, 10);
+        var value = parseFloat(req.body.cost);
+
+        console.log("Create order");
+        console.log(value);
 
         // payment method
         var method = req.body.method;
