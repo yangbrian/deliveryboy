@@ -315,3 +315,21 @@ input[type=radio] {
     height: 20px;
     margin: 0;
 }
+
+.btn-responsive {
+    width: 45%;
+}
+
+
+@media (max-width: 1600px) {
+    .btn-responsive {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 1200px) {
+    .btn-responsive {
+        width: 45%;
+    }
+}
