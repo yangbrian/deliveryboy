@@ -4,7 +4,6 @@ $.get('/order/client_token', function(data){
 
   token = data;
 
-  alert(token);
 });
 
 braintree.setup("CLIENT-TOKEN-FROM-SERVER", "dropin", {
