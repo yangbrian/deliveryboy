@@ -4,6 +4,16 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+::-moz-selection {
+    background-color: #80e5ff;
+    color: #000;
+}
+
+::selection {
+    background-color: #80e5ff;
+    color: #000;
+}
+
 #copyright {
     color: #fff;
     padding: 10px 0;
