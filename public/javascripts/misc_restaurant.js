@@ -156,11 +156,17 @@ function loadIngradients() {
 
 function startEditDish(btn) {
     var editbox = document.getElementById("dishEdit");
-    editbox.style.display='block';
+    // editbox.style.display='block';
     var index = parseInt(btn.parentNode.parentNode.firstChild.innerHTML);
     var data = menu_data[index-1];
 
     console.log(data);
+    $("#infobox-title").addClass("text-center");
+    $("#infobox-body").removeClass("text-center");
+    $("#infobox-title").text("Update Dish");
+    $("#infobox-body").empty();
+    $("#infobox-body").append($("#dishEdit").html());
+    $("#infobox").modal("show");
 
     document.getElementById("nameUpdate").value = data.name;
     document.getElementById("caloriesUpdate").value = data.calories;
@@ -203,7 +209,9 @@ function startEditDish(btn) {
 
     document.getElementById("priceUpdate").value = data.price;
 
-    document.getElementById("fade").style.display='block';
+    
+
+    // document.getElementById("fade").style.display='block';
 }
 
 function endEditDish(btn) {
@@ -229,7 +237,7 @@ function checkInfo(elem) {
 
 
     var data = order_data[parseInt(elem.dataset.index)];
-    var table = '<h3> Order Details</h3>'+
+    var table = ''+
                 '<table class="table table-bordered table-hover table-striped">'+
                 '<tbody>'+
                 '<tr>'+
@@ -260,12 +268,16 @@ function checkInfo(elem) {
                 '<td>'+data.status+'</td>'+
                 '</tr>'+
                 '</tbody>'+
-                '</table>'+
-                '<a href="#orderHistory" class="btn btn-lg btn-success" style="margin: 10px;" onclick="endEditDish(this)"> close</a>';
-    $("#infobox").append(table);
-    var infobox = document.getElementById("infobox");
-    infobox.style.display='block';
-    document.getElementById("fade").style.display='block';
+                '</table>';
+                // '<a href="#orderHistory" class="btn btn-lg btn-success" style="margin: 10px;" onclick="endEditDish(this)"> close</a>';
+    $("#infobox-body").empty();
+    $("#infobox-title").addClass("text-center");
+    $("#infobox-body").addClass("text-center");
+    $("#infobox-body").append(table);
+    $("#infobox").modal("show");
+    // var infobox = document.getElementById("infobox");
+    // infobox.style.display='block';
+    // document.getElementById("fade").style.display='block';
 
 
 }
