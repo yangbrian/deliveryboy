@@ -77,15 +77,19 @@ function loadMenu(){
 
       var itemName = $(this).find('.menu-item-name').html();
       var itemPrice = Number($(this).find('.menu-item-price').html()).toFixed(2);
-      orderEntry.append(
-          $('<tr>')
-              .append($('<td>').html(itemName))
-              .append($('<td>').html(itemPrice))
-              .attr('data-item', itemName)
-              .attr('data-price', itemPrice)
-              .addClass('new-order-entry')
-      );
+      var newRow = $('<tr>')
+          .append($('<td>').html(itemName))
+          .append($('<td>').html(itemPrice))
+          .attr('data-item', itemName)
+          .attr('data-price', itemPrice)
+          .attr('data-toggle', 'tooltip')
+          .attr('data-placement', 'right')
+          .attr('title', 'Click to delete item')
+          .addClass('new-order-entry');
 
+      orderEntry.append(newRow);
+
+      newRow.tooltip();
       updateTotal();
     });
   }
@@ -97,7 +101,19 @@ function loadMenu(){
 }
 
 orderEntry.on('click', '.new-order-entry', function () {
-  console.log("Row clicked");
+  $(this).addClass('delete');
+  $(this).fadeOut(300, function () {
+    $(this).remove();
+  });
+
+  $('.tooltip').remove();
+
+  orderCost.val(
+      (Number(orderCost.val()) - Number($(this).attr('data-price'))).toFixed(2)
+  );
+
+  updateTotal();
+
 });
 
 

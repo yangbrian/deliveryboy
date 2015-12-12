@@ -201,10 +201,16 @@ function checkInfo(elem) {
                 '</tbody>'+
                 '</table>'+
                 '<a href="#orderHistory" class="btn btn-lg btn-success" style="margin: 10px;" onclick="endEditDish(this)"> close</a>';
-    $("#infobox").append(table);
-    var infobox = document.getElementById("infobox");
-    infobox.style.display='block';
-    document.getElementById("fade").style.display='block';
+    // $("#infobox").append(table);
+    // var infobox = document.getElementById("infobox");
+    // infobox.style.display='block';
+    // document.getElementById("fade").style.display='block';
+    
+    $("#infobox-body").empty();
+    $("#infobox-title").addClass("text-center");
+    $("#infobox-body").addClass("text-center");
+    $("#infobox-body").append(table);
+    $("#infobox").modal("show");
     
     
 }

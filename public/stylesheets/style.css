@@ -280,3 +280,15 @@ input[type=radio] {
 #total-cost-group {
     font-size: 1.5em;
 }
+
+.new-order-entry:hover {
+    cursor: pointer;
+}
+
+#table-new-orders .tooltip {
+    width: 100px;
+}
+
+#table-new-orders .delete {
+    background-color: #ffb3b3;
+}
