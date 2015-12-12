@@ -20,6 +20,7 @@ var activeOrderSchema = new Schema({
 	date: {type: Date, index: true},
 	payment_account: String,
 	payment_name: String,
+	braintree_token: String
 }, {shardKey: {number: 1, restaurant: 1}});
 
 activeOrderSchema.plugin(autoIncrement.plugin, { 

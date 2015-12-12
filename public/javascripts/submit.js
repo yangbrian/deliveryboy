@@ -1,19 +1,5 @@
 
-var token;
-$.get('/order/client_token', function(data){
 
-  token = data;
-
-});
-//
-//braintree.setup("CLIENT-TOKEN-FROM-SERVER", "dropin", {
-//  container: "dropin-container",
-//  paypal: {
-//    singleUse: true,
-//    amount: 10.00,
-//    currency: 'USD'
-//  }
-//});
 
 
   // braintree.setup(token, "custom", {
@@ -33,9 +19,10 @@ var user = {
     number: '',
     address: '',
     restaurant: '',
-    order: '',
+    // order: '',
     cost: '',
-    tip: ''
+    tip: '',
+    braintree_token: "none"
 };
 
 //create user login based on their facebook and save addresses, restaurants, orders etce
@@ -67,7 +54,8 @@ orderButton.onclick = function() {
     user.number = document.getElementById('phoneNumber').value;
     user.address = document.getElementById('autocomplete').value;
     user.restaurant = document.getElementById('autocomplete2').value;
-    user.order = document.getElementById('order').value;
+
+    //user.order = document.getElementById('order').value;
     user.cost = document.getElementById('total-cost-field').value;
 
     var isChecked =document.querySelector('input[name="tip"]:checked');
@@ -86,9 +74,53 @@ orderButton.onclick = function() {
         }
     }
 
+    for (var x in user) {
+        if (user[x] === '') {
+            alert('Please enter a value for your ' + x);
+            return false;
+        } else if(x === 'cost' || x === 'tip' || x === 'number'){
 
+            var num = parseFloat(user[x], 10);
+            var notNum = isNaN(num);
 
+            if(notNum || num <= 0){
+                alert('Please enter a valid ' + x);
+                return false;
+            }
+        }
+    }
+    return true;
+}
 
+orderButton.onclick = function() {
+    if (validate())
+
+        $.get('/order/client_token', function(data){
+            $("#dropin-container").empty();
+            var token = data;
+            user.braintree_token = token;
+            braintree.setup(token, "dropin", {
+                container: "dropin-container",
+                paypal: {
+                    singleUse: true,
+                    amount: user.cost,
+                    currency: 'USD'
+                },
+                dataCollector: {
+                paypal: true  // Enables fraud prevention
+                },
+                onPaymentMethodReceived: function (obj) {
+                    console.log(obj);
+                    placeOrder();
+                }
+            });
+            $("#paybox").modal("show");
+        });
+
+};
+
+function placeOrder() {
+    //Checks that all fields are filled
 
    if(validate()) {
         console.log("validated");
@@ -113,3 +145,7 @@ orderButton.onclick = function() {
 
 var newCost;
 var count = 0;
+
+
+
+
