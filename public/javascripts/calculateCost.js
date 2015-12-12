@@ -42,6 +42,8 @@ function loadMenu(){
                     $('<tr>')
                         .append($('<th>').html('Item'))
                         .append($('<th>').html('Cost'))
+                        .append($('<th>').html('Description'))
+                        .append($('<th>').html('Calories'))
                 )
 
         );
@@ -63,6 +65,16 @@ function loadMenu(){
                       .addClass('menu-item-price')
                       .html(dish.price)
               )
+              .append(
+                  $('<td>')
+                      .addClass('menu-item-desc')
+                      .html(dish.description)
+              )
+              .append(
+                  $('<td>')
+                      .addClass('menu-item-calories')
+                      .html(dish.calories)
+              )
           );
           count++;
         }
@@ -77,8 +89,6 @@ function loadMenu(){
 
   }
 
-
-  console.log(todaysMenu);
   $('#menu-modal-content').append(todaysMenu);
   menuLoader.fadeOut();
 
@@ -124,7 +134,7 @@ function addNewItem(itemName, itemPrice) {
       .attr('data-item', itemName)
       .attr('data-price', itemPrice)
       .attr('data-toggle', 'tooltip')
-      .attr('data-placement', 'right')
+      .attr('data-placement', 'left')
       .attr('title', 'Click to delete item')
       .addClass('new-order-entry');
 

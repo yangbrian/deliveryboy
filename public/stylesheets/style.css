@@ -273,6 +273,11 @@ input[type=radio] {
     margin: 0 5px;
 }
 
+#order-panel-body {
+    overflow-y: scroll;
+    max-height: 900px;
+}
+
 .order-submit-buttons {
     text-align: center;
 }
