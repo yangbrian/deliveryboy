@@ -69,32 +69,35 @@ function loadMenu(){
       });
 
       if (count == 0) {
-        todaysMenu = $('<p>')
-            .html('No menu for that restaurant found. Please enter items manually instead.');
+        todaysMenu.append($('<p>')
+            .html('No menu for that restaurant found. Please enter items manually instead.'));
       }
+
     });
 
-    // add order to list of items and add to the total cost
-    $('#menu-modal-content').on('click', '.menu-popover-row', function () {
-
-      //orderEntry.val(
-      //    (orderEntry.val() == '' ?  '' : (orderEntry.val() + '\n')) +
-      //    '- ' + $(this).find('.menu-item-name').html()
-      //);
-
-
-
-      var itemName = $(this).find('.menu-item-name').html();
-      var itemPrice = Number($(this).find('.menu-item-price').html()).toFixed(2);
-      addNewItem(itemName, itemPrice);
-    });
   }
 
 
+  console.log(todaysMenu);
   $('#menu-modal-content').append(todaysMenu);
   menuLoader.fadeOut();
 
 }
+
+// add order to list of items and add to the total cost
+$('#menu-modal-content').on('click', '.menu-popover-row', function () {
+
+  //orderEntry.val(
+  //    (orderEntry.val() == '' ?  '' : (orderEntry.val() + '\n')) +
+  //    '- ' + $(this).find('.menu-item-name').html()
+  //);
+
+
+
+  var itemName = $(this).find('.menu-item-name').html();
+  var itemPrice = Number($(this).find('.menu-item-price').html()).toFixed(2);
+  addNewItem(itemName, itemPrice);
+});
 
 orderEntry.on('click', '.new-order-entry', function () {
   $(this).addClass('delete');
@@ -196,7 +199,7 @@ $('#cost').val('0.00');
 $('#new-item-submit').click(function () {
   newItemModal.modal('hide');
 
-  addNewItem($('#new-item-name').val(), $('#new-item-price').val());
+  addNewItem($('#new-item-name').val(), Number($('#new-item-price').val()).toFixed(2));
 });
 
 newItemModal.on('show.bs.modal', function (e) {
