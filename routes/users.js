@@ -401,7 +401,6 @@ router.post("/home/activeOrders/delivered", function(req, res, next) {
    			name: input.name
    		}, function(err, order) {
    		    order.delivered = true;
-   		    order.public = true;
    		    if (order.status == 'active')
    		    	order.status = "delivered";
    		    else
