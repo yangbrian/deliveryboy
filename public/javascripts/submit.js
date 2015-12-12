@@ -5,15 +5,15 @@ $.get('/order/client_token', function(data){
   token = data;
 
 });
-
-braintree.setup("CLIENT-TOKEN-FROM-SERVER", "dropin", {
-  container: "dropin-container",
-  paypal: {
-    singleUse: true,
-    amount: 10.00,
-    currency: 'USD'
-  }
-});
+//
+//braintree.setup("CLIENT-TOKEN-FROM-SERVER", "dropin", {
+//  container: "dropin-container",
+//  paypal: {
+//    singleUse: true,
+//    amount: 10.00,
+//    currency: 'USD'
+//  }
+//});
 
 
   // braintree.setup(token, "custom", {
@@ -60,13 +60,14 @@ function validate() {
 }
 
 orderButton.onclick = function() {
+    console.log("Order button clicked");
     //Checks that all fields are filled
 
     user.name = document.getElementById('name').value;
     user.number = document.getElementById('phoneNumber').value;
     user.address = document.getElementById('autocomplete').value;
     user.restaurant = document.getElementById('autocomplete2').value;
-    //user.order = document.getElementById('order').value;
+    user.order = document.getElementById('order').value;
     user.cost = document.getElementById('total-cost-field').value;
 
     var isChecked =document.querySelector('input[name="tip"]:checked');
@@ -76,7 +77,7 @@ orderButton.onclick = function() {
 
         if (checkedTip.id === 'custom') {
 
-            user.tip = document.getElementById('customTip').value;
+            user.tip = document.getElementById('custom-tip').value;
         }
         else {
             user.tip = checkedTip.innerHTML;

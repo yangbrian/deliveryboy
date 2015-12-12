@@ -113,6 +113,46 @@
 
                                     </table>
 
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-add-item">Add New Item</button>
+
+                                    <div class="modal fade modal-add-item" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog modal-sm">
+
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                    <h4 class="modal-title">Add New Item to Order</h4>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label  class="col-md-4 control-label" for="new-item-name">Item Name</label>
+                                                        <div class="col-md-8">
+                                                            <input type="text" name="new-item-name" id="new-item-name" placeholder="Item Name" class="form-control input-md">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label  class="col-md-4 control-label" for="new-item-price">Item Price</label>
+                                                        <div class="col-md-8">
+                                                            <input type="text" name="new-item-price" id="new-item-price" placeholder="Item Price" class="form-control input-md">
+                                                        </div>
+
+
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <div class="col-md-12">
+                                                            <button class="btn btn-success" type="button" id="new-item-submit">Add to Order</button>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
 
                             </div>

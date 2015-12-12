@@ -20,6 +20,8 @@ var taxRateDisplay = $('#tax-rate');
 // keeps track of current tax rate for input zip code
 var taxRate = 0;
 
+var newItemModal = $('.modal-add-item');
+
 /**
  * Load menus and display into popover dialog
  */
@@ -78,26 +80,11 @@ function loadMenu(){
       //    '- ' + $(this).find('.menu-item-name').html()
       //);
 
-      orderCost.text(
-          (Number(orderCost.text()) + Number($(this).find('.menu-item-price').html())).toFixed(2)
-      );
+
 
       var itemName = $(this).find('.menu-item-name').html();
       var itemPrice = Number($(this).find('.menu-item-price').html()).toFixed(2);
-      var newRow = $('<tr>')
-          .append($('<td>').html(itemName))
-          .append($('<td>').html(itemPrice))
-          .attr('data-item', itemName)
-          .attr('data-price', itemPrice)
-          .attr('data-toggle', 'tooltip')
-          .attr('data-placement', 'right')
-          .attr('title', 'Click to delete item')
-          .addClass('new-order-entry');
-
-      orderEntry.append(newRow);
-
-      newRow.tooltip();
-      updateTotal();
+      addNewItem(itemName, itemPrice);
     });
   }
 
@@ -123,7 +110,6 @@ orderEntry.on('click', '.new-order-entry', function () {
 
 });
 
-
 $('#menuButton').popover({
   callback: function(){
     loadMenu();
@@ -141,7 +127,30 @@ $('#menuButton').popover({
 
 $('input:radio').on('change', updateTotal);
 
+function addNewItem(itemName, itemPrice) {
+  var newRow = $('<tr>')
+      .append($('<td>').html(itemName))
+      .append($('<td>').html(itemPrice))
+      .attr('data-item', itemName)
+      .attr('data-price', itemPrice)
+      .attr('data-toggle', 'tooltip')
+      .attr('data-placement', 'right')
+      .attr('title', 'Click to delete item')
+      .addClass('new-order-entry');
+
+  orderEntry.append(newRow);
+
+  orderCost.text(
+      (Number(orderCost.text()) + Number(itemPrice)).toFixed(2)
+  );
+
+  newRow.tooltip();
+  updateTotal();
+}
+
 function updateTotal() {
+
+
   newCost = $('#cost').text();
 
   var salesTax = newCost * (taxRate / 100);
@@ -149,7 +158,7 @@ function updateTotal() {
   taxDisplay.text(salesTax.toFixed(2));
   taxRateDisplay.text(taxRate.toFixed(3));
 
-  var tip = $('input[name="tip"]:checked').val();;
+  var tip = $('input[name="tip"]:checked').val();
 
   var tipPercent = 1 + parseFloat(tip/100, 10);
   var cost = parseFloat(newCost, 10);
@@ -190,8 +199,20 @@ $('#zipcode').on('keyup', function () {
 
   } else if ($(this).val().length < 5) {
     taxRate = 0;
+    zip = $(this).val();
     updateTotal();
   }
 });
 
 $('#cost').val('0.00');
+
+$('#new-item-submit').click(function () {
+  newItemModal.modal('hide');
+
+  addNewItem($('#new-item-name').val(), $('#new-item-price').val());
+});
+
+newItemModal.on('show.bs.modal', function (e) {
+  $('#new-item-name').val('');
+  $('#new-item-price').val('');
+});
