@@ -213,6 +213,10 @@ td > a {
    bottom: 30px;
 }
 
+#updatesList_panel {
+    max-height: 857px;
+}
+
 .login_form {
     position: relative;
     top: 25%;
@@ -275,7 +279,7 @@ input[type=radio] {
 
 #order-panel-body {
     overflow-y: scroll;
-    max-height: 900px;
+    max-height: 857px;
 }
 
 .order-submit-buttons {

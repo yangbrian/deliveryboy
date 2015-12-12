@@ -1,5 +1,7 @@
 
 var socket = io.connect();
+
+var sidebar_order = [];
 socket.on('connect', function (data) {
   socket.emit('join', 'Hello World from client');
 });
@@ -21,9 +23,8 @@ function delivered(obj){
   node.remove();
 }
 
-function acceptanceClick(node){
-  var name = node.parentNode.firstChild.textContent;
-  name = name.split(":")[1].trim();
+function acceptanceClick(index){
+  var name = sidebar_order[index].name;
   $.post("/users/home/activeOrders/accepted", {"name": name}, function(data) {
     if (data.error) {
       confirm(data.msg);
@@ -32,8 +33,6 @@ function acceptanceClick(node){
       li.remove();
       document.location.reload();
   });
-
-  $('.popover').popover('hide');
 
   
   //
@@ -54,24 +53,13 @@ function acceptanceClick(node){
 */
 function addToSidebar(order) {
   var sidebar = $('<li>')
-
+      .attr("data-index", sidebar_order.length)
       .append(order.restaurant)
       .append(" - ")
       .append(order.order)
       .addClass('open-orders')
-      .addClass('test')
-      .attr('data-html', true)
-      .attr('data-toggle', 'popover')
-      .attr("data-trigger", "focus")
-      .attr('title', 'Order Details')
-      .attr('data-content', '<ul>' +
-        '<li><strong>Name: </strong>' + order.name + '</li>' +
-        '<li><strong>Restaurant: </strong>' + order.restaurant + '</li>' +
-        '<li><strong>Order: </strong>' + order.order + '</li><button onclick=acceptanceClick(this) class="btn"> Deliver me!</button>' +
-        '</ul>'
-      );
-
-  $('#sidebar').prepend(sidebar);
+      .addClass('test');
+      sidebar_order.push(order);
   
   // sidebar.click(function() {		
   //   $('.open-orders').popover('hide');		
@@ -83,24 +71,27 @@ function addToSidebar(order) {
   //   });
   // });
   
+  $('#sidebar').prepend(sidebar);
   
-  sidebar.popover({
-    html: true,
-    trigger: 'focus click',
-    placement: 'right',
-    container: 'body',
-    template: '<div class="popover open-orders-popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
-  });
+  // sidebar.popover({
+  //   html: true,
+  //   trigger: 'focus click',
+  //   placement: 'right',
+  //   container: 'body',
+  //   template: '<div class="popover open-orders-popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+  // });
   
-  $("body").on("click",".open-orders",function(){
-        $(this).popover();
+  // $("body").on("click",".open-orders",function(){
+  //       // $(this).popover();
         
-        $(".open-orders").not(this).popover("hide"); //hide other popovers
-        return false;
-    });
-    $("body").on("click",function(){
-        $(".open-orders").popover("hide"); //hide all popovers when clicked on body
-    });
+        
+        
+  //       $(".open-orders").not(this).popover("hide"); //hide other popovers
+  //       return false;
+  //   });
+  //   $("body").on("click",function(){
+  //       $(".open-orders").popover("hide"); //hide all popovers when clicked on body
+  //   });
 
 
   $('li').click(function(){
@@ -114,6 +105,47 @@ function addToSidebar(order) {
       $(this).attr('id','lastClicked');
       
     }
+    var index = this.dataset.index;
+    var data = sidebar_order[parseInt(index)];
+    var table = ""+
+                '<table class="table table-bordered table-hover table-striped">'+
+                '<tbody>'+
+                '<tr>'+
+                '<td> name </td>'+
+                '<td>'+data.name+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                '<td> number </td>'+
+                '<td>'+data.number+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                '<td> address </td>'+
+                '<td>'+data.address+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                '<td> restaurant </td>'+
+                '<td>'+data.restaurant+'</td>'+
+                '</tr>'+
+                '<td> foods </td>'+
+                '<td>'+data.order+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                '<td> cost </td>'+
+                '<td>'+data.cost+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                '<td> tip </td>'+
+                '<td>'+data.tip+'</td>'+
+                '</tr>'+
+                '</tbody>'+
+                '</table>'+
+                '<button class="btn btn-primary" onclick="acceptanceClick('+index+')">Delivery Me</button>';
+    
+    $("#infobox-body").empty();
+    $("#infobox-title").addClass("text-center");
+    $("#infobox-body").addClass("text-center");
+    $("#infobox-body").append(table);
+    $("#infobox").modal("show");
 
   });
 
