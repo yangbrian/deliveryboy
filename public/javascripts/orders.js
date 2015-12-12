@@ -28,11 +28,13 @@ function acceptanceClick(index){
   $.post("/users/home/activeOrders/accepted", {"name": name}, function(data) {
     if (data.error) {
       confirm(data.msg);
-    } else 
+    } else {
       var li = document.getElementById('lastClicked');
       li.remove();
       document.location.reload();
+    }
   });
+
 
   
   //
@@ -139,7 +141,7 @@ function addToSidebar(order) {
                 '</tr>'+
                 '</tbody>'+
                 '</table>'+
-                '<button class="btn btn-primary" onclick="acceptanceClick('+index+')">Delivery Me</button>';
+                '<button class="btn btn-primary" onclick="acceptanceClick('+index+')">Deliver Me</button>';
     
     $("#infobox-body").empty();
     $("#infobox-title").addClass("text-center");
