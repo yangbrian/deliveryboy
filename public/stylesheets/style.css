@@ -4,6 +4,16 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+::-moz-selection {
+    background-color: #80e5ff;
+    color: #000;
+}
+
+::selection {
+    background-color: #80e5ff;
+    color: #000;
+}
+
 #copyright {
     color: #fff;
     padding: 10px 0;
@@ -269,4 +279,16 @@ input[type=radio] {
 
 #total-cost-group {
     font-size: 1.5em;
+}
+
+.new-order-entry:hover {
+    cursor: pointer;
+}
+
+#table-new-orders .tooltip {
+    width: 100px;
+}
+
+#table-new-orders .delete {
+    background-color: #ffb3b3;
 }

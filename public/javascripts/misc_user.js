@@ -201,6 +201,7 @@ function checkInfo(elem) {
                 '</tbody>'+
                 '</table>';
                 // '<a href="#orderHistory" class="btn btn-lg btn-success" style="margin: 10px;" onclick="endEditDish(this)"> close</a>';
+
     // $("#infobox").append(table);
     // var infobox = document.getElementById("infobox");
     // infobox.style.display='block';

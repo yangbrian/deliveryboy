@@ -89,8 +89,17 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textarea">Order Entry</label>
                                 <div class="col-md-8">
-                                    <textarea class="form-control" id="order" name="textarea" required></textarea>
+                                    <!--<textarea class="form-control" id="order" name="textarea" required></textarea>-->
 
+
+                                    <table id="table-new-orders" class="table table-bordered table-responsive table-hover">
+
+                                        <tr>
+                                            <th>Item</th>
+                                            <th>Price</th>
+                                        </tr>
+
+                                    </table>
 
                                 </div>
 
@@ -114,14 +123,15 @@
                                 <label class="col-md-4 control-label" style="padding-top: 0;">Tip</label>
                                 <div class="col-md-8">
 
-                                    <label><input type='radio' name='tip' value="10"> 10%</label>
-                                    <label><input type='radio' name='tip' value="20"> 20%</label>
-                                    <label><input type='radio' name='tip' value="30"> 30%</label>
-                                    <label id='custom'>
-                                        <input type='radio' name='tip' value="0" id="customTipValue">
-                                        <input id='customTip' style='width:40px' type='text'></label>
+
+                                  <label><input type='radio' name='tip' value="10"> 10%</label>
+                                  <label><input type='radio' name='tip' value="20"> 20%</label>
+                                  <label><input type='radio' name='tip' value="30"> 30%</label>
+                                  <label id='custom'>
+                                    <input type='radio' name='tip' value="0" id="customTipValue">
+                                    <input id='customTip' style='width:40px' type='text'></label>
+                                  </div>
                                 </div>
-                            </div>
 
                             <div class="form-group" id="total-cost-group">
 
