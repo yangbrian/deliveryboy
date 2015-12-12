@@ -97,6 +97,7 @@ orderButton.onclick = function() {
                     placeOrder();
                 }
             });
+            // $("#paybox-title").text("Make a Payment");
             $("#paybox").modal("show");
         });
 
