@@ -75,9 +75,11 @@ orderButton.onclick = function() {
     if (validate())
         $.post('/order/restaurant_status', {"restaurant": user.restaurant}, function(data) {
             var yes = true;
+            var force = false;
             console.log(data);
             if (data.error) {
                 yes = confirm(data.msg);
+                false = yes;
             }
             if (yes) {
                 $.get('/order/client_token', function(data){
@@ -96,7 +98,7 @@ orderButton.onclick = function() {
                         },
                         onPaymentMethodReceived: function (obj) {
                             console.log(obj);
-                            placeOrder();
+                            placeOrder(force);
                         }
                     });
                     // $("#paybox-title").text("Make a Payment");
@@ -110,28 +112,35 @@ orderButton.onclick = function() {
 };
 
 
-function placeOrder() {
+function placeOrder(force) {
     //Checks that all fields are filled
 
     if(validate()) {
         console.log("validated");
-        $.post('/order/new_force', user, function(data) {
-            console.log(data);
-            // if (data.error) {
-            //     var yes = confirm(data.msg);
-            //     if (yes) {
-            //         document.getElementById('spin_fade').style.display='block';
-            //         $.post('/order/new_force',user, function(data) {
-            //             window.location.href = "/users/home";
-            //         });
-            //     } else {
-            //         window.location.href = "/users/home";
-            //     }
-            // } else {
-            //     window.location.href = "/users/home";
-            // }
-            window.location.href = "/users/home";
-        });
+        if (force) {
+            $.post('/order/new_force', user, function(data) {
+                console.log(data);
+                window.location.href = "/users/home";
+            });
+        } else {
+        $.post('/order/new', user, function(data) {
+                console.log(data);
+                // if (data.error) {
+                //     var yes = confirm(data.msg);
+                //     if (yes) {
+                //         document.getElementById('spin_fade').style.display='block';
+                //         $.post('/order/new_force',user, function(data) {
+                //             window.location.href = "/users/home";
+                //         });
+                //     } else {
+                //         window.location.href = "/users/home";
+                //     }
+                // } else {
+                //     window.location.href = "/users/home";
+                // }
+                window.location.href = "/users/home";
+            });
+        }
     }
 };
 
