@@ -79,7 +79,7 @@ orderButton.onclick = function() {
             console.log(data);
             if (data.error) {
                 yes = confirm(data.msg);
-                false = yes;
+                force = yes;
             }
             if (yes) {
                 $.get('/order/client_token', function(data){
