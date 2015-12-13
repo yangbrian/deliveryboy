@@ -74,35 +74,36 @@ function validate() {
 orderButton.onclick = function() {
     if (validate())
         $.post('/order/restaurant_status', {"restaurant": user.restaurant}, function(data) {
+            var yes = true;
             console.log(data);
             if (data.error) {
-                var yes = confirm(data.msg);
-                if (yes) {
-                    $.get('/order/client_token', function(data){
-                        $("#dropin-container").empty();
-                        var token = data;
-                        user.braintree_token = token;
-                        braintree.setup(token, "dropin", {
-                            container: "dropin-container",
-                            paypal: {
-                                singleUse: true,
-                                amount: user.cost,
-                                currency: 'USD'
-                            },
-                            dataCollector: {
-                                paypal: true  // Enables fraud prevention
-                            },
-                            onPaymentMethodReceived: function (obj) {
-                                console.log(obj);
-                                placeOrder();
-                            }
-                        });
-                        // $("#paybox-title").text("Make a Payment");
-                        $("#paybox").modal("show");
+                yes = confirm(data.msg);
+            }
+            if (yes) {
+                $.get('/order/client_token', function(data){
+                    $("#dropin-container").empty();
+                    var token = data;
+                    user.braintree_token = token;
+                    braintree.setup(token, "dropin", {
+                        container: "dropin-container",
+                        paypal: {
+                            singleUse: true,
+                            amount: user.cost,
+                            currency: 'USD'
+                        },
+                        dataCollector: {
+                            paypal: true  // Enables fraud prevention
+                        },
+                        onPaymentMethodReceived: function (obj) {
+                            console.log(obj);
+                            placeOrder();
+                        }
                     });
-                } else {
-                    window.location.href = "/users/home";
-                }
+                    // $("#paybox-title").text("Make a Payment");
+                    $("#paybox").modal("show");
+                });
+            } else {
+                window.location.href = "/users/home";
             }
         });
 
