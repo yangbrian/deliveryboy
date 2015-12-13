@@ -46,7 +46,7 @@ router.get("/home", function(req, res, next) {
 						res.cookie('auth_token', user.auth.token, {path: "/", expires: user.auth.expire, httpOnly: true});
 						user.fullname = user.name.full;
 						if (!online) {
-							res.render('user_home', {'user': user, 'flash': 'success', 'flash_msg': 'Welcome to '+ webName, host: os.hostname()});
+							res.render('user_home', {'user': user, 'flash': 'success', 'flash_msg': 'Welcome to '+ webName + ", "+user.fullname, host: os.hostname()});
 						}
 						else
 							res.render('user_home', {'user': user, host: os.hostname()});
@@ -419,7 +419,7 @@ router.post("/home/activeOrders/delivered", function(req, res, next) {
 			   var create_payout_json = {
 				   "sender_batch_header": {
 					   "sender_batch_id": Math.random().toString(36).substring(9),
-					   "email_subject": "You have a new payment from Delivery Boy."
+					   "email_subject": "A payment from Delivery Boy"
 				   },
 				   "items": [
 					   {
