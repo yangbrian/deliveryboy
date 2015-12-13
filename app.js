@@ -76,7 +76,6 @@ app.use('/users', users);
 app.use('/payments', payments);
 app.use('/restaurants', restaurants);
 app.use('/order', order(app.io));
-app.use('/restaurants', restaurants);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
