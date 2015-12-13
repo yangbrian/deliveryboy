@@ -73,7 +73,7 @@ function validate() {
 
 orderButton.onclick = function() {
     if (validate())
-        $.get('/order/restaurant_status', user, function(data) {
+        $.post('/order/restaurant_status', {"restaurant": user.restaurant}, function(data) {
             console.log(data);
             if (data.error) {
                 var yes = confirm(data.msg);

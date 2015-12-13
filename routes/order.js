@@ -240,9 +240,9 @@ module.exports = function(io){
         
     });
     
-    router.get('/restaurant_status', function(req, res) {
+    router.post('/restaurant_status', function(req, res) {
         validateStatus(req, res, User, "/users/login", function(input, user) {
-            console.log('Entered route');
+            console.log('Entered route /restaurant_status');
             Restaurant.findOne({
                 "address": req.body.restaurant
             }, function(err, data) {
