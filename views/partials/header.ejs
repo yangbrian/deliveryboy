@@ -8,7 +8,11 @@
 
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <% if (!locals.help) { %>
     <link rel="stylesheet" href="/stylesheets/inputTags.css">
+
+    <% } %>
     <link rel="stylesheet" href="/stylesheets/bootstrap-theme.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
 
@@ -17,7 +21,7 @@
 
 
 </head>
-<body onload="bodyOnload();">
+<body onload="bodyOnload();"<% if (locals.help) { %> data-spy="scroll" data-target="#help-nav-col" data-offset="75" <% } %>>
 
 <div id="popover-container">
 

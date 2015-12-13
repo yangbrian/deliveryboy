@@ -2,6 +2,7 @@ body {
     font-family: Lato, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    position: relative;
 }
 
 ::-moz-selection {
@@ -15,8 +16,12 @@ body {
 }
 
 #copyright {
-    color: #fff;
+    margin-top: 30px;
     padding: 10px 0;
+}
+
+#help-page #copyright {
+    border-top: 1px solid #ddd;
 }
 
 .control-label {
@@ -334,4 +339,14 @@ input[type=radio] {
     .btn-responsive {
         width: 45%;
     }
+}
+
+#help-nav {
+    padding-top: 15px;
+    position: fixed;
+}
+
+#help-page h2 {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
 }

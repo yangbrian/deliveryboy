@@ -30,4 +30,13 @@ router.post('/submitOrder', function(req, res, next){
 
 });
 
+router.get('/help/', function(req, res, next){
+    res.render('help', {
+        title: "Help Guide - DeliveryBoy",
+        host: os.hostname() ,
+        help: true
+    });
+
+});
+
 module.exports = router;
