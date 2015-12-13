@@ -151,8 +151,9 @@ function addToSidebar(order) {
                 '<td>'+data.tip+'</td>'+
                 '</tr>'+
                 '</tbody>'+
-                '</table>'+
-                '<button class="btn btn-primary" onclick="acceptanceClick('+index+')">Deliver Me</button>';
+                '</table>';
+    if (deliveryboy_type)
+                table += '<button class="btn btn-primary" onclick="acceptanceClick('+index+')">Deliver Me</button>';
     
     $("#infobox-body").empty();
     $("#infobox-title").addClass("text-center");
