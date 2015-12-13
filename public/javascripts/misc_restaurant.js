@@ -14,6 +14,9 @@ socket.on('connect', function (data) {
 socket.on('new-restaurant-order', function (data) {
   console.log('hi the socket is on~');
   $.get("/restaurants/home/menu", function(data){
+      if (typeof data == "string") {
+            window.location.href = "/";
+        }
     console.log(data);
 
   });
@@ -33,6 +36,9 @@ function clearAlert() {
 
 function loadRestaurantMenu() {
     $.get("/restaurants/home/menu",function(data){
+        if (typeof data == "string") {
+            window.location.href = "/";
+        }
        menu_data = data;
        console.log(data);
        var dish = null;
@@ -44,6 +50,9 @@ function loadRestaurantMenu() {
 
 function loadRestaurantHistoryOrders() {
     $.get("/restaurants/home/orders",function(data){
+        if (typeof data == "string") {
+            window.location.href = "/";
+        }
         order_data = data;
         console.log(menu_data);
        console.log(data);
@@ -56,6 +65,9 @@ function loadRestaurantHistoryOrders() {
 
 function loadRestaurantActiveOrders() {
     $.get("/restaurants/home/activeOrders",function(data){
+        if (typeof data == "string") {
+            window.location.href = "/";
+        }
 
        console.log(data);
        for ( var i = data.length - 1; i > -1; i--) {
@@ -135,6 +147,9 @@ function completeDeclined(btn) {
 
 function loadTags() {
     $.get("/restaurants/tags", function(data){
+        if (typeof data == "string") {
+            window.location.href = "/";
+        }
         tags = [];
         for (var i = 0; i < data.length; i++) {
             tags.push(data[i].value);
@@ -145,6 +160,9 @@ function loadTags() {
 
 function loadIngradients() {
     $.get("/restaurants/ingradients", function(data){
+        if (typeof data == "string") {
+            window.location.href = "/";
+        }
         ingradients = [];
         for (var i = 0; i < data.length; i++) {
             ingradients.push(data[i].value);
