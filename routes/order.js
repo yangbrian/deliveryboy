@@ -240,6 +240,33 @@ module.exports = function(io){
         
     });
     
+    router.get('/restaurant_status', function(req, res) {
+        validateStatus(req, res, User, "/users/login", function(input, user) {
+            console.log('Entered route');
+            Restaurant.findOne({
+                "address": req.body.restaurant
+            }, function(err, data) {
+                if (err) {
+                    console.log(data);
+                    res.send({"error": "searching restaurant databse error", "msg": err});
+                    return;
+                }
+                if (data) {
+                    res.send({"status": "ok"});
+                    return;
+                } else {
+                    res.send({error: "no such restaurant", msg: "The restaurant does" + 
+                    " not appear in our database. Do you want to" +
+                    " make the order in anyway?"});
+                    return;
+                }
+            })
+        }, function(input) {
+            res.redirect("/users/login");
+        });
+        
+    });
+    
     router.get("/client_token", function (req, res) {
         validateStatus(req, res, User, "/users/login", function(input, user) {
             gateway.clientToken.generate({}, function (err, response) {
