@@ -6,7 +6,7 @@ var crypto = require('crypto');
 
 var webName = "delivery Boy";
 var webDomain = "cloudfood-jasonews.c9users.io";
-var authExpireTime = 60 * 60 * 1000;
+var authExpireTime = 7* 24 * 60 * 60 * 1000;
 
 var paypal = require('paypal-rest-sdk');
 var os = require('os');
@@ -46,7 +46,7 @@ router.get("/home", function(req, res, next) {
 						res.cookie('auth_token', user.auth.token, {path: "/", expires: user.auth.expire, httpOnly: true});
 						user.fullname = user.name.full;
 						if (!online) {
-							res.render('user_home', {'user': user, 'flash': 'success', 'flash_msg': 'Welcome to '+ webName, host: os.hostname()});
+							res.render('user_home', {'user': user, 'flash': 'success', 'flash_msg': 'Welcome to '+ webName + ", "+user.fullname, host: os.hostname()});
 						}
 						else
 							res.render('user_home', {'user': user, host: os.hostname()});
@@ -140,11 +140,12 @@ router.post('/login', function(req, res, next) {
 	    	console.log("login token", user.auth.token);
 	    	res.clearCookie('auth_token', {path: "/"});
 	    	res.clearCookie('username', {path: "/"});
-	    	res.clearCookie('type', {path: "/"});
+	    	res.clearCookie('typeUser', {path: "/"});
 	    	res.clearCookie('logout', {path: "/"});
+	    	res.clearCookie("typeRestaurant", {path: "/"});
 	    	res.cookie('username', user.username, {path: "/", expires: user.auth.expire, httpOnly: true});
 			res.cookie('auth_token', user.auth.token, {path: "/", expires: user.auth.expire, httpOnly: true});
-			res.cookie('type', "user", {path: "/", expires: user.auth.expire, httpOnly: true});
+			res.cookie('typeUser', true, {path: "/", expires: user.auth.expire, httpOnly: true});
 			res.redirect("home");
 	    });
 	    
@@ -228,7 +229,7 @@ router.post('/login_facebook', function(req, res, next) {
 
 router.get('/logout', function(req, res, next) {
     res.clearCookie("auth_token", {path: "/"});
-    res.clearCookie("type", {path: "/"});
+    res.clearCookie("typeUser", {path: "/"});
     res.cookie("auth_token", "logout", {path: "/", httpOnly: true});
     res.cookie("logout", true, {path: "/", httpOnly: true});
     res.redirect("home");
@@ -351,10 +352,10 @@ function handleNewUser(user, res) {
 			else {
 				res.clearCookie('username', {path: "/"});
 				res.clearCookie("auth_token", {path: "/"});
-				res.clearCookie("type", {path:"/"});
+				res.clearCookie("typeUser", {path:"/"});
 				res.cookie('username', user.username, {path: "/", expires: user.auth.expire, httpOnly: true});
 				res.cookie('auth_token', user.auth.token, { path: "/", expires: user.auth.expire, httpOnly: true});
-				res.cookie('type', "user", { path: "/", expires: user.auth.expire, httpOnly: true});
+				res.cookie('typeUser', true, { path: "/", expires: user.auth.expire, httpOnly: true});
 				res.redirect("home");	
 			}
 		});
@@ -401,7 +402,6 @@ router.post("/home/activeOrders/delivered", function(req, res, next) {
    			name: input.name
    		}, function(err, order) {
    		    order.delivered = true;
-   		    order.public = true;
    		    if (order.status == 'active')
    		    	order.status = "delivered";
    		    else
@@ -420,7 +420,7 @@ router.post("/home/activeOrders/delivered", function(req, res, next) {
 			   var create_payout_json = {
 				   "sender_batch_header": {
 					   "sender_batch_id": Math.random().toString(36).substring(9),
-					   "email_subject": "You have a new payment from Delivery Boy."
+					   "email_subject": "A payment from Delivery Boy"
 				   },
 				   "items": [
 					   {

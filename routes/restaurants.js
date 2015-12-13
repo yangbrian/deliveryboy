@@ -10,7 +10,7 @@ var crypto = require('crypto');
 
 var webName = "delivery Boy";
 var webDomain = "cloudfood-jasonews.c9restaurants.io";
-var authExpireTime = 60 * 60 * 1000;
+var authExpireTime = 7* 24 * 60 * 60 * 1000;
 
 var paypal = require('paypal-rest-sdk');
 
@@ -142,6 +142,7 @@ router.post('/login', function(req, res, next) {
     		res.clearCookie("auth_token", {path: "/restaurants/home"});
     		res.clearCookie("username", {path:"/restaurants/home"});
     		res.clearCookie("typeRestaurant", {path: "/"});
+    		res.clearCookie("typeUser", {path: "/"});
     		res.clearCookie("logout", {path: "/"});
     		res.cookie('username', restaurant.username, {path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
     		res.cookie('auth_token', restaurant.auth.token, {path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
@@ -196,6 +197,10 @@ router.post("/home/payment", function(req, res, next) {
 						return;
 						
 					}
+					if (restaurant.payment_account === input.payment_account && restaurant.payment_name === input.payment_name) {
+						res.redirect("/restaurants/home");
+						return;
+					}
 					restaurant.payment_account = input.payment_account;
 					restaurant.payment_name = input.payment_name;
 					restaurant.save(function(err) {
@@ -231,7 +236,7 @@ router.post("/home/dish/new", function(req, res, next) {
 			} else {
 				if ( restaurant.auth.token == req.cookies.auth_token && restaurant.auth.validate && restaurant.online) {
 
-
+					
 				    var dish = new Dish();
 					dish.name = input.name;
           dish.address = restaurant.address;
@@ -248,8 +253,12 @@ router.post("/home/dish/new", function(req, res, next) {
 
 					dish.save(function(err) {
 						if (err) {
-							console.log(err.message);
-							res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': 'failed to added dish '+dish.name+" to menu: " + err.message });
+							
+							console.log(err);
+							if (err.code == 11000)
+								res.redirect("/restaurants/home");
+							else
+								res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': 'failed to added dish '+dish.name+" to menu: " + err.message });
 							return;
 						}
 						res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'success', 'flash_msg': 'Successfully added dish '+dish.name+" to menu" });
@@ -299,6 +308,7 @@ router.post("/home/dish/update", function(req, res, next) {
 				dish.save(function(err) {
 					if (err) {
 						console.log(err.message);
+						res.redirect("/restaurants/home");
 						res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': 'failed to update dish '+dish.name+" to menu: " + err.message });
 						return;
 					}
@@ -319,6 +329,7 @@ router.post("/home/dish/delete", function(req, res, next) {
         }, function(err) {
         	if (err) {
 				console.log(err.message);
+				res.redirect("/restaurants/home");
 				res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': 'failed to delete dish '+input.name+" from menu: " + err.message });
 				return;
 			}
@@ -638,7 +649,7 @@ function handleNewRestaurant(restaurant, res) {
 		restaurant.email = email;
 		restaurant.address = address;
 		restaurant.company = company;
-		restaurant.name.push(name);
+		restaurant.name = name;
 		restaurant.passwd =crypto.createHash('md5').update(passwd).digest("hex");
 	 	restaurant.auth.token = crypto.createHash('sha256').update((new Date()).toString()).digest("base64");
 		restaurant.auth.expire = new Date(Date.now() + authExpireTime);
@@ -653,6 +664,7 @@ function handleNewRestaurant(restaurant, res) {
 				res.clearCookie('username', {path: "/restaurants/home"});
 				res.clearCookie('auth_token', {path: "/restaurants/home"});
 				res.clearCookie("typeRestaurant", {path : "/"});
+				res.clearCookie("typeUser", {path: "/"});
 				res.cookie('username', restaurant.username, {path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
 				res.cookie('typeRestaurant', true, {path: "/", expires: restaurant.auth.expire, httpOnly: true});
 				res.cookie('auth_token', restaurant.auth.token, {path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});

@@ -9,7 +9,7 @@ var os = require("os");
 router.get('/', function(req, res, next) {
     if (req.cookies.typeRestaurant && !req.cookies.logout)
         res.redirect("/restaurants/home");
-    else if (req.cookies.type == "user" && !req.cookies.logout)
+    else if (req.cookies.typeUser && !req.cookies.logout)
         res.redirect("/users/home");
     else
         res.render('index', { title: 'Express', host: os.hostname() });

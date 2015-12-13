@@ -76,13 +76,19 @@ app.use('/users', users);
 app.use('/payments', payments);
 app.use('/restaurants', restaurants);
 app.use('/order', order(app.io));
-app.use('/restaurants', restaurants);
+
+app.use("/favicon.ico", function (req, res, next) {
+    res.send("hello");
+    res.end();
+    // body...
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+    res.redirect("/");
+    // var err = new Error('Not Found');
+    // err.status = 404;
+    // next(err);
 });
 
 // error handlers

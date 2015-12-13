@@ -73,53 +73,74 @@ function validate() {
 
 orderButton.onclick = function() {
     if (validate())
-
-        $.get('/order/client_token', function(data){
-            $("#dropin-container").empty();
-            var token = data;
-            user.braintree_token = token;
-            braintree.setup(token, "dropin", {
-                container: "dropin-container",
-                paypal: {
-                    singleUse: true,
-                    amount: user.cost,
-                    currency: 'USD'
-                },
-                dataCollector: {
-                    paypal: true  // Enables fraud prevention
-                },
-                onPaymentMethodReceived: function (obj) {
-                    console.log(obj);
-                    placeOrder();
-                }
-            });
-            // $("#paybox-title").text("Make a Payment");
-            $("#paybox").modal("show");
-        });
-
-};
-
-function placeOrder() {
-    //Checks that all fields are filled
-
-    if(validate()) {
-        console.log("validated");
-        $.post('/order/new', user, function(data) {
+        $.post('/order/restaurant_status', {"restaurant": user.restaurant}, function(data) {
+            var yes = true;
+            var force = false;
             console.log(data);
             if (data.error) {
-                var yes = confirm(data.msg);
-                if (yes) {
-                    document.getElementById('spin_fade').style.display='block';
-                    $.post('/order/new_force',user, function(data) {
-                        window.location.href = "/users/home";
+                yes = confirm(data.msg);
+                force = yes;
+            }
+            if (yes) {
+                $.get('/order/client_token', function(data){
+                    $("#dropin-container").empty();
+                    var token = data;
+                    user.braintree_token = token;
+                    braintree.setup(token, "dropin", {
+                        container: "dropin-container",
+                        paypal: {
+                            singleUse: true,
+                            amount: user.cost,
+                            currency: 'USD'
+                        },
+                        dataCollector: {
+                            paypal: true  // Enables fraud prevention
+                        },
+                        onPaymentMethodReceived: function (obj) {
+                            console.log(obj);
+                            placeOrder(force);
+                        }
                     });
-                } else {
-                    window.location.href = "/users/home";
-                }
+                    // $("#paybox-title").text("Make a Payment");
+                    $("#paybox").modal("show");
+                });
             } else {
                 window.location.href = "/users/home";
             }
         });
+
+};
+
+
+function placeOrder(force) {
+    //Checks that all fields are filled
+
+    if(validate()) {
+        console.log("validated");
+        if (force) {
+            $.post('/order/new_force', user, function(data) {
+                console.log(data);
+                window.location.href = "/users/home";
+            });
+        } else {
+        $.post('/order/new', user, function(data) {
+                console.log(data);
+                // if (data.error) {
+                //     var yes = confirm(data.msg);
+                //     if (yes) {
+                //         document.getElementById('spin_fade').style.display='block';
+                //         $.post('/order/new_force',user, function(data) {
+                //             window.location.href = "/users/home";
+                //         });
+                //     } else {
+                //         window.location.href = "/users/home";
+                //     }
+                // } else {
+                //     window.location.href = "/users/home";
+                // }
+                window.location.href = "/users/home";
+            });
+        }
     }
 };
 
