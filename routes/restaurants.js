@@ -638,7 +638,7 @@ function handleNewRestaurant(restaurant, res) {
 		restaurant.email = email;
 		restaurant.address = address;
 		restaurant.company = company;
-		restaurant.name.push(name);
+		restaurant.name = name;
 		restaurant.passwd =crypto.createHash('md5').update(passwd).digest("hex");
 	 	restaurant.auth.token = crypto.createHash('sha256').update((new Date()).toString()).digest("base64");
 		restaurant.auth.expire = new Date(Date.now() + authExpireTime);
