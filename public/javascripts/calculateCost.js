@@ -107,10 +107,6 @@ $('#menu-modal-content').on('click', '.menu-popover-row', function () {
   var itemName = $(this).find('.menu-item-name').html();
   var itemPrice = Number($(this).find('.menu-item-price').html()).toFixed(2);
 
-  // prevent NaN from breaking the form
-  if (isNaN(itemPrice))
-    itemPrice = 0;
-
   addNewItem(itemName, itemPrice);
 });
 
@@ -138,6 +134,11 @@ orderEntry.on('click', '.new-order-entry', function () {
 $('input:radio').on('change', updateTotal);
 
 function addNewItem(itemName, itemPrice) {
+
+  // prevent NaN from breaking the form
+  if (isNaN(itemPrice))
+    itemPrice = 0;
+
   var newRow = $('<tr>')
       .append($('<td>').html(itemName))
       .append($('<td>').html(itemPrice))
