@@ -142,6 +142,7 @@ router.post('/login', function(req, res, next) {
     		res.clearCookie("auth_token", {path: "/restaurants/home"});
     		res.clearCookie("username", {path:"/restaurants/home"});
     		res.clearCookie("typeRestaurant", {path: "/"});
+    		res.clearCookie("typeUser", {path: "/"});
     		res.clearCookie("logout", {path: "/"});
     		res.cookie('username', restaurant.username, {path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
     		res.cookie('auth_token', restaurant.auth.token, {path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
@@ -252,10 +253,12 @@ router.post("/home/dish/new", function(req, res, next) {
 
 					dish.save(function(err) {
 						if (err) {
-							console.log(err.message);
+							
 							console.log(err);
-							res.redirect("/restaurants/home");
-							// res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': 'failed to added dish '+dish.name+" to menu: " + err.message });
+							if (err.code == 11000)
+								res.redirect("/restaurants/home");
+							else
+								res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': 'failed to added dish '+dish.name+" to menu: " + err.message });
 							return;
 						}
 						res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'success', 'flash_msg': 'Successfully added dish '+dish.name+" to menu" });
@@ -661,6 +664,7 @@ function handleNewRestaurant(restaurant, res) {
 				res.clearCookie('username', {path: "/restaurants/home"});
 				res.clearCookie('auth_token', {path: "/restaurants/home"});
 				res.clearCookie("typeRestaurant", {path : "/"});
+				res.clearCookie("typeUser", {path: "/"});
 				res.cookie('username', restaurant.username, {path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
 				res.cookie('typeRestaurant', true, {path: "/", expires: restaurant.auth.expire, httpOnly: true});
 				res.cookie('auth_token', restaurant.auth.token, {path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
