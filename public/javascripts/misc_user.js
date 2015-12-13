@@ -19,6 +19,10 @@ function clearAlert() {
 
 function loadRestaurantMenu() {
     $.get("/restaurants/home/menu",function(data){
+        if (typeof data == "string") {
+            window.location.href = "/";
+        }
+            
         menu_data = data;
        console.log(data);
        var dish = null;
@@ -30,6 +34,9 @@ function loadRestaurantMenu() {
 
 function loadUserHistoryOrders() {
     $.get("/users/home/orders",function(data){
+        if (typeof data == "string") {
+            window.location.href = "/";
+        }
         order_data = data;
        console.log(data);
        var dish = null;
@@ -41,7 +48,9 @@ function loadUserHistoryOrders() {
 
 function loadUserActiveOrders() {
     $.get("/users/home/activeOrders",function(data){
-        
+        if (typeof data == "string") {
+            window.location.href = "/";
+        }
         menu_data = data;
        console.log(data);
        for ( var i = data.length -1; i > -1; i--) {
@@ -101,6 +110,9 @@ function completePayment(btn) {
 
 function loadTags() {
     $.get("/restaurants/tags", function(data){
+        if (typeof data == "String") {
+            window.location.href = "/";
+        }
         tags = [];
         for (var i = 0; i < data.length; i++) {
             tags.push(data[i].value);
@@ -111,6 +123,9 @@ function loadTags() {
 
 function loadIngradients() {
     $.get("/restaurants/ingradients", function(data){
+        if (typeof data == "String") {
+            window.location.href = "/";
+        }
         ingradients = [];
         for (var i = 0; i < data.length; i++) {
             ingradients.push(data[i].value);
@@ -228,7 +243,9 @@ function endEditDish(btn) {
 
 function loadDeliveryboyOrders() {
     $.get("/users/home/deliveryboyOrders",function(data){
-
+        if (typeof data == "string") {
+            window.location.href = "/";
+        }
        console.log(data);
        for ( var i = data.length-1; i >-1; i--) {
         $("#deliveryboyList").append(   '<a href="#" class="list-group-item updatebox">'+
