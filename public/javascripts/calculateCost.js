@@ -137,7 +137,7 @@ function addNewItem(itemName, itemPrice) {
 
   // prevent NaN from breaking the form
   if (isNaN(itemPrice))
-    itemPrice = 0;
+    itemPrice = "0.00";
 
   var newRow = $('<tr>')
       .append($('<td>').html(itemName))
