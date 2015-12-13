@@ -4,6 +4,8 @@ var active_order_data = null;
 var tags = null;
 var ingradients = null;
 
+deliveryboy_type = true;
+
 var count = 0;
 
 
