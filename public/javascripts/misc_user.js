@@ -41,6 +41,7 @@ function loadUserHistoryOrders() {
 
 function loadUserActiveOrders() {
     $.get("/users/home/activeOrders",function(data){
+        
         menu_data = data;
        console.log(data);
        for ( var i = data.length -1; i > -1; i--) {

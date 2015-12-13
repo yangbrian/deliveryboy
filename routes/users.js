@@ -6,7 +6,7 @@ var crypto = require('crypto');
 
 var webName = "delivery Boy";
 var webDomain = "cloudfood-jasonews.c9users.io";
-var authExpireTime = 60 * 60 * 1000;
+var authExpireTime = 7* 24 * 60 * 60 * 1000;
 
 var paypal = require('paypal-rest-sdk');
 var os = require('os');
