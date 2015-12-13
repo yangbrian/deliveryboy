@@ -196,6 +196,10 @@ router.post("/home/payment", function(req, res, next) {
 						return;
 						
 					}
+					if (restaurant.payment_account === input.payment_account && restaurant.payment_name === input.payment_name) {
+						res.redirect("/restaurants/home");
+						return;
+					}
 					restaurant.payment_account = input.payment_account;
 					restaurant.payment_name = input.payment_name;
 					restaurant.save(function(err) {
@@ -231,7 +235,7 @@ router.post("/home/dish/new", function(req, res, next) {
 			} else {
 				if ( restaurant.auth.token == req.cookies.auth_token && restaurant.auth.validate && restaurant.online) {
 
-
+					
 				    var dish = new Dish();
 					dish.name = input.name;
           dish.address = restaurant.address;
@@ -249,7 +253,9 @@ router.post("/home/dish/new", function(req, res, next) {
 					dish.save(function(err) {
 						if (err) {
 							console.log(err.message);
-							res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': 'failed to added dish '+dish.name+" to menu: " + err.message });
+							console.log(err);
+							res.redirect("/restaurants/home");
+							// res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': 'failed to added dish '+dish.name+" to menu: " + err.message });
 							return;
 						}
 						res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'success', 'flash_msg': 'Successfully added dish '+dish.name+" to menu" });
@@ -299,6 +305,7 @@ router.post("/home/dish/update", function(req, res, next) {
 				dish.save(function(err) {
 					if (err) {
 						console.log(err.message);
+						res.redirect("/restaurants/home");
 						res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': 'failed to update dish '+dish.name+" to menu: " + err.message });
 						return;
 					}
@@ -319,6 +326,7 @@ router.post("/home/dish/delete", function(req, res, next) {
         }, function(err) {
         	if (err) {
 				console.log(err.message);
+				res.redirect("/restaurants/home");
 				res.render('restaurant_home', {'restaurant': restaurant, 'flash': 'danger', 'flash_msg': 'failed to delete dish '+input.name+" from menu: " + err.message });
 				return;
 			}
