@@ -142,11 +142,13 @@ router.post('/login', function(req, res, next) {
     		res.clearCookie("auth_token", {path: "/restaurants/home"});
     		res.clearCookie("username", {path:"/restaurants/home"});
     		res.clearCookie("typeRestaurant", {path: "/"});
+    		res.clearCookie("usernameR", {path: "/"});
     		res.clearCookie("typeUser", {path: "/"});
     		res.clearCookie("logout", {path: "/"});
     		res.cookie('username', restaurant.username, {path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
     		res.cookie('auth_token', restaurant.auth.token, {path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
     		res.cookie('typeRestaurant', true, {path: "/", expires: restaurant.auth.expire, httpOnly: true});
+			res.cookie("usernameR", restaurant.username, {path: "/", expires: restaurant.auth.expire, httpOnly: true});
 			res.redirect("home");
     });
 
@@ -158,6 +160,7 @@ router.post('/login', function(req, res, next) {
 router.get("/logout", function(req, res, next) {
     res.clearCookie("auth_token", {path: "/restaurants/home"});
     res.clearCookie("typeRestaurant", {path: "/"});
+    res.clearCookie("usernameR", {path: "/"});
     res.cookie("auth_token", "logout", {path: "/restaurants/home", httpOnly: true});
     res.cookie("logout", true, {path: "/", httpOnly: true});
     res.redirect("home");
@@ -664,9 +667,11 @@ function handleNewRestaurant(restaurant, res) {
 				res.clearCookie('username', {path: "/restaurants/home"});
 				res.clearCookie('auth_token', {path: "/restaurants/home"});
 				res.clearCookie("typeRestaurant", {path : "/"});
+				res.clearCookie("usernameR", {path: "/"});
 				res.clearCookie("typeUser", {path: "/"});
 				res.cookie('username', restaurant.username, {path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
 				res.cookie('typeRestaurant', true, {path: "/", expires: restaurant.auth.expire, httpOnly: true});
+				res.cookie("usernameR", restaurant.username, {path: "/", expires: restaurant.auth.expire, httpOnly: true});
 				res.cookie('auth_token', restaurant.auth.token, {path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
 				console.log(restaurant.username+"\n"+restaurant.auth.token);
 				res.redirect("home");

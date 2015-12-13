@@ -31,11 +31,32 @@ router.post('/submitOrder', function(req, res, next){
 });
 
 router.get('/help/', function(req, res, next){
-    res.render('help', {
-        title: "Help Guide - DeliveryBoy",
-        host: os.hostname() ,
-        help: true
-    });
+    if (req.cookies.typeRestaurant) {
+        var restaurant = {};
+        restaurant.username = req.cookies.usernameR;
+        res.render('help', {
+            title: "Help Guide - DeliveryBoy",
+            host: os.hostname() ,
+            help: true,
+            restaurant: restaurant
+        });
+    } else if (req.cookies.typeUser) {
+        var user = {};
+        user.username = req.cookies.username;
+        res.render('help', {
+            title: "Help Guide - DeliveryBoy",
+            host: os.hostname() ,
+            help: true,
+            user: user
+        });
+    } else {
+        res.render('help', {
+            title: "Help Guide - DeliveryBoy",
+            host: os.hostname() ,
+            help: true
+        });
+        
+    }
 
 });
 
