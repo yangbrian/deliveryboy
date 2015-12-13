@@ -140,11 +140,12 @@ router.post('/login', function(req, res, next) {
 	    	console.log("login token", user.auth.token);
 	    	res.clearCookie('auth_token', {path: "/"});
 	    	res.clearCookie('username', {path: "/"});
-	    	res.clearCookie('type', {path: "/"});
+	    	res.clearCookie('typeUser', {path: "/"});
 	    	res.clearCookie('logout', {path: "/"});
+	    	res.clearCookie("typeRestaurant", {path: "/"});
 	    	res.cookie('username', user.username, {path: "/", expires: user.auth.expire, httpOnly: true});
 			res.cookie('auth_token', user.auth.token, {path: "/", expires: user.auth.expire, httpOnly: true});
-			res.cookie('type', "user", {path: "/", expires: user.auth.expire, httpOnly: true});
+			res.cookie('typeUser', true, {path: "/", expires: user.auth.expire, httpOnly: true});
 			res.redirect("home");
 	    });
 	    
@@ -228,7 +229,7 @@ router.post('/login_facebook', function(req, res, next) {
 
 router.get('/logout', function(req, res, next) {
     res.clearCookie("auth_token", {path: "/"});
-    res.clearCookie("type", {path: "/"});
+    res.clearCookie("typeUser", {path: "/"});
     res.cookie("auth_token", "logout", {path: "/", httpOnly: true});
     res.cookie("logout", true, {path: "/", httpOnly: true});
     res.redirect("home");
@@ -351,10 +352,10 @@ function handleNewUser(user, res) {
 			else {
 				res.clearCookie('username', {path: "/"});
 				res.clearCookie("auth_token", {path: "/"});
-				res.clearCookie("type", {path:"/"});
+				res.clearCookie("typeUser", {path:"/"});
 				res.cookie('username', user.username, {path: "/", expires: user.auth.expire, httpOnly: true});
 				res.cookie('auth_token', user.auth.token, { path: "/", expires: user.auth.expire, httpOnly: true});
-				res.cookie('type', "user", { path: "/", expires: user.auth.expire, httpOnly: true});
+				res.cookie('typeUser', true, { path: "/", expires: user.auth.expire, httpOnly: true});
 				res.redirect("home");	
 			}
 		});
