@@ -82,7 +82,13 @@ router.get("/home", function(req, res, next) {
 });
 
 router.get('/signup', function(req, res, next) {
+	res.clearCookie("auth_token", {path: "/restaurants/home"});
+	res.clearCookie("typeRestaurant", {path: "/"});
 	console.log('enter signup');
+	if (req.cookies.typeUser) {
+		res.redirect("home");
+		return;
+	}
 	console.log(req.query.error !== undefined);
 	if (req.query.error !== undefined) {
 		if (parseInt(req.query.error) === 1)
@@ -111,6 +117,12 @@ router.post('/signup', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
+	res.clearCookie("auth_token", {path: "/restaurants/home"});
+	res.clearCookie("typeRestaurant", {path: "/"});
+	if (req.cookies.typeUser) {
+		res.redirect("home");
+		return;
+	}
 	res.render('user_login');
 });
 
@@ -143,6 +155,7 @@ router.post('/login', function(req, res, next) {
 	    	res.clearCookie('typeUser', {path: "/"});
 	    	res.clearCookie('logout', {path: "/"});
 	    	res.clearCookie("typeRestaurant", {path: "/"});
+	    	res.clearCookie("auth_token", {path: "/restaurants/home"});
 	    	res.cookie('username', user.username, {path: "/", expires: user.auth.expire, httpOnly: true});
 			res.cookie('auth_token', user.auth.token, {path: "/", expires: user.auth.expire, httpOnly: true});
 			res.cookie('typeUser', true, {path: "/", expires: user.auth.expire, httpOnly: true});
@@ -353,6 +366,8 @@ function handleNewUser(user, res) {
 				res.clearCookie('username', {path: "/"});
 				res.clearCookie("auth_token", {path: "/"});
 				res.clearCookie("typeUser", {path:"/"});
+				res.clearCookie("typeRestaurant", {path: "/"});
+				res.clearCookie("auth_token", {path: "/restaurants/home"});
 				res.cookie('username', user.username, {path: "/", expires: user.auth.expire, httpOnly: true});
 				res.cookie('auth_token', user.auth.token, { path: "/", expires: user.auth.expire, httpOnly: true});
 				res.cookie('typeUser', true, { path: "/", expires: user.auth.expire, httpOnly: true});
