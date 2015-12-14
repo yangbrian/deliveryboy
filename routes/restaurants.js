@@ -80,7 +80,13 @@ router.get("/home", function(req, res, next) {
 });
 
 router.get('/signup', function(req, res, next) {
+	res.clearCookie("auth_token", {path: "/users/home"});
+	res.clearCookie("typeUser", {path: "/"});
 	console.log('enter signup');
+	if (req.cookies.typeRestaurant) {
+		res.redirect("home");
+		return;
+	}
 	console.log(req.query.error !== undefined);
 	if (req.query.error !== undefined) {
 		if (parseInt(req.query.error) === 1)
@@ -111,6 +117,12 @@ router.post('/signup', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
+	res.clearCookie("auth_token", {path: "/users/home"});
+	res.clearCookie("typeUser", {path: "/"});
+	if (req.cookies.typeRestaurant) {
+		res.redirect("home");
+		return;
+	}
 	res.render('restaurant_login');
 });
 
@@ -145,6 +157,7 @@ router.post('/login', function(req, res, next) {
     		res.clearCookie("usernameR", {path: "/"});
     		res.clearCookie("typeUser", {path: "/"});
     		res.clearCookie("logout", {path: "/"});
+    		res.clearCookie("auth_token", {path: "/users/home"});
     		res.cookie('username', restaurant.username, {path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
     		res.cookie('auth_token', restaurant.auth.token, {path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
     		res.cookie('typeRestaurant', true, {path: "/", expires: restaurant.auth.expire, httpOnly: true});
@@ -669,6 +682,7 @@ function handleNewRestaurant(restaurant, res) {
 				res.clearCookie("typeRestaurant", {path : "/"});
 				res.clearCookie("usernameR", {path: "/"});
 				res.clearCookie("typeUser", {path: "/"});
+				res.clearCookie("auth_token", {path: "/users/home"});
 				res.cookie('username', restaurant.username, {path: "/restaurants/home", expires: restaurant.auth.expire, httpOnly: true});
 				res.cookie('typeRestaurant', true, {path: "/", expires: restaurant.auth.expire, httpOnly: true});
 				res.cookie("usernameR", restaurant.username, {path: "/", expires: restaurant.auth.expire, httpOnly: true});
